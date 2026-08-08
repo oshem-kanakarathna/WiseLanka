@@ -1,1 +1,19 @@
 qualification_type_id,qualification_type_name,description
+QTP001,School Qualification,Formal school-level examination or qualification
+QTP002,Foundation Qualification,Pre-degree or bridging qualification preparing learners for higher education
+QTP003,Certificate,Formal certificate-level qualification
+QTP004,Advanced Certificate,Qualification above certificate level where applicable
+QTP005,Diploma,Diploma-level academic vocational or professional qualification
+QTP006,Higher Diploma,Higher diploma or equivalent advanced diploma-level qualification
+QTP007,NVQ Qualification,Qualification belonging to the National Vocational Qualifications Framework
+QTP008,Bachelors Degree,Undergraduate bachelors degree qualification
+QTP009,Bachelors Honours Degree,Undergraduate bachelors degree with honours
+QTP010,Postgraduate Certificate,Postgraduate certificate-level qualification
+QTP011,Postgraduate Diploma,Postgraduate diploma-level qualification
+QTP012,Masters Degree,Masters-level postgraduate qualification
+QTP013,MPhil,Master of Philosophy qualification
+QTP014,Doctoral Qualification,Doctoral-level qualification such as a PhD or equivalent doctorate
+QTP015,Professional Qualification,Qualification awarded through a professional education or membership pathway
+QTP016,Industry Certification,Industry or vendor certification demonstrating a specific professional or technical competency
+QTP017,Microcredential,Short focused credential representing assessed learning or competency
+QTP018,Short Course Award,Certificate or award from a short learning programme that may fall outside a formal qualification framework

@@ -1,1 +1,7 @@
 study_mode_id,study_mode_name,description
+STM001,Full-time,Programme undertaken on a full-time study basis
+STM002,Part-time,Programme undertaken on a part-time study basis
+STM003,Online,Programme primarily undertaken through online learning
+STM004,Blended,Programme combining online and in-person learning
+STM005,Distance,Programme primarily delivered through distance learning
+STM006,Weekend,Programme primarily scheduled during weekends

@@ -1,1 +1,17 @@
 programme_type_id,programme_type_name,description
+PTP001,School Pathway,Structured school education pathway
+PTP002,Foundation Programme,Programme preparing learners for entry into higher education
+PTP003,Certificate Programme,Programme leading to a certificate-level qualification
+PTP004,Diploma Programme,Programme leading to a diploma qualification
+PTP005,Higher Diploma Programme,Programme leading to a higher diploma qualification
+PTP006,NVQ Programme,Vocational programme aligned with the National Vocational Qualifications Framework
+PTP007,Undergraduate Degree Programme,Programme leading to a bachelors-level degree
+PTP008,Top-up Degree Programme,Programme providing advanced entry toward completion of a bachelors degree
+PTP009,Postgraduate Programme,Programme undertaken after an undergraduate qualification
+PTP010,Doctoral Programme,Programme leading toward a doctoral qualification
+PTP011,Professional Programme,Programme leading to a professional qualification or professional membership pathway
+PTP012,Industry Certification Programme,Training programme preparing learners for an industry certification
+PTP013,Short Course,Short-duration programme focused on a specific area of learning or skill development
+PTP014,Microcredential Programme,Focused programme leading to a microcredential
+PTP015,Bridging Programme,Programme designed to satisfy progression or entry gaps between qualifications
+PTP016,Apprenticeship,Structured occupational training combining formal learning with workplace experience

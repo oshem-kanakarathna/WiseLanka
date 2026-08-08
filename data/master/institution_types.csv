@@ -1,1 +1,13 @@
 institution_type_id,institution_type_name,description
+ITP001,University,Higher education institution providing university-level education and qualifications
+ITP002,Higher Education Institute,Institution providing higher education programmes outside the general university classification
+ITP003,Vocational Training Institute,Institution primarily providing vocational or occupational education and training
+ITP004,Technical College,Institution primarily providing technical and vocational education
+ITP005,Professional Body,Organisation responsible for professional education standards qualifications or membership pathways
+ITP006,Awarding Organisation,Organisation that awards or certifies qualifications delivered directly or through approved providers
+ITP007,Training Provider,Organisation providing structured education training or skills-development programmes
+ITP008,School,Institution providing primary or secondary school education
+ITP009,Government Education Agency,Government organisation responsible for education training qualifications or educational administration
+ITP010,Regulatory Authority,Organisation responsible for regulating recognising accrediting or quality-assuring education or training
+ITP011,Examination Body,Organisation responsible for administering examinations or awarding examination-based qualifications
+ITP012,International Awarding Body,International organisation awarding qualifications that may be delivered by institutions in Sri Lanka
