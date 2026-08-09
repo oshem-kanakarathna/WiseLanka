@@ -1,1 +1,2 @@
 institution_id,institution_name,institution_type,ownership_type,awarding_authority,country,province,district,city,official_website,active_status,notes
+INS0001,University of Moratuwa,University,Government,true,Sri Lanka,Western,Colombo,Moratuwa,https://uom.lk,Active,State university operating under the Sri Lankan Universities Act framework

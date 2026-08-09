@@ -1,1 +1,2 @@
 qualification_id,qualification_name,qualification_type,framework_name,framework_level,awarding_body_id,education_sector,field_specific,minimum_duration_months,credit_value,country,active_status,notes
+QLF0001,Bachelor of Science Honours in Information Technology,Bachelors Honours Degree,Sri Lanka Qualifications Framework,6,INS0001,Higher Education,true,48,150,Sri Lanka,Active,Honours undergraduate IT qualification offered by University of Moratuwa
