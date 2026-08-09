@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        WiseLanka | Eligibility Checker
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../components/eligibility.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            W
+        </div>
+
+        <div>
+
+            <h1>
+                WiseLanka
+            </h1>
+
+            <span>
+                Know More. Choose Better.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="verified-label">
+        Evidence-backed pathways
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="hero">
+
+        <div class="hero-badge">
+            Education Pathway Intelligence
+        </div>
+
+        <h2>
+            Discover whether you're
+            eligible for your next pathway.
+        </h2>
+
+        <p>
+            Enter your Advanced Level
+            subjects and grades.
+            WiseLanka checks your results
+            against structured programme
+            entry requirements.
+        </p>
+
+    </section>
+
+
+    <section class="workspace">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="card input-card">
+
+
+            <div class="card-heading">
+
+                <span class="step">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Academic Results
+                    </h3>
+
+                    <p>
+                        Tell us what you achieved.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label for="programme">
+                Programme
+            </label>
+
+
+            <select id="programme">
+
+                <option value="PRG0001">
+
+                    BSc (Hons) Information
+                    Technology —
+                    University of Moratuwa
+
+                </option>
+
+            </select>
+
+
+            <!-- Subject 1 -->
+
+            <div class="subject-row">
+
+                <div>
+
+                    <label for="subject1">
+                        Subject 1
+                    </label>
+
+                    <select id="subject1">
+
+                        <option
+                            value="Combined Mathematics"
+                        >
+                            Combined Mathematics
+                        </option>
+
+                        <option
+                            value="Higher Mathematics"
+                        >
+                            Higher Mathematics
+                        </option>
+
+                        <option value="Mathematics">
+                            Mathematics
+                        </option>
+
+                        <option value="Physics">
+                            Physics
+                        </option>
+
+                        <option value="Chemistry">
+                            Chemistry
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="grade1">
+                        Grade
+                    </label>
+
+                    <select id="grade1">
+
+                        <option>A</option>
+
+                        <option selected>
+                            B
+                        </option>
+
+                        <option>C</option>
+
+                        <option>S</option>
+
+                        <option>F</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Subject 2 -->
+
+            <div class="subject-row">
+
+                <div>
+
+                    <label for="subject2">
+                        Subject 2
+                    </label>
+
+                    <select id="subject2">
+
+                        <option value="Physics">
+                            Physics
+                        </option>
+
+                        <option
+                            value="Combined Mathematics"
+                        >
+                            Combined Mathematics
+                        </option>
+
+                        <option
+                            value="Higher Mathematics"
+                        >
+                            Higher Mathematics
+                        </option>
+
+                        <option value="Mathematics">
+                            Mathematics
+                        </option>
+
+                        <option value="Chemistry">
+                            Chemistry
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="grade2">
+                        Grade
+                    </label>
+
+                    <select id="grade2">
+
+                        <option>A</option>
+
+                        <option>B</option>
+
+                        <option selected>
+                            C
+                        </option>
+
+                        <option>S</option>
+
+                        <option>F</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Subject 3 -->
+
+            <div class="subject-row">
+
+                <div>
+
+                    <label for="subject3">
+                        Subject 3
+                    </label>
+
+                    <select id="subject3">
+
+                        <option value="Chemistry">
+                            Chemistry
+                        </option>
+
+                        <option value="Physics">
+                            Physics
+                        </option>
+
+                        <option
+                            value="Combined Mathematics"
+                        >
+                            Combined Mathematics
+                        </option>
+
+                        <option
+                            value="Higher Mathematics"
+                        >
+                            Higher Mathematics
+                        </option>
+
+                        <option value="Mathematics">
+                            Mathematics
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="grade3">
+                        Grade
+                    </label>
+
+                    <select id="grade3">
+
+                        <option>A</option>
+
+                        <option>B</option>
+
+                        <option selected>
+                            C
+                        </option>
+
+                        <option>S</option>
+
+                        <option>F</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="checkButton"
+                type="button"
+            >
+
+                Check My Eligibility
+
+            </button>
+
+
+            <p class="privacy-note">
+
+                WiseLanka evaluates only
+                the requirements currently
+                recorded in its verified
+                knowledge base.
+
+            </p>
+
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div
+            id="resultCard"
+            class="card result-card hidden"
+        >
+
+
+            <div
+                id="statusBadge"
+                class="status-badge"
+            >
+                Result
+            </div>
+
+
+            <h3 id="resultProgramme">
+            </h3>
+
+
+            <p
+                id="resultSummary"
+                class="result-summary"
+            >
+            </p>
+
+
+            <div class="divider">
+            </div>
+
+
+            <div class="result-section">
+
+                <h4>
+                    ✓ Requirements satisfied
+                </h4>
+
+                <ul id="passedList">
+                </ul>
+
+            </div>
+
+
+            <div
+                id="failedSection"
+                class="result-section"
+            >
+
+                <h4>
+                    Requirements to review
+                </h4>
+
+                <ul id="failedList">
+                </ul>
+
+            </div>
+
+
+            <a
+                id="sourceLink"
+                class="source-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                View official programme source →
+
+            </a>
+
+
+        </div>
+
+
+        <!-- Initial placeholder -->
+
+        <div
+            id="emptyResult"
+            class="card empty-result"
+        >
+
+            <div class="empty-icon">
+                ✓
+            </div>
+
+            <h3>
+                Your result will appear here
+            </h3>
+
+            <p>
+                Enter your academic results
+                and WiseLanka will explain
+                whether the recorded entry
+                requirements are satisfied.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <strong>
+        WiseLanka
+    </strong>
+
+    <span>
+        Know More. Choose Better.
+    </span>
+
+</footer>
+
+
+<script
+    src="../components/eligibility.js"
+>
+</script>
+
+
+</body>
+
+</html>
