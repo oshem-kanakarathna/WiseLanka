@@ -3,6 +3,12 @@ from collections import defaultdict
 from backend.app.data_loader import load_csv
 
 
+# --------------------------------------------------
+# Grade ranking
+#
+# Higher number = stronger grade
+# --------------------------------------------------
+
 GRADE_RANK = {
     "F": 0,
     "S": 1,
@@ -12,14 +18,32 @@ GRADE_RANK = {
 }
 
 
-def grade_meets_minimum(student_grade, minimum_grade):
+def grade_meets_minimum(
+    student_grade,
+    minimum_grade,
+):
     """
     Check whether a student's grade meets
     or exceeds the required minimum grade.
     """
 
-    student_grade = student_grade.strip().upper()
-    minimum_grade = minimum_grade.strip().upper()
+    if student_grade is None:
+        return False
+
+    if minimum_grade is None:
+        return False
+
+    student_grade = (
+        str(student_grade)
+        .strip()
+        .upper()
+    )
+
+    minimum_grade = (
+        str(minimum_grade)
+        .strip()
+        .upper()
+    )
 
     if student_grade not in GRADE_RANK:
         return False
@@ -38,17 +62,28 @@ def evaluate_requirement(
     student_results,
 ):
     """
-    Evaluate one entry requirement.
+    Evaluate one programme entry requirement.
+
+    Currently supported requirement types:
+
+    - A_LEVEL_PASS
+    - SUBJECT_GRADE
+    - SUBJECT_SET_COUNT
     """
 
-    requirement_type = requirement[
-        "requirement_type"
-    ]
+    requirement_type = (
+        requirement["requirement_type"]
+        .strip()
+        .upper()
+    )
 
-    # ------------------------------------
-    # Requirement:
-    # Pass a minimum number of A/L subjects
-    # ------------------------------------
+    # --------------------------------------------------
+    # Requirement type:
+    # A_LEVEL_PASS
+    #
+    # Example:
+    # Student must pass at least 3 A/L subjects.
+    # --------------------------------------------------
 
     if requirement_type == "A_LEVEL_PASS":
 
@@ -56,15 +91,19 @@ def evaluate_requirement(
             requirement["minimum_count"]
         )
 
-        passed_subjects = sum(
-            1
-            for grade in student_results.values()
-            if grade.strip().upper()
-            in {"A", "B", "C", "S"}
-        )
+        passed_subjects = 0
+
+        for grade in student_results.values():
+
+            if grade_meets_minimum(
+                grade,
+                "S",
+            ):
+                passed_subjects += 1
 
         passed = (
-            passed_subjects >= minimum_count
+            passed_subjects
+            >= minimum_count
         )
 
         return {
@@ -76,23 +115,31 @@ def evaluate_requirement(
 
             "message":
                 (
-                    f"{passed_subjects} A/L subjects "
-                    f"passed; {minimum_count} required"
+                    f"{passed_subjects} A/L subjects passed; "
+                    f"{minimum_count} required"
                 ),
         }
 
-    # ------------------------------------
-    # Requirement:
-    # Specific subject minimum grade
-    # ------------------------------------
+    # --------------------------------------------------
+    # Requirement type:
+    # SUBJECT_GRADE
+    #
+    # Example:
+    # Combined Mathematics >= C
+    # --------------------------------------------------
 
     if requirement_type == "SUBJECT_GRADE":
 
-        subject = requirement["subject_name"]
+        subject = (
+            requirement["subject_name"]
+            .strip()
+        )
 
-        minimum_grade = requirement[
-            "minimum_grade"
-        ]
+        minimum_grade = (
+            requirement["minimum_grade"]
+            .strip()
+            .upper()
+        )
 
         student_grade = student_results.get(
             subject
@@ -102,9 +149,7 @@ def evaluate_requirement(
 
             return {
                 "requirement_id":
-                    requirement[
-                        "requirement_id"
-                    ],
+                    requirement["requirement_id"],
 
                 "passed":
                     False,
@@ -112,6 +157,12 @@ def evaluate_requirement(
                 "message":
                     f"{subject} was not provided",
             }
+
+        student_grade = (
+            str(student_grade)
+            .strip()
+            .upper()
+        )
 
         passed = grade_meets_minimum(
             student_grade,
@@ -132,9 +183,107 @@ def evaluate_requirement(
                 ),
         }
 
-    # ------------------------------------
-    # Unknown rule type
-    # ------------------------------------
+    # --------------------------------------------------
+    # Requirement type:
+    # SUBJECT_SET_COUNT
+    #
+    # Checks how many subjects from an approved subject
+    # list meet a minimum grade.
+    #
+    # subject_name example:
+    #
+    # Combined Mathematics|Physics|Chemistry|ICT
+    #
+    # minimum_grade:
+    # S
+    #
+    # minimum_count:
+    # 3
+    # --------------------------------------------------
+
+    if requirement_type == "SUBJECT_SET_COUNT":
+
+        approved_subjects = [
+            subject.strip()
+            for subject
+            in requirement["subject_name"].split("|")
+            if subject.strip()
+        ]
+
+        minimum_grade = (
+            requirement["minimum_grade"]
+            .strip()
+            .upper()
+        )
+
+        minimum_count = int(
+            requirement["minimum_count"]
+        )
+
+        matched_subjects = []
+
+        for subject in approved_subjects:
+
+            student_grade = student_results.get(
+                subject
+            )
+
+            if student_grade is None:
+                continue
+
+            student_grade = (
+                str(student_grade)
+                .strip()
+                .upper()
+            )
+
+            if grade_meets_minimum(
+                student_grade,
+                minimum_grade,
+            ):
+                matched_subjects.append(
+                    {
+                        "subject": subject,
+                        "grade": student_grade,
+                    }
+                )
+
+        passed = (
+            len(matched_subjects)
+            >= minimum_count
+        )
+
+        matched_text = ", ".join(
+            (
+                f"{item['subject']}: "
+                f"{item['grade']}"
+            )
+            for item in matched_subjects
+        )
+
+        if not matched_text:
+            matched_text = "None"
+
+        return {
+            "requirement_id":
+                requirement["requirement_id"],
+
+            "passed":
+                passed,
+
+            "message":
+                (
+                    f"{len(matched_subjects)} approved "
+                    f"subjects passed at grade "
+                    f"{minimum_grade} or above; "
+                    f"{minimum_count} required. "
+                    f"Matched: {matched_text}"
+                ),
+        }
+
+    # --------------------------------------------------
+    # Unsupported requirement type
+    # --------------------------------------------------
 
     return {
         "requirement_id":
@@ -157,7 +306,14 @@ def evaluate_programme(
 ):
     """
     Evaluate whether a learner satisfies
-    the entry requirements of a programme.
+    all recorded entry requirement groups
+    for a programme.
+
+    Requirements belonging to the same group
+    are evaluated using the group's AND/OR operator.
+
+    All requirement groups must ultimately pass
+    for the programme to be considered eligible.
     """
 
     requirements = load_csv(
@@ -171,6 +327,10 @@ def evaluate_programme(
         if requirement["programme_id"]
         == programme_id
     ]
+
+    # --------------------------------------------------
+    # No requirements found
+    # --------------------------------------------------
 
     if not programme_requirements:
 
@@ -186,22 +346,27 @@ def evaluate_programme(
 
             "message":
                 (
-                    "No entry requirements "
-                    "were found for this programme."
+                    "No entry requirements were "
+                    "found for this programme."
                 ),
         }
 
-    # ------------------------------------
+    # --------------------------------------------------
     # Group requirements
-    # ------------------------------------
+    # --------------------------------------------------
 
-    grouped_requirements = defaultdict(list)
+    grouped_requirements = defaultdict(
+        list
+    )
 
     for requirement in programme_requirements:
 
-        group_id = requirement[
-            "requirement_group_id"
-        ]
+        group_id = (
+            requirement[
+                "requirement_group_id"
+            ]
+            .strip()
+        )
 
         grouped_requirements[
             group_id
@@ -209,9 +374,9 @@ def evaluate_programme(
 
     group_results = []
 
-    # ------------------------------------
-    # Evaluate each logical group
-    # ------------------------------------
+    # --------------------------------------------------
+    # Evaluate every requirement group
+    # --------------------------------------------------
 
     for (
         group_id,
@@ -235,7 +400,25 @@ def evaluate_programme(
             in requirements_in_group
         ]
 
-        if operator == "OR":
+        # ----------------------------------------------
+        # AND group
+        # Every rule must pass
+        # ----------------------------------------------
+
+        if operator == "AND":
+
+            group_passed = all(
+                item["passed"]
+                for item
+                in evaluated_requirements
+            )
+
+        # ----------------------------------------------
+        # OR group
+        # At least one rule must pass
+        # ----------------------------------------------
+
+        elif operator == "OR":
 
             group_passed = any(
                 item["passed"]
@@ -243,13 +426,9 @@ def evaluate_programme(
                 in evaluated_requirements
             )
 
-        elif operator == "AND":
-
-            group_passed = all(
-                item["passed"]
-                for item
-                in evaluated_requirements
-            )
+        # ----------------------------------------------
+        # Invalid group operator
+        # ----------------------------------------------
 
         else:
 
@@ -271,9 +450,11 @@ def evaluate_programme(
             }
         )
 
-    # ------------------------------------
-    # Programme eligibility
-    # ------------------------------------
+    # --------------------------------------------------
+    # Overall eligibility
+    #
+    # Every requirement group must pass.
+    # --------------------------------------------------
 
     eligible = (
         len(group_results) > 0

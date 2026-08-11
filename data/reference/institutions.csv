@@ -1,2 +1,4 @@
 institution_id,institution_name,institution_type,ownership_type,awarding_authority,country,province,district,city,official_website,active_status,notes
 INS0001,University of Moratuwa,University,Government,true,Sri Lanka,Western,Colombo,Moratuwa,https://uom.lk,Active,State university operating under the Sri Lankan Universities Act framework
+INS0002,University of Colombo,University,Government,true,Sri Lanka,Western,Colombo,Colombo,https://cmb.ac.lk,Active,State university and awarding institution
+INS0003,University of Colombo School of Computing,University School,Government,false,Sri Lanka,Western,Colombo,Colombo,https://ucsc.cmb.ac.lk,Active,Academic provider within the University of Colombo
