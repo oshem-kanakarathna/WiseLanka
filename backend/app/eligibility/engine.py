@@ -57,6 +57,78 @@ def grade_meets_minimum(
     )
 
 
+def get_results_for_level(
+    student_results,
+    education_level,
+):
+    """
+    Return student results for a specific
+    education level.
+
+    Supports BOTH:
+
+    Old flat format:
+    {
+        "Combined Mathematics": "B",
+        "Physics": "C"
+    }
+
+    and new level-aware format:
+    {
+        "A_LEVEL": {
+            "Combined Mathematics": "B",
+            "Physics": "C"
+        },
+        "O_LEVEL": {
+            "English": "B",
+            "Mathematics": "A"
+        }
+    }
+
+    Flat legacy input is treated as A_LEVEL
+    so PRG0001 and PRG0002 remain compatible.
+    """
+
+    education_level = (
+        str(education_level or "A_LEVEL")
+        .strip()
+        .upper()
+    )
+
+    if not isinstance(
+        student_results,
+        dict,
+    ):
+        return {}
+
+    # Detect new nested profile format.
+    nested_format = any(
+        isinstance(value, dict)
+        for value in student_results.values()
+    )
+
+    if nested_format:
+        level_results = student_results.get(
+            education_level,
+            {},
+        )
+
+        if isinstance(
+            level_results,
+            dict,
+        ):
+            return level_results
+
+        return {}
+
+    # Backward compatibility:
+    # old flat format represents A/L results.
+    if education_level == "A_LEVEL":
+        return student_results
+
+    return {}
+
+
 def evaluate_requirement(
     requirement,
     student_results,
@@ -64,11 +136,14 @@ def evaluate_requirement(
     """
     Evaluate one programme entry requirement.
 
-    Currently supported requirement types:
+    Supported requirement types:
 
     - A_LEVEL_PASS
     - SUBJECT_GRADE
     - SUBJECT_SET_COUNT
+
+    The requirement's education_level determines
+    which section of the learner profile is used.
     """
 
     requirement_type = (
@@ -77,12 +152,26 @@ def evaluate_requirement(
         .upper()
     )
 
+    education_level = (
+        requirement.get(
+            "education_level",
+            "A_LEVEL",
+        )
+        .strip()
+        .upper()
+    )
+
+    level_results = get_results_for_level(
+        student_results,
+        education_level,
+    )
+
     # --------------------------------------------------
     # Requirement type:
     # A_LEVEL_PASS
     #
     # Example:
-    # Student must pass at least 3 A/L subjects.
+    # At least 3 A/L subjects must be passed.
     # --------------------------------------------------
 
     if requirement_type == "A_LEVEL_PASS":
@@ -93,7 +182,7 @@ def evaluate_requirement(
 
         passed_subjects = 0
 
-        for grade in student_results.values():
+        for grade in level_results.values():
 
             if grade_meets_minimum(
                 grade,
@@ -124,8 +213,8 @@ def evaluate_requirement(
     # Requirement type:
     # SUBJECT_GRADE
     #
-    # Example:
-    # Combined Mathematics >= C
+    # Works for A/L or O/L depending on
+    # education_level in the requirement row.
     # --------------------------------------------------
 
     if requirement_type == "SUBJECT_GRADE":
@@ -141,7 +230,7 @@ def evaluate_requirement(
             .upper()
         )
 
-        student_grade = student_results.get(
+        student_grade = level_results.get(
             subject
         )
 
@@ -155,7 +244,10 @@ def evaluate_requirement(
                     False,
 
                 "message":
-                    f"{subject} was not provided",
+                    (
+                        f"{education_level} "
+                        f"{subject} was not provided"
+                    ),
             }
 
         student_grade = (
@@ -178,7 +270,8 @@ def evaluate_requirement(
 
             "message":
                 (
-                    f"{subject}: {student_grade} "
+                    f"{education_level} {subject}: "
+                    f"{student_grade} "
                     f"(minimum {minimum_grade})"
                 ),
         }
@@ -187,18 +280,9 @@ def evaluate_requirement(
     # Requirement type:
     # SUBJECT_SET_COUNT
     #
-    # Checks how many subjects from an approved subject
-    # list meet a minimum grade.
-    #
-    # subject_name example:
-    #
-    # Combined Mathematics|Physics|Chemistry|ICT
-    #
-    # minimum_grade:
-    # S
-    #
-    # minimum_count:
-    # 3
+    # Example:
+    # At least 2 subjects from an approved set
+    # must have grade C or above.
     # --------------------------------------------------
 
     if requirement_type == "SUBJECT_SET_COUNT":
@@ -206,7 +290,9 @@ def evaluate_requirement(
         approved_subjects = [
             subject.strip()
             for subject
-            in requirement["subject_name"].split("|")
+            in requirement[
+                "subject_name"
+            ].split("|")
             if subject.strip()
         ]
 
@@ -224,7 +310,7 @@ def evaluate_requirement(
 
         for subject in approved_subjects:
 
-            student_grade = student_results.get(
+            student_grade = level_results.get(
                 subject
             )
 
@@ -243,8 +329,11 @@ def evaluate_requirement(
             ):
                 matched_subjects.append(
                     {
-                        "subject": subject,
-                        "grade": student_grade,
+                        "subject":
+                            subject,
+
+                        "grade":
+                            student_grade,
                     }
                 )
 
@@ -258,7 +347,8 @@ def evaluate_requirement(
                 f"{item['subject']}: "
                 f"{item['grade']}"
             )
-            for item in matched_subjects
+            for item
+            in matched_subjects
         )
 
         if not matched_text:
@@ -274,7 +364,7 @@ def evaluate_requirement(
             "message":
                 (
                     f"{len(matched_subjects)} approved "
-                    f"subjects passed at grade "
+                    f"{education_level} subjects met grade "
                     f"{minimum_grade} or above; "
                     f"{minimum_count} required. "
                     f"Matched: {matched_text}"
@@ -309,11 +399,11 @@ def evaluate_programme(
     all recorded entry requirement groups
     for a programme.
 
-    Requirements belonging to the same group
-    are evaluated using the group's AND/OR operator.
+    Rules inside a group use that group's
+    AND / OR operator.
 
-    All requirement groups must ultimately pass
-    for the programme to be considered eligible.
+    Every requirement group must pass for
+    the programme to be eligible.
     """
 
     requirements = load_csv(
@@ -375,7 +465,7 @@ def evaluate_programme(
     group_results = []
 
     # --------------------------------------------------
-    # Evaluate every requirement group
+    # Evaluate each requirement group
     # --------------------------------------------------
 
     for (
@@ -400,11 +490,6 @@ def evaluate_programme(
             in requirements_in_group
         ]
 
-        # ----------------------------------------------
-        # AND group
-        # Every rule must pass
-        # ----------------------------------------------
-
         if operator == "AND":
 
             group_passed = all(
@@ -413,11 +498,6 @@ def evaluate_programme(
                 in evaluated_requirements
             )
 
-        # ----------------------------------------------
-        # OR group
-        # At least one rule must pass
-        # ----------------------------------------------
-
         elif operator == "OR":
 
             group_passed = any(
@@ -425,10 +505,6 @@ def evaluate_programme(
                 for item
                 in evaluated_requirements
             )
-
-        # ----------------------------------------------
-        # Invalid group operator
-        # ----------------------------------------------
 
         else:
 
@@ -451,9 +527,7 @@ def evaluate_programme(
         )
 
     # --------------------------------------------------
-    # Overall eligibility
-    #
-    # Every requirement group must pass.
+    # Overall programme eligibility
     # --------------------------------------------------
 
     eligible = (

@@ -1,10 +1,10 @@
-requirement_id,programme_id,requirement_group_id,group_operator,requirement_type,subject_name,minimum_grade,minimum_count,qualification_id,description,mandatory,source_id
-REQ0001,PRG0001,GRP001,AND,A_LEVEL_PASS,,,3,,Pass all three subjects offered at GCE Advanced Level,true,SRC0001
-REQ0002,PRG0001,GRP002,OR,SUBJECT_GRADE,Higher Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
-REQ0003,PRG0001,GRP002,OR,SUBJECT_GRADE,Combined Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
-REQ0004,PRG0001,GRP002,OR,SUBJECT_GRADE,Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
-REQ0005,PRG0001,GRP002,OR,SUBJECT_GRADE,Physics,C,1,,Accepted subject with minimum grade C,true,SRC0001
-REQ0006,PRG0002,GRP003,AND,SUBJECT_SET_COUNT,Combined Mathematics|Higher Mathematics|Mathematics|Physics|Chemistry|Information & Communication Technology,S,3,,At least three approved A/L subjects must be passed,true,SRC0004
-REQ0007,PRG0002,GRP004,OR,SUBJECT_GRADE,Combined Mathematics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
-REQ0008,PRG0002,GRP004,OR,SUBJECT_GRADE,Physics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
-REQ0009,PRG0002,GRP004,OR,SUBJECT_GRADE,Higher Mathematics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
+requirement_id,programme_id,requirement_group_id,group_operator,education_level,requirement_type,subject_name,minimum_grade,minimum_count,qualification_id,description,mandatory,source_id
+REQ0001,PRG0001,GRP001,AND,A_LEVEL,A_LEVEL_PASS,,,3,,Pass all three subjects offered at GCE Advanced Level,true,SRC0001
+REQ0002,PRG0001,GRP002,OR,A_LEVEL,SUBJECT_GRADE,Higher Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
+REQ0003,PRG0001,GRP002,OR,A_LEVEL,SUBJECT_GRADE,Combined Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
+REQ0004,PRG0001,GRP002,OR,A_LEVEL,SUBJECT_GRADE,Mathematics,C,1,,Accepted subject with minimum grade C,true,SRC0001
+REQ0005,PRG0001,GRP002,OR,A_LEVEL,SUBJECT_GRADE,Physics,C,1,,Accepted subject with minimum grade C,true,SRC0001
+REQ0006,PRG0002,GRP003,AND,A_LEVEL,SUBJECT_SET_COUNT,Combined Mathematics|Higher Mathematics|Mathematics|Physics|Chemistry|Information & Communication Technology,S,3,,At least three approved A/L subjects must be passed,true,SRC0004
+REQ0007,PRG0002,GRP004,OR,A_LEVEL,SUBJECT_GRADE,Combined Mathematics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
+REQ0008,PRG0002,GRP004,OR,A_LEVEL,SUBJECT_GRADE,Physics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
+REQ0009,PRG0002,GRP004,OR,A_LEVEL,SUBJECT_GRADE,Higher Mathematics,C,1,,At least one required mathematics or physics subject must have minimum grade C,true,SRC0004
