@@ -98,6 +98,7 @@ def evaluate_all_programmes(
 
     return results
 
+
 # ------------------------------------
 # Calculate programme match score
 # ------------------------------------
@@ -105,6 +106,26 @@ def evaluate_all_programmes(
 def calculate_match_score(
     evaluation,
 ):
+    """
+    Calculate how closely the learner matches
+    the programme's entry requirements.
+
+    A fully passed requirement group receives
+    100%.
+
+    A failed group can receive partial credit
+    when the learner has actually supplied a
+    relevant subject but narrowly misses the
+    required minimum grade.
+
+    Missing relevant subjects do not receive
+    partial credit.
+
+    This prevents a learner with unrelated
+    subjects from appearing nearly eligible
+    simply because they satisfy a generic
+    requirement such as three A/L passes.
+    """
 
     groups = evaluation.get(
         "groups",
@@ -118,59 +139,85 @@ def calculate_match_score(
 
     for group in groups:
 
+        # ------------------------------------
+        # Fully passed group
+        # ------------------------------------
+
+        if group.get(
+            "passed",
+            False,
+        ):
+            group_scores.append(
+                100.0
+            )
+            continue
+
         requirements = group.get(
             "requirements",
             [],
         )
 
         if not requirements:
-            group_scores.append(0.0)
+            group_scores.append(
+                0.0
+            )
             continue
 
-        operator = (
-            group.get(
-                "operator",
-                "AND",
-            )
-            .strip()
-            .upper()
-        )
+        # ------------------------------------
+        # Check whether this failed group
+        # represents a genuine near match
+        # ------------------------------------
 
-        if operator == "OR":
+        near_match_found = False
 
-            group_score = (
-                100.0
-                if any(
-                    requirement.get(
-                        "passed",
-                        False,
-                    )
-                    for requirement
-                    in requirements
+        for requirement in requirements:
+
+            if requirement.get(
+                "passed",
+                False,
+            ):
+                continue
+
+            message = (
+                requirement.get(
+                    "message",
+                    "",
                 )
-                else 0.0
+                .strip()
+                .lower()
+            )
+
+            # Example of genuine near match:
+            #
+            # Combined Mathematics: S
+            # (minimum C)
+            #
+            # The learner provided the required
+            # subject, but the grade is slightly
+            # below the required threshold.
+            #
+            # Example of NOT a near match:
+            #
+            # Physics was not provided
+            if (
+                "minimum" in message
+                and "was not provided"
+                not in message
+            ):
+                near_match_found = True
+                break
+
+        if near_match_found:
+
+            group_scores.append(
+                50.0
             )
 
         else:
 
-            passed_count = sum(
-                1
-                for requirement
-                in requirements
-                if requirement.get(
-                    "passed",
-                    False,
-                )
+            group_scores.append(
+                0.0
             )
-
-            group_score = (
-                passed_count
-                / len(requirements)
-            ) * 100
-
-        group_scores.append(
-            group_score
-        )
 
     score = (
         sum(group_scores)
@@ -199,7 +246,7 @@ def classify_programme(
 
         category = "ELIGIBLE"
 
-    elif score >= 50:
+    elif score >= 75:
 
         category = "NEARLY_ELIGIBLE"
 
@@ -226,13 +273,16 @@ def classify_programme(
             )
 
             if requirement.get(
-                "passed"
+                "passed",
+                False,
             ):
+
                 passed_requirements.append(
                     message
                 )
 
             else:
+
                 failed_requirements.append(
                     message
                 )
