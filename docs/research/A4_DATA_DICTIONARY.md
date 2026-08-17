@@ -278,3 +278,87 @@ A programme may:
 - have multiple delivery locations
 - have multiple intakes
 - have multiple evidence sources
+
+## Dataset: Careers
+
+### Purpose
+
+The Careers dataset stores occupations and professional destinations that learners may pursue through education, training, skills development and professional progression.
+
+Career records are maintained separately from programmes because a single programme may lead towards multiple careers, while the same career may be accessible through multiple educational pathways.
+
+### Fields
+
+| Field | Type | Required | Description | Example |
+|---|---|---:|---|---|
+| career_id | String | Yes | Stable unique career identifier | CAR0001 |
+| career_name | Text | Yes | Canonical career or occupation name | Software Engineer |
+| career_category | Enum/String | Yes | Broad occupational category | Software Development |
+| industry | Text | No | Primary associated industry | Information Technology |
+| description | Text | Yes | Short description of the career | Designs develops tests and maintains software systems |
+| minimum_qualification_level | Text | No | Typical minimum qualification level where evidence supports one | Bachelor's Degree |
+| sri_lanka_demand | Enum/String | No | Evidence-supported indication of demand within Sri Lanka | High |
+| international_potential | Enum/String | No | Indicative international career potential | High |
+| remote_work_potential | Enum/String | No | Indicative potential for remote employment | High |
+| self_employment_potential | Enum/String | No | Indicative potential for freelance or self-employed work | Medium |
+| active_status | Enum/String | Yes | Whether the career record is active | Active |
+| notes | Text | No | Additional contextual or evidence notes | Demand classification requires supporting evidence |
+
+### Controlled Values
+
+Where classification values are available, the following controlled scale should be used:
+
+- `High`
+- `Medium`
+- `Low`
+- `Unknown`
+
+`Unknown` should be used when WiseLanka does not yet have sufficient evidence to assign a reliable classification.
+
+Missing evidence must not automatically be interpreted as `Low`.
+
+### Validation Rules
+
+- `career_id` must be unique.
+- `career_name` cannot be empty.
+- `career_category` cannot be empty.
+- `active_status` should use controlled values such as `Active`, `Inactive`, or `Archived`.
+- Demand and potential classifications must use controlled values.
+- Career demand must not be inferred solely from programme availability.
+- `sri_lanka_demand` should be supported by appropriate labour-market, government, industry or employment evidence.
+- International and remote-work potential should not be presented as guaranteed employment outcomes.
+- Where sufficient evidence is unavailable, the relevant classification should remain `Unknown`.
+
+### Evidence and Explainability
+
+Career indicators should be traceable to evidence wherever possible.
+
+Examples of suitable evidence include:
+
+- government labour-market publications
+- national workforce surveys
+- recognised industry reports
+- official occupational information
+- reputable employment-market datasets
+
+The recommendation layer should distinguish between verified facts, evidence-supported indicators and future predictive outputs.
+
+### Relationships
+
+A career may:
+
+- be associated with many programmes
+- require or benefit from many skills
+- be accessible through multiple qualifications
+- belong to one or more industry areas
+- have multiple supporting evidence sources
+
+Programme-to-career relationships must be stored separately rather than embedded directly inside programme records.
+
+Example:
+
+Programme
+    ↓
+Programme-Career Relationship
+    ↓
+Career

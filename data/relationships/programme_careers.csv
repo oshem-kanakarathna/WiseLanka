@@ -1,1 +1,16 @@
 programme_id,career_id,relevance_level,notes
+PRG0001,CAR0001,High,Information Technology programme provides a strong pathway towards software engineering
+PRG0001,CAR0002,Medium,Information Technology provides relevant computing foundations for progression towards data science
+PRG0001,CAR0003,Medium,Information Technology provides computing foundations that can support progression towards artificial intelligence engineering
+PRG0001,CAR0004,Medium,Information Technology provides computing foundations that can support progression towards machine learning engineering
+PRG0001,CAR0005,High,Information Technology provides strong systems and organisational computing foundations relevant to systems analysis
+PRG0002,CAR0001,High,Computer Science provides strong theoretical and practical foundations for software engineering
+PRG0002,CAR0002,High,Computer Science provides programming algorithmic and computational foundations relevant to data science
+PRG0002,CAR0003,High,Computer Science provides strong computational foundations for progression towards artificial intelligence engineering
+PRG0002,CAR0004,High,Computer Science provides strong programming algorithmic and mathematical foundations relevant to machine learning engineering
+PRG0002,CAR0005,Medium,Computer Science provides relevant computing foundations for systems analysis
+PRG0003,CAR0001,Medium,Artificial Intelligence includes substantial computing and software-development foundations applicable to software engineering
+PRG0003,CAR0002,High,Artificial Intelligence provides strong data analytical computational and machine-learning foundations relevant to data science
+PRG0003,CAR0003,High,Artificial Intelligence programme directly aligns with artificial intelligence engineering
+PRG0003,CAR0004,High,Artificial Intelligence programme directly develops foundations relevant to machine learning engineering
+PRG0003,CAR0005,Low,Systems analysis is a possible but less directly aligned career pathway from an Artificial Intelligence programme

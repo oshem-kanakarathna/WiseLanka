@@ -217,3 +217,102 @@ def test_near_profile_keeps_useful_failed_requirements():
             )
             > 0
         )
+
+        # ------------------------------------
+# Career pathway integration tests
+# ------------------------------------
+
+def test_recommendations_include_career_pathways():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    assert len(results) > 0
+
+    for result in results:
+
+        assert "career_pathways" in result
+
+        careers = result[
+            "career_pathways"
+        ]
+
+        assert isinstance(
+            careers,
+            list,
+        )
+
+        assert len(careers) > 0
+
+
+def test_embedded_career_pathways_have_required_fields():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    required_fields = {
+        "career_id",
+        "career_name",
+        "relevance_level",
+    }
+
+    for result in results:
+
+        for career in result[
+            "career_pathways"
+        ]:
+
+            assert required_fields.issubset(
+                career.keys()
+            )
+
+
+def test_career_pathways_are_ordered_by_relevance():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    relevance_rank = {
+        "High": 3,
+        "Medium": 2,
+        "Low": 1,
+    }
+
+    for result in results:
+
+        careers = result[
+            "career_pathways"
+        ]
+
+        ranks = [
+            relevance_rank[
+                career["relevance_level"]
+            ]
+            for career in careers
+        ]
+
+        assert ranks == sorted(
+            ranks,
+            reverse=True,
+        )

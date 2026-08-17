@@ -7,11 +7,19 @@ from backend.app.eligibility.engine import (
 
 
 # ------------------------------------
-# Data location
+# Data locations
 # ------------------------------------
 
 PROGRAMMES_PATH = Path(
     "data/reference/programmes.csv"
+)
+
+CAREERS_PATH = Path(
+    "data/reference/careers.csv"
+)
+
+PROGRAMME_CAREERS_PATH = Path(
+    "data/relationships/programme_careers.csv"
 )
 
 
@@ -49,6 +57,198 @@ def load_active_programmes():
 
 
 # ------------------------------------
+# Load active careers
+# ------------------------------------
+
+def load_active_careers():
+
+    careers = []
+
+    with CAREERS_PATH.open(
+        "r",
+        encoding="utf-8",
+        newline="",
+    ) as file:
+
+        reader = csv.DictReader(file)
+
+        for row in reader:
+
+            status = (
+                row.get(
+                    "active_status",
+                    "",
+                )
+                .strip()
+                .lower()
+            )
+
+            if status == "active":
+                careers.append(row)
+
+    return careers
+
+
+# ------------------------------------
+# Load programme-career relationships
+# ------------------------------------
+
+def load_programme_career_relationships():
+
+    relationships = []
+
+    with PROGRAMME_CAREERS_PATH.open(
+        "r",
+        encoding="utf-8",
+        newline="",
+    ) as file:
+
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            relationships.append(row)
+
+    return relationships
+
+
+# ------------------------------------
+# Get careers related to a programme
+# ------------------------------------
+
+def get_programme_careers(
+    programme_id,
+):
+
+    careers = load_active_careers()
+
+    relationships = (
+        load_programme_career_relationships()
+    )
+
+    career_lookup = {
+        career["career_id"]: career
+        for career in careers
+    }
+
+    career_pathways = []
+
+    for relationship in relationships:
+
+        if (
+            relationship.get(
+                "programme_id"
+            )
+            != programme_id
+        ):
+            continue
+
+        career_id = relationship.get(
+            "career_id",
+            "",
+        )
+
+        career = career_lookup.get(
+            career_id
+        )
+
+        if career is None:
+            continue
+
+        career_pathways.append(
+            {
+                "career_id":
+                    career_id,
+
+                "career_name":
+                    career.get(
+                        "career_name",
+                        "",
+                    ),
+
+                "career_category":
+                    career.get(
+                        "career_category",
+                        "",
+                    ),
+
+                "industry":
+                    career.get(
+                        "industry",
+                        "",
+                    ),
+
+                "description":
+                    career.get(
+                        "description",
+                        "",
+                    ),
+
+                "minimum_qualification_level":
+                    career.get(
+                        "minimum_qualification_level",
+                        "",
+                    ),
+
+                "sri_lanka_demand":
+                    career.get(
+                        "sri_lanka_demand",
+                        "",
+                    ),
+
+                "international_potential":
+                    career.get(
+                        "international_potential",
+                        "",
+                    ),
+
+                "remote_work_potential":
+                    career.get(
+                        "remote_work_potential",
+                        "",
+                    ),
+
+                "self_employment_potential":
+                    career.get(
+                        "self_employment_potential",
+                        "",
+                    ),
+
+                "relevance_level":
+                    relationship.get(
+                        "relevance_level",
+                        "",
+                    ),
+
+                "relationship_notes":
+                    relationship.get(
+                        "notes",
+                        "",
+                    ),
+            }
+        )
+
+    # ------------------------------------
+    # Put highly relevant careers first
+    # ------------------------------------
+
+    relevance_order = {
+        "High": 0,
+        "Medium": 1,
+        "Low": 2,
+    }
+
+    career_pathways.sort(
+        key=lambda item:
+            relevance_order.get(
+                item["relevance_level"],
+                99,
+            )
+    )
+
+    return career_pathways
+
+
+# ------------------------------------
 # Evaluate student against
 # every active programme
 # ------------------------------------
@@ -72,8 +272,11 @@ def evaluate_all_programmes(
             student_profile,
         )
 
+        # ------------------------------------
         # Add programme metadata needed
-        # by the recommendation layer.
+        # by the recommendation layer
+        # ------------------------------------
+
         evaluation["programme_name"] = (
             programme["programme_name"]
         )
@@ -89,6 +292,51 @@ def evaluate_all_programmes(
             programme.get(
                 "application_url",
                 "",
+            )
+        )
+
+        evaluation["programme_type"] = (
+            programme.get(
+                "programme_type",
+                "",
+            )
+        )
+
+        evaluation["duration_months"] = (
+            programme.get(
+                "duration_months",
+                "",
+            )
+        )
+
+        evaluation["study_mode"] = (
+            programme.get(
+                "study_mode",
+                "",
+            )
+        )
+
+        evaluation["delivery_mode"] = (
+            programme.get(
+                "delivery_mode",
+                "",
+            )
+        )
+
+        evaluation["campus"] = (
+            programme.get(
+                "campus",
+                "",
+            )
+        )
+
+        # ------------------------------------
+        # Add career pathways
+        # ------------------------------------
+
+        evaluation["career_pathways"] = (
+            get_programme_careers(
+                programme_id
             )
         )
 
@@ -285,11 +533,8 @@ def classify_programme(
         # ------------------------------------
         # Passed OR group
         #
-        # Only show the alternatives that
+        # Only show alternatives that
         # actually satisfied the group.
-        #
-        # Other unused alternatives should
-        # not be reported as learner failures.
         # ------------------------------------
 
         if (
@@ -320,9 +565,8 @@ def classify_programme(
         # Failed OR group
         #
         # No alternative satisfied the group,
-        # so the failed alternatives are
-        # useful for explaining what is
-        # missing.
+        # so failed alternatives are useful
+        # for explaining what is missing.
         # ------------------------------------
 
         if (
@@ -387,6 +631,48 @@ def classify_programme(
                 evaluation["programme_id"],
             ),
 
+        "field_of_study":
+            evaluation.get(
+                "field_of_study",
+                "",
+            ),
+
+        "programme_type":
+            evaluation.get(
+                "programme_type",
+                "",
+            ),
+
+        "duration_months":
+            evaluation.get(
+                "duration_months",
+                "",
+            ),
+
+        "study_mode":
+            evaluation.get(
+                "study_mode",
+                "",
+            ),
+
+        "delivery_mode":
+            evaluation.get(
+                "delivery_mode",
+                "",
+            ),
+
+        "campus":
+            evaluation.get(
+                "campus",
+                "",
+            ),
+
+        "application_url":
+            evaluation.get(
+                "application_url",
+                "",
+            ),
+
         "eligible":
             evaluation["eligible"],
 
@@ -401,6 +687,12 @@ def classify_programme(
 
         "failed_requirements":
             failed_requirements,
+
+        "career_pathways":
+            evaluation.get(
+                "career_pathways",
+                [],
+            ),
 
         "groups":
             evaluation["groups"],
