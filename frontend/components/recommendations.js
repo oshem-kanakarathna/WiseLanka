@@ -32,6 +32,10 @@ const resultCount =
     );
 
 
+// ------------------------------------
+// Collect student results
+// ------------------------------------
+
 function collectStudentResults() {
 
     const studentResults = {};
@@ -42,26 +46,52 @@ function collectStudentResults() {
         index++
     ) {
 
-        const subject =
+        const subjectElement =
             document.getElementById(
                 `subject${index}`
-            ).value;
+            );
+
+
+        const gradeElement =
+            document.getElementById(
+                `grade${index}`
+            );
+
+
+        if (
+            !subjectElement
+            || !gradeElement
+        ) {
+            continue;
+        }
+
+
+        const subject =
+            subjectElement.value;
 
 
         const grade =
-            document.getElementById(
-                `grade${index}`
-            ).value;
+            gradeElement.value;
 
 
-        studentResults[
+        if (
             subject
-        ] = grade;
+            && grade
+        ) {
+
+            studentResults[
+                subject
+            ] = grade;
+        }
     }
 
     return studentResults;
 }
 
+
+// ------------------------------------
+// Recommendation category helpers
+// ------------------------------------
 
 function getCategoryLabel(
     category
@@ -110,6 +140,10 @@ function getCategoryClass(
     return "status-fail";
 }
 
+
+// ------------------------------------
+// Requirement explanation section
+// ------------------------------------
 
 function createRequirementList(
     title,
@@ -189,6 +223,416 @@ function createRequirementList(
     return section;
 }
 
+
+// ------------------------------------
+// Career relevance helpers
+// ------------------------------------
+
+function getCareerRelevanceClass(
+    relevanceLevel
+) {
+
+    const normalized =
+        (
+            relevanceLevel
+            || "Unknown"
+        )
+        .trim()
+        .toLowerCase();
+
+
+    if (
+        normalized === "high"
+    ) {
+        return "career-relevance-high";
+    }
+
+
+    if (
+        normalized === "medium"
+    ) {
+        return "career-relevance-medium";
+    }
+
+
+    if (
+        normalized === "low"
+    ) {
+        return "career-relevance-low";
+    }
+
+
+    return "career-relevance-unknown";
+}
+
+
+// ------------------------------------
+// Create career indicator
+// ------------------------------------
+
+function createCareerIndicator(
+    label,
+    value
+) {
+
+    const indicator =
+        document.createElement(
+            "span"
+        );
+
+
+    indicator.className =
+        "career-indicator";
+
+
+    const indicatorLabel =
+        document.createElement(
+            "span"
+        );
+
+
+    indicatorLabel.className =
+        "career-indicator-label";
+
+
+    indicatorLabel.textContent =
+        `${label}: `;
+
+
+    const indicatorValue =
+        document.createElement(
+            "strong"
+        );
+
+
+    indicatorValue.textContent =
+        value || "Unknown";
+
+
+    indicator.appendChild(
+        indicatorLabel
+    );
+
+
+    indicator.appendChild(
+        indicatorValue
+    );
+
+
+    return indicator;
+}
+
+
+// ------------------------------------
+// Career pathway section
+// ------------------------------------
+
+function createCareerPathways(
+    careers
+) {
+
+    if (
+        !Array.isArray(
+            careers
+        )
+        || careers.length === 0
+    ) {
+        return null;
+    }
+
+
+    const section =
+        document.createElement(
+            "section"
+        );
+
+
+    section.className =
+        "career-section";
+
+
+    const sectionHeader =
+        document.createElement(
+            "div"
+        );
+
+
+    sectionHeader.className =
+        "career-section-heading";
+
+
+    const headingContent =
+        document.createElement(
+            "div"
+        );
+
+
+    const heading =
+        document.createElement(
+            "h5"
+        );
+
+
+    heading.textContent =
+        "Career Pathways";
+
+
+    const subtitle =
+        document.createElement(
+            "p"
+        );
+
+
+    subtitle.textContent =
+        (
+            "Potential careers connected "
+            + "to this programme."
+        );
+
+
+    headingContent.appendChild(
+        heading
+    );
+
+
+    headingContent.appendChild(
+        subtitle
+    );
+
+
+    sectionHeader.appendChild(
+        headingContent
+    );
+
+
+    const careerCount =
+        document.createElement(
+            "span"
+        );
+
+
+    careerCount.className =
+        "career-count";
+
+
+    careerCount.textContent =
+        (
+            careers.length === 1
+                ? "1 career"
+                : `${careers.length} careers`
+        );
+
+
+    sectionHeader.appendChild(
+        careerCount
+    );
+
+
+    section.appendChild(
+        sectionHeader
+    );
+
+
+    const careerList =
+        document.createElement(
+            "div"
+        );
+
+
+    careerList.className =
+        "career-list";
+
+
+    for (
+        const career
+        of careers
+    ) {
+
+        const careerCard =
+            document.createElement(
+                "article"
+            );
+
+
+        careerCard.className =
+            "career-item";
+
+
+        const careerTop =
+            document.createElement(
+                "div"
+            );
+
+
+        careerTop.className =
+            "career-item-top";
+
+
+        const careerName =
+            document.createElement(
+                "strong"
+            );
+
+
+        careerName.className =
+            "career-name";
+
+
+        careerName.textContent =
+            (
+                career.career_name
+                || "Career pathway"
+            );
+
+
+        const relevanceLevel =
+            (
+                career.relevance_level
+                || "Unknown"
+            );
+
+
+        const relevance =
+            document.createElement(
+                "span"
+            );
+
+
+        relevance.className =
+            (
+                "career-relevance "
+                + getCareerRelevanceClass(
+                    relevanceLevel
+                )
+            );
+
+
+        relevance.textContent =
+            `${relevanceLevel} relevance`;
+
+
+        careerTop.appendChild(
+            careerName
+        );
+
+
+        careerTop.appendChild(
+            relevance
+        );
+
+
+        careerCard.appendChild(
+            careerTop
+        );
+
+
+        if (
+            career.description
+        ) {
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.className =
+                "career-description";
+
+
+            description.textContent =
+                career.description;
+
+
+            careerCard.appendChild(
+                description
+            );
+        }
+
+
+        const indicators =
+            document.createElement(
+                "div"
+            );
+
+
+        indicators.className =
+            "career-indicators";
+
+
+        indicators.appendChild(
+            createCareerIndicator(
+                "Sri Lanka demand",
+                career.sri_lanka_demand
+            )
+        );
+
+
+        indicators.appendChild(
+            createCareerIndicator(
+                "International",
+                career
+                    .international_potential
+            )
+        );
+
+
+        indicators.appendChild(
+            createCareerIndicator(
+                "Remote potential",
+                career
+                    .remote_work_potential
+            )
+        );
+
+
+        careerCard.appendChild(
+            indicators
+        );
+
+
+        if (
+            career.relationship_notes
+        ) {
+
+            const relationshipNote =
+                document.createElement(
+                    "p"
+                );
+
+
+            relationshipNote.className =
+                "career-relationship-note";
+
+
+            relationshipNote.textContent =
+                career.relationship_notes;
+
+
+            careerCard.appendChild(
+                relationshipNote
+            );
+        }
+
+
+        careerList.appendChild(
+            careerCard
+        );
+    }
+
+
+    section.appendChild(
+        careerList
+    );
+
+
+    return section;
+}
+
+
+// ------------------------------------
+// Create programme recommendation card
+// ------------------------------------
 
 function createRecommendationCard(
     recommendation,
@@ -272,7 +716,10 @@ function createRecommendationCard(
 
 
     title.textContent =
-        recommendation.programme_name;
+        (
+            recommendation.programme_name
+            || recommendation.programme_id
+        );
 
 
     card.appendChild(
@@ -306,10 +753,15 @@ function createRecommendationCard(
         );
 
 
-    score.textContent =
-        (
-            `${recommendation.match_score}% match`
+    const matchScore =
+        Number(
+            recommendation.match_score
+            || 0
         );
+
+
+    score.textContent =
+        `${matchScore}% match`;
 
 
     meta.appendChild(
@@ -351,7 +803,7 @@ function createRecommendationCard(
         (
             `${Math.min(
                 Math.max(
-                    recommendation.match_score,
+                    matchScore,
                     0
                 ),
                 100
@@ -378,7 +830,9 @@ function createRecommendationCard(
         );
 
 
-    if (passedSection) {
+    if (
+        passedSection
+    ) {
 
         card.appendChild(
             passedSection
@@ -398,7 +852,9 @@ function createRecommendationCard(
         );
 
 
-    if (failedSection) {
+    if (
+        failedSection
+    ) {
 
         card.appendChild(
             failedSection
@@ -406,9 +862,30 @@ function createRecommendationCard(
     }
 
 
+    const careerSection =
+        createCareerPathways(
+            recommendation
+                .career_pathways
+        );
+
+
+    if (
+        careerSection
+    ) {
+
+        card.appendChild(
+            careerSection
+        );
+    }
+
+
     return card;
 }
 
+
+// ------------------------------------
+// Display recommendations
+// ------------------------------------
 
 function displayRecommendations(
     data
@@ -419,13 +896,38 @@ function displayRecommendations(
 
 
     const recommendations =
-        data.recommendations || [];
+        (
+            data.recommendations
+            || []
+        );
 
 
     resultCount.textContent =
         (
-            `${recommendations.length} programmes`
+            recommendations.length === 1
+                ? "1 programme"
+                : `${recommendations.length} programmes`
         );
+
+
+    if (
+        recommendations.length === 0
+    ) {
+
+        recommendationResults
+            .classList.add(
+                "hidden"
+            );
+
+
+        emptyResult
+            .classList.remove(
+                "hidden"
+            );
+
+
+        return;
+    }
 
 
     recommendations.forEach(
@@ -461,10 +963,28 @@ function displayRecommendations(
 }
 
 
+// ------------------------------------
+// Fetch recommendations from API
+// ------------------------------------
+
 async function fetchRecommendations() {
 
     const studentResults =
         collectStudentResults();
+
+
+    if (
+        Object.keys(
+            studentResults
+        ).length === 0
+    ) {
+
+        alert(
+            "Please enter your A/L results."
+        );
+
+        return;
+    }
 
 
     const payload = {
@@ -502,7 +1022,9 @@ async function fetchRecommendations() {
             );
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
                 (
@@ -521,7 +1043,9 @@ async function fetchRecommendations() {
             data
         );
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
             error
@@ -549,6 +1073,10 @@ async function fetchRecommendations() {
     }
 }
 
+
+// ------------------------------------
+// Event listener
+// ------------------------------------
 
 recommendButton.addEventListener(
     "click",
