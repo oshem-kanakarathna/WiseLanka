@@ -10,6 +10,10 @@ from backend.app.eligibility.explainer import (
     build_explanation,
 )
 
+from backend.app.recommendation.engine import (
+    recommend_programmes,
+)
+
 
 # ----------------------------------------
 # Create WiseLanka API
@@ -48,12 +52,17 @@ app.add_middleware(
 
 
 # ----------------------------------------
-# Request model
+# Request models
 # ----------------------------------------
 
 class EligibilityRequest(BaseModel):
 
     programme_id: str
+
+    student_results: dict[str, str]
+
+
+class RecommendationRequest(BaseModel):
 
     student_results: dict[str, str]
 
@@ -91,3 +100,22 @@ def check_eligibility(
     )
 
     return explanation
+
+
+# ----------------------------------------
+# Recommendation endpoint
+# ----------------------------------------
+
+@app.post("/recommendations")
+def get_recommendations(
+    request: RecommendationRequest,
+):
+
+    recommendations = recommend_programmes(
+        request.student_results
+    )
+
+    return {
+        "count": len(recommendations),
+        "recommendations": recommendations,
+    }

@@ -187,18 +187,19 @@ def calculate_match_score(
                 .lower()
             )
 
-            # Example of genuine near match:
+            # Genuine near match:
             #
+            # A relevant subject was supplied,
+            # but the learner missed the
+            # minimum grade.
+            #
+            # Example:
             # Combined Mathematics: S
             # (minimum C)
             #
-            # The learner provided the required
-            # subject, but the grade is slightly
-            # below the required threshold.
-            #
-            # Example of NOT a near match:
-            #
-            # Physics was not provided
+            # Missing subjects such as:
+            # "Physics was not provided"
+            # do not receive partial credit.
             if (
                 "minimum" in message
                 and "was not provided"
@@ -262,10 +263,97 @@ def classify_programme(
         [],
     ):
 
-        for requirement in group.get(
+        requirements = group.get(
             "requirements",
             [],
+        )
+
+        operator = (
+            group.get(
+                "operator",
+                "AND",
+            )
+            .strip()
+            .upper()
+        )
+
+        group_passed = group.get(
+            "passed",
+            False,
+        )
+
+        # ------------------------------------
+        # Passed OR group
+        #
+        # Only show the alternatives that
+        # actually satisfied the group.
+        #
+        # Other unused alternatives should
+        # not be reported as learner failures.
+        # ------------------------------------
+
+        if (
+            operator == "OR"
+            and group_passed
         ):
+
+            for requirement in requirements:
+
+                if requirement.get(
+                    "passed",
+                    False,
+                ):
+
+                    message = requirement.get(
+                        "message",
+                        "",
+                    )
+
+                    if message:
+                        passed_requirements.append(
+                            message
+                        )
+
+            continue
+
+        # ------------------------------------
+        # Failed OR group
+        #
+        # No alternative satisfied the group,
+        # so the failed alternatives are
+        # useful for explaining what is
+        # missing.
+        # ------------------------------------
+
+        if (
+            operator == "OR"
+            and not group_passed
+        ):
+
+            for requirement in requirements:
+
+                if not requirement.get(
+                    "passed",
+                    False,
+                ):
+
+                    message = requirement.get(
+                        "message",
+                        "",
+                    )
+
+                    if message:
+                        failed_requirements.append(
+                            message
+                        )
+
+            continue
+
+        # ------------------------------------
+        # AND groups
+        # ------------------------------------
+
+        for requirement in requirements:
 
             message = requirement.get(
                 "message",
@@ -277,15 +365,17 @@ def classify_programme(
                 False,
             ):
 
-                passed_requirements.append(
-                    message
-                )
+                if message:
+                    passed_requirements.append(
+                        message
+                    )
 
             else:
 
-                failed_requirements.append(
-                    message
-                )
+                if message:
+                    failed_requirements.append(
+                        message
+                    )
 
     return {
         "programme_id":

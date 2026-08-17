@@ -16,6 +16,10 @@ def get_result_by_programme(
     )
 
 
+# --------------------------------------------------
+# Strong profile
+# --------------------------------------------------
+
 def test_strong_profile_is_eligible():
 
     profile = {
@@ -24,7 +28,9 @@ def test_strong_profile_is_eligible():
         "Chemistry": "C",
     }
 
-    results = recommend_programmes(profile)
+    results = recommend_programmes(
+        profile
+    )
 
     for programme_id in [
         "PRG0001",
@@ -50,6 +56,10 @@ def test_strong_profile_is_eligible():
         )
 
 
+# --------------------------------------------------
+# Near profile
+# --------------------------------------------------
+
 def test_near_profile_is_nearly_eligible():
 
     profile = {
@@ -58,7 +68,9 @@ def test_near_profile_is_nearly_eligible():
         "Chemistry": "C",
     }
 
-    results = recommend_programmes(profile)
+    results = recommend_programmes(
+        profile
+    )
 
     for programme_id in [
         "PRG0001",
@@ -84,6 +96,10 @@ def test_near_profile_is_nearly_eligible():
         )
 
 
+# --------------------------------------------------
+# Unrelated profile
+# --------------------------------------------------
+
 def test_unrelated_profile_not_nearly_eligible():
 
     profile = {
@@ -92,7 +108,9 @@ def test_unrelated_profile_not_nearly_eligible():
         "Geography": "C",
     }
 
-    results = recommend_programmes(profile)
+    results = recommend_programmes(
+        profile
+    )
 
     result_1 = get_result_by_programme(
         results,
@@ -138,3 +156,64 @@ def test_unrelated_profile_not_nearly_eligible():
         result_3["match_score"]
         == 0.0
     )
+
+
+# --------------------------------------------------
+# Passed OR groups should not create
+# false failed requirements
+# --------------------------------------------------
+
+def test_eligible_programme_has_no_false_failed_or_requirements():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    for result in results:
+
+        assert result["eligible"] is True
+
+        assert (
+            result["failed_requirements"]
+            == []
+        )
+
+
+# --------------------------------------------------
+# Near profile should retain useful
+# failure explanations
+# --------------------------------------------------
+
+def test_near_profile_keeps_useful_failed_requirements():
+
+    profile = {
+        "Combined Mathematics": "S",
+        "Physics": "S",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    for result in results:
+
+        assert (
+            result["category"]
+            == "NEARLY_ELIGIBLE"
+        )
+
+        assert (
+            len(
+                result[
+                    "failed_requirements"
+                ]
+            )
+            > 0
+        )
