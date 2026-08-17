@@ -1,0 +1,140 @@
+from backend.app.recommendation.engine import (
+    recommend_programmes,
+)
+
+
+def get_result_by_programme(
+    results,
+    programme_id,
+):
+    for result in results:
+        if result["programme_id"] == programme_id:
+            return result
+
+    raise AssertionError(
+        f"Programme {programme_id} not found"
+    )
+
+
+def test_strong_profile_is_eligible():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(profile)
+
+    for programme_id in [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+    ]:
+
+        result = get_result_by_programme(
+            results,
+            programme_id,
+        )
+
+        assert result["eligible"] is True
+
+        assert (
+            result["category"]
+            == "ELIGIBLE"
+        )
+
+        assert (
+            result["match_score"]
+            == 100.0
+        )
+
+
+def test_near_profile_is_nearly_eligible():
+
+    profile = {
+        "Combined Mathematics": "S",
+        "Physics": "S",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(profile)
+
+    for programme_id in [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+    ]:
+
+        result = get_result_by_programme(
+            results,
+            programme_id,
+        )
+
+        assert result["eligible"] is False
+
+        assert (
+            result["category"]
+            == "NEARLY_ELIGIBLE"
+        )
+
+        assert (
+            result["match_score"]
+            == 75.0
+        )
+
+
+def test_unrelated_profile_not_nearly_eligible():
+
+    profile = {
+        "Sinhala": "A",
+        "Art": "B",
+        "Geography": "C",
+    }
+
+    results = recommend_programmes(profile)
+
+    result_1 = get_result_by_programme(
+        results,
+        "PRG0001",
+    )
+
+    result_2 = get_result_by_programme(
+        results,
+        "PRG0002",
+    )
+
+    result_3 = get_result_by_programme(
+        results,
+        "PRG0003",
+    )
+
+    assert (
+        result_1["category"]
+        == "NOT_ELIGIBLE"
+    )
+
+    assert (
+        result_1["match_score"]
+        == 50.0
+    )
+
+    assert (
+        result_2["category"]
+        == "NOT_ELIGIBLE"
+    )
+
+    assert (
+        result_2["match_score"]
+        == 0.0
+    )
+
+    assert (
+        result_3["category"]
+        == "NOT_ELIGIBLE"
+    )
+
+    assert (
+        result_3["match_score"]
+        == 0.0
+    )
