@@ -86,7 +86,8 @@ def get_results_for_level(
     }
 
     Flat legacy input is treated as A_LEVEL
-    so PRG0001 and PRG0002 remain compatible.
+    so existing A/L recommendation behaviour
+    remains backward compatible.
     """
 
     education_level = (
@@ -108,6 +109,7 @@ def get_results_for_level(
     )
 
     if nested_format:
+
         level_results = student_results.get(
             education_level,
             {},
@@ -141,6 +143,9 @@ def evaluate_requirement(
     - A_LEVEL_PASS
     - SUBJECT_GRADE
     - SUBJECT_SET_COUNT
+    - O_LEVEL_PASS_COUNT
+    - O_LEVEL_CREDIT_COUNT
+    - O_LEVEL_SUBJECT_CREDIT
 
     The requirement's education_level determines
     which section of the learner profile is used.
@@ -213,6 +218,7 @@ def evaluate_requirement(
     # Requirement type:
     # SUBJECT_GRADE
     #
+    # Generic subject-grade evaluator.
     # Works for A/L or O/L depending on
     # education_level in the requirement row.
     # --------------------------------------------------
@@ -368,6 +374,187 @@ def evaluate_requirement(
                     f"{minimum_grade} or above; "
                     f"{minimum_count} required. "
                     f"Matched: {matched_text}"
+                ),
+        }
+
+    # --------------------------------------------------
+    # Requirement type:
+    # O_LEVEL_PASS_COUNT
+    #
+    # Example:
+    # At least 6 O/L subjects must be passed.
+    #
+    # S or above is treated as a pass.
+    # --------------------------------------------------
+
+    if requirement_type == "O_LEVEL_PASS_COUNT":
+
+        minimum_count = int(
+            requirement["minimum_count"]
+        )
+
+        passed_subjects = 0
+
+        for grade in level_results.values():
+
+            if grade_meets_minimum(
+                grade,
+                "S",
+            ):
+                passed_subjects += 1
+
+        passed = (
+            passed_subjects
+            >= minimum_count
+        )
+
+        return {
+            "requirement_id":
+                requirement["requirement_id"],
+
+            "passed":
+                passed,
+
+            "message":
+                (
+                    f"{passed_subjects} O/L subjects passed; "
+                    f"{minimum_count} required"
+                ),
+        }
+
+    # --------------------------------------------------
+    # Requirement type:
+    # O_LEVEL_CREDIT_COUNT
+    #
+    # Example:
+    # At least 3 O/L subjects must have
+    # credit passes.
+    #
+    # C or above is treated as a credit.
+    # --------------------------------------------------
+
+    if requirement_type == "O_LEVEL_CREDIT_COUNT":
+
+        minimum_count = int(
+            requirement["minimum_count"]
+        )
+
+        credit_subjects = []
+
+        for (
+            subject,
+            grade,
+        ) in level_results.items():
+
+            if grade_meets_minimum(
+                grade,
+                "C",
+            ):
+
+                credit_subjects.append(
+                    {
+                        "subject":
+                            subject,
+
+                        "grade":
+                            str(grade)
+                            .strip()
+                            .upper(),
+                    }
+                )
+
+        passed = (
+            len(credit_subjects)
+            >= minimum_count
+        )
+
+        credit_text = ", ".join(
+            (
+                f"{item['subject']}: "
+                f"{item['grade']}"
+            )
+            for item
+            in credit_subjects
+        )
+
+        if not credit_text:
+            credit_text = "None"
+
+        return {
+            "requirement_id":
+                requirement["requirement_id"],
+
+            "passed":
+                passed,
+
+            "message":
+                (
+                    f"{len(credit_subjects)} O/L subjects "
+                    f"have credit passes; "
+                    f"{minimum_count} required. "
+                    f"Credits: {credit_text}"
+                ),
+        }
+
+    # --------------------------------------------------
+    # Requirement type:
+    # O_LEVEL_SUBJECT_CREDIT
+    #
+    # Example:
+    # Mathematics must have a credit pass
+    # of C or above.
+    # --------------------------------------------------
+
+    if requirement_type == "O_LEVEL_SUBJECT_CREDIT":
+
+        subject = (
+            requirement["subject_name"]
+            .strip()
+        )
+
+        student_grade = level_results.get(
+            subject
+        )
+
+        if student_grade is None:
+
+            return {
+                "requirement_id":
+                    requirement["requirement_id"],
+
+                "passed":
+                    False,
+
+                "message":
+                    (
+                        f"O_LEVEL {subject} "
+                        "was not provided"
+                    ),
+            }
+
+        student_grade = (
+            str(student_grade)
+            .strip()
+            .upper()
+        )
+
+        passed = grade_meets_minimum(
+            student_grade,
+            "C",
+        )
+
+        return {
+            "requirement_id":
+                requirement["requirement_id"],
+
+            "passed":
+                passed,
+
+            "message":
+                (
+                    f"O_LEVEL {subject}: "
+                    f"{student_grade} "
+                    "(credit pass C or above required)"
                 ),
         }
 
