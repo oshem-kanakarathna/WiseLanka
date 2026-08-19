@@ -12,6 +12,10 @@ from backend.app.eligibility.explainer import (
     build_explanation,
 )
 
+from backend.app.progression.engine import (
+    get_progression_pathways,
+)
+
 from backend.app.recommendation.engine import (
     recommend_programmes,
 )
@@ -61,7 +65,7 @@ app = FastAPI(
         "AI-powered education pathway "
         "intelligence backend for Sri Lanka."
     ),
-    version="0.2.0",
+    version="0.3.0",
 )
 
 
@@ -127,13 +131,19 @@ def root():
     return {
         "application": "WiseLanka",
         "status": "running",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "message": (
             "WiseLanka API is running"
         ),
         "supported_profile_formats": [
             "legacy_flat_a_level",
             "level_aware_nested",
+        ],
+        "features": [
+            "programme_eligibility",
+            "programme_recommendations",
+            "career_pathway_intelligence",
+            "qualification_progression",
         ],
     }
 
@@ -179,3 +189,29 @@ def get_recommendations(
         "recommendations":
             recommendations,
     }
+
+
+# ----------------------------------------
+# Qualification progression endpoint
+#
+# Example:
+#
+# GET /progression/QLF0004
+#
+# Returns verified immediate academic
+# progression pathways from the selected
+# qualification.
+# ----------------------------------------
+
+@app.get(
+    "/progression/{qualification_id}"
+)
+def get_qualification_progression(
+    qualification_id: str,
+):
+
+    progression = get_progression_pathways(
+        qualification_id
+    )
+
+    return progression

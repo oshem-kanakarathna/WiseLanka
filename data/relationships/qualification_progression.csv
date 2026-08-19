@@ -1,1 +1,4 @@
 progression_id,from_qualification_id,to_qualification_id,progression_type,conditions,guaranteed,notes
+PROG0001,QLF0004,QLF0005,Direct Academic Progression,Successful completion of the IIT Computing Foundation programme,false,Foundation graduates may enter Year 1 of BEng Honours Software Engineering
+PROG0002,QLF0004,QLF0006,Direct Academic Progression,Successful completion of the IIT Computing Foundation programme,false,Foundation graduates may enter Year 1 of BSc Honours Computer Science
+PROG0003,QLF0004,QLF0007,Conditional Academic Progression,Successful completion of the IIT Computing Foundation programme and minimum 50 percent in Mathematics for Computing Mathematics for Data Science Introduction to Programming and Computer Programming,false,Foundation graduates may enter Year 1 of BSc Honours Artificial Intelligence and Data Science when the additional module threshold is satisfied

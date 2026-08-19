@@ -450,3 +450,130 @@ def test_nested_al_profile_excludes_ol_foundation():
         "PRG0002",
         "PRG0003",
     }
+
+def test_ol_foundation_recommendation_contains_progression():
+
+    profile = {
+        "O_LEVEL": {
+            "Mathematics": "A",
+            "English": "B",
+            "Science": "C",
+            "ICT": "A",
+            "Sinhala": "S",
+            "History": "S",
+        }
+    }
+
+    recommendations = recommend_programmes(
+        profile
+    )
+
+    foundation = next(
+        item
+        for item in recommendations
+        if item["programme_id"]
+        == "PRG0004"
+    )
+
+    assert (
+        foundation["qualification_id"]
+        == "QLF0004"
+    )
+
+    assert (
+        foundation["progression"]["count"]
+        == 3
+    )
+
+    destinations = {
+        pathway["to_qualification_id"]
+        for pathway
+        in foundation[
+            "progression"
+        ]["pathways"]
+    }
+
+    assert destinations == {
+        "QLF0005",
+        "QLF0006",
+        "QLF0007",
+    }
+
+
+def test_foundation_progression_contains_destination_programmes():
+
+    profile = {
+        "O_LEVEL": {
+            "Mathematics": "A",
+            "English": "B",
+            "Science": "C",
+            "ICT": "A",
+            "Sinhala": "S",
+            "History": "S",
+        }
+    }
+
+    recommendations = recommend_programmes(
+        profile
+    )
+
+    foundation = next(
+        item
+        for item in recommendations
+        if item["programme_id"]
+        == "PRG0004"
+    )
+
+    destination_programmes = set()
+
+    for pathway in (
+        foundation[
+            "progression"
+        ]["pathways"]
+    ):
+
+        for programme in pathway[
+            "programmes"
+        ]:
+
+            destination_programmes.add(
+                programme["programme_id"]
+            )
+
+    assert destination_programmes == {
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+    }
+
+
+def test_degree_recommendation_can_have_empty_progression():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    recommendations = recommend_programmes(
+        profile
+    )
+
+    programme = next(
+        item
+        for item in recommendations
+        if item["programme_id"]
+        == "PRG0001"
+    )
+
+    assert programme["qualification_id"]
+
+    assert (
+        programme["progression"]["count"]
+        == 0
+    )
+
+    assert (
+        programme["progression"]["pathways"]
+        == []
+    )

@@ -5,6 +5,10 @@ from backend.app.eligibility.engine import (
     evaluate_programme,
 )
 
+from backend.app.progression.engine import (
+    get_progression_pathways,
+)
+
 
 # ------------------------------------
 # Data locations
@@ -569,6 +573,60 @@ def evaluate_all_programmes(
         )
 
         # ------------------------------------
+        # Qualification metadata
+        # ------------------------------------
+
+        qualification_id = (
+            programme.get(
+                "qualification_id",
+                "",
+            )
+            .strip()
+        )
+
+        evaluation["qualification_id"] = (
+            qualification_id
+        )
+
+        # ------------------------------------
+        # Academic progression intelligence
+        #
+        # Progression is qualification-based.
+        #
+        # Example:
+        #
+        # PRG0004
+        #     ↓
+        # QLF0004
+        #     ↓
+        # QLF0005 / QLF0006 / QLF0007
+        # ------------------------------------
+
+        if qualification_id:
+
+            evaluation["progression"] = (
+                get_progression_pathways(
+                    qualification_id
+                )
+            )
+
+        else:
+
+            evaluation["progression"] = {
+                "qualification_id":
+                    None,
+
+                "qualification_name":
+                    None,
+
+                "count":
+                    0,
+
+                "pathways":
+                    [],
+            }
+
+        # ------------------------------------
         # Record programme entry level
         # ------------------------------------
 
@@ -912,11 +970,25 @@ def classify_programme(
                 "",
             ),
 
+        # ------------------------------------
+        # Qualification information
+        # ------------------------------------
+
+        "qualification_id":
+            evaluation.get(
+                "qualification_id",
+                "",
+            ),
+
         "entry_education_levels":
             evaluation.get(
                 "entry_education_levels",
                 [],
             ),
+
+        # ------------------------------------
+        # Eligibility result
+        # ------------------------------------
 
         "eligible":
             evaluation["eligible"],
@@ -933,11 +1005,41 @@ def classify_programme(
         "failed_requirements":
             failed_requirements,
 
+        # ------------------------------------
+        # Career intelligence
+        # ------------------------------------
+
         "career_pathways":
             evaluation.get(
                 "career_pathways",
                 [],
             ),
+
+        # ------------------------------------
+        # Academic progression intelligence
+        # ------------------------------------
+
+        "progression":
+            evaluation.get(
+                "progression",
+                {
+                    "qualification_id":
+                        None,
+
+                    "qualification_name":
+                        None,
+
+                    "count":
+                        0,
+
+                    "pathways":
+                        [],
+                },
+            ),
+
+        # ------------------------------------
+        # Technical eligibility evidence
+        # ------------------------------------
 
         "groups":
             evaluation["groups"],

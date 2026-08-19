@@ -4,3 +4,5 @@ INS0002,University of Colombo,University,Government,true,Sri Lanka,Western,Colom
 INS0003,University of Colombo School of Computing,University School,Government,false,Sri Lanka,Western,Colombo,Colombo,https://ucsc.cmb.ac.lk,Active,Academic provider within the University of Colombo
 INS0004,Informatics Institute of Technology,Higher Education Institute,Private,false,Sri Lanka,Western,Colombo,Colombo,https://www.iit.ac.lk,Active,Private higher education institute delivering computing and business education including UK-partnered programmes
 INS0005,NQual,Awarding Organisation,Private,true,England,,,,https://www.nqual.co.uk,Active,UK awarding organisation associated with the Ofqual-regulated Level 3 qualification delivered through IIT
+INS0006,University of Westminster,University,Public,true,United Kingdom,,,London,https://www.westminster.ac.uk,Active,UK university awarding IIT Software Engineering and Computer Science qualifications
+INS0007,Robert Gordon University,University,Public,true,United Kingdom,,,Aberdeen,https://www.rgu.ac.uk,Active,UK university awarding IIT Artificial Intelligence and Data Science qualifications
