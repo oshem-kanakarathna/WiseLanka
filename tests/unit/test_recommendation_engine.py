@@ -316,3 +316,137 @@ def test_career_pathways_are_ordered_by_relevance():
             ranks,
             reverse=True,
         )
+
+        # ----------------------------------------
+# Education-level-aware recommendations
+# ----------------------------------------
+
+
+def test_ol_profile_only_returns_ol_entry_programmes():
+
+    profile = {
+        "O_LEVEL": {
+            "Mathematics": "A",
+            "English": "B",
+            "Science": "C",
+            "ICT": "A",
+            "Sinhala": "S",
+            "History": "S",
+        }
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    programme_ids = {
+        result["programme_id"]
+        for result in results
+    }
+
+    assert programme_ids == {
+        "PRG0004"
+    }
+
+
+def test_ol_foundation_profile_is_eligible():
+
+    profile = {
+        "O_LEVEL": {
+            "Mathematics": "A",
+            "English": "B",
+            "Science": "C",
+            "ICT": "A",
+            "Sinhala": "S",
+            "History": "S",
+        }
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    assert len(results) == 1
+
+    result = results[0]
+
+    assert (
+        result["programme_id"]
+        == "PRG0004"
+    )
+
+    assert result["eligible"] is True
+
+    assert (
+        result["category"]
+        == "ELIGIBLE"
+    )
+
+    assert (
+        result["match_score"]
+        == 100.0
+    )
+
+    assert (
+        result["entry_education_levels"]
+        == ["O_LEVEL"]
+    )
+
+    assert (
+        result["failed_requirements"]
+        == []
+    )
+
+
+def test_legacy_al_profile_excludes_ol_foundation():
+
+    profile = {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C",
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    programme_ids = {
+        result["programme_id"]
+        for result in results
+    }
+
+    assert "PRG0004" not in programme_ids
+
+    assert programme_ids == {
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+    }
+
+
+def test_nested_al_profile_excludes_ol_foundation():
+
+    profile = {
+        "A_LEVEL": {
+            "Combined Mathematics": "B",
+            "Physics": "C",
+            "Chemistry": "C",
+        }
+    }
+
+    results = recommend_programmes(
+        profile
+    )
+
+    programme_ids = {
+        result["programme_id"]
+        for result in results
+    }
+
+    assert "PRG0004" not in programme_ids
+
+    assert programme_ids == {
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+    }

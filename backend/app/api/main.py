@@ -1,3 +1,5 @@
+from typing import Dict, Union
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -16,6 +18,40 @@ from backend.app.recommendation.engine import (
 
 
 # ----------------------------------------
+# Type definitions
+#
+# Supports both:
+#
+# Old flat A/L format:
+# {
+#     "Combined Mathematics": "A",
+#     "Physics": "B",
+#     "Chemistry": "C"
+# }
+#
+# New level-aware format:
+# {
+#     "A_LEVEL": {
+#         "Combined Mathematics": "A",
+#         "Physics": "B"
+#     },
+#     "O_LEVEL": {
+#         "Mathematics": "A",
+#         "English": "B"
+#     }
+# }
+# ----------------------------------------
+
+StudentResults = Dict[
+    str,
+    Union[
+        str,
+        Dict[str, str],
+    ],
+]
+
+
+# ----------------------------------------
 # Create WiseLanka API
 # ----------------------------------------
 
@@ -25,14 +61,16 @@ app = FastAPI(
         "AI-powered education pathway "
         "intelligence backend for Sri Lanka."
     ),
-    version="0.1.0",
+    version="0.2.0",
 )
 
 
 # ----------------------------------------
 # CORS
-# Allows our frontend on port 5500
-# to communicate with FastAPI on port 8000
+#
+# Allows the development frontend
+# running on port 5500 to communicate
+# with FastAPI running on port 8000.
 # ----------------------------------------
 
 app.add_middleware(
@@ -56,15 +94,27 @@ app.add_middleware(
 # ----------------------------------------
 
 class EligibilityRequest(BaseModel):
+    """
+    Request model for checking one
+    programme's eligibility.
+    """
 
     programme_id: str
 
-    student_results: dict[str, str]
+    student_results: StudentResults
 
 
 class RecommendationRequest(BaseModel):
+    """
+    Request model for generating programme
+    recommendations.
 
-    student_results: dict[str, str]
+    student_results accepts both the original
+    flat A/L format and the newer level-aware
+    nested format.
+    """
+
+    student_results: StudentResults
 
 
 # ----------------------------------------
@@ -77,7 +127,14 @@ def root():
     return {
         "application": "WiseLanka",
         "status": "running",
-        "message": "WiseLanka API is running",
+        "version": "0.2.0",
+        "message": (
+            "WiseLanka API is running"
+        ),
+        "supported_profile_formats": [
+            "legacy_flat_a_level",
+            "level_aware_nested",
+        ],
     }
 
 
@@ -116,6 +173,9 @@ def get_recommendations(
     )
 
     return {
-        "count": len(recommendations),
-        "recommendations": recommendations,
+        "count":
+            len(recommendations),
+
+        "recommendations":
+            recommendations,
     }

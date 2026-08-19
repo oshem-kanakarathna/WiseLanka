@@ -22,6 +22,10 @@ PROGRAMME_CAREERS_PATH = Path(
     "data/relationships/programme_careers.csv"
 )
 
+ENTRY_REQUIREMENTS_PATH = Path(
+    "data/relationships/programme_entry_requirements.csv"
+)
+
 
 # ------------------------------------
 # Load active programmes
@@ -109,6 +113,219 @@ def load_programme_career_relationships():
             relationships.append(row)
 
     return relationships
+
+
+# ------------------------------------
+# Load programme entry requirements
+# ------------------------------------
+
+def load_programme_entry_requirements():
+
+    requirements = []
+
+    with ENTRY_REQUIREMENTS_PATH.open(
+        "r",
+        encoding="utf-8",
+        newline="",
+    ) as file:
+
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            requirements.append(row)
+
+    return requirements
+
+
+# ------------------------------------
+# Detect education levels supplied
+# by the learner
+# ------------------------------------
+
+def detect_student_education_levels(
+    student_profile,
+):
+    """
+    Determine which education levels are
+    represented in the learner profile.
+
+    Supported formats:
+
+    Legacy flat A/L profile:
+
+        {
+            "Combined Mathematics": "B",
+            "Physics": "C",
+            "Chemistry": "C",
+        }
+
+    Multi-level profile:
+
+        {
+            "O_LEVEL": {...},
+            "A_LEVEL": {...},
+        }
+
+    A flat legacy profile remains A_LEVEL
+    for backward compatibility.
+    """
+
+    if not isinstance(
+        student_profile,
+        dict,
+    ):
+        return set()
+
+    recognised_levels = {
+        "O_LEVEL",
+        "A_LEVEL",
+    }
+
+    supplied_levels = set()
+
+    # ------------------------------------
+    # Detect nested education-level data
+    # ------------------------------------
+
+    for level in recognised_levels:
+
+        level_results = student_profile.get(
+            level
+        )
+
+        if (
+            isinstance(
+                level_results,
+                dict,
+            )
+            and level_results
+        ):
+            supplied_levels.add(
+                level
+            )
+
+    # ------------------------------------
+    # Legacy flat profile
+    #
+    # Existing WiseLanka behaviour treats
+    # flat subject dictionaries as A/L.
+    # ------------------------------------
+
+    nested_format = any(
+        key in recognised_levels
+        for key in student_profile
+    )
+
+    if (
+        student_profile
+        and not nested_format
+    ):
+        supplied_levels.add(
+            "A_LEVEL"
+        )
+
+    return supplied_levels
+
+
+# ------------------------------------
+# Get education levels required by
+# a programme
+# ------------------------------------
+
+def get_programme_education_levels(
+    programme_id,
+    requirements=None,
+):
+    """
+    Return the education levels used by a
+    programme's entry requirements.
+
+    Example:
+
+        PRG0001 -> {"A_LEVEL"}
+        PRG0004 -> {"O_LEVEL"}
+    """
+
+    if requirements is None:
+
+        requirements = (
+            load_programme_entry_requirements()
+        )
+
+    levels = set()
+
+    for requirement in requirements:
+
+        if (
+            requirement.get(
+                "programme_id",
+                "",
+            )
+            != programme_id
+        ):
+            continue
+
+        education_level = (
+            requirement.get(
+                "education_level",
+                "",
+            )
+            .strip()
+            .upper()
+        )
+
+        if education_level:
+            levels.add(
+                education_level
+            )
+
+    return levels
+
+
+# ------------------------------------
+# Check whether a programme is
+# relevant to the supplied profile
+# ------------------------------------
+
+def programme_matches_student_level(
+    programme_id,
+    student_levels,
+    requirements=None,
+):
+    """
+    A programme should only be evaluated when
+    the learner supplied at least one education
+    level used by that programme's entry
+    requirements.
+
+    This prevents:
+
+    - O/L learners receiving A/L degree
+      programmes as immediate recommendations.
+
+    - A/L learners receiving O/L-entry
+      foundation programmes as though those
+      were their primary current-level options.
+    """
+
+    programme_levels = (
+        get_programme_education_levels(
+            programme_id,
+            requirements,
+        )
+    )
+
+    # If a programme currently has no
+    # structured entry requirements,
+    # exclude it from eligibility-based
+    # recommendation until evidence exists.
+    if not programme_levels:
+        return False
+
+    return bool(
+        programme_levels
+        & student_levels
+    )
 
 
 # ------------------------------------
@@ -249,8 +466,8 @@ def get_programme_careers(
 
 
 # ------------------------------------
-# Evaluate student against
-# every active programme
+# Evaluate student against relevant
+# active programmes
 # ------------------------------------
 
 def evaluate_all_programmes(
@@ -259,6 +476,16 @@ def evaluate_all_programmes(
 
     programmes = load_active_programmes()
 
+    requirements = (
+        load_programme_entry_requirements()
+    )
+
+    student_levels = (
+        detect_student_education_levels(
+            student_profile
+        )
+    )
+
     results = []
 
     for programme in programmes:
@@ -266,6 +493,17 @@ def evaluate_all_programmes(
         programme_id = programme[
             "programme_id"
         ]
+
+        # ------------------------------------
+        # Education-level filtering
+        # ------------------------------------
+
+        if not programme_matches_student_level(
+            programme_id,
+            student_levels,
+            requirements,
+        ):
+            continue
 
         evaluation = evaluate_programme(
             programme_id,
@@ -327,6 +565,19 @@ def evaluate_all_programmes(
             programme.get(
                 "campus",
                 "",
+            )
+        )
+
+        # ------------------------------------
+        # Record programme entry level
+        # ------------------------------------
+
+        evaluation[
+            "entry_education_levels"
+        ] = sorted(
+            get_programme_education_levels(
+                programme_id,
+                requirements,
             )
         )
 
@@ -441,13 +692,8 @@ def calculate_match_score(
             # but the learner missed the
             # minimum grade.
             #
-            # Example:
-            # Combined Mathematics: S
-            # (minimum C)
-            #
-            # Missing subjects such as:
-            # "Physics was not provided"
-            # do not receive partial credit.
+            # Missing subjects receive no
+            # partial credit.
             if (
                 "minimum" in message
                 and "was not provided"
@@ -532,9 +778,6 @@ def classify_programme(
 
         # ------------------------------------
         # Passed OR group
-        #
-        # Only show alternatives that
-        # actually satisfied the group.
         # ------------------------------------
 
         if (
@@ -563,10 +806,6 @@ def classify_programme(
 
         # ------------------------------------
         # Failed OR group
-        #
-        # No alternative satisfied the group,
-        # so failed alternatives are useful
-        # for explaining what is missing.
         # ------------------------------------
 
         if (
@@ -671,6 +910,12 @@ def classify_programme(
             evaluation.get(
                 "application_url",
                 "",
+            ),
+
+        "entry_education_levels":
+            evaluation.get(
+                "entry_education_levels",
+                [],
             ),
 
         "eligible":
