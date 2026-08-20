@@ -10,8 +10,13 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="WiseLanka evidence-based education pathway intelligence."
+    >
+
     <title>
-        WiseLanka Programme Recommendations
+        WiseLanka | Education Pathway Intelligence
     </title>
 
     <link
@@ -25,69 +30,131 @@
 <body>
 
 
+<!-- ========================================
+     Navigation
+========================================= -->
+
 <header class="navbar">
 
-    <div class="brand">
+    <div class="navbar-inner">
 
-        <div class="brand-icon">
-            W
+        <div class="brand">
+
+            <div class="brand-icon">
+                W
+            </div>
+
+            <div class="brand-copy">
+
+                <h1>
+                    WiseLanka
+                </h1>
+
+                <span>
+                    Know More. Choose Better.
+                </span>
+
+            </div>
+
         </div>
 
-        <div>
 
-            <h1>
-                WiseLanka
-            </h1>
+        <div class="verified-label">
 
-            <span>
-                Know More. Choose Better.
+            <span class="verified-dot">
             </span>
 
+            Evidence-Based Pathway Guidance
+
         </div>
 
-    </div>
-
-
-    <div class="verified-label">
-        Evidence-Based Pathway Guidance
     </div>
 
 </header>
 
 
+<!-- ========================================
+     Main content
+========================================= -->
+
 <main class="container">
 
 
+    <!-- ====================================
+         Hero
+    ===================================== -->
+
     <section class="hero">
 
-        <span class="hero-badge">
-            Programme Recommendations
-        </span>
+        <div class="hero-badge">
+            Education Pathway Intelligence
+        </div>
 
         <h2>
-            Discover programmes that match
-            your academic results
+            Discover the education pathway
+            that fits your results.
         </h2>
 
         <p>
-            Enter your GCE Advanced Level subjects
-            and grades. WiseLanka will evaluate
-            the recorded entry requirements and
-            rank the available programmes based
-            on your current academic profile.
+            Select your current education level and
+            enter your academic results. WiseLanka
+            evaluates structured programme requirements,
+            progression evidence and career pathways to
+            help you understand what you can do next.
         </p>
+
+
+        <div class="hero-trust-row">
+
+            <div class="trust-item">
+
+                <span class="trust-icon">
+                    ✓
+                </span>
+
+                Eligibility evaluation
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span class="trust-icon">
+                    ✓
+                </span>
+
+                Academic progression
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span class="trust-icon">
+                    ✓
+                </span>
+
+                Career pathways
+
+            </div>
+
+        </div>
 
     </section>
 
 
+    <!-- ====================================
+         Workspace
+    ===================================== -->
+
     <section class="workspace">
 
 
-        <!-- --------------------------------
-             Student input card
-        --------------------------------- -->
+        <!-- ==================================
+             Student Input
+        =================================== -->
 
-        <div class="card input-card">
+        <aside class="card input-card">
 
             <div class="card-heading">
 
@@ -95,14 +162,20 @@
                     01
                 </div>
 
+
                 <div>
+
+                    <span class="card-kicker">
+                        Academic profile
+                    </span>
 
                     <h3>
                         Enter your results
                     </h3>
 
-                    <p>
-                        Add three A/L subjects and grades.
+                    <p id="inputDescription">
+                        Add three GCE A/L subjects
+                        and grades.
                     </p>
 
                 </div>
@@ -110,242 +183,748 @@
             </div>
 
 
-            <div class="subject-row">
+            <!-- ==============================
+                 Education Level
+            =============================== -->
 
-                <div>
+            <div class="education-level-section">
 
-                    <label for="subject1">
-                        Subject 1
-                    </label>
-
-                    <select id="subject1">
-
-                        <option value="Combined Mathematics">
-                            Combined Mathematics
-                        </option>
-
-                        <option value="Higher Mathematics">
-                            Higher Mathematics
-                        </option>
-
-                        <option value="Mathematics">
-                            Mathematics
-                        </option>
-
-                        <option value="Physics">
-                            Physics
-                        </option>
-
-                        <option value="Chemistry">
-                            Chemistry
-                        </option>
-
-                        <option value="Information & Communication Technology">
-                            Information & Communication Technology
-                        </option>
-
-                        <option value="Sinhala">
-                            Sinhala
-                        </option>
-
-                        <option value="Art">
-                            Art
-                        </option>
-
-                        <option value="Geography">
-                            Geography
-                        </option>
-
-                    </select>
-
-                </div>
+                <label class="education-level-label">
+                    Current education level
+                </label>
 
 
-                <div>
+                <div
+                    class="education-level-switch"
+                    role="group"
+                    aria-label="Choose education level"
+                >
 
-                    <label for="grade1">
-                        Grade
-                    </label>
 
-                    <select id="grade1">
+                    <button
+                        id="alLevelButton"
+                        type="button"
+                        class="education-level-option active"
+                        data-level="A_LEVEL"
+                        aria-pressed="true"
+                    >
 
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="S">S</option>
-                        <option value="F">F</option>
+                        <span class="level-short">
+                            GCE A/L
+                        </span>
 
-                    </select>
+                        <span class="level-description">
+                            Advanced Level
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        id="olLevelButton"
+                        type="button"
+                        class="education-level-option"
+                        data-level="O_LEVEL"
+                        aria-pressed="false"
+                    >
+
+                        <span class="level-short">
+                            GCE O/L
+                        </span>
+
+                        <span class="level-description">
+                            Ordinary Level
+                        </span>
+
+                    </button>
+
 
                 </div>
 
             </div>
 
 
-            <div class="subject-row">
+            <!-- ==============================
+                 A/L Form
+            =============================== -->
 
-                <div>
+            <div
+                id="alResultsForm"
+                class="results-form"
+            >
 
-                    <label for="subject2">
-                        Subject 2
-                    </label>
+                <div class="form-context">
 
-                    <select id="subject2">
+                    <div class="form-context-icon">
+                        A/L
+                    </div>
 
-                        <option value="Physics">
-                            Physics
-                        </option>
+                    <div>
 
-                        <option value="Combined Mathematics">
-                            Combined Mathematics
-                        </option>
+                        <strong>
+                            GCE Advanced Level Results
+                        </strong>
 
-                        <option value="Higher Mathematics">
-                            Higher Mathematics
-                        </option>
+                        <span>
+                            Enter the three subjects
+                            from your A/L combination.
+                        </span>
 
-                        <option value="Mathematics">
-                            Mathematics
-                        </option>
-
-                        <option value="Chemistry">
-                            Chemistry
-                        </option>
-
-                        <option value="Information & Communication Technology">
-                            Information & Communication Technology
-                        </option>
-
-                        <option value="Sinhala">
-                            Sinhala
-                        </option>
-
-                        <option value="Art">
-                            Art
-                        </option>
-
-                        <option value="Geography">
-                            Geography
-                        </option>
-
-                    </select>
+                    </div>
 
                 </div>
 
 
-                <div>
+                <!-- Subject 1 -->
 
-                    <label for="grade2">
-                        Grade
-                    </label>
+                <div class="subject-row">
 
-                    <select id="grade2">
+                    <div>
 
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="S">S</option>
-                        <option value="F">F</option>
+                        <label for="subject1">
+                            Subject 1
+                        </label>
 
-                    </select>
+                        <select id="subject1">
+
+                            <option value="Combined Mathematics">
+                                Combined Mathematics
+                            </option>
+
+                            <option value="Higher Mathematics">
+                                Higher Mathematics
+                            </option>
+
+                            <option value="Mathematics">
+                                Mathematics
+                            </option>
+
+                            <option value="Physics">
+                                Physics
+                            </option>
+
+                            <option value="Chemistry">
+                                Chemistry
+                            </option>
+
+                            <option value="Information & Communication Technology">
+                                Information & Communication Technology
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="grade1">
+                            Grade
+                        </label>
+
+                        <select id="grade1">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Subject 2 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="subject2">
+                            Subject 2
+                        </label>
+
+                        <select id="subject2">
+
+                            <option value="Physics">
+                                Physics
+                            </option>
+
+                            <option value="Combined Mathematics">
+                                Combined Mathematics
+                            </option>
+
+                            <option value="Higher Mathematics">
+                                Higher Mathematics
+                            </option>
+
+                            <option value="Mathematics">
+                                Mathematics
+                            </option>
+
+                            <option value="Chemistry">
+                                Chemistry
+                            </option>
+
+                            <option value="Information & Communication Technology">
+                                Information & Communication Technology
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="grade2">
+                            Grade
+                        </label>
+
+                        <select id="grade2">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Subject 3 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="subject3">
+                            Subject 3
+                        </label>
+
+                        <select id="subject3">
+
+                            <option value="Chemistry">
+                                Chemistry
+                            </option>
+
+                            <option value="Combined Mathematics">
+                                Combined Mathematics
+                            </option>
+
+                            <option value="Higher Mathematics">
+                                Higher Mathematics
+                            </option>
+
+                            <option value="Mathematics">
+                                Mathematics
+                            </option>
+
+                            <option value="Physics">
+                                Physics
+                            </option>
+
+                            <option value="Information & Communication Technology">
+                                Information & Communication Technology
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="grade3">
+                            Grade
+                        </label>
+
+                        <select id="grade3">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <div class="subject-row">
+            <!-- ==============================
+                 O/L Form
+            =============================== -->
 
-                <div>
+            <div
+                id="olResultsForm"
+                class="results-form hidden"
+            >
 
-                    <label for="subject3">
-                        Subject 3
-                    </label>
 
-                    <select id="subject3">
+                <div class="form-context">
 
-                        <option value="Chemistry">
-                            Chemistry
-                        </option>
+                    <div class="form-context-icon">
+                        O/L
+                    </div>
 
-                        <option value="Combined Mathematics">
-                            Combined Mathematics
-                        </option>
+                    <div>
 
-                        <option value="Higher Mathematics">
-                            Higher Mathematics
-                        </option>
+                        <strong>
+                            GCE Ordinary Level Results
+                        </strong>
 
-                        <option value="Mathematics">
-                            Mathematics
-                        </option>
+                        <span>
+                            Enter six O/L subjects.
+                            Mathematics and English
+                            are included automatically.
+                        </span>
 
-                        <option value="Physics">
-                            Physics
-                        </option>
-
-                        <option value="Information & Communication Technology">
-                            Information & Communication Technology
-                        </option>
-
-                        <option value="Sinhala">
-                            Sinhala
-                        </option>
-
-                        <option value="Art">
-                            Art
-                        </option>
-
-                        <option value="Geography">
-                            Geography
-                        </option>
-
-                    </select>
+                    </div>
 
                 </div>
 
 
-                <div>
+                <!-- Mathematics -->
 
-                    <label for="grade3">
-                        Grade
-                    </label>
+                <div class="subject-row">
 
-                    <select id="grade3">
+                    <div>
 
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="S">S</option>
-                        <option value="F">F</option>
+                        <label>
+                            Subject
+                        </label>
 
-                    </select>
+                        <div class="fixed-subject">
+                            Mathematics
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olMathematics">
+                            Grade
+                        </label>
+
+                        <select id="olMathematics">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- English -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label>
+                            Subject
+                        </label>
+
+                        <div class="fixed-subject">
+                            English
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olEnglish">
+                            Grade
+                        </label>
+
+                        <select id="olEnglish">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- O/L Subject 3 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="olSubject3">
+                            Subject 3
+                        </label>
+
+                        <select id="olSubject3">
+
+                            <option value="Science">
+                                Science
+                            </option>
+
+                            <option value="ICT">
+                                ICT
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Tamil">
+                                Tamil
+                            </option>
+
+                            <option value="History">
+                                History
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                            <option value="Commerce">
+                                Commerce
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olGrade3">
+                            Grade
+                        </label>
+
+                        <select id="olGrade3">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- O/L Subject 4 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="olSubject4">
+                            Subject 4
+                        </label>
+
+                        <select id="olSubject4">
+
+                            <option value="ICT">
+                                ICT
+                            </option>
+
+                            <option value="Science">
+                                Science
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Tamil">
+                                Tamil
+                            </option>
+
+                            <option value="History">
+                                History
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                            <option value="Commerce">
+                                Commerce
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olGrade4">
+                            Grade
+                        </label>
+
+                        <select id="olGrade4">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- O/L Subject 5 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="olSubject5">
+                            Subject 5
+                        </label>
+
+                        <select id="olSubject5">
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Tamil">
+                                Tamil
+                            </option>
+
+                            <option value="Science">
+                                Science
+                            </option>
+
+                            <option value="ICT">
+                                ICT
+                            </option>
+
+                            <option value="History">
+                                History
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                            <option value="Commerce">
+                                Commerce
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olGrade5">
+                            Grade
+                        </label>
+
+                        <select id="olGrade5">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- O/L Subject 6 -->
+
+                <div class="subject-row">
+
+                    <div>
+
+                        <label for="olSubject6">
+                            Subject 6
+                        </label>
+
+                        <select id="olSubject6">
+
+                            <option value="History">
+                                History
+                            </option>
+
+                            <option value="Science">
+                                Science
+                            </option>
+
+                            <option value="ICT">
+                                ICT
+                            </option>
+
+                            <option value="Sinhala">
+                                Sinhala
+                            </option>
+
+                            <option value="Tamil">
+                                Tamil
+                            </option>
+
+                            <option value="Geography">
+                                Geography
+                            </option>
+
+                            <option value="Commerce">
+                                Commerce
+                            </option>
+
+                            <option value="Art">
+                                Art
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="olGrade6">
+                            Grade
+                        </label>
+
+                        <select id="olGrade6">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="S">S</option>
+                            <option value="F">F</option>
+
+                        </select>
+
+                    </div>
 
                 </div>
 
             </div>
 
+
+            <!-- ==============================
+                 Action
+            =============================== -->
 
             <button id="recommendButton">
-                Find My Pathways
+
+                <span>
+                    Find My Pathways
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
             </button>
 
 
             <p class="privacy-note">
-                WiseLanka evaluates your results
-                against the programme requirement
-                records currently stored in the
-                prototype knowledge base.
+
+                WiseLanka evaluates your profile
+                against verified requirement,
+                progression and pathway records
+                currently stored in the prototype
+                knowledge base.
+
             </p>
 
-        </div>
+        </aside>
 
 
-        <!-- --------------------------------
-             Results area
-        --------------------------------- -->
+        <!-- ==================================
+             Results
+        =================================== -->
 
-        <div class="results-column">
+        <section class="results-column">
 
 
             <div
@@ -357,17 +936,55 @@
                     ✦
                 </div>
 
+                <span class="empty-kicker">
+                    Pathway Intelligence
+                </span>
+
                 <h3>
                     Your recommendations
                     will appear here
                 </h3>
 
                 <p>
-                    Enter your results and WiseLanka
-                    will rank the available programmes
-                    based on your current academic
-                    profile.
+                    Select your education level and
+                    enter your results. WiseLanka
+                    will evaluate your current
+                    eligibility and show where each
+                    pathway can lead.
                 </p>
+
+
+                <div class="empty-steps">
+
+                    <span>
+                        Results
+                    </span>
+
+                    <span class="empty-arrow">
+                        →
+                    </span>
+
+                    <span>
+                        Programmes
+                    </span>
+
+                    <span class="empty-arrow">
+                        →
+                    </span>
+
+                    <span>
+                        Progression
+                    </span>
+
+                    <span class="empty-arrow">
+                        →
+                    </span>
+
+                    <span>
+                        Careers
+                    </span>
+
+                </div>
 
             </div>
 
@@ -381,13 +998,18 @@
 
                     <div>
 
-                        <span class="hero-badge">
+                        <span class="results-kicker">
                             Your Results
                         </span>
 
                         <h3>
                             Recommended pathways
                         </h3>
+
+                        <p>
+                            Ranked using your current
+                            academic profile.
+                        </p>
 
                     </div>
 
@@ -407,7 +1029,7 @@
             </div>
 
 
-        </div>
+        </section>
 
 
     </section>
@@ -416,15 +1038,33 @@
 </main>
 
 
+<!-- ========================================
+     Footer
+========================================= -->
+
 <footer>
 
-    <strong>
-        WiseLanka
-    </strong>
+    <div class="footer-inner">
 
-    <span>
-        Know More. Choose Better.
-    </span>
+        <div>
+
+            <strong>
+                WiseLanka
+            </strong>
+
+            <span>
+                Know More. Choose Better.
+            </span>
+
+        </div>
+
+
+        <span>
+            Evidence-based education
+            pathway intelligence.
+        </span>
+
+    </div>
 
 </footer>
 
