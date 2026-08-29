@@ -20,6 +20,10 @@ from backend.app.recommendation.engine import (
     recommend_programmes,
 )
 
+from backend.app.alternative_pathways.engine import (
+    find_alternative_pathways,
+)
+
 
 # ----------------------------------------
 # Type definitions
@@ -121,6 +125,21 @@ class RecommendationRequest(BaseModel):
     student_results: StudentResults
 
 
+class AlternativePathwayRequest(BaseModel):
+    """
+    Request model for finding alternative
+    pathways towards a target programme.
+
+    The learner's current results are used
+    to determine whether each discovered
+    alternative pathway is currently
+    available or whether entry requirements
+    still need to be satisfied.
+    """
+
+    student_results: StudentResults
+
+
 # ----------------------------------------
 # API health check
 # ----------------------------------------
@@ -144,6 +163,7 @@ def root():
             "programme_recommendations",
             "career_pathway_intelligence",
             "qualification_progression",
+            "alternative_pathway_intelligence",
         ],
     }
 
@@ -215,3 +235,39 @@ def get_qualification_progression(
     )
 
     return progression
+
+
+# ----------------------------------------
+# Alternative pathway endpoint
+#
+# Example:
+#
+# POST /alternative-pathways/PRG0006
+#
+# Finds verified predecessor programmes
+# that can provide an alternative academic
+# route towards the selected target
+# programme.
+#
+# The learner's current results are also
+# evaluated against each alternative so
+# WiseLanka can distinguish between:
+#
+# AVAILABLE_NOW
+# REQUIREMENTS_NOT_MET
+# ----------------------------------------
+
+@app.post(
+    "/alternative-pathways/{target_programme_id}"
+)
+def get_alternative_pathways(
+    target_programme_id: str,
+    request: AlternativePathwayRequest,
+):
+
+    pathways = find_alternative_pathways(
+        target_programme_id,
+        request.student_results,
+    )
+
+    return pathways
