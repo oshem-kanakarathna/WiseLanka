@@ -24,30 +24,13 @@ from backend.app.alternative_pathways.engine import (
     find_alternative_pathways,
 )
 
+from backend.app.skills.engine import (
+    get_skill_alignment,
+)
+
 
 # ----------------------------------------
 # Type definitions
-#
-# Supports both:
-#
-# Old flat A/L format:
-# {
-#     "Combined Mathematics": "A",
-#     "Physics": "B",
-#     "Chemistry": "C"
-# }
-#
-# New level-aware format:
-# {
-#     "A_LEVEL": {
-#         "Combined Mathematics": "A",
-#         "Physics": "B"
-#     },
-#     "O_LEVEL": {
-#         "Mathematics": "A",
-#         "English": "B"
-#     }
-# }
 # ----------------------------------------
 
 StudentResults = Dict[
@@ -69,16 +52,12 @@ app = FastAPI(
         "AI-powered education pathway "
         "intelligence backend for Sri Lanka."
     ),
-    version="0.3.0",
+    version="0.4.0",
 )
 
 
 # ----------------------------------------
 # CORS
-#
-# Allows the development frontend
-# running on port 5500 to communicate
-# with FastAPI running on port 8000.
 # ----------------------------------------
 
 app.add_middleware(
@@ -108,7 +87,6 @@ class EligibilityRequest(BaseModel):
     """
 
     programme_id: str
-
     student_results: StudentResults
 
 
@@ -116,10 +94,6 @@ class RecommendationRequest(BaseModel):
     """
     Request model for generating programme
     recommendations.
-
-    student_results accepts both the original
-    flat A/L format and the newer level-aware
-    nested format.
     """
 
     student_results: StudentResults
@@ -129,12 +103,6 @@ class AlternativePathwayRequest(BaseModel):
     """
     Request model for finding alternative
     pathways towards a target programme.
-
-    The learner's current results are used
-    to determine whether each discovered
-    alternative pathway is currently
-    available or whether entry requirements
-    still need to be satisfied.
     """
 
     student_results: StudentResults
@@ -150,10 +118,8 @@ def root():
     return {
         "application": "WiseLanka",
         "status": "running",
-        "version": "0.3.0",
-        "message": (
-            "WiseLanka API is running"
-        ),
+        "version": "0.4.0",
+        "message": "WiseLanka API is running",
         "supported_profile_formats": [
             "legacy_flat_a_level",
             "level_aware_nested",
@@ -164,6 +130,7 @@ def root():
             "career_pathway_intelligence",
             "qualification_progression",
             "alternative_pathway_intelligence",
+            "skills_intelligence",
         ],
     }
 
@@ -203,24 +170,13 @@ def get_recommendations(
     )
 
     return {
-        "count":
-            len(recommendations),
-
-        "recommendations":
-            recommendations,
+        "count": len(recommendations),
+        "recommendations": recommendations,
     }
 
 
 # ----------------------------------------
 # Qualification progression endpoint
-#
-# Example:
-#
-# GET /progression/QLF0004
-#
-# Returns verified immediate academic
-# progression pathways from the selected
-# qualification.
 # ----------------------------------------
 
 @app.get(
@@ -239,22 +195,6 @@ def get_qualification_progression(
 
 # ----------------------------------------
 # Alternative pathway endpoint
-#
-# Example:
-#
-# POST /alternative-pathways/PRG0006
-#
-# Finds verified predecessor programmes
-# that can provide an alternative academic
-# route towards the selected target
-# programme.
-#
-# The learner's current results are also
-# evaluated against each alternative so
-# WiseLanka can distinguish between:
-#
-# AVAILABLE_NOW
-# REQUIREMENTS_NOT_MET
 # ----------------------------------------
 
 @app.post(
@@ -271,3 +211,35 @@ def get_alternative_pathways(
     )
 
     return pathways
+
+
+# ----------------------------------------
+# Skills intelligence endpoint
+#
+# Example:
+#
+# GET /skills/alignment/PRG0007/CAR0004
+#
+# Compares skills represented by a
+# programme with skills recorded for a
+# selected career.
+#
+# This is programme-career alignment.
+# It does not claim that an individual
+# learner personally has or lacks skills.
+# ----------------------------------------
+
+@app.get(
+    "/skills/alignment/{programme_id}/{career_id}"
+)
+def get_programme_career_skill_alignment(
+    programme_id: str,
+    career_id: str,
+):
+
+    alignment = get_skill_alignment(
+        programme_id,
+        career_id,
+    )
+
+    return alignment

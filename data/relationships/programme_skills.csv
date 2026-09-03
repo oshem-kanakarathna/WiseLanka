@@ -1,1 +1,23 @@
 programme_id,skill_id,skill_level,relationship_type,notes
+PRG0005,SKL0001,High,Develops,Programming is developed through software development and programming modules in the programme
+PRG0005,SKL0002,High,Develops,Object-oriented programming is explicitly represented within the programme curriculum
+PRG0005,SKL0003,High,Develops,Algorithms and data structures form part of the programme computing foundations
+PRG0005,SKL0004,Medium,Develops,Database knowledge is developed as part of the software engineering curriculum
+PRG0005,SKL0005,Medium,Develops,Web application development is represented within the programme curriculum
+PRG0005,SKL0006,High,Develops,Software engineering is a central competency of the degree programme
+PRG0006,SKL0001,High,Develops,Programming and software development are core components of the computer science programme
+PRG0006,SKL0002,High,Develops,Object-oriented programming is represented within the programme curriculum
+PRG0006,SKL0003,High,Develops,Algorithmic and computational problem solving are developed within the computer science curriculum
+PRG0006,SKL0004,Medium,Develops,Database systems are represented within the computer science curriculum
+PRG0006,SKL0005,Medium,Develops,Web development is represented within the programme curriculum
+PRG0006,SKL0006,Medium,Develops,Software development and engineering practices contribute to programme learning
+PRG0006,SKL0009,Medium,Develops,Machine learning is represented as an advanced area within the programme curriculum
+PRG0007,SKL0001,High,Develops,Programming is a core foundation of the artificial intelligence and data science programme
+PRG0007,SKL0003,High,Develops,Algorithms and data structures support artificial intelligence and data science problem solving
+PRG0007,SKL0004,Medium,Develops,Database concepts support data-centred computing within the programme
+PRG0007,SKL0007,High,Develops,Mathematical foundations are central to artificial intelligence and data science study
+PRG0007,SKL0008,High,Develops,Data analysis is a central competency developed by the programme
+PRG0007,SKL0009,High,Develops,Machine learning is a central area of study within the programme
+PRG0007,SKL0010,High,Develops,Artificial intelligence is a central area of study within the programme
+PRG0007,SKL0011,High,Develops,Data engineering concepts support the programme data science pathway
+PRG0007,SKL0012,High,Develops,Deep learning is represented within advanced artificial intelligence study

@@ -1,1 +1,14 @@
 skill_id,skill_name,skill_category,description,active_status
+SKL0001,Programming,Software Development,Ability to design and implement computer programs using programming languages,Active
+SKL0002,Object-Oriented Programming,Software Development,Ability to develop software using object-oriented concepts such as classes objects inheritance and encapsulation,Active
+SKL0003,Algorithms and Data Structures,Computer Science,Ability to understand design and apply algorithms and appropriate data structures to computational problems,Active
+SKL0004,Database Systems,Data Management,Ability to design query and work with structured database systems,Active
+SKL0005,Web Development,Software Development,Ability to develop web-based applications and services,Active
+SKL0006,Software Engineering,Software Development,Ability to apply systematic software development design testing and maintenance practices,Active
+SKL0007,Mathematics for Computing,Computational Foundations,Ability to apply mathematical concepts relevant to computing data science and artificial intelligence,Active
+SKL0008,Data Analysis,Data and Analytics,Ability to examine process and interpret data to derive useful information and insights,Active
+SKL0009,Machine Learning,Artificial Intelligence,Ability to develop train evaluate and apply machine learning models,Active
+SKL0010,Artificial Intelligence,Artificial Intelligence,Ability to understand and develop computational systems that perform artificial-intelligence tasks,Active
+SKL0011,Data Engineering,Data and Analytics,Ability to prepare transform manage and support data pipelines and data-intensive systems,Active
+SKL0012,Deep Learning,Artificial Intelligence,Ability to understand develop and evaluate neural-network-based learning models,Active
+SKL0013,Systems Analysis,Information Systems,Ability to analyse organisational requirements and translate them into information-system solutions,Active

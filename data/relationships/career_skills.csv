@@ -1,1 +1,29 @@
 career_id,skill_id,importance_level,expected_level,notes
+CAR0001,SKL0001,High,High,Programming is a core competency for software engineering
+CAR0001,SKL0002,High,High,Object-oriented programming is commonly relevant to software design and implementation
+CAR0001,SKL0003,High,High,Algorithms and data structures support efficient software problem solving
+CAR0001,SKL0004,Medium,Medium,Database knowledge is relevant to many software systems
+CAR0001,SKL0005,Medium,Medium,Web development is relevant to many software engineering roles
+CAR0001,SKL0006,High,High,Software engineering practices are central to the occupation
+CAR0002,SKL0001,High,High,Programming supports data processing analysis and modelling
+CAR0002,SKL0007,High,High,Mathematical foundations support statistical and computational data analysis
+CAR0002,SKL0008,High,High,Data analysis is a central competency for data science
+CAR0002,SKL0009,High,High,Machine learning is strongly relevant to predictive data science work
+CAR0002,SKL0011,Medium,Medium,Data engineering supports preparation and management of analytical data
+CAR0003,SKL0001,High,High,Programming is required to implement and integrate artificial intelligence systems
+CAR0003,SKL0003,High,High,Algorithms and data structures support artificial intelligence system development
+CAR0003,SKL0007,High,High,Mathematical foundations support artificial intelligence methods
+CAR0003,SKL0009,High,High,Machine learning is a major component of modern artificial intelligence engineering
+CAR0003,SKL0010,High,High,Artificial intelligence knowledge is central to the occupation
+CAR0003,SKL0012,Medium,Medium,Deep learning is relevant to many advanced artificial intelligence applications
+CAR0004,SKL0001,High,High,Programming is required to build train and deploy machine learning systems
+CAR0004,SKL0003,High,High,Algorithmic knowledge supports machine learning system implementation
+CAR0004,SKL0007,High,High,Mathematics supports machine learning modelling and evaluation
+CAR0004,SKL0008,Medium,Medium,Data analysis supports exploration preparation and evaluation of machine learning data
+CAR0004,SKL0009,High,High,Machine learning is the central technical competency of the occupation
+CAR0004,SKL0011,Medium,Medium,Data engineering supports reliable machine learning data pipelines
+CAR0004,SKL0012,Medium,Medium,Deep learning is relevant to advanced machine learning roles
+CAR0005,SKL0001,Medium,Medium,Programming knowledge can support technical systems analysis
+CAR0005,SKL0004,Medium,Medium,Database knowledge supports analysis of information systems
+CAR0005,SKL0006,Medium,Medium,Software engineering knowledge supports communication of system requirements and solutions
+CAR0005,SKL0013,High,High,Systems analysis is the central competency represented by the occupation
