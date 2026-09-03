@@ -3574,3 +3574,320 @@ footer {
     font-size: 7px;
     font-weight: 800;
 }
+
+/* =========================================
+   Skills Intelligence
+   ========================================= */
+
+.skill-alignment-button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 11px 16px;
+
+    border: 1px solid rgba(53, 85, 121, 0.22);
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #17324d;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.3;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.skill-alignment-button:hover {
+    background: #f5f9fc;
+    border-color: rgba(53, 85, 121, 0.42);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(30, 60, 90, 0.08);
+}
+
+
+.skill-alignment-button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+
+.skill-alignment-container {
+    margin-top: 14px;
+}
+
+
+.skill-alignment-content {
+    padding: 18px;
+
+    border: 1px solid rgba(49, 84, 116, 0.14);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fbfdff 0%,
+            #f6f9fc 100%
+        );
+}
+
+
+.skill-alignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+
+    margin-bottom: 14px;
+}
+
+
+.skill-alignment-header > div {
+    flex: 1;
+}
+
+
+.skill-alignment-title {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #16324b;
+
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+
+.skill-alignment-header p {
+    margin: 0;
+
+    color: #637486;
+
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+.skill-alignment-percentage {
+    flex-shrink: 0;
+
+    min-width: 58px;
+    padding: 8px 10px;
+
+    border-radius: 9px;
+
+    background: #e8f3ee;
+    color: #236143;
+
+    text-align: center;
+
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+
+.skill-alignment-track {
+    width: 100%;
+    height: 8px;
+
+    margin-bottom: 12px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #e4ebf1;
+}
+
+
+.skill-alignment-bar {
+    height: 100%;
+    width: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4d7c6b,
+            #659885
+        );
+
+    transition: width 0.45s ease;
+}
+
+
+.skill-alignment-summary {
+    margin: 0 0 16px;
+
+    color: #526575;
+
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+
+.skill-alignment-group {
+    padding-top: 14px;
+    margin-top: 14px;
+
+    border-top: 1px solid
+        rgba(49, 84, 116, 0.1);
+}
+
+
+.skill-alignment-group-title {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #233d52;
+
+    font-size: 0.84rem;
+    font-weight: 800;
+}
+
+
+.skill-alignment-group-description {
+    margin: -2px 0 9px;
+
+    color: #70808e;
+
+    font-size: 0.76rem;
+    line-height: 1.45;
+}
+
+
+.skill-alignment-list {
+    display: grid;
+    gap: 7px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.skill-alignment-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    color: #435563;
+
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+
+.skill-alignment-shared li {
+    background:
+        rgba(76, 132, 104, 0.07);
+}
+
+
+.skill-alignment-additional li {
+    background:
+        rgba(181, 133, 67, 0.07);
+}
+
+
+.skill-alignment-icon {
+    flex-shrink: 0;
+
+    width: 18px;
+
+    text-align: center;
+    font-weight: 800;
+}
+
+
+.skill-alignment-shared
+.skill-alignment-icon {
+    color: #3e755a;
+}
+
+
+.skill-alignment-additional
+.skill-alignment-icon {
+    color: #a37335;
+}
+
+
+.skill-alignment-explanation {
+    margin: 16px 0 0;
+    padding-top: 13px;
+
+    border-top: 1px solid
+        rgba(49, 84, 116, 0.1);
+
+    color: #71808d;
+
+    font-size: 0.74rem;
+    line-height: 1.55;
+}
+
+
+.skill-alignment-unavailable,
+.skill-alignment-error {
+    margin: 0;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    color: #675b48;
+
+    background: #faf7f1;
+
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+.skill-alignment-error {
+    color: #8a4545;
+    background: #fcf4f4;
+}
+
+
+/* =========================================
+   Skills Intelligence Responsive
+   ========================================= */
+
+@media (
+    max-width: 640px
+) {
+
+    .skill-alignment-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    .skill-alignment-percentage {
+        align-self: flex-start;
+    }
+
+
+    .skill-alignment-content {
+        padding: 15px;
+    }
+}

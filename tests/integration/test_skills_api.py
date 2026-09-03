@@ -59,7 +59,7 @@ def test_skills_alignment_unknown_programme():
     data = response.json()
 
     assert data["status"] == "NOT_FOUND"
-    assert data["alignment_percentage"] == 0.0
+    assert data["alignment_percentage"] is None
     assert data["shared_skills"] == []
 
 
@@ -73,7 +73,7 @@ def test_skills_alignment_unknown_career():
     data = response.json()
 
     assert data["status"] == "NOT_FOUND"
-    assert data["alignment_percentage"] == 0.0
+    assert data["alignment_percentage"] is None
     assert data["shared_skills"] == []
 
 

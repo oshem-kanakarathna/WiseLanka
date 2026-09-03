@@ -120,9 +120,9 @@ def test_unknown_programme():
     assert result["status"] == "NOT_FOUND"
 
     assert (
-        result["alignment_percentage"]
-        == 0.0
-    )
+    result["alignment_percentage"]
+    is None
+)
 
     assert result["shared_skills"] == []
 
@@ -141,9 +141,9 @@ def test_unknown_career():
     assert result["status"] == "NOT_FOUND"
 
     assert (
-        result["alignment_percentage"]
-        == 0.0
-    )
+    result["alignment_percentage"]
+    is None
+)
 
     assert result["shared_skills"] == []
 
@@ -164,3 +164,43 @@ def test_additional_skills_are_not_personal_skill_gaps():
     ].lower()
 
     assert "personal skill" in explanation
+
+def test_insufficient_programme_skill_data():
+    result = get_skill_alignment(
+        "PRG0001",
+        "CAR0003",
+    )
+
+    assert (
+        result["status"]
+        == "INSUFFICIENT_DATA"
+    )
+
+    assert (
+        result["alignment_percentage"]
+        is None
+    )
+
+    assert (
+        result["programme_skill_count"]
+        == 0
+    )
+
+    assert (
+        result["shared_skills"]
+        == []
+    )
+
+    assert (
+        result[
+            "additional_career_skills"
+        ]
+        == []
+    )
+
+    assert (
+        "sufficient"
+        in result[
+            "explanation"
+        ].lower()
+    )

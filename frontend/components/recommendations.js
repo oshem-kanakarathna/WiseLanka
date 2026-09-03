@@ -4,6 +4,8 @@ const API_URL =
 const ALTERNATIVE_PATHWAYS_API_URL =
     "http://127.0.0.1:8000/alternative-pathways";
 
+const SKILLS_API_URL =
+    "http://127.0.0.1:8000/skills/alignment";
 
 const recommendButton =
     document.getElementById(
@@ -839,9 +841,581 @@ function createCareerIndicator(
     return indicator;
 }
 
+// ====================================
+// Skills Intelligence
+// ====================================
+
+async function fetchSkillAlignment(
+    programmeId,
+    careerId
+) {
+
+    const response =
+        await fetch(
+            (
+                SKILLS_API_URL
+                + "/"
+                + encodeURIComponent(
+                    programmeId
+                )
+                + "/"
+                + encodeURIComponent(
+                    careerId
+                )
+            )
+        );
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            (
+                "Skills API returned "
+                + response.status
+            )
+        );
+    }
+
+
+    return await response.json();
+}
+
+
+// ====================================
+// Create Skill Alignment Result
+// ====================================
+
+function createSkillAlignmentContent(
+    alignment
+) {
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+
+    wrapper.className =
+        "skill-alignment-content";
+
+
+    if (
+        !alignment
+        || alignment.status
+            !== "AVAILABLE"
+    ) {
+
+        const unavailable =
+            document.createElement(
+                "p"
+            );
+
+
+        unavailable.className =
+            "skill-alignment-unavailable";
+
+
+        unavailable.textContent =
+            (
+                "Skill alignment data is "
+                + "not currently available "
+                + "for this programme and "
+                + "career combination."
+            );
+
+
+        wrapper.appendChild(
+            unavailable
+        );
+
+
+        return wrapper;
+    }
+
+
+    // --------------------------------
+    // Alignment heading
+    // --------------------------------
+
+    const header =
+        document.createElement(
+            "div"
+        );
+
+
+    header.className =
+        "skill-alignment-header";
+
+
+    const headerText =
+        document.createElement(
+            "div"
+        );
+
+
+    const title =
+        document.createElement(
+            "strong"
+        );
+
+
+    title.className =
+        "skill-alignment-title";
+
+
+    title.textContent =
+        "Programme–Career Skill Alignment";
+
+
+    const subtitle =
+        document.createElement(
+            "p"
+        );
+
+
+    subtitle.textContent =
+        (
+            "How strongly the recorded "
+            + "programme skills overlap "
+            + "with this career model."
+        );
+
+
+    headerText.appendChild(
+        title
+    );
+
+
+    headerText.appendChild(
+        subtitle
+    );
+
+
+    const percentage =
+        document.createElement(
+            "span"
+        );
+
+
+    percentage.className =
+        "skill-alignment-percentage";
+
+
+    percentage.textContent =
+        (
+            alignment
+                .alignment_percentage
+            + "%"
+        );
+
+
+    header.appendChild(
+        headerText
+    );
+
+
+    header.appendChild(
+        percentage
+    );
+
+
+    wrapper.appendChild(
+        header
+    );
+
+
+    // --------------------------------
+    // Alignment progress bar
+    // --------------------------------
+
+    const progressTrack =
+        document.createElement(
+            "div"
+        );
+
+
+    progressTrack.className =
+        "skill-alignment-track";
+
+
+    const progressBar =
+        document.createElement(
+            "div"
+        );
+
+
+    progressBar.className =
+        "skill-alignment-bar";
+
+
+    const alignmentPercentage =
+        Number(
+            alignment
+                .alignment_percentage
+            || 0
+        );
+
+
+    progressBar.style.width =
+        (
+            Math.min(
+                Math.max(
+                    alignmentPercentage,
+                    0
+                ),
+                100
+            )
+            + "%"
+        );
+
+
+    progressTrack.appendChild(
+        progressBar
+    );
+
+
+    wrapper.appendChild(
+        progressTrack
+    );
+
+
+    // --------------------------------
+    // Alignment summary
+    // --------------------------------
+
+    const summary =
+        document.createElement(
+            "p"
+        );
+
+
+    summary.className =
+        "skill-alignment-summary";
+
+
+    summary.textContent =
+        (
+            alignment.shared_skill_count
+            + " of "
+            + alignment.career_skill_count
+            + " career skills recorded "
+            + "in WiseLanka are represented "
+            + "by this programme."
+        );
+
+
+    wrapper.appendChild(
+        summary
+    );
+
+
+    // --------------------------------
+    // Shared skills
+    // --------------------------------
+
+    const sharedSkills =
+        alignment.shared_skills
+        || [];
+
+
+    if (
+        sharedSkills.length > 0
+    ) {
+
+        const sharedSection =
+            document.createElement(
+                "div"
+            );
+
+
+        sharedSection.className =
+            "skill-alignment-group";
+
+
+        const sharedTitle =
+            document.createElement(
+                "strong"
+            );
+
+
+        sharedTitle.className =
+            "skill-alignment-group-title";
+
+
+        sharedTitle.textContent =
+            "Represented by programme";
+
+
+        sharedSection.appendChild(
+            sharedTitle
+        );
+
+
+        const sharedList =
+            document.createElement(
+                "ul"
+            );
+
+
+        sharedList.className =
+            (
+                "skill-alignment-list "
+                + "skill-alignment-shared"
+            );
+
+
+        sharedSkills.forEach(
+            skill => {
+
+                const item =
+                    document.createElement(
+                        "li"
+                    );
+
+
+                const icon =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                icon.className =
+                    "skill-alignment-icon";
+
+
+                icon.textContent =
+                    "✓";
+
+
+                const skillName =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                skillName.textContent =
+                    (
+                        skill.skill_name
+                        || skill.skill_id
+                        || "Recorded skill"
+                    );
+
+
+                item.appendChild(
+                    icon
+                );
+
+
+                item.appendChild(
+                    skillName
+                );
+
+
+                sharedList.appendChild(
+                    item
+                );
+            }
+        );
+
+
+        sharedSection.appendChild(
+            sharedList
+        );
+
+
+        wrapper.appendChild(
+            sharedSection
+        );
+    }
+
+
+    // --------------------------------
+    // Additional career skills
+    // --------------------------------
+
+    const additionalSkills =
+        (
+            alignment
+                .additional_career_skills
+            || []
+        );
+
+
+    if (
+        additionalSkills.length > 0
+    ) {
+
+        const additionalSection =
+            document.createElement(
+                "div"
+            );
+
+
+        additionalSection.className =
+            "skill-alignment-group";
+
+
+        const additionalTitle =
+            document.createElement(
+                "strong"
+            );
+
+
+        additionalTitle.className =
+            "skill-alignment-group-title";
+
+
+        additionalTitle.textContent =
+            "Additional career skills";
+
+
+        additionalSection.appendChild(
+            additionalTitle
+        );
+
+
+        const additionalDescription =
+            document.createElement(
+                "p"
+            );
+
+
+        additionalDescription.className =
+            "skill-alignment-group-description";
+
+
+        additionalDescription.textContent =
+            (
+                "These career skills are not "
+                + "represented in the recorded "
+                + "programme skills."
+            );
+
+
+        additionalSection.appendChild(
+            additionalDescription
+        );
+
+
+        const additionalList =
+            document.createElement(
+                "ul"
+            );
+
+
+        additionalList.className =
+            (
+                "skill-alignment-list "
+                + "skill-alignment-additional"
+            );
+
+
+        additionalSkills.forEach(
+            skill => {
+
+                const item =
+                    document.createElement(
+                        "li"
+                    );
+
+
+                const icon =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                icon.className =
+                    "skill-alignment-icon";
+
+
+                icon.textContent =
+                    "○";
+
+
+                const skillName =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                skillName.textContent =
+                    (
+                        skill.skill_name
+                        || skill.skill_id
+                        || "Recorded skill"
+                    );
+
+
+                item.appendChild(
+                    icon
+                );
+
+
+                item.appendChild(
+                    skillName
+                );
+
+
+                additionalList.appendChild(
+                    item
+                );
+            }
+        );
+
+
+        additionalSection.appendChild(
+            additionalList
+        );
+
+
+        wrapper.appendChild(
+            additionalSection
+        );
+    }
+
+
+    // --------------------------------
+    // Explanation
+    // --------------------------------
+
+    if (
+        alignment.explanation
+    ) {
+
+        const explanation =
+            document.createElement(
+                "p"
+            );
+
+
+        explanation.className =
+            "skill-alignment-explanation";
+
+
+        explanation.textContent =
+            alignment.explanation;
+
+
+        wrapper.appendChild(
+            explanation
+        );
+    }
+
+
+    return wrapper;
+}
+
+
+// ====================================
+// Career Pathway Intelligence
+// ====================================
 
 function createCareerPathways(
-    careers
+    careers,
+    programmeId
 ) {
 
     if (
@@ -971,6 +1545,10 @@ function createCareerPathways(
             "career-item";
 
 
+        // --------------------------------
+        // Career heading
+        // --------------------------------
+
         const careerTop =
             document.createElement(
                 "div"
@@ -1039,6 +1617,10 @@ function createCareerPathways(
         );
 
 
+        // --------------------------------
+        // Career description
+        // --------------------------------
+
         if (
             career.description
         ) {
@@ -1062,6 +1644,10 @@ function createCareerPathways(
             );
         }
 
+
+        // --------------------------------
+        // Career indicators
+        // --------------------------------
 
         const indicators =
             document.createElement(
@@ -1104,6 +1690,10 @@ function createCareerPathways(
         );
 
 
+        // --------------------------------
+        // Relationship explanation
+        // --------------------------------
+
         if (
             career.relationship_notes
         ) {
@@ -1128,6 +1718,224 @@ function createCareerPathways(
         }
 
 
+        // --------------------------------
+        // Skill Alignment UI
+        // --------------------------------
+
+        const skillAlignmentButton =
+            document.createElement(
+                "button"
+            );
+
+
+        skillAlignmentButton.type =
+            "button";
+
+
+        skillAlignmentButton.className =
+            "skill-alignment-button";
+
+
+        skillAlignmentButton.textContent =
+            "View Skill Alignment";
+
+
+        const skillAlignmentContainer =
+            document.createElement(
+                "div"
+            );
+
+
+        skillAlignmentContainer.className =
+            "skill-alignment-container";
+
+
+        skillAlignmentContainer.style.display =
+            "none";
+
+
+        skillAlignmentButton.addEventListener(
+            "click",
+            async () => {
+
+                // ------------------------
+                // Hide existing alignment
+                // ------------------------
+
+                if (
+                    skillAlignmentContainer
+                        .style.display
+                    !== "none"
+                ) {
+
+                    skillAlignmentContainer
+                        .style.display =
+                        "none";
+
+
+                    skillAlignmentButton
+                        .textContent =
+                        "View Skill Alignment";
+
+
+                    return;
+                }
+
+
+                // ------------------------
+                // Validate identifiers
+                // ------------------------
+
+                if (
+                    !programmeId
+                    || !career.career_id
+                ) {
+
+                    skillAlignmentContainer
+                        .innerHTML =
+                        "";
+
+
+                    const message =
+                        document.createElement(
+                            "p"
+                        );
+
+
+                    message.textContent =
+                        (
+                            "Skill alignment cannot "
+                            + "be calculated because "
+                            + "the programme or career "
+                            + "identifier is missing."
+                        );
+
+
+                    skillAlignmentContainer
+                        .appendChild(
+                            message
+                        );
+
+
+                    skillAlignmentContainer
+                        .style.display =
+                        "block";
+
+
+                    return;
+                }
+
+
+                // ------------------------
+                // Loading state
+                // ------------------------
+
+                skillAlignmentButton.disabled =
+                    true;
+
+
+                skillAlignmentButton.textContent =
+                    "Loading alignment...";
+
+
+                skillAlignmentContainer.innerHTML =
+                    "";
+
+
+                try {
+
+                    const alignment =
+                        await fetchSkillAlignment(
+                            programmeId,
+                            career.career_id
+                        );
+
+
+                    const content =
+                        createSkillAlignmentContent(
+                            alignment
+                        );
+
+
+                    skillAlignmentContainer
+                        .appendChild(
+                            content
+                        );
+
+
+                    skillAlignmentContainer
+                        .style.display =
+                        "block";
+
+
+                    skillAlignmentButton
+                        .textContent =
+                        "Hide Skill Alignment";
+
+                } catch (
+                    error
+                ) {
+
+                    console.error(
+                        (
+                            "Skill alignment "
+                            + "request failed:"
+                        ),
+                        error
+                    );
+
+
+                    const errorMessage =
+                        document.createElement(
+                            "p"
+                        );
+
+
+                    errorMessage.className =
+                        "skill-alignment-error";
+
+
+                    errorMessage.textContent =
+                        (
+                            "Could not load skill "
+                            + "alignment right now."
+                        );
+
+
+                    skillAlignmentContainer
+                        .appendChild(
+                            errorMessage
+                        );
+
+
+                    skillAlignmentContainer
+                        .style.display =
+                        "block";
+
+
+                    skillAlignmentButton
+                        .textContent =
+                        "Try Skill Alignment Again";
+
+                } finally {
+
+                    skillAlignmentButton.disabled =
+                        false;
+                }
+            }
+        );
+
+
+        careerCard.appendChild(
+            skillAlignmentButton
+        );
+
+
+        careerCard.appendChild(
+            skillAlignmentContainer
+        );
+
+
         careerList.appendChild(
             careerCard
         );
@@ -1141,7 +1949,6 @@ function createCareerPathways(
 
     return section;
 }
-
 
 // ====================================
 // Qualification Progression Intelligence
@@ -2081,10 +2888,12 @@ function createRecommendationCard(
 
 
     const careerSection =
-        createCareerPathways(
-            recommendation
-                .career_pathways
-        );
+    createCareerPathways(
+        recommendation
+            .career_pathways,
+        recommendation
+            .programme_id
+    );
 
 
     if (

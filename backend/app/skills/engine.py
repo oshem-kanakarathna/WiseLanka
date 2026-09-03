@@ -46,7 +46,10 @@ def _find_by_id(
 ):
     for record in records:
 
-        if record.get(field_name) == record_id:
+        if (
+            record.get(field_name)
+            == record_id
+        ):
             return record
 
     return None
@@ -58,7 +61,12 @@ def _skill_lookup():
     return {
         skill["skill_id"]: skill
         for skill in skills
-        if skill.get("active_status") == "Active"
+        if (
+            skill.get(
+                "active_status"
+            )
+            == "Active"
+        )
     }
 
 
@@ -100,21 +108,29 @@ def get_programme_skills(
 
         programme_skills.append(
             {
-                "skill_id": skill_id,
+                "skill_id":
+                    skill_id,
+
                 "skill_name":
-                    skill.get("skill_name"),
+                    skill.get(
+                        "skill_name"
+                    ),
+
                 "skill_category":
                     skill.get(
                         "skill_category"
                     ),
+
                 "skill_level":
                     relationship.get(
                         "skill_level"
                     ),
+
                 "relationship_type":
                     relationship.get(
                         "relationship_type"
                     ),
+
                 "notes":
                     relationship.get(
                         "notes"
@@ -163,21 +179,29 @@ def get_career_skills(
 
         career_skills.append(
             {
-                "skill_id": skill_id,
+                "skill_id":
+                    skill_id,
+
                 "skill_name":
-                    skill.get("skill_name"),
+                    skill.get(
+                        "skill_name"
+                    ),
+
                 "skill_category":
                     skill.get(
                         "skill_category"
                     ),
+
                 "importance_level":
                     relationship.get(
                         "importance_level"
                     ),
+
                 "expected_level":
                     relationship.get(
                         "expected_level"
                     ),
+
                 "notes":
                     relationship.get(
                         "notes"
@@ -211,15 +235,43 @@ def get_skill_alignment(
         career_id,
     )
 
-    if not programme or not career:
+
+    # --------------------------------
+    # Unknown programme or career
+    # --------------------------------
+
+    if (
+        not programme
+        or not career
+    ):
         return {
-            "programme_id": programme_id,
-            "career_id": career_id,
-            "status": "NOT_FOUND",
-            "alignment_percentage": 0.0,
-            "shared_skills": [],
-            "additional_career_skills": [],
+            "programme_id":
+                programme_id,
+
+            "career_id":
+                career_id,
+
+            "status":
+                "NOT_FOUND",
+
+            "alignment_percentage":
+                None,
+
+            "shared_skills":
+                [],
+
+            "additional_career_skills":
+                [],
+
+            "explanation":
+                (
+                    "The requested programme "
+                    "or career could not be "
+                    "found in the WiseLanka "
+                    "knowledge base."
+                ),
         }
+
 
     programme_skills = (
         get_programme_skills(
@@ -233,9 +285,155 @@ def get_skill_alignment(
         )
     )
 
+
+    # --------------------------------
+    # Insufficient programme evidence
+    # --------------------------------
+
+    if (
+        len(programme_skills)
+        == 0
+    ):
+        return {
+            "programme_id":
+                programme_id,
+
+            "programme_name":
+                programme.get(
+                    "programme_name"
+                ),
+
+            "career_id":
+                career_id,
+
+            "career_name":
+                career.get(
+                    "career_name"
+                ),
+
+            "status":
+                "INSUFFICIENT_DATA",
+
+            "programme_skill_count":
+                0,
+
+            "career_skill_count":
+                len(
+                    career_skills
+                ),
+
+            "shared_skill_count":
+                0,
+
+            "additional_skill_count":
+                0,
+
+            "alignment_percentage":
+                None,
+
+            "programme_skills":
+                [],
+
+            "career_skills":
+                career_skills,
+
+            "shared_skills":
+                [],
+
+            "additional_career_skills":
+                [],
+
+            "explanation":
+                (
+                    "WiseLanka does not "
+                    "currently have sufficient "
+                    "recorded programme-skill "
+                    "evidence to calculate "
+                    "this alignment. A missing "
+                    "alignment score does not "
+                    "mean that the programme "
+                    "does not develop skills "
+                    "relevant to this career."
+                ),
+        }
+
+
+    # --------------------------------
+    # Insufficient career evidence
+    # --------------------------------
+
+    if (
+        len(career_skills)
+        == 0
+    ):
+        return {
+            "programme_id":
+                programme_id,
+
+            "programme_name":
+                programme.get(
+                    "programme_name"
+                ),
+
+            "career_id":
+                career_id,
+
+            "career_name":
+                career.get(
+                    "career_name"
+                ),
+
+            "status":
+                "INSUFFICIENT_DATA",
+
+            "programme_skill_count":
+                len(
+                    programme_skills
+                ),
+
+            "career_skill_count":
+                0,
+
+            "shared_skill_count":
+                0,
+
+            "additional_skill_count":
+                0,
+
+            "alignment_percentage":
+                None,
+
+            "programme_skills":
+                programme_skills,
+
+            "career_skills":
+                [],
+
+            "shared_skills":
+                [],
+
+            "additional_career_skills":
+                [],
+
+            "explanation":
+                (
+                    "WiseLanka does not "
+                    "currently have sufficient "
+                    "recorded career-skill "
+                    "evidence to calculate "
+                    "this alignment."
+                ),
+        }
+
+
+    # --------------------------------
+    # Compare skill identifiers
+    # --------------------------------
+
     programme_skill_ids = {
         skill["skill_id"]
-        for skill in programme_skills
+        for skill
+        in programme_skills
     }
 
     shared_skills = []
@@ -257,58 +455,84 @@ def get_skill_alignment(
                 skill
             )
 
+
+    # --------------------------------
+    # Calculate transparent alignment
+    # --------------------------------
+
     career_skill_count = len(
         career_skills
     )
 
-    if career_skill_count == 0:
-        alignment_percentage = 0.0
-
-    else:
-        alignment_percentage = round(
-            (
-                len(shared_skills)
-                / career_skill_count
+    alignment_percentage = round(
+        (
+            len(
+                shared_skills
             )
-            * 100,
-            1,
+            / career_skill_count
         )
+        * 100,
+        1,
+    )
+
+
+    # --------------------------------
+    # Final alignment response
+    # --------------------------------
 
     return {
         "programme_id":
             programme_id,
+
         "programme_name":
             programme.get(
                 "programme_name"
             ),
+
         "career_id":
             career_id,
+
         "career_name":
             career.get(
                 "career_name"
             ),
+
         "status":
             "AVAILABLE",
+
         "programme_skill_count":
-            len(programme_skills),
+            len(
+                programme_skills
+            ),
+
         "career_skill_count":
             career_skill_count,
+
         "shared_skill_count":
-            len(shared_skills),
+            len(
+                shared_skills
+            ),
+
         "additional_skill_count":
             len(
                 additional_career_skills
             ),
+
         "alignment_percentage":
             alignment_percentage,
+
         "programme_skills":
             programme_skills,
+
         "career_skills":
             career_skills,
+
         "shared_skills":
             shared_skills,
+
         "additional_career_skills":
             additional_career_skills,
+
         "explanation":
             (
                 "The alignment percentage "
