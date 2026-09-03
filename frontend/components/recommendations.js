@@ -1,6 +1,9 @@
 const API_URL =
     "http://127.0.0.1:8000/recommendations";
 
+const ALTERNATIVE_PATHWAYS_API_URL =
+    "http://127.0.0.1:8000/alternative-pathways";
+
 
 const recommendButton =
     document.getElementById(
@@ -29,6 +32,40 @@ const recommendationList =
 const resultCount =
     document.getElementById(
         "resultCount"
+    );
+
+
+// ====================================
+// Alternative Pathway DOM Elements
+// ====================================
+
+const targetProgramme =
+    document.getElementById(
+        "targetProgramme"
+    );
+
+
+const targetProgrammeSection =
+    document.querySelector(
+        ".target-programme-section"
+    );
+
+
+const alternativePathwayResults =
+    document.getElementById(
+        "alternativePathwayResults"
+    );
+
+
+const alternativePathwayStatus =
+    document.getElementById(
+        "alternativePathwayStatus"
+    );
+
+
+const alternativePathwayList =
+    document.getElementById(
+        "alternativePathwayList"
     );
 
 
@@ -68,6 +105,42 @@ const inputDescription =
     document.getElementById(
         "inputDescription"
     );
+
+
+// ====================================
+// Alternative Pathway Reset
+// ====================================
+
+function hideAlternativePathways() {
+
+    if (
+        alternativePathwayList
+    ) {
+
+        alternativePathwayList.innerHTML =
+            "";
+    }
+
+
+    if (
+        alternativePathwayStatus
+    ) {
+
+        alternativePathwayStatus.textContent =
+            "";
+    }
+
+
+    if (
+        alternativePathwayResults
+    ) {
+
+        alternativePathwayResults
+            .classList.add(
+                "hidden"
+            );
+    }
+}
 
 
 // ------------------------------------
@@ -143,10 +216,34 @@ function setEducationLevel(
 
 
     if (
+        targetProgrammeSection
+    ) {
+
+        targetProgrammeSection
+            .classList.toggle(
+                "hidden",
+                isAL
+            );
+    }
+
+
+    if (
+        isAL
+        && targetProgramme
+    ) {
+
+        targetProgramme.value =
+            "";
+    }
+
+
+    if (
         inputDescription
     ) {
 
-        if (isAL) {
+        if (
+            isAL
+        ) {
 
             inputDescription.textContent =
                 (
@@ -165,9 +262,6 @@ function setEducationLevel(
     }
 
 
-    // Clear old results when the user
-    // changes education level.
-
     recommendationList.innerHTML =
         "";
 
@@ -182,6 +276,9 @@ function setEducationLevel(
         .classList.remove(
             "hidden"
         );
+
+
+    hideAlternativePathways();
 }
 
 
@@ -226,10 +323,6 @@ if (
 // ====================================
 
 function collectStudentResults() {
-
-    // --------------------------------
-    // A/L results
-    // --------------------------------
 
     if (
         selectedEducationLevel
@@ -291,10 +384,6 @@ function collectStudentResults() {
         };
     }
 
-
-    // --------------------------------
-    // O/L results
-    // --------------------------------
 
     const olResults = {};
 
@@ -367,7 +456,7 @@ function collectStudentResults() {
 
         if (
             subject
-            && grade
+                && grade
         ) {
 
             olResults[
@@ -432,10 +521,6 @@ function validateStudentResults(
         );
 
 
-    // --------------------------------
-    // A/L validation
-    // --------------------------------
-
     if (
         selectedEducationLevel
         === "A_LEVEL"
@@ -462,10 +547,6 @@ function validateStudentResults(
         };
     }
 
-
-    // --------------------------------
-    // O/L validation
-    // --------------------------------
 
     if (
         subjects.length !== 6
@@ -527,9 +608,9 @@ function validateStudentResults(
 }
 
 
-// ------------------------------------
-// Recommendation category helpers
-// ------------------------------------
+// ====================================
+// Recommendation Category Helpers
+// ====================================
 
 function getCategoryLabel(
     category
@@ -579,9 +660,9 @@ function getCategoryClass(
 }
 
 
-// ------------------------------------
-// Requirement explanation section
-// ------------------------------------
+// ====================================
+// Requirement Explanation
+// ====================================
 
 function createRequirementList(
     title,
@@ -668,11 +749,6 @@ function createRequirementList(
 // Career Pathway Intelligence
 // ====================================
 
-
-// ------------------------------------
-// Career relevance helpers
-// ------------------------------------
-
 function getCareerRelevanceClass(
     relevanceLevel
 ) {
@@ -710,10 +786,6 @@ function getCareerRelevanceClass(
     return "career-relevance-unknown";
 }
 
-
-// ------------------------------------
-// Create career indicator
-// ------------------------------------
 
 function createCareerIndicator(
     label,
@@ -767,10 +839,6 @@ function createCareerIndicator(
     return indicator;
 }
 
-
-// ------------------------------------
-// Career pathway section
-// ------------------------------------
 
 function createCareerPathways(
     careers
@@ -1079,11 +1147,6 @@ function createCareerPathways(
 // Qualification Progression Intelligence
 // ====================================
 
-
-// ------------------------------------
-// Progression type helper
-// ------------------------------------
-
 function getProgressionTypeClass(
     progressionType
 ) {
@@ -1109,10 +1172,6 @@ function getProgressionTypeClass(
     return "progression-type-direct";
 }
 
-
-// ------------------------------------
-// Create one destination programme
-// ------------------------------------
 
 function createProgressionProgramme(
     programme
@@ -1304,10 +1363,6 @@ function createProgressionProgramme(
 }
 
 
-// ------------------------------------
-// Create one progression pathway
-// ------------------------------------
-
 function createProgressionPathway(
     pathway
 ) {
@@ -1375,8 +1430,7 @@ function createProgressionPathway(
     name.textContent =
         (
             pathway.qualification_name
-            || pathway
-                .to_qualification_id
+            || pathway.to_qualification_id
             || "Progression pathway"
         );
 
@@ -1549,10 +1603,6 @@ function createProgressionPathway(
     return item;
 }
 
-
-// ------------------------------------
-// Full progression section
-// ------------------------------------
 
 function createProgressionSection(
     progression
@@ -1889,16 +1939,13 @@ function createRecommendationCard(
 
     programmeId.textContent =
         (
-            recommendation
-                .qualification_id
+            recommendation.qualification_id
                 ? (
                     recommendation.programme_id
                     + " · "
-                    + recommendation
-                        .qualification_id
+                    + recommendation.qualification_id
                 )
-                : recommendation
-                    .programme_id
+                : recommendation.programme_id
         );
 
 
@@ -2017,10 +2064,6 @@ function createRecommendationCard(
     }
 
 
-    // --------------------------------
-    // Academic progression
-    // --------------------------------
-
     const progressionSection =
         createProgressionSection(
             recommendation.progression
@@ -2036,10 +2079,6 @@ function createRecommendationCard(
         );
     }
 
-
-    // --------------------------------
-    // Career pathways
-    // --------------------------------
 
     const careerSection =
         createCareerPathways(
@@ -2062,9 +2101,9 @@ function createRecommendationCard(
 }
 
 
-// ------------------------------------
+// ====================================
 // Display Recommendations
-// ------------------------------------
+// ====================================
 
 function displayRecommendations(
     data
@@ -2143,9 +2182,880 @@ function displayRecommendations(
 }
 
 
-// ------------------------------------
-// Fetch Recommendations from API
-// ------------------------------------
+// ====================================
+// Alternative Pathway UI
+// ====================================
+
+function createRouteNode(
+    label,
+    value,
+    className
+) {
+
+    const node =
+        document.createElement(
+            "div"
+        );
+
+
+    node.className =
+        (
+            "route-node "
+            + className
+        );
+
+
+    const nodeLabel =
+        document.createElement(
+            "span"
+        );
+
+
+    nodeLabel.className =
+        "route-node-label";
+
+
+    nodeLabel.textContent =
+        label;
+
+
+    const nodeValue =
+        document.createElement(
+            "strong"
+        );
+
+
+    nodeValue.textContent =
+        value || "Not specified";
+
+
+    node.appendChild(
+        nodeLabel
+    );
+
+
+    node.appendChild(
+        nodeValue
+    );
+
+
+    return node;
+}
+
+
+function createRouteConnector(
+    progressionType
+) {
+
+    const connector =
+        document.createElement(
+            "div"
+        );
+
+
+    connector.className =
+        "route-connector";
+
+
+    const line =
+        document.createElement(
+            "div"
+        );
+
+
+    line.className =
+        "route-connector-line";
+
+
+    connector.appendChild(
+        line
+    );
+
+
+    if (
+        progressionType
+    ) {
+
+        const label =
+            document.createElement(
+                "span"
+            );
+
+
+        label.className =
+            "route-progression-label";
+
+
+        label.textContent =
+            progressionType;
+
+
+        connector.appendChild(
+            label
+        );
+    }
+
+
+    const arrow =
+        document.createElement(
+            "span"
+        );
+
+
+    arrow.className =
+        "route-connector-arrow";
+
+
+    arrow.textContent =
+        "↓";
+
+
+    connector.appendChild(
+        arrow
+    );
+
+
+    return connector;
+}
+
+
+function createAlternativePathwayCard(
+    pathway
+) {
+
+    const availableNow =
+        (
+            pathway.pathway_status
+            === "AVAILABLE_NOW"
+        );
+
+
+    const statusClass =
+        availableNow
+            ? "available-now"
+            : "requirements-not-met";
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        (
+            "alternative-route-card "
+            + statusClass
+        );
+
+
+    // --------------------------------
+    // Header
+    // --------------------------------
+
+    const header =
+        document.createElement(
+            "div"
+        );
+
+
+    header.className =
+        "alternative-route-header";
+
+
+    const headerText =
+        document.createElement(
+            "div"
+        );
+
+
+    const kicker =
+        document.createElement(
+            "span"
+        );
+
+
+    kicker.className =
+        "alternative-route-kicker";
+
+
+    kicker.textContent =
+        availableNow
+            ? "Alternative route"
+            : "Possible future route";
+
+
+    const title =
+        document.createElement(
+            "h4"
+        );
+
+
+    title.textContent =
+        (
+            pathway
+                .alternative_programme_name
+            || "Alternative programme"
+        );
+
+
+    headerText.appendChild(
+        kicker
+    );
+
+
+    headerText.appendChild(
+        title
+    );
+
+
+    const badge =
+        document.createElement(
+            "span"
+        );
+
+
+    badge.className =
+        (
+            "alternative-route-badge "
+            + statusClass
+        );
+
+
+    badge.textContent =
+        availableNow
+            ? "Available now"
+            : "Requirements not met";
+
+
+    header.appendChild(
+        headerText
+    );
+
+
+    header.appendChild(
+        badge
+    );
+
+
+    card.appendChild(
+        header
+    );
+
+
+    // --------------------------------
+    // Visual route
+    // --------------------------------
+
+    const flow =
+        document.createElement(
+            "div"
+        );
+
+
+    flow.className =
+        "alternative-route-flow";
+
+
+    flow.appendChild(
+        createRouteNode(
+            "Starting point",
+            "Your current results",
+            "route-node-current"
+        )
+    );
+
+
+    flow.appendChild(
+        createRouteConnector(
+            ""
+        )
+    );
+
+
+    flow.appendChild(
+        createRouteNode(
+            "Bridge programme",
+            pathway
+                .alternative_programme_name,
+            "route-node-bridge"
+        )
+    );
+
+
+    flow.appendChild(
+        createRouteConnector(
+            pathway.progression_type
+        )
+    );
+
+
+    flow.appendChild(
+        createRouteNode(
+            "Target programme",
+            pathway.target_programme_name,
+            "route-node-target"
+        )
+    );
+
+
+    card.appendChild(
+        flow
+    );
+
+
+    // --------------------------------
+    // Pathway status explanation
+    // --------------------------------
+
+    const message =
+        document.createElement(
+            "div"
+        );
+
+
+    message.className =
+        (
+            "alternative-route-message "
+            + (
+                availableNow
+                    ? "success"
+                    : "warning"
+            )
+        );
+
+
+    const messageStrong =
+        document.createElement(
+            "strong"
+        );
+
+
+    messageStrong.textContent =
+        availableNow
+            ? "✓ Pathway available: "
+            : "Pathway requirements: ";
+
+
+    message.appendChild(
+        messageStrong
+    );
+
+
+    message.appendChild(
+        document.createTextNode(
+            pathway
+                .pathway_status_message
+            || ""
+        )
+    );
+
+
+    card.appendChild(
+        message
+    );
+
+
+    // --------------------------------
+    // Current eligibility
+    // --------------------------------
+
+    const eligibility =
+        pathway.current_eligibility
+        || {};
+
+
+    const failedRequirements =
+        eligibility.failed_requirements
+        || [];
+
+
+    if (
+        !availableNow
+        && failedRequirements.length > 0
+    ) {
+
+        const missingSection =
+            document.createElement(
+                "div"
+            );
+
+
+        missingSection.className =
+            "alternative-missing-section";
+
+
+        const missingTitle =
+            document.createElement(
+                "h5"
+            );
+
+
+        missingTitle.textContent =
+            (
+                "Entry requirements "
+                + "still to complete"
+            );
+
+
+        const list =
+            document.createElement(
+                "ul"
+            );
+
+
+        failedRequirements.forEach(
+            requirement => {
+
+                const item =
+                    document.createElement(
+                        "li"
+                    );
+
+
+                item.textContent =
+                    requirement;
+
+
+                list.appendChild(
+                    item
+                );
+            }
+        );
+
+
+        missingSection.appendChild(
+            missingTitle
+        );
+
+
+        missingSection.appendChild(
+            list
+        );
+
+
+        card.appendChild(
+            missingSection
+        );
+    }
+
+
+    // --------------------------------
+    // Progression conditions
+    // --------------------------------
+
+    if (
+        pathway.progression_conditions
+    ) {
+
+        const condition =
+            document.createElement(
+                "div"
+            );
+
+
+        condition.className =
+            "alternative-missing-section";
+
+
+        const conditionTitle =
+            document.createElement(
+                "h5"
+            );
+
+
+        conditionTitle.textContent =
+            "Progression condition";
+
+
+        const conditionText =
+            document.createElement(
+                "p"
+            );
+
+
+        conditionText.textContent =
+            pathway.progression_conditions;
+
+
+        condition.appendChild(
+            conditionTitle
+        );
+
+
+        condition.appendChild(
+            conditionText
+        );
+
+
+        card.appendChild(
+            condition
+        );
+    }
+
+
+    // --------------------------------
+    // Progression notes
+    // --------------------------------
+
+    if (
+        pathway.progression_notes
+    ) {
+
+        const note =
+            document.createElement(
+                "div"
+            );
+
+
+        note.className =
+            "alternative-route-message";
+
+
+        const noteStrong =
+            document.createElement(
+                "strong"
+            );
+
+
+        noteStrong.textContent =
+            "Progression note: ";
+
+
+        note.appendChild(
+            noteStrong
+        );
+
+
+        note.appendChild(
+            document.createTextNode(
+                pathway.progression_notes
+            )
+        );
+
+
+        card.appendChild(
+            note
+        );
+    }
+
+
+    // --------------------------------
+    // Metadata
+    // --------------------------------
+
+    const details =
+        document.createElement(
+            "div"
+        );
+
+
+    details.className =
+        "alternative-route-details";
+
+
+    const detailValues = [
+        [
+            "Programme",
+            pathway
+                .alternative_programme_id
+        ],
+        [
+            "Qualification",
+            pathway
+                .alternative_qualification_id
+        ],
+        [
+            "Progression",
+            pathway.progression_id
+        ]
+    ];
+
+
+    detailValues.forEach(
+        ([label, value]) => {
+
+            if (
+                !value
+            ) {
+                return;
+            }
+
+
+            const detail =
+                document.createElement(
+                    "span"
+                );
+
+
+            detail.className =
+                "alternative-route-detail";
+
+
+            const strong =
+                document.createElement(
+                    "strong"
+                );
+
+
+            strong.textContent =
+                label + ": ";
+
+
+            detail.appendChild(
+                strong
+            );
+
+
+            detail.appendChild(
+                document.createTextNode(
+                    value
+                )
+            );
+
+
+            details.appendChild(
+                detail
+            );
+        }
+    );
+
+
+    if (
+        details.children.length > 0
+    ) {
+
+        card.appendChild(
+            details
+        );
+    }
+
+
+    // --------------------------------
+    // Official programme link
+    // --------------------------------
+
+    if (
+        pathway.application_url
+    ) {
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.className =
+            "alternative-route-link";
+
+
+        link.href =
+            pathway.application_url;
+
+
+        link.target =
+            "_blank";
+
+
+        link.rel =
+            "noopener noreferrer";
+
+
+        link.textContent =
+            (
+                "View official "
+                + "programme page →"
+            );
+
+
+        card.appendChild(
+            link
+        );
+    }
+
+
+    // --------------------------------
+    // Evidence disclaimer
+    // --------------------------------
+
+    const disclaimer =
+        document.createElement(
+            "p"
+        );
+
+
+    disclaimer.className =
+        "alternative-route-disclaimer";
+
+
+    disclaimer.textContent =
+        (
+            "This route is shown from "
+            + "progression relationships "
+            + "recorded in the WiseLanka "
+            + "knowledge base. Final "
+            + "admission and progression "
+            + "remain subject to the "
+            + "institution's current "
+            + "requirements."
+        );
+
+
+    card.appendChild(
+        disclaimer
+    );
+
+
+    return card;
+}
+
+
+function displayAlternativePathways(
+    data
+) {
+
+    if (
+        !alternativePathwayList
+        || !alternativePathwayResults
+    ) {
+        return;
+    }
+
+
+    alternativePathwayList.innerHTML =
+        "";
+
+
+    const pathways =
+        (
+            data.alternative_pathways
+            || []
+        );
+
+
+    if (
+        pathways.length === 0
+    ) {
+
+        hideAlternativePathways();
+
+        return;
+    }
+
+
+    if (
+        alternativePathwayStatus
+    ) {
+
+        alternativePathwayStatus
+            .textContent =
+            (
+                data
+                    .eligible_alternative_count
+                    > 0
+                    ? (
+                        data
+                            .eligible_alternative_count
+                        + " available now"
+                    )
+                    : "Future route"
+            );
+    }
+
+
+    pathways.forEach(
+        pathway => {
+
+            const card =
+                createAlternativePathwayCard(
+                    pathway
+                );
+
+
+            alternativePathwayList
+                .appendChild(
+                    card
+                );
+        }
+    );
+
+
+    alternativePathwayResults
+        .classList.remove(
+            "hidden"
+        );
+
+
+    emptyResult
+        .classList.add(
+            "hidden"
+        );
+
+
+    recommendationResults
+        .classList.remove(
+            "hidden"
+        );
+}
+
+
+// ====================================
+// Fetch Alternative Pathways
+// ====================================
+
+async function fetchAlternativePathways(
+    targetProgrammeId,
+    studentResults
+) {
+
+    const response =
+        await fetch(
+            (
+                ALTERNATIVE_PATHWAYS_API_URL
+                + "/"
+                + encodeURIComponent(
+                    targetProgrammeId
+                )
+            ),
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json",
+                },
+
+                body:
+                    JSON.stringify(
+                        {
+                            student_results:
+                                studentResults,
+                        }
+                    ),
+            }
+        );
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            (
+                "Alternative pathway API returned "
+                + response.status
+            )
+        );
+    }
+
+
+    return await response.json();
+}
+
+
+// ====================================
+// Fetch Recommendations
+// ====================================
 
 async function fetchRecommendations() {
 
@@ -2167,6 +3077,7 @@ async function fetchRecommendations() {
             validation.message
         );
 
+
         return;
     }
 
@@ -2177,6 +3088,12 @@ async function fetchRecommendations() {
     };
 
 
+    const selectedTargetProgramme =
+        targetProgramme
+            ? targetProgramme.value
+            : "";
+
+
     recommendButton.disabled =
         true;
 
@@ -2185,7 +3102,14 @@ async function fetchRecommendations() {
         "Finding pathways...";
 
 
+    hideAlternativePathways();
+
+
     try {
+
+        // --------------------------------
+        // Normal recommendations
+        // --------------------------------
 
         const response =
             await fetch(
@@ -2227,6 +3151,51 @@ async function fetchRecommendations() {
             data
         );
 
+
+        // --------------------------------
+        // Optional alternative route
+        // --------------------------------
+
+        if (
+            selectedEducationLevel
+                === "O_LEVEL"
+            && selectedTargetProgramme
+        ) {
+
+            try {
+
+                const alternativeData =
+                    await fetchAlternativePathways(
+                        selectedTargetProgramme,
+                        studentResults
+                    );
+
+
+                displayAlternativePathways(
+                    alternativeData
+                );
+
+            } catch (
+                alternativeError
+            ) {
+
+                console.error(
+                    (
+                        "Alternative pathway "
+                        + "request failed:"
+                    ),
+                    alternativeError
+                );
+
+
+                // The normal recommendations
+                // remain available even when
+                // the optional route request
+                // fails.
+                hideAlternativePathways();
+            }
+        }
+
     } catch (
         error
     ) {
@@ -2258,9 +3227,9 @@ async function fetchRecommendations() {
 }
 
 
-// ------------------------------------
-// Main action button
-// ------------------------------------
+// ====================================
+// Main Action Button
+// ====================================
 
 recommendButton.addEventListener(
     "click",
@@ -2268,9 +3237,9 @@ recommendButton.addEventListener(
 );
 
 
-// ------------------------------------
-// Initialize interface
-// ------------------------------------
+// ====================================
+// Initialize Interface
+// ====================================
 
 setEducationLevel(
     "A_LEVEL"

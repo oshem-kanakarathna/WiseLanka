@@ -74,7 +74,7 @@
 
 
 <!-- ========================================
-     Main content
+     Main Content
 ========================================= -->
 
 <main class="container">
@@ -135,6 +135,17 @@
                 </span>
 
                 Career pathways
+
+            </div>
+
+
+            <div class="trust-item">
+
+                <span class="trust-icon">
+                    ✓
+                </span>
+
+                Alternative routes
 
             </div>
 
@@ -200,7 +211,6 @@
                     aria-label="Choose education level"
                 >
 
-
                     <button
                         id="alLevelButton"
                         type="button"
@@ -238,7 +248,6 @@
 
                     </button>
 
-
                 </div>
 
             </div>
@@ -274,8 +283,6 @@
 
                 </div>
 
-
-                <!-- Subject 1 -->
 
                 <div class="subject-row">
 
@@ -349,8 +356,6 @@
                 </div>
 
 
-                <!-- Subject 2 -->
-
                 <div class="subject-row">
 
                     <div>
@@ -422,8 +427,6 @@
 
                 </div>
 
-
-                <!-- Subject 3 -->
 
                 <div class="subject-row">
 
@@ -508,7 +511,6 @@
                 class="results-form hidden"
             >
 
-
                 <div class="form-context">
 
                     <div class="form-context-icon">
@@ -531,8 +533,6 @@
 
                 </div>
 
-
-                <!-- Mathematics -->
 
                 <div class="subject-row">
 
@@ -570,8 +570,6 @@
                 </div>
 
 
-                <!-- English -->
-
                 <div class="subject-row">
 
                     <div>
@@ -607,8 +605,6 @@
 
                 </div>
 
-
-                <!-- O/L Subject 3 -->
 
                 <div class="subject-row">
 
@@ -678,8 +674,6 @@
                 </div>
 
 
-                <!-- O/L Subject 4 -->
-
                 <div class="subject-row">
 
                     <div>
@@ -748,8 +742,6 @@
                 </div>
 
 
-                <!-- O/L Subject 5 -->
-
                 <div class="subject-row">
 
                     <div>
@@ -817,8 +809,6 @@
 
                 </div>
 
-
-                <!-- O/L Subject 6 -->
 
                 <div class="subject-row">
 
@@ -891,6 +881,84 @@
 
 
             <!-- ==============================
+                 Target Programme
+            =============================== -->
+
+            <div class="target-programme-section">
+
+                <div class="target-programme-heading">
+
+                    <div class="step target-step">
+                        02
+                    </div>
+
+                    <div>
+
+                        <span class="card-kicker">
+                            Destination
+                        </span>
+
+                        <h4>
+                            Choose a target programme
+                        </h4>
+
+                        <p>
+                            Optional. Select a degree you
+                            want to reach and WiseLanka can
+                            identify a recorded alternative
+                            route when direct entry is not
+                            currently available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label for="targetProgramme">
+                    Target programme
+                </label>
+
+                <select id="targetProgramme">
+
+                    <option value="">
+                        No specific target
+                    </option>
+
+                    <option value="PRG0005">
+                        BEng (Hons) Software Engineering
+                    </option>
+
+                    <option value="PRG0006">
+                        BSc (Hons) Computer Science
+                    </option>
+
+                    <option value="PRG0007">
+                        BSc (Hons) Artificial Intelligence and Data Science
+                    </option>
+
+                </select>
+
+
+                <div class="target-programme-note">
+
+                    <span class="target-note-icon">
+                        i
+                    </span>
+
+                    <p>
+                        Alternative routes are generated
+                        only from progression relationships
+                        recorded in the WiseLanka knowledge
+                        base.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
                  Action
             =============================== -->
 
@@ -947,10 +1015,10 @@
 
                 <p>
                     Select your education level and
-                    enter your results. WiseLanka
-                    will evaluate your current
-                    eligibility and show where each
-                    pathway can lead.
+                    enter your results. You can also
+                    choose a target programme to explore
+                    an alternative route towards your
+                    preferred degree.
                 </p>
 
 
@@ -973,7 +1041,7 @@
                     </span>
 
                     <span>
-                        Progression
+                        Alternative Routes
                     </span>
 
                     <span class="empty-arrow">
@@ -993,6 +1061,55 @@
                 id="recommendationResults"
                 class="hidden"
             >
+
+                <!-- ==========================
+                     Alternative Route Result
+                =========================== -->
+
+                <div
+                    id="alternativePathwayResults"
+                    class="alternative-pathway-results hidden"
+                >
+
+                    <div class="alternative-results-heading">
+
+                        <div>
+
+                            <span class="results-kicker">
+                                Target Pathway
+                            </span>
+
+                            <h3>
+                                Route to your target
+                            </h3>
+
+                            <p>
+                                A structured route based on
+                                your current academic profile
+                                and recorded progression
+                                relationships.
+                            </p>
+
+                        </div>
+
+                        <span
+                            id="alternativePathwayStatus"
+                            class="alternative-status"
+                        >
+                        </span>
+
+                    </div>
+
+
+                    <div id="alternativePathwayList">
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================
+                     Recommendations
+                =========================== -->
 
                 <div class="results-heading">
 
