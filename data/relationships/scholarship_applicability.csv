@@ -1,0 +1,3 @@
+applicability_id,scholarship_id,target_type,target_id,target_value,relationship_type,notes,source_id
+SAPP0001,SCH0001,FIELD,,STEM,ELIGIBLE_FIELD,Scholarship is available for eligible undergraduate study in STEM fields subject to the official call,SRC0015
+SAPP0002,SCH0001,FIELD,,Agriculture,ELIGIBLE_FIELD,Scholarship is available for eligible undergraduate study in Agriculture subject to the official call,SRC0015

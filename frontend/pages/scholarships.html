@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore scholarship eligibility with WiseLanka.">
+    <title>Scholarship Intelligence | WiseLanka</title>
+    <link rel="stylesheet" href="../components/scholarships.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="recommendations.html">
+                <span class="brand-mark">W</span>
+                <span>WiseLanka</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <a href="recommendations.html">Pathways</a>
+                <a href="scholarships.html" class="active" aria-current="page">Scholarships</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="eyebrow">WISELANKA / SCHOLARSHIP INTELLIGENCE</span>
+            <h1>Find out where you <em>stand.</em></h1>
+            <p>
+                Explore scholarship opportunities through transparent,
+                evidence-backed eligibility checks.
+                Understand which requirements you meet,
+                which you don't, and what information is missing.
+            </p>
+        </section>
+
+        <section class="workspace">
+            <aside class="card form-card">
+                <div class="section-heading">
+                    <span class="step">01</span>
+                    <div>
+                        <span class="eyebrow">YOUR PROFILE</span>
+                        <h2>Check your eligibility</h2>
+                        <p>Enter your information to evaluate the recorded scholarship rules.</p>
+                    </div>
+                </div>
+
+                <form id="scholarshipForm">
+                    <div class="field">
+                        <label for="scholarshipId">Scholarship</label>
+                        <select id="scholarshipId">
+                            <option value="SCH0001">
+                                Stipendium Hungaricum — Undergraduate 2026/27
+                            </option>
+                        </select>
+                        <small>This prototype currently evaluates one recorded scholarship.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="citizenship">Citizenship</label>
+                        <select id="citizenship">
+                            <option value="">Select citizenship</option>
+                            <option value="Sri Lanka">Sri Lankan</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="age">Age on 31 August 2026</label>
+                        <input id="age" type="number" min="0" max="120" placeholder="e.g. 19">
+                    </div>
+
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="alYear">A/L examination year</label>
+                            <input id="alYear" type="number" min="2000" max="2030" placeholder="e.g. 2024">
+                        </div>
+
+                        <div class="field">
+                            <label for="alPasses">Number of A/L passes</label>
+                            <select id="alPasses">
+                                <option value="">Not provided</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="olEnglish">O/L English grade</label>
+                            <select id="olEnglish">
+                                <option value="">Not provided</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="S">S</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="alEnglish">A/L English grade</label>
+                            <select id="alEnglish">
+                                <option value="">Not provided</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="S">S</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="stateStudent">
+                            Are you currently an internal undergraduate at a Sri Lankan state university?
+                        </label>
+                        <select id="stateStudent">
+                            <option value="">Not provided</option>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="field">Intended field of study</label>
+                        <select id="field">
+                            <option value="">Select a field</option>
+                            <option value="STEM">STEM</option>
+                            <option value="Agriculture">Agriculture</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Business">Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="checkButton" class="primary-button">
+                        Check scholarship eligibility
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </form>
+
+                <p class="privacy-note">
+                    Your information is evaluated against rules recorded
+                    in the WiseLanka prototype knowledge base.
+                    This check does not submit a scholarship application.
+                </p>
+            </aside>
+
+            <section class="results-column" aria-label="Scholarship results">
+                <div id="emptyResult" class="card empty-result">
+                    <div class="empty-symbol">✦</div>
+                    <span class="eyebrow">YOUR ELIGIBILITY REPORT</span>
+                    <h2>Clarity before your next step.</h2>
+                    <p>
+                        Complete the profile and run the check to see
+                        your eligibility assessment, requirement-by-requirement
+                        explanations, and official scholarship information.
+                    </p>
+
+                    <div class="process">
+                        <span>Profile</span>
+                        <span>→</span>
+                        <span>Rules</span>
+                        <span>→</span>
+                        <span>Explanation</span>
+                    </div>
+                </div>
+
+                <div id="loadingResult" class="card hidden" role="status">
+                    Evaluating your profile against the recorded requirements…
+                </div>
+
+                <div id="errorResult" class="card error-card hidden" role="alert"></div>
+
+                <div id="scholarshipResults" class="hidden" aria-live="polite">
+                    <div class="card result-summary">
+                        <span class="eyebrow">SCHOLARSHIP ASSESSMENT</span>
+                        <h2 id="resultName"></h2>
+                        <p id="resultProvider"></p>
+
+                        <div id="eligibilityBadge" class="status-badge"></div>
+                        <p id="eligibilityExplanation"></p>
+
+                        <div id="applicationStatus" class="application-status"></div>
+                    </div>
+
+                    <div class="card details-card">
+                        <h3>Scholarship information</h3>
+                        <div id="scholarshipDetails"></div>
+                    </div>
+
+                    <div class="card details-card">
+                        <h3>Field applicability</h3>
+                        <div id="fieldEvaluation"></div>
+                    </div>
+
+                    <div class="card details-card">
+                        <h3>Requirement-by-requirement evaluation</h3>
+                        <p class="section-description">
+                            Each requirement is shown as passed, failed,
+                            or unknown based on the information supplied.
+                        </p>
+                        <div id="requirementsList"></div>
+                    </div>
+
+                    <div class="card disclaimer-card">
+                        <h3>Important information</h3>
+                        <p id="resultDisclaimer"></p>
+                        <p>
+                            Always verify eligibility, application dates,
+                            and scholarship conditions using the official notice.
+                        </p>
+                        <a id="officialLink" href="#" target="_blank"
+                           rel="noopener noreferrer" class="official-link">
+                            View official scholarship information →
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <strong>WiseLanka</strong>
+        <span>Know More. Choose Better.</span>
+        <span>Evidence-based education pathway intelligence.</span>
+    </footer>
+
+    <script src="../components/scholarships.js"></script>
+</body>
+</html>

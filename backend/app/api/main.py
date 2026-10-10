@@ -1,4 +1,5 @@
-from typing import Dict, Union
+
+from typing import Any, Dict, Union
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -28,6 +29,10 @@ from backend.app.skills.engine import (
     get_skill_alignment,
 )
 
+from backend.app.scholarships.engine import (
+    evaluate_scholarship,
+)
+
 
 # ----------------------------------------
 # Type definitions
@@ -41,6 +46,8 @@ StudentResults = Dict[
     ],
 ]
 
+ScholarshipProfile = Dict[str, Any]
+
 
 # ----------------------------------------
 # Create WiseLanka API
@@ -52,12 +59,21 @@ app = FastAPI(
         "AI-powered education pathway "
         "intelligence backend for Sri Lanka."
     ),
-    version="0.4.0",
+    version="0.5.0",
 )
 
 
 # ----------------------------------------
-# CORS
+# CORS configuration
+#
+# Allows the WiseLanka frontend to
+# communicate with the FastAPI backend.
+#
+# Port 5500: Original frontend server
+# Port 5501: Scholarship frontend server
+#
+# Both localhost and 127.0.0.1 are
+# supported during local development.
 # ----------------------------------------
 
 app.add_middleware(
@@ -66,6 +82,8 @@ app.add_middleware(
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
+        "http://127.0.0.1:5501",
+        "http://localhost:5501",
     ],
 
     allow_credentials=True,
@@ -108,6 +126,15 @@ class AlternativePathwayRequest(BaseModel):
     student_results: StudentResults
 
 
+class ScholarshipEligibilityRequest(BaseModel):
+    """
+    Request model for evaluating a learner
+    against scholarship eligibility rules.
+    """
+
+    learner_profile: ScholarshipProfile
+
+
 # ----------------------------------------
 # API health check
 # ----------------------------------------
@@ -118,7 +145,7 @@ def root():
     return {
         "application": "WiseLanka",
         "status": "running",
-        "version": "0.4.0",
+        "version": "0.5.0",
         "message": "WiseLanka API is running",
         "supported_profile_formats": [
             "legacy_flat_a_level",
@@ -131,6 +158,7 @@ def root():
             "qualification_progression",
             "alternative_pathway_intelligence",
             "skills_intelligence",
+            "scholarship_intelligence",
         ],
     }
 
@@ -207,7 +235,7 @@ def get_alternative_pathways(
 
     pathways = find_alternative_pathways(
         target_programme_id,
-        request.student_results,
+        request.student_results
     )
 
     return pathways
@@ -243,3 +271,43 @@ def get_programme_career_skill_alignment(
     )
 
     return alignment
+
+
+# ----------------------------------------
+# Scholarship intelligence endpoint
+#
+# Example:
+#
+# POST /scholarships/SCH0001/eligibility
+#
+# Evaluates a learner profile against
+# evidence-backed scholarship rules.
+#
+# Possible assessment outcomes:
+#
+# ELIGIBLE_TO_APPLY
+# POTENTIALLY_ELIGIBLE
+# REQUIREMENTS_NOT_MET
+#
+# Eligibility to apply does not guarantee
+# nomination, selection, admission,
+# or a scholarship award.
+#
+# Scholarship application availability
+# must be checked separately.
+# ----------------------------------------
+
+@app.post(
+    "/scholarships/{scholarship_id}/eligibility"
+)
+def check_scholarship_eligibility(
+    scholarship_id: str,
+    request: ScholarshipEligibilityRequest,
+):
+
+    result = evaluate_scholarship(
+        scholarship_id,
+        request.learner_profile,
+    )
+
+    return result
