@@ -31,6 +31,7 @@ const OL_DEFAULT_SUBJECTS = [
     "History"
 ];
 
+
 const GRADES = ["A", "B", "C", "S", "F"];
 
 function createElement(tag, className = "", text = null) {
@@ -87,9 +88,15 @@ function createOlSubjects() {
             `O/L subject ${number} grade`
         );
 
+        // Start with no grade selected.
+        const placeholder = createOption("", true);
+        placeholder.textContent = "Select grade";
+        placeholder.disabled = true;
+        gradeSelect.appendChild(placeholder);
+
         GRADES.forEach(grade => {
             gradeSelect.appendChild(
-                createOption(grade, grade === "B")
+                createOption(grade)
             );
         });
 
@@ -105,13 +112,17 @@ function updateEducationLevel() {
     olSubjects.classList.toggle("hidden", isAL);
 }
 
-function readSubjectResults(subjectIds, gradeIds) {
+function readSubjectResults(subjectIds, gradeIds, missingGrades = []) {
     const results = {};
     const usedSubjects = new Set();
 
     subjectIds.forEach((subjectId, index) => {
         const subject = document.getElementById(subjectId).value;
         const grade = document.getElementById(gradeIds[index]).value;
+
+        if (!grade) {
+            missingGrades.push(subject);
+        }
 
         if (usedSubjects.has(subject)) {
             throw new Error(
@@ -121,35 +132,68 @@ function readSubjectResults(subjectIds, gradeIds) {
         }
 
         usedSubjects.add(subject);
-        results[subject] = grade;
+
+        if (grade) {
+            results[subject] = grade;
+        }
     });
 
     return results;
 }
 
 function collectEducation() {
+    const missingGrades = [];
+
     if (educationLevel.value === "A_LEVEL") {
+        const alResults = readSubjectResults(
+            ["alSubject1", "alSubject2", "alSubject3"],
+            ["alGrade1", "alGrade2", "alGrade3"],
+            missingGrades
+        );
+
+        if (missingGrades.length > 0) {
+            throw new Error(
+                "Please select grades for: " +
+                missingGrades.join(", ") + "."
+            );
+        }
+
         return {
-            A_LEVEL: readSubjectResults(
-                ["alSubject1", "alSubject2", "alSubject3"],
-                ["alGrade1", "alGrade2", "alGrade3"]
-            )
+            A_LEVEL: alResults
         };
     }
 
-    const olResults = {
-        Mathematics: document.getElementById("olMathematics").value,
-        English: document.getElementById("olEnglish").value
-    };
+    const mathematicsGrade =
+        document.getElementById("olMathematics").value;
+
+    const englishGrade =
+        document.getElementById("olEnglish").value;
+
+    if (!mathematicsGrade) {
+        missingGrades.push("Mathematics");
+    }
+
+    if (!englishGrade) {
+        missingGrades.push("English");
+    }
 
     const optionalResults = readSubjectResults(
         ["olSubject3", "olSubject4", "olSubject5", "olSubject6"],
-        ["olGrade3", "olGrade4", "olGrade5", "olGrade6"]
+        ["olGrade3", "olGrade4", "olGrade5", "olGrade6"],
+        missingGrades
     );
+
+    if (missingGrades.length > 0) {
+        throw new Error(
+            "Please select grades for: " +
+            missingGrades.join(", ") + "."
+        );
+    }
 
     return {
         O_LEVEL: {
-            ...olResults,
+            Mathematics: mathematicsGrade,
+            English: englishGrade,
             ...optionalResults
         }
     };
@@ -386,6 +430,37 @@ function appendOfficialLink(card, programme) {
     card.appendChild(section);
 }
 
+function appendAcademicProgression(card, programme) {
+    const pathways = programme.progression?.pathways;
+    if (!Array.isArray(pathways) || !pathways.length) return;
+
+    const section = createElement("section", "recommendation-detail academic-progression");
+    section.appendChild(createElement("strong", "", "Possible Academic Progression"));
+
+    pathways.forEach(pathway => {
+        const item = createElement("div", "progression-item");
+        item.appendChild(createElement("h4", "", pathway.qualification_name || "Further qualification"));
+
+        const providers = [...new Set(
+            (pathway.programmes || []).map(p => p.provider_name).filter(Boolean)
+        )];
+
+        if (providers.length) {
+            item.appendChild(createElement("p", "", "Provider: " + providers.join(", ")));
+        }
+        if (pathway.conditions) {
+            item.appendChild(createElement("p", "", "Conditions: " + pathway.conditions));
+        }
+
+        item.appendChild(createElement("p", "progression-status",
+            pathway.guaranteed === true ? "Recorded as guaranteed progression" : "Progression not guaranteed"
+        ));
+        section.appendChild(item);
+    });
+
+    card.appendChild(section);
+}
+
 function createRecommendationCard(programme) {
     const card = createElement(
         "article",
@@ -475,6 +550,7 @@ function createRecommendationCard(programme) {
         describePreferences(programme.preference_assessment)
     );
 
+    appendAcademicProgression(card, programme);
     appendEvidence(card, programme);
     appendOfficialLink(card, programme);
 

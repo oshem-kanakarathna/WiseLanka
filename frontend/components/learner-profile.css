@@ -494,3 +494,45 @@ a:focus-visible {
         letter-spacing: -0.7px;
     }
 }
+
+/* Academic progression pathways */
+.academic-progression {
+    margin-top: 20px;
+}
+
+.academic-progression > strong {
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.progression-item {
+    padding: 16px 18px;
+    margin-top: 10px;
+    background: #f7f9fc;
+    border: 1px solid #e3e9f1;
+    border-left: 3px solid var(--primary);
+    border-radius: 10px;
+}
+
+.progression-item h4 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--primary);
+}
+
+.progression-item p {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+
+.progression-item .progression-status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #fff3df;
+    color: #885b10;
+    font-size: 12px;
+    font-weight: 700;
+}

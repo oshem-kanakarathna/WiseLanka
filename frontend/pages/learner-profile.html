@@ -11,9 +11,9 @@
 
     <title>WiseLanka | My Learning Pathway</title>
 
-    <link rel="stylesheet" href="../components/learner-profile.css">
+    <link rel="stylesheet" href="../components/learner-profile.css?v=20261020-2">
 
-    <script src="../components/learner-profile.js?v=3" defer></script>
+    <script src="../components/learner-profile.js?v=4" defer></script>
 </head>
 
 <body>
@@ -96,6 +96,7 @@
                         </p>
 
                         <div id="alSubjects" class="subject-group">
+
                             <div class="subject-row">
                                 <label for="alSubject1">A/L Subject 1</label>
                                 <select id="alSubject1" class="al-subject">
@@ -115,9 +116,14 @@
                                     <option value="Art">Art</option>
                                     <option value="Geography">Geography</option>
                                 </select>
+
                                 <select id="alGrade1" aria-label="A/L subject 1 grade">
-                                    <option>A</option><option selected>B</option>
-                                    <option>C</option><option>S</option><option>F</option>
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
                                 </select>
                             </div>
 
@@ -140,9 +146,14 @@
                                     <option value="Art">Art</option>
                                     <option value="Geography">Geography</option>
                                 </select>
+
                                 <select id="alGrade2" aria-label="A/L subject 2 grade">
-                                    <option>A</option><option>B</option>
-                                    <option selected>C</option><option>S</option><option>F</option>
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
                                 </select>
                             </div>
 
@@ -165,27 +176,42 @@
                                     <option value="Art">Art</option>
                                     <option value="Geography">Geography</option>
                                 </select>
+
                                 <select id="alGrade3" aria-label="A/L subject 3 grade">
-                                    <option>A</option><option>B</option>
-                                    <option selected>C</option><option>S</option><option>F</option>
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
                                 </select>
                             </div>
+
                         </div>
 
                         <div id="olSubjects" class="subject-group hidden">
+
                             <div class="subject-row">
                                 <label for="olMathematics">Mathematics</label>
                                 <select id="olMathematics">
-                                    <option selected>A</option><option>B</option>
-                                    <option>C</option><option>S</option><option>F</option>
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
                                 </select>
                             </div>
 
                             <div class="subject-row">
                                 <label for="olEnglish">English</label>
                                 <select id="olEnglish">
-                                    <option>A</option><option selected>B</option>
-                                    <option>C</option><option>S</option><option>F</option>
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
                                 </select>
                             </div>
 
