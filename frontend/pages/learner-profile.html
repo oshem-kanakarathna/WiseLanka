@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Personalised education and career pathway guidance for Sri Lankan learners.">
+
+    <title>WiseLanka | My Learning Pathway</title>
+
+    <link rel="stylesheet" href="../components/learner-profile.css">
+
+    <script src="../components/learner-profile.js?v=3" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+
+            <a class="brand" href="recommendations.html">
+                <span class="brand-icon">W</span>
+
+                <span class="brand-copy">
+                    <strong>WiseLanka</strong>
+                    <small>Know More. Choose Better.</small>
+                </span>
+            </a>
+
+            <nav class="page-nav" aria-label="Main navigation">
+                <a href="recommendations.html">Pathways</a>
+                <a href="eligibility.html">Eligibility</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="learner-profile.html" aria-current="page">
+                    My Profile
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <span class="eyebrow">Personalised Pathway Intelligence</span>
+
+            <h1>Find a pathway that fits your future.</h1>
+
+            <p>
+                Tell WiseLanka about your qualifications, interests,
+                career goals and study preferences. Explore education
+                pathways supported by our curated knowledge base.
+            </p>
+
+            <div class="trust-row">
+                <span>✓ Academic eligibility</span>
+                <span>✓ Career alignment</span>
+                <span>✓ Explainable guidance</span>
+            </div>
+        </section>
+
+        <div class="workspace">
+
+            <section class="profile-panel" aria-labelledby="profileHeading">
+
+                <div class="panel-heading">
+                    <span class="eyebrow">Your Profile</span>
+                    <h2 id="profileHeading">Build your learner profile</h2>
+                    <p>
+                        Complete the details below to explore your options.
+                    </p>
+                </div>
+
+                <form id="learnerProfileForm">
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">01</span>
+                            Academic qualifications
+                        </legend>
+
+                        <label for="educationLevel">
+                            Current qualification level
+                        </label>
+
+                        <select id="educationLevel" required>
+                            <option value="A_LEVEL">GCE Advanced Level</option>
+                            <option value="O_LEVEL">GCE Ordinary Level</option>
+                        </select>
+
+                        <p class="field-help">
+                            Enter your actual examination results.
+                        </p>
+
+                        <div id="alSubjects" class="subject-group">
+                            <div class="subject-row">
+                                <label for="alSubject1">A/L Subject 1</label>
+                                <select id="alSubject1" class="al-subject">
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+                                <select id="alGrade1" aria-label="A/L subject 1 grade">
+                                    <option>A</option><option selected>B</option>
+                                    <option>C</option><option>S</option><option>F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="alSubject2">A/L Subject 2</label>
+                                <select id="alSubject2" class="al-subject">
+                                    <option value="Physics">Physics</option>
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+                                <select id="alGrade2" aria-label="A/L subject 2 grade">
+                                    <option>A</option><option>B</option>
+                                    <option selected>C</option><option>S</option><option>F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="alSubject3">A/L Subject 3</label>
+                                <select id="alSubject3" class="al-subject">
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+                                <select id="alGrade3" aria-label="A/L subject 3 grade">
+                                    <option>A</option><option>B</option>
+                                    <option selected>C</option><option>S</option><option>F</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="olSubjects" class="subject-group hidden">
+                            <div class="subject-row">
+                                <label for="olMathematics">Mathematics</label>
+                                <select id="olMathematics">
+                                    <option selected>A</option><option>B</option>
+                                    <option>C</option><option>S</option><option>F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="olEnglish">English</label>
+                                <select id="olEnglish">
+                                    <option>A</option><option selected>B</option>
+                                    <option>C</option><option>S</option><option>F</option>
+                                </select>
+                            </div>
+
+                            <div id="additionalOlSubjects"></div>
+
+                            <p class="field-help">
+                                The prototype currently collects six O/L
+                                subjects for supported foundation pathways.
+                            </p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">02</span>
+                            Your interests
+                        </legend>
+
+                        <p class="field-help">
+                            Choose any topics that interest you.
+                        </p>
+
+                        <div class="choice-grid">
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Software Development">
+                                Software Development
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Artificial Intelligence">
+                                Artificial Intelligence
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Data Science">
+                                Data Science
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Information Technology">
+                                Information Technology
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Business">
+                                Business
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Engineering">
+                                Engineering
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">03</span>
+                            Career goal
+                        </legend>
+
+                        <label for="careerGoal">
+                            What career would you like to explore?
+                        </label>
+
+                        <select id="careerGoal">
+                            <option value="">I'm still exploring</option>
+                            <option value="CAR0001">Software Engineer</option>
+                            <option value="CAR0002">Data Scientist</option>
+                            <option value="CAR0003">AI Engineer</option>
+                            <option value="CAR0004">Machine Learning Engineer</option>
+                            <option value="CAR0005">Systems Analyst</option>
+                        </select>
+
+                        <p class="field-help">
+                            Career relationships are assessed only where
+                            the knowledge base contains supporting records.
+                        </p>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">04</span>
+                            Study preferences
+                        </legend>
+
+                        <label for="studyMode">Preferred study mode</label>
+                        <select id="studyMode">
+                            <option value="">No preference</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                        </select>
+
+                        <label for="district">Preferred district</label>
+                        <select id="district">
+                            <option value="">No preference</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Gampaha">Gampaha</option>
+                            <option value="Kalutara">Kalutara</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Kurunegala">Kurunegala</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Jaffna">Jaffna</option>
+                            <option value="Other">Other / elsewhere</option>
+                        </select>
+                    </fieldset>
+
+                    <button type="submit" id="submitProfile" class="primary-button">
+                        Find My Personalised Pathways
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                    <p class="privacy-note">
+                        This prototype submits your profile to the
+                        WiseLanka API for assessment. Do not enter
+                        personal identifiers or sensitive information.
+                    </p>
+
+                </form>
+            </section>
+
+            <section class="results-panel" aria-labelledby="resultsHeading">
+
+                <div class="panel-heading">
+                    <span class="eyebrow">Your Pathways</span>
+                    <h2 id="resultsHeading">Personalised recommendations</h2>
+                    <p>
+                        Academic eligibility and career relevance are
+                        assessed separately.
+                    </p>
+                </div>
+
+                <div id="statusMessage" class="status-message" role="status"
+                     aria-live="polite">
+                    Complete your profile and select
+                    “Find My Personalised Pathways” to begin.
+                </div>
+
+                <div id="resultsSummary" class="results-summary hidden"></div>
+
+                <div id="recommendationList" class="recommendation-list"></div>
+
+                <p class="results-disclaimer">
+                    WiseLanka provides guidance based on its current
+                    curated records. Eligibility is not a guarantee
+                    of admission. Missing career evidence does not
+                    mean a programme is unsuitable.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <strong>WiseLanka</strong>
+            <span>Know More. Choose Better.</span>
+            <span>Evidence-based education pathway intelligence.</span>
+        </div>
+    </footer>
+
+</body>
+</html>

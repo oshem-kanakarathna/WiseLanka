@@ -153,7 +153,7 @@ def test_root_lists_scholarship_intelligence():
 
     data = response.json()
 
-    assert data["version"] == "0.5.0"
+    assert data["version"] == "0.6.0"
     assert (
         "scholarship_intelligence"
         in data["features"]

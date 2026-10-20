@@ -2770,7 +2770,7 @@ function createRecommendationCard(
 
 
     score.textContent =
-        `${matchScore}% match`;
+    `Academic requirements match: ${matchScore}%`;
 
 
     meta.appendChild(
@@ -2829,6 +2829,17 @@ function createRecommendationCard(
         progressTrack
     );
 
+    const admissionNote = document.createElement("p");
+
+admissionNote.className = "admission-note";
+
+admissionNote.textContent =
+    "This score reflects the academic requirements " +
+    "recorded in WiseLanka, not your chance of admission. " +
+    "Final admission may depend on Z-score, district, " +
+    "available places, and current institutional criteria.";
+
+card.appendChild(admissionNote);
 
     const passedSection =
         createRequirementList(
