@@ -93,5 +93,147 @@ class ApiInteractionTests(unittest.TestCase):
                 browser.close()
 
 
+
+    def test_api_server_error(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                page = browser.new_page()
+                page.goto(PAGE.as_uri())
+
+                page.evaluate("""() => {
+                    window.fetch = async () => ({
+                        ok: false,
+                        status: 500,
+                        json: async () => ({
+                            detail: "Simulated backend failure"
+                        })
+                    });
+                }""")
+
+                page.locator("#educationLevel").select_option("O_LEVEL")
+
+                for field in (
+                    "olMathematics", "olEnglish",
+                    "olGrade3", "olGrade4",
+                    "olGrade5", "olGrade6"
+                ):
+                    page.locator("#" + field).select_option("C")
+
+                page.locator("#learnerProfileForm").evaluate(
+                    "(form) => form.requestSubmit()"
+                )
+
+                page.wait_for_function(
+                    "() => document.querySelector('#statusMessage')"
+                    ".textContent.includes('Simulated backend failure')"
+                )
+
+                self.assertEqual(
+                    page.locator(".recommendation-card").count(), 0
+                )
+                self.assertTrue(
+                    page.locator("#statusMessage").is_visible()
+                )
+                self.assertFalse(
+                    page.locator("#learnerProfileForm button[type=submit]").is_disabled()
+                )
+            finally:
+                browser.close()
+
+
+    def test_api_network_failure(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                page = browser.new_page()
+                page.goto(PAGE.as_uri())
+
+                page.evaluate("""() => {
+                    window.fetch = async () => {
+                        throw new TypeError("Failed to fetch");
+                    };
+                }""")
+
+                page.locator("#educationLevel").select_option("O_LEVEL")
+
+                for field in (
+                    "olMathematics", "olEnglish",
+                    "olGrade3", "olGrade4",
+                    "olGrade5", "olGrade6"
+                ):
+                    page.locator("#" + field).select_option("C")
+
+                page.locator("#learnerProfileForm").evaluate(
+                    "(form) => form.requestSubmit()"
+                )
+
+                page.wait_for_function(
+                    "() => document.querySelector('#statusMessage')"
+                    ".textContent.includes('Could not connect to the WiseLanka API')"
+                )
+
+                self.assertEqual(
+                    page.locator(".recommendation-card").count(), 0
+                )
+                self.assertTrue(
+                    page.locator("#statusMessage").is_visible()
+                )
+                self.assertFalse(
+                    page.locator("#learnerProfileForm button[type=submit]").is_disabled()
+                )
+            finally:
+                browser.close()
+
+
+    def test_malformed_api_response(self):
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=True)
+            try:
+                page = browser.new_page()
+                page.goto(PAGE.as_uri())
+
+                page.evaluate("""() => {
+                    window.fetch = async () => ({
+                        ok: true,
+                        status: 200,
+                        json: async () => ({
+                            unexpected_field: "invalid data"
+                        })
+                    });
+                }""")
+
+                page.locator("#educationLevel").select_option("O_LEVEL")
+
+                for field in (
+                    "olMathematics", "olEnglish",
+                    "olGrade3", "olGrade4",
+                    "olGrade5", "olGrade6"
+                ):
+                    page.locator("#" + field).select_option("C")
+
+                page.locator("#learnerProfileForm").evaluate(
+                    "(form) => form.requestSubmit()"
+                )
+
+                page.wait_for_function(
+                    "() => {"
+                    "const text = document.querySelector('#statusMessage').textContent;"
+                    "return text && !text.includes('Evaluating your learner profile');"
+                    "}"
+                )
+
+                message = page.locator("#statusMessage").inner_text()
+
+                self.assertIn("Invalid API response", message)
+                self.assertEqual(
+                    page.locator(".recommendation-card").count(), 0
+                )
+                self.assertFalse(
+                    page.locator("#learnerProfileForm button[type=submit]").is_disabled()
+                )
+            finally:
+                browser.close()
+
 if __name__ == "__main__":
     unittest.main()

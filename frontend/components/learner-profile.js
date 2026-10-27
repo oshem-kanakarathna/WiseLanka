@@ -561,9 +561,13 @@ function renderRecommendations(data) {
     recommendationList.replaceChildren();
     resultsSummary.replaceChildren();
 
-    const programmes = Array.isArray(data.recommendations)
-        ? data.recommendations
-        : [];
+    if (!data || !Array.isArray(data.recommendations)) {
+        throw new Error(
+            "Invalid API response: expected a recommendations array."
+        );
+    }
+
+    const programmes = data.recommendations;
 
     if (programmes.length === 0) {
         resultsSummary.classList.add("hidden");
