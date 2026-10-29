@@ -1,0 +1,3 @@
+PASS: Live browser-to-FastAPI integration
+Recommendations rendered: 1
+Progression pathways rendered: 3

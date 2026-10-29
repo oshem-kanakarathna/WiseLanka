@@ -1,0 +1,1 @@
+PASS: real SEMANTIC model ranks Business; unknown eligibility preserved; method, preference, score and sources rendered; mobile reflow and no JS errors

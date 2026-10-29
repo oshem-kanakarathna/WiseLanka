@@ -1,0 +1,15 @@
+{
+  "keys_per_language": {
+    "en": 135,
+    "si": 135,
+    "ta": 135
+  },
+  "missing_keys": {
+    "en": [],
+    "si": [],
+    "ta": []
+  },
+  "linguistically_validated": false,
+  "native_speech_validated": false,
+  "scope": "Core learner profile/results/assistant interface; detailed educational facts and legacy pages remain original English."
+}

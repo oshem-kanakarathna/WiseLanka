@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field, field_validator
 from backend.app.personalisation.models import LearnerProfile, ExistingQualification
 from backend.app.data_loader import load_csv, KnowledgeDataError
 from backend.app.data_integrity import validate_catalogue
+from backend.app.assistant.engine import GuidanceRequest, answer as guidance_answer, options as guidance_options
 
 from backend.app.eligibility.engine import (
     evaluate_programme, assess_academic_gaps,
@@ -372,3 +373,18 @@ def check_scholarship_eligibility(
     )
 
     return result
+
+
+@app.get("/assistant/options")
+def assistant_options():
+    return guidance_options()
+
+
+@app.post("/assistant/guidance")
+def assistant_guidance(request: GuidanceRequest):
+    try:
+        return guidance_answer(request)
+    except KnowledgeDataError:
+        raise
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error

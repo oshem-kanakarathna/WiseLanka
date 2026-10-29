@@ -1,0 +1,11 @@
+backend/app/api/main.py
+frontend/components/learner-profile.css
+frontend/pages/learner-profile.html
+backend/app/assistant/__init__.py
+backend/app/assistant/engine.py
+data/localisation/ui.json
+frontend/components/i18n.js
+frontend/components/guided-assistant.js
+tests/integration/test_guided_assistant.py
+frontend/browser_tests/test_wp4_interaction.py
+frontend/browser_tests/live_wp4_check.py
