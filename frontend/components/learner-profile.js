@@ -342,6 +342,7 @@ function collectProfile() {
             education_complete: educationLevel.value === "NONE" ? {} : {[educationLevel.value]: document.getElementById("educationComplete").checked},
             interests,
             career_goal_id: document.getElementById("careerGoal").value,
+            career_intention: document.getElementById("careerIntention").value.trim(),
             preferences
         }
     };
@@ -599,9 +600,18 @@ function appendAcademicInsights(card, insight) {
     });
 }
 
+function appendRelevance(card, relevance) {
+    if (!relevance) return;
+    appendDetail(card, `Relevance method: ${relevance.method}`, relevance.explanation);
+    if (relevance.preference_summary) appendDetail(card, "Your stated preference used", relevance.preference_summary);
+    if (typeof relevance.score === "number") appendDetail(card, "Content similarity (not a probability)", relevance.score.toFixed(3));
+    if (relevance.catalogue_fact) appendDetail(card, "Catalogue facts used for relevance", relevance.catalogue_fact);
+}
+
 function renderLearnerInsights(data) {
     const panel = document.getElementById("learnerInsights");
     panel.replaceChildren();
+    if (data.ranking) appendDetail(panel, "Recommendation ranking", `${data.ranking.method} — ${data.ranking.status}${data.ranking.fallback_reason ? ": " + data.ranking.fallback_reason : ""}. Academic assessment is independent. Unknown eligibility requires provider review; unmet requirements are development routes, not eligible admissions.`);
     if (Array.isArray(data.existing_qualifications) && data.existing_qualifications.length) {
         appendDetail(panel, "Your reported qualifications", data.existing_qualifications.map(q => [q.title, q.framework, q.level].filter(Boolean).join(" · ")).join("; "));
         appendDetail(panel, "Qualification assessment limits", data.qualification_note);
@@ -628,6 +638,7 @@ function renderLearnerInsights(data) {
         data.academic_insights.forEach(insight => {
             const card = createElement("article", "recommendation-card");
             card.appendChild(createElement("h3", "", insight.programme_name));
+            appendRelevance(card, insight.relevance);
             appendAcademicInsights(card, insight);
             panel.appendChild(card);
         });
@@ -672,8 +683,9 @@ function createRecommendationCard(programme) {
     );
 
     // The backend uses "category" for academic eligibility.
-    const category = programme.academic_gap_insights?.status === "NOT_ASSESSED"
-        ? "NOT_ASSESSED" : programme.category || "NOT_ASSESSED";
+    const category = programme.relevance && programme.academic_gap_insights
+        ? ({MET: "ELIGIBLE", NOT_ASSESSED: "NOT_ASSESSED", NOT_MET: "NOT_MET"}[programme.academic_gap_insights.status] || "NOT_ASSESSED")
+        : programme.academic_gap_insights?.status === "NOT_ASSESSED" ? "NOT_ASSESSED" : programme.category || "NOT_ASSESSED";
 
     metadata.appendChild(
         createElement(
@@ -724,6 +736,7 @@ function createRecommendationCard(programme) {
         describePreferences(programme.preference_assessment)
     );
 
+    appendRelevance(card, programme.relevance);
     appendDetail(card, "Programme context", programme.programme_notes);
     appendAcademicProgression(card, programme);
     if (programme.academic_gap_insights) appendAcademicInsights(card, programme.academic_gap_insights);

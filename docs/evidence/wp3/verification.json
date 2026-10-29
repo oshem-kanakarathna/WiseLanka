@@ -1,0 +1,129 @@
+{
+  "started_utc": "2026-10-29T10:43:52.207784+00:00",
+  "api_base": "http://127.0.0.1:8011",
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "backend-tests.txt"
+    },
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "-m",
+        "backend.app.data_integrity"
+      ],
+      "exit_code": 0,
+      "log": "integrity.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "frontend/browser_tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "browser-tests.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_integration_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-original.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_learner_gap_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp1.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_wp2_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp2.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_wp3_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp3.txt"
+    },
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "scripts/evaluate_wp3.py"
+      ],
+      "exit_code": 0,
+      "log": "evaluation.txt"
+    }
+  ],
+  "finished_utc": "2026-10-29T10:44:08.079306+00:00",
+  "source_sha256": {
+    ".gitignore": "de799c3d342c1108d5f14239a0d619b82c169931f6740db07fd7bd19fe3d4741",
+    "backend/app/personalisation/engine.py": "1830f5111b5edc3d77ce9e7c2e7458eff0578eb17a92490686c5a90b80a1d8dd",
+    "backend/app/personalisation/models.py": "4aa3f2957dc2eff608ec07c24da3e1cec17036d55a324480457d6bea7d90f154",
+    "frontend/components/learner-profile.js": "eb728b02e955b6e7b1d79fe386dde611179583ed3d1be2ccfb208c2ab57faa00",
+    "frontend/pages/learner-profile.html": "b6499a4cc58914cf93a9e124f7516cd1d002f301f3e5c7f5a3c7d05566d35093",
+    "backend/app/relevance/model-lock.json": "a188d5411beefe45571a71a1710855032960c7cffe055492de56d9962cd29a9d",
+    "backend/app/relevance/__init__.py": "1cabadc70a27377d12c37b4fd6e69cea83ddf39d425e83529e400ba1e82bd5f4",
+    "backend/app/relevance/encoder.py": "97868f6a7bde1785dd39e9215df40e581cc490dc9fd3551a606c8df6010e219e",
+    "backend/app/relevance/engine.py": "8867e97539d4865c7bd340717c41573260721967851f7fb5ea1f3651d473e218",
+    "scripts/evaluate_wp3.py": "17a7ae855ecb0188546b1f1aee37d8ded72c0d5080d8d23fa910a5ba6625ca7b",
+    "scripts/setup_semantic_model.py": "231e67f6c13e2aade094e47c9266e3563d5ef3f01cba24d7d5539b3c0fb842b5",
+    "requirements-ai.txt": "02fab7c7d7d743af2505d27e2c6a9efbca419251a1ce72fc2c1d49c970fcda63",
+    "requirements-ai-lock.txt": "5dad5d01a4d61cbe5b0d217c5583af6f3609fd8e1a329219646d057b4335782a",
+    "tests/unit/test_relevance_engine.py": "3fb2a9f11c552837fab3b88166efc52cb24ee5afa300ec4a79919837b1a33a80",
+    "tests/integration/test_hybrid_relevance.py": "4ef5981e082cbdc19ec587ff70080811eca59efad982d05ca37b78c7cb227260",
+    "frontend/browser_tests/test_hybrid_rendering.py": "70cb7e2ebf9b7f15686d13d8bb650ce19556ff7ce3df290c7d2f6573b3f8c4c3",
+    "frontend/browser_tests/live_wp3_check.py": "cfa7d03e90e0d5a9bfe4555507c7e4a4bf158e794a382c38ad1e79ff2b342697"
+  },
+  "dataset_sha256": {
+    "data/master/programme_types.csv": "67bc67ec4efd7b021ca450308d0eb94c6cc06a46909a3c625234f27181ed93e4",
+    "data/master/study_modes.csv": "7defd3d638f75d1ee6f64424dbd501114f28c03a24341bcddace015afd48515e",
+    "data/master/institution_types.csv": "3b7e19f604c14c33435f459ea35a49dded5034dcd6dd16443bb075e28de3e2ba",
+    "data/master/qualification_frameworks.csv": "d25aa3404cd3739a944942149c5a87a77335d3e76fb48312fe7b2e27a1daff19",
+    "data/master/qualification_types.csv": "80d925f7c3099859bdc11b00170d83d2a57fb1ad55cdb7fc238d6f78ed78c854",
+    "data/relationships/qualification_progression.csv": "52188cc3c16bcd8fc0d4e1df269610e3d265266b47f680cef3cda67e1f715a11",
+    "data/relationships/programme_skills.csv": "0235928a349862eb2458888a8bef647606cba99ca5dcc2a524774cfe94c8457f",
+    "data/relationships/scholarship_applicability.csv": "84f5cc893ad6425dc6fdda5302b317a2452a083598390fb19105de7c77b9c7a3",
+    "data/relationships/programme_entry_requirements.csv": "4b3ebb6df74a926309b8c043cfabe9d39298fb21ac4adda8e11b066a10a66e5c",
+    "data/relationships/career_skills.csv": "65553893c2b1ea6c04a51be8dde01d65e39e941c032d02c31d4ebf07aa7ca4c4",
+    "data/relationships/scholarship_eligibility_requirements.csv": "cb1ec9c05567a06c952ae988124229107645fe46abe93ee967779e505f3ca6a7",
+    "data/relationships/programme_careers.csv": "63e0dda7cf5bc75c9a395c61520cce1c36298054a522e32299c7e43cee3643ab",
+    "data/metadata/evidence_sources.csv": "012778360a1dece16e6db5b531e2823b94272585c3f2131bb0ae9bee4ae91f42",
+    "data/metadata/recognition_records.csv": "0dba02e52ffd9313f20aba38813e9bcdda1f9b02aea4854b3bf708a9f7165a43",
+    "data/reference/institutions.csv": "2845b052a27b51c5391d787e7ecb1764eb367b496e4ae14394426d13614ef85f",
+    "data/reference/careers.csv": "2de22281ad0d7095b9c6d02e1d3785c29f062386f6a9c65f194698d9cf803d48",
+    "data/reference/skills.csv": "d726f1d552346a4face522febb5a0d31245f3b96dd387a687e78c2d17b1ccf04",
+    "data/reference/programmes.csv": "b32493ab8d07f72ba5bdbe835fd70c290e000bc9f3569e81b14ed97e494c0254",
+    "data/reference/scholarships.csv": "e16bef311ac6862113351b6813f43c5679a3067af21276af8c384ae02fca12a8",
+    "data/reference/qualifications.csv": "fecd0f0735390a5c1a658ef5e7cf082741dc2f7825c9949a90b8b21c8408a987"
+  },
+  "offline_fallback_smoke": {
+    "exit_code": 0,
+    "environment": ".venv without optional AI dependencies",
+    "log": "offline-fallback.txt"
+  },
+  "wp2_evidence_preservation": "New screenshots copied under wp3/wp2-regression; the two WP2 screenshots were restored byte-for-byte from the initially clean committed WP2 checkpoint."
+}

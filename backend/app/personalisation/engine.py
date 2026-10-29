@@ -13,6 +13,7 @@ from backend.app.data_loader import load_csv
 from backend.app.eligibility.engine import assess_academic_gaps
 from backend.app.skills.engine import assess_learner_skills
 from backend.app.personalisation.models import LearnerProfile
+from backend.app.relevance.engine import rank_recommendations
 from backend.app.progression.engine import get_progression_pathways
 
 
@@ -261,7 +262,12 @@ def personalise_recommendations(
         reverse=True,
     )
 
+    if personalised:
+        personalised, ranking = rank_recommendations(personalised, learner_profile)
+    else:
+        academic_insights, ranking = rank_recommendations(academic_insights, learner_profile)
     return {
+        "ranking": ranking,
         "count": len(personalised),
         "recommendations": personalised,
         "assessment_method": "RULE_BASED_PERSONALISATION_V1",

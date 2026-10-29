@@ -1,0 +1,17 @@
+.gitignore
+backend/app/personalisation/engine.py
+backend/app/personalisation/models.py
+frontend/components/learner-profile.js
+frontend/pages/learner-profile.html
+backend/app/relevance/model-lock.json
+backend/app/relevance/__init__.py
+backend/app/relevance/encoder.py
+backend/app/relevance/engine.py
+scripts/evaluate_wp3.py
+scripts/setup_semantic_model.py
+requirements-ai.txt
+requirements-ai-lock.txt
+tests/unit/test_relevance_engine.py
+tests/integration/test_hybrid_relevance.py
+frontend/browser_tests/test_hybrid_rendering.py
+frontend/browser_tests/live_wp3_check.py

@@ -1,0 +1,30 @@
+test_api_network_failure (test_api_interaction.ApiInteractionTests) ... ok
+test_api_server_error (test_api_interaction.ApiInteractionTests) ... ok
+test_malformed_api_response (test_api_interaction.ApiInteractionTests) ... ok
+test_valid_profile_renders_mocked_recommendation (test_api_interaction.ApiInteractionTests) ... ok
+test_explicit_offline_fallback_message (test_hybrid_rendering.HybridRenderingTests) ... ok
+test_relevance_and_uncertainty_remain_separate (test_hybrid_rendering.HybridRenderingTests) ... ok
+test_added_row_requires_grade_and_can_be_removed (test_learner_gaps.LearnerGapTests) ... ok
+test_complete_confirmation_conflicts_with_unreported_result (test_learner_gaps.LearnerGapTests) ... ok
+test_custom_subject_cannot_duplicate_fixed_mathematics (test_learner_gaps.LearnerGapTests) ... ok
+test_delayed_catalogue_updates_existing_row_without_losing_manual_input (test_learner_gaps.LearnerGapTests) ... ok
+test_empty_qualification_only_profile_is_blocked (test_learner_gaps.LearnerGapTests) ... ok
+test_mobile_reflow_and_labels (test_learner_gaps.LearnerGapTests) ... ok
+test_nine_subject_payload_and_skill_states (test_learner_gaps.LearnerGapTests) ... ok
+test_options_failure_keeps_manual_awards_available (test_learner_gaps.LearnerGapTests) ... ok
+test_qualification_middle_removal_focuses_next_row (test_learner_gaps.LearnerGapTests) ... ok
+test_qualification_only_early_career_payload (test_learner_gaps.LearnerGapTests) ... ok
+test_qualification_removal_returns_focus_to_add_button (test_learner_gaps.LearnerGapTests) ... ok
+test_retry_populates_existing_award_and_catalogue_edit_becomes_custom (test_learner_gaps.LearnerGapTests) ... ok
+test_subject_removal_returns_focus_to_previous_subject (test_learner_gaps.LearnerGapTests) ... ok
+test_duplicate_ol_subjects (test_learner_profile.LearnerProfileTests) ... ok
+test_missing_al_grades (test_learner_profile.LearnerProfileTests) ... ok
+test_missing_ol_grades (test_learner_profile.LearnerProfileTests) ... ok
+test_no_progression_pathways (test_progression_rendering.ProgressionRenderingTests) ... ok
+test_progression_card_displays_correctly (test_progression_rendering.ProgressionRenderingTests) ... ok
+test_legacy_pages_do_not_label_unknown_as_eligible_or_rejected (test_wp2_rendering.WP2RenderingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 9.759s
+
+OK

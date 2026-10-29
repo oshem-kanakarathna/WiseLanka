@@ -50,6 +50,7 @@ class LearnerProfile(BaseModel):
     education: dict[str, Union[str, dict[str, str]]]
     interests: list[str] = Field(default_factory=list)
     career_goal_id: str = ""
+    career_intention: str = Field(default="", max_length=300)
     preferences: dict[str, Any] = Field(default_factory=dict)
     learner_category: Literal["AL_LEARNER", "VOCATIONAL_LEARNER", "EARLY_CAREER"] = "AL_LEARNER"
     existing_qualifications: list[ExistingQualification] = Field(default_factory=list, max_length=30)

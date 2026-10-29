@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Downloaded frozen model assets (setup is explicit; never commit weights).
+.models/

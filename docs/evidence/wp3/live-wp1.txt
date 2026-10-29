@@ -1,0 +1,6 @@
+PASS: six-subject complete O/L profile identifies unmet credit count
+PASS: ninth-subject credit changes eligibility; three skill states and mobile reflow rendered
+PASS: incomplete evidence is displayed as not assessed
+PASS: vocational award retained without inferred equivalence; no reported skills remain unassessed
+PASS: catalogue choice returns consistent metadata; contradictory metadata rejected without inferred equivalence
+PASS: no JavaScript page errors in live WP1 scenarios

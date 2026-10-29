@@ -1,0 +1,24 @@
+........................................................................ [ 40%]
+........................................................................ [ 81%]
+..................F..............                                        [100%]
+=================================== FAILURES ===================================
+________ test_nonfinite_model_output_is_not_clamped_into_a_valid_score _________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106d421c0>
+
+    def test_nonfinite_model_output_is_not_clamped_into_a_valid_score(monkeypatch):
+        np=pytest.importorskip('numpy')
+        class Nonfinite:
+            def encode(self,texts):return np.full((len(texts),384),float('nan'))
+        engine.document_embeddings.cache_clear()
+        monkeypatch.setattr(engine,'get_encoder',lambda:(Nonfinite(),None))
+        results,meta=engine.rank_recommendations(items(),{'interests':['Business']})
+        assert meta['method']=='RULE_BASED_FALLBACK'
+>       assert all(item['relevance']['score'] is None for item in results)
+E       assert False
+E        +  where False = all(<generator object test_nonfinite_model_output_is_not_clamped_into_a_valid_score.<locals>.<genexpr> at 0x104471200>)
+
+tests/unit/test_relevance_engine.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_relevance_engine.py::test_nonfinite_model_output_is_not_clamped_into_a_valid_score
+1 failed, 176 passed in 1.34s

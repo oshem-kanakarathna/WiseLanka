@@ -1,0 +1,9 @@
+PASS: Business programme, source organisation and unknown admission status rendered
+PASS: reported vocational award leads to sourced conditional progression without admission guarantee
+PASS: IT MET
+PASS: Engineering NOT_ASSESSED
+PASS: Unmet Physics NOT_MET
+PASS: Missing Physics NOT_ASSESSED
+PASS: Missing rules NOT_ASSESSED
+PASS: both vocational progression edges sourced and non-guaranteed
+PASS: no JavaScript page errors
