@@ -1,7 +1,7 @@
 
 "use strict";
 
-const API_URL = "http://127.0.0.1:8000/personalised-recommendations";
+const API_URL = `${window.WISELANKA_API_BASE || "http://127.0.0.1:8000"}/personalised-recommendations`;
 
 const form = document.getElementById("learnerProfileForm");
 const educationLevel = document.getElementById("educationLevel");
@@ -21,7 +21,9 @@ const OL_OPTIONAL_SUBJECTS = [
     "History",
     "Geography",
     "Commerce",
-    "Art"
+    "Art", "Buddhism", "Hinduism", "Islam", "Christianity", "Catholicism",
+    "English Literature", "Music", "Dancing", "Drama", "Agriculture",
+    "Design and Technology", "Health and Physical Education", "Other subject"
 ];
 
 const OL_DEFAULT_SUBJECTS = [
@@ -56,60 +58,152 @@ function createOption(value, selected = false) {
     return option;
 }
 
-function createOlSubjects() {
-    additionalOlSubjects.replaceChildren();
+let olSubjectCount = 2;
+let qualificationCount = 0;
+let qualificationOptions = [];
 
-    OL_DEFAULT_SUBJECTS.forEach((defaultSubject, index) => {
-        const number = index + 3;
-
-        const row = createElement("div", "subject-row");
-
-        const label = createElement(
-            "label",
-            "",
-            `O/L Subject ${number}`
-        );
-
-        label.htmlFor = `olSubject${number}`;
-
-        const subjectSelect = createElement("select");
-        subjectSelect.id = `olSubject${number}`;
-
-        OL_OPTIONAL_SUBJECTS.forEach(subject => {
-            subjectSelect.appendChild(
-                createOption(subject, subject === defaultSubject)
-            );
-        });
-
-        const gradeSelect = createElement("select");
-        gradeSelect.id = `olGrade${number}`;
-        gradeSelect.setAttribute(
-            "aria-label",
-            `O/L subject ${number} grade`
-        );
-
-        // Start with no grade selected.
-        const placeholder = createOption("", true);
-        placeholder.textContent = "Select grade";
-        placeholder.disabled = true;
-        gradeSelect.appendChild(placeholder);
-
-        GRADES.forEach(grade => {
-            gradeSelect.appendChild(
-                createOption(grade)
-            );
-        });
-
-        row.append(label, subjectSelect, gradeSelect);
-        additionalOlSubjects.appendChild(row);
+function addOlSubject(defaultSubject = "") {
+    const number = ++olSubjectCount;
+    const row = createElement("div", "subject-row");
+    row.dataset.olRow = number;
+    const label = createElement("label", "", `O/L Subject ${number}`);
+    label.htmlFor = `olSubject${number}`;
+    const subject = createElement("select");
+    subject.id = `olSubject${number}`;
+    const used = new Set(Array.from(additionalOlSubjects.querySelectorAll("select.subject-select")).map(s => s.value));
+    const selected = defaultSubject || OL_OPTIONAL_SUBJECTS.find(s => !used.has(s) && s !== "Other subject");
+    subject.className = "subject-select";
+    OL_OPTIONAL_SUBJECTS.forEach(name => subject.appendChild(createOption(name, name === selected)));
+    const customLabel = createElement("label", "hidden", `Name of O/L subject ${number}`);
+    customLabel.htmlFor = `olCustom${number}`;
+    const custom = createElement("input", "hidden");
+    custom.id = `olCustom${number}`;
+    custom.maxLength = 100;
+    subject.addEventListener("change", () => {
+        const other = subject.value === "Other subject";
+        custom.classList.toggle("hidden", !other);
+        customLabel.classList.toggle("hidden", !other);
     });
+    const grade = createElement("select");
+    grade.id = `olGrade${number}`;
+    grade.setAttribute("aria-label", `O/L subject ${number} grade`);
+    const placeholder = createOption("", true);
+    placeholder.textContent = "Select grade";
+    placeholder.disabled = true;
+    grade.appendChild(placeholder);
+    GRADES.forEach(value => grade.appendChild(createOption(value)));
+    const unreported = createOption("NOT_REPORTED");
+    unreported.textContent = "Not reported";
+    grade.appendChild(unreported);
+    row.append(label, subject, grade, customLabel, custom);
+    if (number > 6) {
+        const remove = createElement("button", "secondary-button", `Remove subject ${number}`);
+        remove.type = "button";
+        remove.addEventListener("click", () => removeProfileRow(row, "addOlSubject"));
+        row.appendChild(remove);
+    }
+    additionalOlSubjects.appendChild(row);
+}
+
+function createOlSubjects() {
+    OL_DEFAULT_SUBJECTS.forEach(addOlSubject);
 }
 
 function updateEducationLevel() {
-    const isAL = educationLevel.value === "A_LEVEL";
+    alSubjects.classList.toggle("hidden", educationLevel.value !== "A_LEVEL");
+    olSubjects.classList.toggle("hidden", educationLevel.value !== "O_LEVEL");
+    document.getElementById("completeResultsLabel").classList.toggle("hidden", educationLevel.value === "NONE");
+    document.getElementById("educationComplete").checked = false;
+}
 
-    alSubjects.classList.toggle("hidden", !isAL);
-    olSubjects.classList.toggle("hidden", isAL);
+function removeProfileRow(row, addButtonId) {
+    const neighbour = row.nextElementSibling || row.previousElementSibling;
+    const target = neighbour?.querySelector("select, input, button") || document.getElementById(addButtonId);
+    row.remove();
+    target.focus();
+}
+
+function populateQualificationSelect(select) {
+    const selected = select.value;
+    select.replaceChildren();
+    const placeholder = createOption("");
+    placeholder.textContent = "Enter another award or choose a recorded qualification";
+    select.appendChild(placeholder);
+    qualificationOptions.forEach(qualification => {
+        const option = createOption(qualification.qualification_id);
+        option.textContent = qualification.qualification_name;
+        select.appendChild(option);
+    });
+    select.value = qualificationOptions.some(q => q.qualification_id === selected) ? selected : "";
+}
+
+function addQualification() {
+    const number = ++qualificationCount;
+    const row = createElement("div", "qualification-row");
+    const fields = {};
+    const select = createElement("select");
+    select.setAttribute("aria-label", `Recorded qualification ${number}`);
+    populateQualificationSelect(select);
+    row.appendChild(select);
+    [["title", "Award title"], ["framework", "Framework (optional)"], ["level", "Level (optional)"]].forEach(([key, text]) => {
+        const label = createElement("label", "", `${text} — qualification ${number}`);
+        const input = createElement("input");
+        input.id = `qualification-${number}-${key}`;
+        input.maxLength = key === "title" ? 160 : key === "framework" ? 80 : 40;
+        input.dataset.qualificationField = key;
+        label.htmlFor = input.id;
+        fields[key] = input;
+        row.append(label, input);
+    });
+    select.addEventListener("change", () => {
+        const choice = qualificationOptions.find(q => q.qualification_id === select.value);
+        fields.title.value = choice?.qualification_name || "";
+        fields.framework.value = choice?.framework_name || "";
+        fields.level.value = choice?.framework_level || "";
+    });
+    // Editing a catalogue value turns it into a custom self-report.
+    Object.values(fields).forEach(input => input.addEventListener("input", () => { select.value = ""; }));
+    const remove = createElement("button", "secondary-button", `Remove qualification ${number}`);
+    remove.type = "button";
+    remove.addEventListener("click", () => removeProfileRow(row, "addQualification"));
+    row.appendChild(remove);
+    document.getElementById("qualificationRows").appendChild(row);
+    fields.title.focus();
+}
+
+async function loadProfileOptions() {
+    const status = document.getElementById("profileOptionsStatus");
+    const retry = document.getElementById("retryProfileOptions");
+    retry.classList.add("hidden");
+    try {
+        const response = await fetch(API_URL.replace("personalised-recommendations", "profile-options"));
+        if (!response.ok) throw new Error("Choices unavailable");
+        const data = await response.json();
+        if (!Array.isArray(data.skills) || !Array.isArray(data.qualifications)) throw new Error("Invalid choices");
+        qualificationOptions = data.qualifications;
+        document.querySelectorAll(".qualification-row select").forEach(populateQualificationSelect);
+        const choices = document.getElementById("skillChoices");
+        const previousReports = new Map(Array.from(choices.querySelectorAll("[data-skill-id]")).map(input => [input.dataset.skillId, input.value]));
+        choices.replaceChildren();
+        data.skills.forEach(skill => {
+            const label = createElement("label", "", skill.skill_name);
+            const select = createElement("select");
+            select.id = `skill-${skill.skill_id}`;
+            select.dataset.skillId = skill.skill_id;
+            label.htmlFor = select.id;
+            [["", "Not reported"], ["REPORTED", "I report this skill"], ["DEVELOPMENT_OPPORTUNITY", "I want to develop this skill"]].forEach(([value, text]) => {
+                const option = createOption(value);
+                option.textContent = text;
+                select.appendChild(option);
+            });
+            select.value = previousReports.get(skill.skill_id) || "";
+            choices.append(label, select);
+        });
+        status.textContent = "Choices loaded from the current knowledge base. You may leave all skills unreported.";
+    } catch {
+        status.textContent = "Skill and recorded qualification choices could not be loaded. You can still enter examination results or an award manually; retry to report skills.";
+        retry.classList.remove("hidden");
+    }
 }
 
 function readSubjectResults(subjectIds, gradeIds, missingGrades = []) {
@@ -117,23 +211,28 @@ function readSubjectResults(subjectIds, gradeIds, missingGrades = []) {
     const usedSubjects = new Set();
 
     subjectIds.forEach((subjectId, index) => {
-        const subject = document.getElementById(subjectId).value;
+        let subject = document.getElementById(subjectId).value;
+        if (subject === "Other subject") {
+            subject = document.getElementById(subjectId.replace("olSubject", "olCustom")).value.trim();
+            if (!subject) throw new Error("Enter a name for each other O/L subject.");
+        }
         const grade = document.getElementById(gradeIds[index]).value;
 
         if (!grade) {
             missingGrades.push(subject);
         }
 
-        if (usedSubjects.has(subject)) {
+        if (usedSubjects.has(subject.trim().toLowerCase())) {
             throw new Error(
                 `You selected "${subject}" more than once. ` +
                 "Please select different subjects."
             );
         }
 
-        usedSubjects.add(subject);
+        usedSubjects.add(subject.trim().toLowerCase());
 
-        if (grade) {
+        if (grade && grade !== "NOT_REPORTED") {
+            if (!GRADES.includes(grade)) throw new Error(`Invalid grade for ${subject}.`);
             results[subject] = grade;
         }
     });
@@ -143,6 +242,7 @@ function readSubjectResults(subjectIds, gradeIds, missingGrades = []) {
 
 function collectEducation() {
     const missingGrades = [];
+    if (educationLevel.value === "NONE") return {};
 
     if (educationLevel.value === "A_LEVEL") {
         const alResults = readSubjectResults(
@@ -177,11 +277,13 @@ function collectEducation() {
         missingGrades.push("English");
     }
 
+    const rowNumbers = Array.from(additionalOlSubjects.querySelectorAll("[data-ol-row]")).map(row => row.dataset.olRow);
     const optionalResults = readSubjectResults(
-        ["olSubject3", "olSubject4", "olSubject5", "olSubject6"],
-        ["olGrade3", "olGrade4", "olGrade5", "olGrade6"],
-        missingGrades
+        rowNumbers.map(n => `olSubject${n}`), rowNumbers.map(n => `olGrade${n}`), missingGrades
     );
+    if (Object.keys(optionalResults).some(name => ["mathematics", "english"].includes(name.toLowerCase()))) {
+        throw new Error("Mathematics or English was selected more than once.");
+    }
 
     if (missingGrades.length > 0) {
         throw new Error(
@@ -190,13 +292,10 @@ function collectEducation() {
         );
     }
 
-    return {
-        O_LEVEL: {
-            Mathematics: mathematicsGrade,
-            English: englishGrade,
-            ...optionalResults
-        }
-    };
+    const results = { ...optionalResults };
+    if (mathematicsGrade !== "NOT_REPORTED") results.Mathematics = mathematicsGrade;
+    if (englishGrade !== "NOT_REPORTED") results.English = englishGrade;
+    return { O_LEVEL: results };
 }
 
 function collectProfile() {
@@ -219,9 +318,28 @@ function collectProfile() {
         preferences.district = district;
     }
 
+    const education = collectEducation();
+    const qualifications = Array.from(document.querySelectorAll(".qualification-row")).map(row => {
+        const award = { qualification_id: row.querySelector("select").value };
+        row.querySelectorAll("[data-qualification-field]").forEach(input => { award[input.dataset.qualificationField] = input.value.trim(); });
+        if (!award.title) throw new Error("Enter a title for each existing qualification or remove the empty row.");
+        return award;
+    });
+    if (!Object.values(education).some(results => Object.keys(results).length) && !qualifications.length) {
+        throw new Error("Provide examination results or add an existing qualification.");
+    }
+    if (document.getElementById("educationComplete").checked &&
+        Object.keys(education).length &&
+        (educationLevel.value === "O_LEVEL" ? olSubjects : alSubjects).querySelector('select option[value="NOT_REPORTED"]:checked')) {
+        throw new Error("Some results are marked not reported. Uncheck the complete-results confirmation or enter those results.");
+    }
     return {
         learner_profile: {
-            education: collectEducation(),
+            education,
+            learner_category: document.getElementById("learnerCategory").value,
+            existing_qualifications: qualifications,
+            self_reported_skills: Array.from(document.querySelectorAll("[data-skill-id]")).filter(input => input.value).map(input => ({skill_id: input.dataset.skillId, status: input.value})),
+            education_complete: educationLevel.value === "NONE" ? {} : {[educationLevel.value]: document.getElementById("educationComplete").checked},
             interests,
             career_goal_id: document.getElementById("careerGoal").value,
             preferences
@@ -233,6 +351,7 @@ function showStatus(message, isError = false) {
     statusMessage.textContent = message;
     statusMessage.classList.toggle("error", isError);
     statusMessage.classList.remove("hidden");
+    if (isError) statusMessage.focus();
 }
 
 function hideStatus() {
@@ -392,7 +511,7 @@ function describePreferences(assessment) {
     return descriptions.join(" ");
 }
 
-function appendOfficialLink(card, programme) {
+function appendOfficialLink(card, programme, linkText = "View programme information ↗") {
     const url = programme.application_url;
 
     if (typeof url !== "string" || !url.trim()) {
@@ -419,7 +538,7 @@ function appendOfficialLink(card, programme) {
     const link = createElement(
         "a",
         "",
-        "View programme information ↗"
+        linkText
     );
 
     link.href = parsedUrl.href;
@@ -461,6 +580,54 @@ function appendAcademicProgression(card, programme) {
     card.appendChild(section);
 }
 
+function appendAcademicInsights(card, insight) {
+    if (!insight) return;
+    appendDetail(card, `Academic requirements: ${formatStatus(insight.status)}`, insight.next_step);
+    (insight.groups || []).forEach(group => {
+        const section = createElement("section", "recommendation-detail academic-gap-group");
+        section.appendChild(createElement("strong", "", `${formatStatus(group.status)} — ${group.operator === "OR" ? "one accepted option required" : "all requirements in this group required"}`));
+        const list = createElement("ul");
+        (group.requirements || []).forEach(requirement => {
+            const item = createElement("li", "", `${formatStatus(requirement.status)}: ${requirement.description || "Recorded requirement"}. ${requirement.explanation}`);
+            if (requirement.source_url) appendOfficialLink(item, {application_url: requirement.source_url}, "Requirement source ↗");
+            list.appendChild(item);
+        });
+        section.appendChild(list);
+        card.appendChild(section);
+    });
+}
+
+function renderLearnerInsights(data) {
+    const panel = document.getElementById("learnerInsights");
+    panel.replaceChildren();
+    if (Array.isArray(data.existing_qualifications) && data.existing_qualifications.length) {
+        appendDetail(panel, "Your reported qualifications", data.existing_qualifications.map(q => [q.title, q.framework, q.level].filter(Boolean).join(" · ")).join("; "));
+        appendDetail(panel, "Qualification assessment limits", data.qualification_note);
+    }
+    const skills = data.learner_skill_insights;
+    if (skills) {
+        panel.appendChild(createElement("h3", "", "Your skills and development interests"));
+        appendDetail(panel, "Self-report comparison", skills.explanation);
+        appendDetail(panel, "Knowledge-base evidence limit", skills.evidence_note);
+        const labels = {REPORTED: "Reported by you; competence not verified", DEVELOPMENT_OPPORTUNITY: "Development opportunity selected by you", UNREPORTED: "Not reported; not assessed"};
+        const list = createElement("ul", "learner-skill-list");
+        (skills.career_requirements || []).forEach(skill => {
+            list.appendChild(createElement("li", "", `${skill.skill_name}: ${labels[skill.report_status]}. Recorded career level: ${skill.expected_level || "not recorded"}. ${skill.explanation}`));
+        });
+        panel.appendChild(list);
+        const outside = (skills.reported_skills || []).filter(report => !(skills.career_requirements || []).some(skill => skill.skill_id === report.skill_id));
+        if (outside.length) appendDetail(panel, "Other self-reports (career relevance not assessed)", outside.map(skill => `${skill.skill_name}: ${labels[skill.report_status]}`).join("; "));
+    }
+    if (!data.recommendations.length && Array.isArray(data.academic_insights)) {
+        data.academic_insights.forEach(insight => {
+            const card = createElement("article", "recommendation-card");
+            card.appendChild(createElement("h3", "", insight.programme_name));
+            appendAcademicInsights(card, insight);
+            panel.appendChild(card);
+        });
+    }
+}
+
 function createRecommendationCard(programme) {
     const card = createElement(
         "article",
@@ -499,7 +666,8 @@ function createRecommendationCard(programme) {
     );
 
     // The backend uses "category" for academic eligibility.
-    const category = programme.category || "NOT_ASSESSED";
+    const category = programme.academic_gap_insights?.status === "NOT_ASSESSED"
+        ? "NOT_ASSESSED" : programme.category || "NOT_ASSESSED";
 
     metadata.appendChild(
         createElement(
@@ -509,7 +677,7 @@ function createRecommendationCard(programme) {
         )
     );
 
-    if (typeof programme.academic_match_score === "number") {
+    if (category !== "NOT_ASSESSED" && typeof programme.academic_match_score === "number") {
         metadata.appendChild(
             createElement(
                 "span",
@@ -551,7 +719,8 @@ function createRecommendationCard(programme) {
     );
 
     appendAcademicProgression(card, programme);
-    appendEvidence(card, programme);
+    if (programme.academic_gap_insights) appendAcademicInsights(card, programme.academic_gap_insights);
+    else appendEvidence(card, programme);
     appendOfficialLink(card, programme);
 
     return card;
@@ -568,6 +737,7 @@ function renderRecommendations(data) {
     }
 
     const programmes = data.recommendations;
+    renderLearnerInsights(data);
 
     if (programmes.length === 0) {
         resultsSummary.classList.add("hidden");
@@ -605,6 +775,7 @@ async function submitLearnerProfile(event) {
     event.preventDefault();
 
     recommendationList.replaceChildren();
+    document.getElementById("learnerInsights").replaceChildren();
     resultsSummary.replaceChildren();
     resultsSummary.classList.add("hidden");
 
@@ -635,7 +806,9 @@ async function submitLearnerProfile(event) {
         if (!response.ok) {
             const detail = typeof data.detail === "string"
                 ? data.detail
-                : "The API could not process this profile.";
+                : Array.isArray(data.detail)
+                    ? data.detail.map(error => `${(error.loc || []).slice(1).join(" / ")}: ${error.msg}`).join("; ")
+                    : "The API could not process this profile.";
 
             throw new Error(detail);
         }
@@ -653,8 +826,20 @@ async function submitLearnerProfile(event) {
     }
 }
 
+["olMathematics", "olEnglish", "alGrade1", "alGrade2", "alGrade3"].forEach(id => {
+    const option = createOption("NOT_REPORTED");
+    option.textContent = "Not reported";
+    document.getElementById(id).appendChild(option);
+});
 createOlSubjects();
 updateEducationLevel();
+document.getElementById("addOlSubject").addEventListener("click", () => {
+    addOlSubject();
+    document.getElementById(`olSubject${olSubjectCount}`).focus();
+});
+document.getElementById("addQualification").addEventListener("click", addQualification);
+document.getElementById("retryProfileOptions").addEventListener("click", loadProfileOptions);
+loadProfileOptions();
 
 educationLevel.addEventListener(
     "change",

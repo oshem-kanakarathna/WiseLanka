@@ -3,7 +3,10 @@ from typing import Any, Dict, Union
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+
+from backend.app.personalisation.models import LearnerProfile
+from backend.app.data_loader import load_csv
 
 from backend.app.eligibility.engine import (
     evaluate_programme,
@@ -110,32 +113,6 @@ class ScholarshipEligibilityRequest(BaseModel):
 # Personalisation request models
 # ----------------------------------------
 
-class LearnerProfile(BaseModel):
-    """
-    Structured learner profile.
-
-    Education accepts both existing formats:
-
-    1. Flat A/L results:
-       {"Physics": "B", "Chemistry": "C"}
-
-    2. Nested education levels:
-       {"A_LEVEL": {"Physics": "B"}}
-    """
-
-    education: StudentResults
-
-    interests: list[str] = Field(
-        default_factory=list
-    )
-
-    career_goal_id: str = ""
-
-    preferences: Dict[str, Any] = Field(
-        default_factory=dict
-    )
-
-
 class PersonalisedRecommendationRequest(BaseModel):
     learner_profile: LearnerProfile
 
@@ -213,6 +190,21 @@ def get_recommendations(
 # NEW: Personalised recommendation endpoint
 # ----------------------------------------
 
+@app.get("/profile-options")
+def get_profile_options():
+    """Read-only choices from the existing CSV knowledge base."""
+    return {
+        "skills": [
+            {"skill_id": row["skill_id"], "skill_name": row["skill_name"]}
+            for row in load_csv("reference/skills.csv") if row.get("active_status") == "Active"
+        ],
+        "qualifications": [
+            {key: row[key] for key in ("qualification_id", "qualification_name", "framework_name", "framework_level")}
+            for row in load_csv("reference/qualifications.csv") if row.get("active_status") == "Active"
+        ],
+    }
+
+
 @app.post("/personalised-recommendations")
 def get_personalised_recommendations(
     request: PersonalisedRecommendationRequest,
@@ -223,6 +215,13 @@ def get_personalised_recommendations(
 
     Academic eligibility is never overridden by
     interests or career preferences.
+
+    Canonical evidence-aware academic status is in
+    recommendations[].academic_gap_insights.status and academic_insights[].status:
+    MET, NOT_MET or NOT_ASSESSED. NOT_ASSESSED is neither eligibility nor rejection.
+    Legacy eligible/category/match_score fields remain unchanged for compatibility
+    and must not override this status when input or source evidence is missing.
+    Reported qualifications and skills do not verify admission equivalence or competence.
     """
 
     try:

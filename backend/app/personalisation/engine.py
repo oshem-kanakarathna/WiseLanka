@@ -9,6 +9,10 @@ as evidence that a programme is unsuitable.
 from typing import Any, Dict, List
 
 from backend.app.recommendation.engine import recommend_programmes
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import assess_academic_gaps
+from backend.app.skills.engine import assess_learner_skills
+from backend.app.personalisation.models import LearnerProfile
 
 
 RELEVANCE_SCORES = {
@@ -187,9 +191,11 @@ def personalise_recommendations(
     if not isinstance(learner_profile, dict):
         raise ValueError("learner_profile must be an object.")
 
+    learner_profile = LearnerProfile.model_validate(learner_profile).model_dump()
+
     education = learner_profile.get("education")
 
-    if not isinstance(education, dict) or not education:
+    if not isinstance(education, dict) or (not education and not learner_profile["existing_qualifications"]):
         raise ValueError(
             "learner_profile.education must contain qualification results."
         )
@@ -206,6 +212,16 @@ def personalise_recommendations(
         raise ValueError("preferences must be an object.")
 
     existing_recommendations = recommend_programmes(education)
+    skills = assess_learner_skills(career_goal_id, learner_profile["self_reported_skills"])
+    assessed_programmes = existing_recommendations or [
+        row for row in load_csv("reference/programmes.csv") if row.get("programme_status") == "Active"
+    ]
+    academic_insights = [
+        {**assess_academic_gaps(item["programme_id"], education, learner_profile["education_complete"]),
+         "programme_name": item["programme_name"]}
+        for item in assessed_programmes
+    ]
+    gaps_by_id = {item["programme_id"]: item for item in academic_insights}
     personalised = []
 
     for programme in existing_recommendations:
@@ -227,6 +243,7 @@ def personalise_recommendations(
             "preference_assessment": preference_assessment,
             "personal_suitability_score": career_assessment["score"],
             "personal_suitability_status": career_assessment["status"],
+            "academic_gap_insights": gaps_by_id[programme["programme_id"]],
         })
 
     # Keep academic eligibility as the primary ordering.
@@ -247,6 +264,11 @@ def personalise_recommendations(
         "count": len(personalised),
         "recommendations": personalised,
         "assessment_method": "RULE_BASED_PERSONALISATION_V1",
+        "learner_category": learner_profile["learner_category"],
+        "existing_qualifications": learner_profile["existing_qualifications"],
+        "qualification_note": "Awards are self-reported context only. Their authenticity, equivalence and admission eligibility have not been verified.",
+        "academic_insights": academic_insights,
+        "learner_skill_insights": skills,
         "disclaimer": (
             "Academic eligibility is based on curated requirements. "
             "Career suitability uses documented programme-career "

@@ -1,0 +1,72 @@
+{
+  "started_utc": "2026-10-29T07:18:15.572967+00:00",
+  "baseline_commit": "e79e883",
+  "api_base": "http://127.0.0.1:8011",
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "backend-tests.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "frontend/browser_tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "frontend-tests.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_integration_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-integration.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_learner_gap_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp1.txt"
+    }
+  ],
+  "sha256": {
+    "backend/app/api/main.py": "a2c1132a2016005fb5e4138a09cb06085fff5bc8336a3687ac0fcb6bbbc83d15",
+    "backend/app/eligibility/engine.py": "8485eedb335465c9e968750a73b70e2dc83d18a7afd5f12ce5c6672f057b7747",
+    "backend/app/personalisation/models.py": "0e01e8e696ed072da5f039e91e03d9270716f2187b627eae03beb1c18faa572d",
+    "backend/app/personalisation/engine.py": "e460ce0d5df3f62505edeb6fdb5aa8de486a6b7c6ae1b61f8a2ef95d9d4044e9",
+    "backend/app/skills/engine.py": "f23c7160346bb7917c71a8c210bb3b8864df436d5590701e9c9168ecc8d24439",
+    "frontend/components/learner-profile.js": "fc99316c87e204d999465b0f6589d253cfbfb2e92fd7a6047867f18186685e2a",
+    "frontend/components/learner-profile.css": "dde8a951350ed9b0c5d9e8c474cf22189da79fb444e0f6b6b303f10a9daea58c",
+    "frontend/pages/learner-profile.html": "297e80d1e6e5e57f251e65d1ec998958fca686be16b6a887ea8b2c95156c3ef0",
+    "frontend/browser_tests/test_learner_gaps.py": "6f558048d6a2d5311b508f82b96a782d09b766b257efde71cf64dbfd6a28518b",
+    "frontend/browser_tests/live_integration_check.py": "671f095b6557421fed16df614ae0ff077e5e3ca0b95d71619d5a19b436b302af",
+    "frontend/browser_tests/live_learner_gap_check.py": "0a12bb55ac50840154e094598ee39f7b345d96766a125da8c0c80608b4e778a0",
+    "tests/integration/test_learner_gap_api.py": "0484436e11c3a8f2e5d2c41b62a31a47e343bb402866a8f0a3cdeed10d8beac7",
+    "tests/unit/test_academic_gap_insights.py": "46ac3f89ba4e6e057c61f652fdb8e5dc90aee50ca3a8c264b31e499fb32896e8",
+    "docs/evidence/wp1/live-wp1.txt": "0526c1a848bb39e90d10cbf614ca2c60e7aebebb280a919e4b47bb22993fc892",
+    "docs/evidence/wp1/frontend-tests.txt": "2b0c1edc59d7bb1b87b4807e115f1495bc8f65edb602a63595a6d5a31eef154a",
+    "docs/evidence/wp1/live-integration.txt": "f69a6e64ac32f86a602269bb9f2dcb189a6891d36957550770c76b3cff3b22cf",
+    "docs/evidence/wp1/backend-tests.txt": "6349c57582c65c2baa09d9c48121b6be51a162a5ceec3d50af9184171a7e1312",
+    "docs/evidence/wp1/mobile-skill-insights.png": "d05e5aaee48bfa5b79286b9af7825ee190ce9fd43126b36fc87aa6465af158f0",
+    "docs/evidence/wp1/qualification-only.png": "1cc33f434e166d0ec1ae56ab3713c9b1bfcd728144f5655765e924b4c89885b6",
+    "docs/evidence/wp1/nine-subject-results.png": "3230de869efe1619f15c75f2688798cc885707f7f3b89db51796f4129335f51f"
+  },
+  "finished_utc": "2026-10-29T07:18:26.794412+00:00"
+}

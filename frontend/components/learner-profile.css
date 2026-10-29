@@ -536,3 +536,28 @@ a:focus-visible {
     font-size: 12px;
     font-weight: 700;
 }
+
+/* WP1 profile extensions use the existing responsive workspace. */
+input:not([type="checkbox"]) {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font: inherit;
+}
+.secondary-button {
+    margin: 10px 0;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    color: var(--primary);
+    cursor: pointer;
+}
+.qualification-row { margin-bottom: 18px; }
+.academic-gap-group, #learnerInsights { overflow-wrap: anywhere; }
+.academic-gap-group ul, .learner-skill-list { padding-left: 20px; }
+.learner-skill-list li { margin-bottom: 12px; }
+:where(input, select, button, a):focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }

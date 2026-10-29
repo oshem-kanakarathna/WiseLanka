@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../components/learner-profile.css?v=20261020-2">
 
-    <script src="../components/learner-profile.js?v=4" defer></script>
+    <script src="../components/learner-profile.js?v=5" defer></script>
 </head>
 
 <body>
@@ -75,6 +75,16 @@
                 </div>
 
                 <form id="learnerProfileForm">
+                    <fieldset class="form-section">
+                        <legend>Your learner context</legend>
+                        <label for="learnerCategory">Learner category</label>
+                        <select id="learnerCategory">
+                            <option value="AL_LEARNER">A/L learner</option>
+                            <option value="VOCATIONAL_LEARNER">Vocational learner</option>
+                            <option value="EARLY_CAREER">Early-career user</option>
+                        </select>
+                        <p class="field-help">Category describes your context; it does not change admission rules.</p>
+                    </fieldset>
 
                     <fieldset class="form-section">
                         <legend>
@@ -89,6 +99,7 @@
                         <select id="educationLevel" required>
                             <option value="A_LEVEL">GCE Advanced Level</option>
                             <option value="O_LEVEL">GCE Ordinary Level</option>
+                            <option value="NONE">Existing qualification only</option>
                         </select>
 
                         <p class="field-help">
@@ -217,11 +228,29 @@
 
                             <div id="additionalOlSubjects"></div>
 
-                            <p class="field-help">
-                                The prototype currently collects six O/L
-                                subjects for supported foundation pathways.
-                            </p>
+                            <button type="button" id="addOlSubject" class="secondary-button">Add another O/L subject</button>
+                            <p class="field-help">Enter all available results, including nine subjects where applicable. Six-subject profiles remain supported. Use “Not reported” for an unavailable result; nine subjects are not required by every programme.</p>
                         </div>
+                        <label class="choice" id="completeResultsLabel">
+                            <input type="checkbox" id="educationComplete">
+                            I have entered all my examination results for this level.
+                        </label>
+                        <p class="field-help">If unchecked, insufficient subject counts remain not assessed. A supplied grade below a required minimum can still show an unmet requirement.</p>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>Existing qualifications (optional)</legend>
+                        <p class="field-help">Record awards you already hold. Titles and framework levels are self-reported; they do not establish equivalence or admission eligibility. Do not enter certificate numbers or personal identifiers.</p>
+                        <div id="qualificationRows"></div>
+                        <button type="button" id="addQualification" class="secondary-button">Add an existing qualification</button>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>Self-reported skills (optional)</legend>
+                        <p class="field-help">Choose “I report this skill” or “I want to develop this skill”. Leaving a skill unreported does not mean you lack it. No competence test is performed.</p>
+                        <p id="profileOptionsStatus" class="field-help" role="status">Loading skill and qualification choices…</p>
+                        <button type="button" id="retryProfileOptions" class="secondary-button hidden">Retry loading choices</button>
+                        <div id="skillChoices"></div>
                     </fieldset>
 
                     <fieldset class="form-section">
@@ -351,13 +380,15 @@
                     </p>
                 </div>
 
-                <div id="statusMessage" class="status-message" role="status"
-                     aria-live="polite">
+                <div id="statusMessage" class="status-message" role="status" tabindex="-1"
+                     aria-live="polite" aria-atomic="true">
                     Complete your profile and select
                     “Find My Personalised Pathways” to begin.
                 </div>
 
                 <div id="resultsSummary" class="results-summary hidden"></div>
+
+                <div id="learnerInsights" aria-label="Learner-specific insights"></div>
 
                 <div id="recommendationList" class="recommendation-list"></div>
 
