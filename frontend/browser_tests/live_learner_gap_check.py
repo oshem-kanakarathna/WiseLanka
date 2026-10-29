@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 
 PAGE_URL = 'http://127.0.0.1:5500/frontend/pages/learner-profile.html'
 API_BASE = os.environ.get('WISELANKA_API_BASE', 'http://127.0.0.1:8000')
-EVIDENCE = Path(__file__).resolve().parents[2] / 'docs' / 'evidence' / 'wp1'
+EVIDENCE = Path(os.environ.get('WISELANKA_EVIDENCE_DIR', str(Path(__file__).resolve().parents[2] / 'docs' / 'evidence' / 'wp1')))
 
 
 def main():

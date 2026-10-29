@@ -1,15 +1,19 @@
 
 from typing import Any, Dict, Union
 
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from contextlib import asynccontextmanager
 
-from backend.app.personalisation.models import LearnerProfile
-from backend.app.data_loader import load_csv
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field, field_validator
+
+from backend.app.personalisation.models import LearnerProfile, ExistingQualification
+from backend.app.data_loader import load_csv, KnowledgeDataError
+from backend.app.data_integrity import validate_catalogue
 
 from backend.app.eligibility.engine import (
-    evaluate_programme,
+    evaluate_programme, assess_academic_gaps,
 )
 
 from backend.app.eligibility.explainer import (
@@ -60,7 +64,14 @@ ScholarshipProfile = Dict[str, Any]
 # Create WiseLanka API
 # ----------------------------------------
 
+@asynccontextmanager
+async def lifespan(app):
+    validate_catalogue()
+    yield
+
+
 app = FastAPI(
+    lifespan=lifespan,
     title="WiseLanka API",
     description=(
         "Education and career pathway intelligence "
@@ -68,6 +79,14 @@ app = FastAPI(
     ),
     version="0.6.0",
 )
+
+
+@app.exception_handler(FileNotFoundError)
+@app.exception_handler(KnowledgeDataError)
+async def knowledge_data_error(request, error):
+    return JSONResponse(status_code=503, content={
+        "detail": "Educational knowledge data is unavailable or invalid. No eligibility decision was made."
+    })
 
 
 # ----------------------------------------
@@ -92,17 +111,27 @@ app.add_middleware(
 # Existing request models
 # ----------------------------------------
 
-class EligibilityRequest(BaseModel):
+class ExamResultsRequest(BaseModel):
+    student_results: StudentResults
+
+    @field_validator("student_results")
+    @classmethod
+    def validate_results(cls, value):
+        return LearnerProfile.validate_results(value)
+
+
+class EligibilityRequest(ExamResultsRequest):
     programme_id: str
-    student_results: StudentResults
+    existing_qualifications: list[ExistingQualification] = Field(default_factory=list)
+    education_complete: Dict[str, bool] = Field(default_factory=dict)
 
 
-class RecommendationRequest(BaseModel):
-    student_results: StudentResults
+class RecommendationRequest(ExamResultsRequest):
+    pass
 
 
-class AlternativePathwayRequest(BaseModel):
-    student_results: StudentResults
+class AlternativePathwayRequest(ExamResultsRequest):
+    pass
 
 
 class ScholarshipEligibilityRequest(BaseModel):
@@ -158,11 +187,13 @@ def check_eligibility(
     technical_result = evaluate_programme(
         request.programme_id,
         request.student_results,
+        [item.model_dump() for item in request.existing_qualifications],
     )
-
-    explanation = build_explanation(
-        technical_result
+    insight = assess_academic_gaps(
+        request.programme_id, request.student_results, request.education_complete,
+        [item.model_dump() for item in request.existing_qualifications],
     )
+    explanation = build_explanation(technical_result, insight)
 
     return explanation
 
@@ -229,6 +260,8 @@ def get_personalised_recommendations(
             request.learner_profile.model_dump()
         )
 
+    except KnowledgeDataError:
+        raise
     except ValueError as error:
         raise HTTPException(
             status_code=422,

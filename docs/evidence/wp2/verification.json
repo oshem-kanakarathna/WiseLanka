@@ -1,0 +1,122 @@
+{
+  "started_utc": "2026-10-29T08:31:20.220266+00:00",
+  "checks": [
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "backend-tests.txt"
+    },
+    {
+      "command": [
+        "/private/tmp/wiselanka-repro-venv/bin/python",
+        "-m",
+        "backend.app.data_integrity"
+      ],
+      "exit_code": 0,
+      "log": "integrity.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "frontend/browser_tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "browser-tests.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_integration_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-original.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_learner_gap_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp1.txt"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "frontend/browser_tests/live_wp2_check.py"
+      ],
+      "exit_code": 0,
+      "log": "live-wp2.txt"
+    }
+  ],
+  "finished_utc": "2026-10-29T08:32:28.524327+00:00",
+  "source_sha256": {
+    "backend/app/alternative_pathways/engine.py": "9149493a59c09213b5b7df5bc5fe4e57efc891f151a821b15af0c8c50592719b",
+    "backend/app/api/main.py": "e983d1c944a8538a02be4449c8e6beef879d0aa0a84d94437522ab676faa1a1e",
+    "backend/app/data_loader.py": "475b9c099b08d1b0b9c5d12316a607695acc7a43be3728266b7a8492d2294c84",
+    "backend/app/eligibility/__init__.py": "a1d055f45688fe5a5d03ae3189f8b576ac3ff056214a8fa009d09074c0cdb0e8",
+    "backend/app/eligibility/engine.py": "ece5cd24cf793673e406ceaa443da54bc72dc8ca3b55c1eeaa57e454c0d1f4d3",
+    "backend/app/eligibility/explainer.py": "6e9f8657242fb7006ef0f1e192e46bef85ca0c2e225336cb365d972d5a361dad",
+    "backend/app/personalisation/engine.py": "9884186eab1077467f936128db3b06c3103424ae682ffea4fca64f101dd0dc86",
+    "backend/app/progression/engine.py": "e128b7bca4a1a7d26dbc0330a4f32b4e682ebb750fddb9c7f3bc2053425aa453",
+    "backend/app/recommendation/engine.py": "edb417fbb4276e3cbaaab22bd11f6222df38084e030fa9e05b547dd7095f9e6b",
+    "backend/app/scholarships/engine.py": "dd914ebe8e19880f9ce4d2a91122bcafd43f32224b12df74c584e0689cc545db",
+    "data/metadata/evidence_sources.csv": "012778360a1dece16e6db5b531e2823b94272585c3f2131bb0ae9bee4ae91f42",
+    "data/metadata/recognition_records.csv": "0dba02e52ffd9313f20aba38813e9bcdda1f9b02aea4854b3bf708a9f7165a43",
+    "data/reference/institutions.csv": "2845b052a27b51c5391d787e7ecb1764eb367b496e4ae14394426d13614ef85f",
+    "data/reference/programmes.csv": "b32493ab8d07f72ba5bdbe835fd70c290e000bc9f3569e81b14ed97e494c0254",
+    "data/reference/qualifications.csv": "fecd0f0735390a5c1a658ef5e7cf082741dc2f7825c9949a90b8b21c8408a987",
+    "data/relationships/programme_entry_requirements.csv": "4b3ebb6df74a926309b8c043cfabe9d39298fb21ac4adda8e11b066a10a66e5c",
+    "data/relationships/qualification_progression.csv": "52188cc3c16bcd8fc0d4e1df269610e3d265266b47f680cef3cda67e1f715a11",
+    "frontend/browser_tests/live_learner_gap_check.py": "b89c7088d198894b9a3985d45c5ac2830f3c0df19f33bcf576e50de2294d0f48",
+    "frontend/components/eligibility.js": "45bc043103aa7bcbdd07761a4579c21bd697896bccb7dbf35bfa153c06564ee4",
+    "frontend/components/learner-profile.js": "ae99c7d0423a4f910afa066215949195ef8250213596f13ce35b8ed7ee496c0a",
+    "frontend/components/recommendations.js": "4da7f04441ed24a36449b332000f8bdeee0a7c13ca61ac88564baf7cd8d8dd97",
+    "tests/integration/test_learner_gap_api.py": "77eea28695ccd14a362ea614a95129427b366a3ceb562b1b5f01de023e5aa56f",
+    "tests/integration/test_personalisation_api.py": "bd2e4077e96d72b218d2868fe3cd27d7e0d9406f37b3bbbf9a9c09e54ab26e37",
+    "tests/integration/test_progression_api.py": "d6980a27d325f9b9ad770882c03a8f782af087140930b2802ae76d1c468083fb",
+    "tests/integration/test_recommendation_api.py": "7f986255bdb8a2867010137c1c171180ab79235be74bfef71fce8e7dc1168b3a",
+    "tests/unit/test_alternative_pathways_engine.py": "1eb75c68655b5e30b2b2052ba418d3c7ac3395f7ef65bf74a70cac090d23642f",
+    "tests/unit/test_progression_engine.py": "80f95af7e30fcbebc5c40887e3c561d7c9c73983cc705fda85056fedb4f73b47",
+    "tests/unit/test_recommendation_engine.py": "9b68561c22118d4f6850dab6b8fb14ddb1d0494b041d87fb76a82732ad4b4378",
+    "backend/app/data_integrity.py": "89b1b8005a6b709e136dac1ba7330f6e79bfc12c6e860c558e5b2a58177d91cc",
+    "tests/unit/test_data_integrity.py": "6b51a059b10b1e78cae6a0b7bfd8abfad9e64261a2341432d31203049b531a01",
+    "tests/integration/test_wp2_scenarios.py": "d62231d47ab5a11d19e3397503b43e5e0db5b7b3e5e7ddc9e11d3232e4247e6f",
+    "frontend/browser_tests/test_wp2_rendering.py": "f41bff9c7fdc7e5d258668d2d7fbb1dfc2d88a5d2058b32f5cc378cbb3a7f405",
+    "frontend/browser_tests/live_wp2_check.py": "cfd0edad9054469f772211ff4f7bca6df911309dd10dc7d561f0e810dcd2eab3"
+  },
+  "dataset_sha256": {
+    "data/master/programme_types.csv": "67bc67ec4efd7b021ca450308d0eb94c6cc06a46909a3c625234f27181ed93e4",
+    "data/master/study_modes.csv": "7defd3d638f75d1ee6f64424dbd501114f28c03a24341bcddace015afd48515e",
+    "data/master/institution_types.csv": "3b7e19f604c14c33435f459ea35a49dded5034dcd6dd16443bb075e28de3e2ba",
+    "data/master/qualification_frameworks.csv": "d25aa3404cd3739a944942149c5a87a77335d3e76fb48312fe7b2e27a1daff19",
+    "data/master/qualification_types.csv": "80d925f7c3099859bdc11b00170d83d2a57fb1ad55cdb7fc238d6f78ed78c854",
+    "data/relationships/qualification_progression.csv": "52188cc3c16bcd8fc0d4e1df269610e3d265266b47f680cef3cda67e1f715a11",
+    "data/relationships/programme_skills.csv": "0235928a349862eb2458888a8bef647606cba99ca5dcc2a524774cfe94c8457f",
+    "data/relationships/scholarship_applicability.csv": "84f5cc893ad6425dc6fdda5302b317a2452a083598390fb19105de7c77b9c7a3",
+    "data/relationships/programme_entry_requirements.csv": "4b3ebb6df74a926309b8c043cfabe9d39298fb21ac4adda8e11b066a10a66e5c",
+    "data/relationships/career_skills.csv": "65553893c2b1ea6c04a51be8dde01d65e39e941c032d02c31d4ebf07aa7ca4c4",
+    "data/relationships/scholarship_eligibility_requirements.csv": "cb1ec9c05567a06c952ae988124229107645fe46abe93ee967779e505f3ca6a7",
+    "data/relationships/programme_careers.csv": "63e0dda7cf5bc75c9a395c61520cce1c36298054a522e32299c7e43cee3643ab",
+    "data/metadata/evidence_sources.csv": "012778360a1dece16e6db5b531e2823b94272585c3f2131bb0ae9bee4ae91f42",
+    "data/metadata/recognition_records.csv": "0dba02e52ffd9313f20aba38813e9bcdda1f9b02aea4854b3bf708a9f7165a43",
+    "data/reference/institutions.csv": "2845b052a27b51c5391d787e7ecb1764eb367b496e4ae14394426d13614ef85f",
+    "data/reference/careers.csv": "2de22281ad0d7095b9c6d02e1d3785c29f062386f6a9c65f194698d9cf803d48",
+    "data/reference/skills.csv": "d726f1d552346a4face522febb5a0d31245f3b96dd387a687e78c2d17b1ccf04",
+    "data/reference/programmes.csv": "b32493ab8d07f72ba5bdbe835fd70c290e000bc9f3569e81b14ed97e494c0254",
+    "data/reference/scholarships.csv": "e16bef311ac6862113351b6813f43c5679a3067af21276af8c384ae02fca12a8",
+    "data/reference/qualifications.csv": "fecd0f0735390a5c1a658ef5e7cf082741dc2f7825c9949a90b8b21c8408a987"
+  }
+}

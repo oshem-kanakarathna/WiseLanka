@@ -13,6 +13,7 @@ from backend.app.data_loader import load_csv
 from backend.app.eligibility.engine import assess_academic_gaps
 from backend.app.skills.engine import assess_learner_skills
 from backend.app.personalisation.models import LearnerProfile
+from backend.app.progression.engine import get_progression_pathways
 
 
 RELEVANCE_SCORES = {
@@ -217,7 +218,7 @@ def personalise_recommendations(
         row for row in load_csv("reference/programmes.csv") if row.get("programme_status") == "Active"
     ]
     academic_insights = [
-        {**assess_academic_gaps(item["programme_id"], education, learner_profile["education_complete"]),
+        {**assess_academic_gaps(item["programme_id"], education, learner_profile["education_complete"], learner_profile["existing_qualifications"]),
          "programme_name": item["programme_name"]}
         for item in assessed_programmes
     ]
@@ -266,6 +267,10 @@ def personalise_recommendations(
         "assessment_method": "RULE_BASED_PERSONALISATION_V1",
         "learner_category": learner_profile["learner_category"],
         "existing_qualifications": learner_profile["existing_qualifications"],
+        "held_qualification_progression": [
+            get_progression_pathways(item["qualification_id"])
+            for item in learner_profile["existing_qualifications"] if item["qualification_id"]
+        ],
         "qualification_note": "Awards are self-reported context only. Their authenticity, equivalence and admission eligibility have not been verified.",
         "academic_insights": academic_insights,
         "learner_skill_insights": skills,

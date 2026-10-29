@@ -1,0 +1,10 @@
+{
+  "programmes_by_domain": {
+    "Business and Management": 1,
+    "Engineering": 3,
+    "Information Technology": 7
+  },
+  "vocational_pathway_edges": 2,
+  "total_programmes": 11,
+  "new_programmes": 4
+}

@@ -1,144 +1,24 @@
-import csv
-from pathlib import Path
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import evaluate_programme, assess_academic_gaps
+from backend.app.progression.engine import get_progression_pathways
 
-from backend.app.eligibility.engine import (
-    evaluate_programme,
-)
-
-from backend.app.progression.engine import (
-    get_progression_pathways,
-)
-
-
-# ------------------------------------
-# Data locations
-# ------------------------------------
-
-PROGRAMMES_PATH = Path(
-    "data/reference/programmes.csv"
-)
-
-CAREERS_PATH = Path(
-    "data/reference/careers.csv"
-)
-
-PROGRAMME_CAREERS_PATH = Path(
-    "data/relationships/programme_careers.csv"
-)
-
-ENTRY_REQUIREMENTS_PATH = Path(
-    "data/relationships/programme_entry_requirements.csv"
-)
-
-
-# ------------------------------------
-# Load active programmes
-# ------------------------------------
 
 def load_active_programmes():
+    return [row for row in load_csv("reference/programmes.csv")
+            if row.get("programme_status", "").strip().lower() == "active"]
 
-    programmes = []
-
-    with PROGRAMMES_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-
-            status = (
-                row.get(
-                    "programme_status",
-                    "",
-                )
-                .strip()
-                .lower()
-            )
-
-            if status == "active":
-                programmes.append(row)
-
-    return programmes
-
-
-# ------------------------------------
-# Load active careers
-# ------------------------------------
 
 def load_active_careers():
+    return [row for row in load_csv("reference/careers.csv")
+            if row.get("active_status", "").strip().lower() == "active"]
 
-    careers = []
-
-    with CAREERS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-
-            status = (
-                row.get(
-                    "active_status",
-                    "",
-                )
-                .strip()
-                .lower()
-            )
-
-            if status == "active":
-                careers.append(row)
-
-    return careers
-
-
-# ------------------------------------
-# Load programme-career relationships
-# ------------------------------------
 
 def load_programme_career_relationships():
+    return load_csv("relationships/programme_careers.csv")
 
-    relationships = []
-
-    with PROGRAMME_CAREERS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-            relationships.append(row)
-
-    return relationships
-
-
-# ------------------------------------
-# Load programme entry requirements
-# ------------------------------------
 
 def load_programme_entry_requirements():
-
-    requirements = []
-
-    with ENTRY_REQUIREMENTS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-            requirements.append(row)
-
-    return requirements
+    return load_csv("relationships/programme_entry_requirements.csv")
 
 
 # ------------------------------------
@@ -519,6 +399,8 @@ def evaluate_all_programmes(
         # by the recommendation layer
         # ------------------------------------
 
+        evaluation["academic_gap_insights"] = {**assess_academic_gaps(programme_id, student_profile), "programme_name": programme["programme_name"]}
+        evaluation["programme_notes"] = programme.get("notes", "")
         evaluation["programme_name"] = (
             programme["programme_name"]
         )
@@ -919,6 +801,7 @@ def classify_programme(
                     )
 
     return {
+        "programme_notes": evaluation.get("programme_notes", ""),
         "programme_id":
             evaluation["programme_id"],
 
@@ -990,6 +873,7 @@ def classify_programme(
         # Eligibility result
         # ------------------------------------
 
+        "academic_gap_insights": evaluation["academic_gap_insights"],
         "eligible":
             evaluation["eligible"],
 

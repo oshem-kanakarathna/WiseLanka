@@ -16,107 +16,23 @@ The progression graph is qualification-based:
     available programme(s)
 """
 
-import csv
-from pathlib import Path
-
-
-# ========================================
-# DATA PATHS
-# ========================================
-
-
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-
-PROGRESSION_FILE = (
-    PROJECT_ROOT
-    / "data"
-    / "relationships"
-    / "qualification_progression.csv"
-)
-
-QUALIFICATIONS_FILE = (
-    PROJECT_ROOT
-    / "data"
-    / "reference"
-    / "qualifications.csv"
-)
-
-PROGRAMMES_FILE = (
-    PROJECT_ROOT
-    / "data"
-    / "reference"
-    / "programmes.csv"
-)
-
-INSTITUTIONS_FILE = (
-    PROJECT_ROOT
-    / "data"
-    / "reference"
-    / "institutions.csv"
-)
-
-
-# ========================================
-# CSV LOADING
-# ========================================
-
-
-def load_csv(path):
-    """
-    Load a CSV file and return its rows
-    as dictionaries.
-    """
-
-    with open(
-        path,
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        return list(
-            csv.DictReader(file)
-        )
+from backend.app.data_loader import load_csv
 
 
 def load_progression_relationships():
-    """
-    Load all qualification progression
-    relationships.
-    """
-
-    return load_csv(
-        PROGRESSION_FILE
-    )
+    return load_csv("relationships/qualification_progression.csv")
 
 
 def load_qualifications():
-    """
-    Load qualification reference data.
-    """
-
-    return load_csv(
-        QUALIFICATIONS_FILE
-    )
+    return load_csv("reference/qualifications.csv")
 
 
 def load_programmes():
-    """
-    Load programme reference data.
-    """
-
-    return load_csv(
-        PROGRAMMES_FILE
-    )
+    return load_csv("reference/programmes.csv")
 
 
 def load_institutions():
-    """
-    Load institution reference data.
-    """
-
-    return load_csv(
-        INSTITUTIONS_FILE
-    )
+    return load_csv("reference/institutions.csv")
 
 
 # ========================================
@@ -270,6 +186,7 @@ def get_progression_pathways(
                 [],
         }
 
+    evidence = {row["source_id"]: row for row in load_csv("metadata/evidence_sources.csv")}
     pathways = []
 
     for relationship in relationships:
@@ -401,7 +318,15 @@ def get_progression_pathways(
                 }
             )
 
+        source = evidence.get(relationship.get("source_id"), {})
+        supporting = evidence.get(relationship.get("supporting_source_id"), {})
         pathway = {
+            "source_id": relationship.get("source_id", ""),
+            "source_url": source.get("source_url", ""),
+            "source_organisation": source.get("issuing_organisation", ""),
+            "last_verified_date": relationship.get("last_verified_date", ""),
+            "supporting_source_url": supporting.get("source_url", ""),
+            "evidence_status": "SOURCE_RECORDED" if source else "NOT_ASSESSED",
             "progression_id":
                 relationship.get(
                     "progression_id"
@@ -433,12 +358,7 @@ def get_progression_pathways(
                     "conditions"
                 ),
 
-            "guaranteed":
-                parse_boolean(
-                    relationship.get(
-                        "guaranteed"
-                    )
-                ),
+            "guaranteed": False,
 
             "notes":
                 relationship.get(

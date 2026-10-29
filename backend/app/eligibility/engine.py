@@ -6,6 +6,7 @@ from backend.app.data_loader import load_csv
 SUPPORTED_REQUIREMENT_TYPES = {
     "A_LEVEL_PASS", "SUBJECT_GRADE", "SUBJECT_SET_COUNT",
     "O_LEVEL_PASS_COUNT", "O_LEVEL_CREDIT_COUNT", "O_LEVEL_SUBJECT_CREDIT",
+    "PROVIDER_REVIEW", "QUALIFICATION_HELD",
 }
 
 
@@ -140,6 +141,7 @@ def get_results_for_level(
 def evaluate_requirement(
     requirement,
     student_results,
+    existing_qualifications=None,
 ):
     """
     Evaluate one programme entry requirement.
@@ -171,6 +173,17 @@ def evaluate_requirement(
         .strip()
         .upper()
     )
+
+    if requirement_type == "PROVIDER_REVIEW":
+        return {"requirement_id": requirement["requirement_id"], "passed": False,
+                "status": "NOT_ASSESSED", "message": requirement["description"]}
+    if requirement_type == "QUALIFICATION_HELD":
+        reported = any(item.get("qualification_id") == requirement.get("qualification_id")
+                       for item in (existing_qualifications or []))
+        return {"requirement_id": requirement["requirement_id"], "passed": reported,
+                "status": "MET" if reported else "NOT_ASSESSED",
+                "message": ("Reported qualification matches the selected entry category; authenticity is not verified."
+                            if reported else "No matching qualification was reported; alternative credentials require provider review.")}
 
     level_results = get_results_for_level(
         student_results,
@@ -586,6 +599,7 @@ def evaluate_requirement(
 def evaluate_programme(
     programme_id,
     student_results,
+    existing_qualifications=None,
 ):
     """
     Evaluate whether a learner satisfies
@@ -678,6 +692,7 @@ def evaluate_programme(
             evaluate_requirement(
                 requirement,
                 student_results,
+                existing_qualifications,
             )
             for requirement
             in requirements_in_group
@@ -758,13 +773,13 @@ def _combine_gap_states(states, operator):
     return "NOT_ASSESSED"
 
 
-def assess_academic_gaps(programme_id, student_results, education_complete=None):
+def assess_academic_gaps(programme_id, student_results, education_complete=None, existing_qualifications=None):
     """Annotate authoritative rule outcomes without changing legacy eligibility.
 
     Unknown evidence/input is not a demonstrated failure. No grade thresholds
     are repeated here: evaluate_programme supplies all pass/fail calculations.
     """
-    result = evaluate_programme(programme_id, student_results)
+    result = evaluate_programme(programme_id, student_results, existing_qualifications)
     rows = {
         row["requirement_id"]: row
         for row in load_csv("relationships/programme_entry_requirements.csv")
@@ -789,6 +804,8 @@ def assess_academic_gaps(programme_id, student_results, education_complete=None)
             if kind not in SUPPORTED_REQUIREMENT_TYPES or not source.get("source_url"):
                 status = "NOT_ASSESSED"
                 reason = "Supporting rule or source evidence is not recorded."
+            elif kind in {"PROVIDER_REVIEW", "QUALIFICATION_HELD"}:
+                status = outcome["status"]
             elif not results:
                 status = "NOT_ASSESSED"
                 reason = f"No {level} results were supplied."
@@ -809,6 +826,8 @@ def assess_academic_gaps(programme_id, student_results, education_complete=None)
                 "explanation": reason,
                 "source_id": row.get("source_id", ""),
                 "source_url": source.get("source_url", ""),
+                "source_organisation": source.get("issuing_organisation", ""),
+                "source_accessed": source.get("retrieved_date", ""),
             })
         status = _combine_gap_states(
             [item["status"] for item in items], group["operator"]

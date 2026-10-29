@@ -16,3 +16,16 @@ REQ0014,PRG0004,GRP007,AND,O_LEVEL,O_LEVEL_PASS_COUNT,,,6,,At least six GCE O/L 
 REQ0015,PRG0004,GRP008,AND,O_LEVEL,O_LEVEL_CREDIT_COUNT,,,3,,At least three GCE O/L subjects must have credit passes,true,SRC0009
 REQ0016,PRG0004,GRP009,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,Mathematics,C,1,,Mathematics must have a credit pass,true,SRC0009
 REQ0017,PRG0004,GRP010,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,English,C,1,,English must have a credit pass,true,SRC0009
+REQ0019,PRG0008,GRP011,OR,A_LEVEL,A_LEVEL_PASS,,,3,,A/L route: three passes; same sitting must be checked separately,true,SRC0016
+REQ0020,PRG0008,GRP011,OR,A_LEVEL,PROVIDER_REVIEW,,,,,Alternative OUSL foundation or advanced certificate or Senate-accepted qualification requires provider review,true,SRC0016
+REQ0021,PRG0008,GRP012,AND,A_LEVEL,PROVIDER_REVIEW,,,,,Provider must confirm age 18 at registration; same-sitting results and any required selection test,true,SRC0016
+REQ0022,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Combined Mathematics,S,,,A/L Combined Mathematics pass,true,SRC0017
+REQ0023,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Physics,S,,,A/L Physics pass,true,SRC0017
+REQ0024,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Chemistry,S,,,A/L Chemistry pass,true,SRC0017
+REQ0025,PRG0009,GRP014,AND,A_LEVEL,PROVIDER_REVIEW,,,,,Government university selection policy is not assessed by subject grades alone,true,SRC0017
+REQ0026,PRG0010,GRP015,OR,QUALIFICATION,QUALIFICATION_HELD,,,,QLF0012,Selected route: NVQ Level 4 Electrician certificate reported,true,SRC0018
+REQ0027,PRG0010,GRP015,OR,QUALIFICATION,PROVIDER_REVIEW,,,,,Other listed NVQ trades or specified A/L stream route require provider review,true,SRC0018
+REQ0028,PRG0010,GRP016,AND,QUALIFICATION,PROVIDER_REVIEW,,,,,Provider must verify the reported certificate and current admission arrangements,true,SRC0018
+REQ0029,PRG0011,GRP017,OR,QUALIFICATION,QUALIFICATION_HELD,,,,QLF0010,Selected route: NVQ Level 6 Mechatronics qualification reported,true,SRC0019
+REQ0030,PRG0011,GRP017,OR,QUALIFICATION,PROVIDER_REVIEW,,,,,Other accepted disciplines or entry categories require provider review,true,SRC0019
+REQ0031,PRG0011,GRP018,AND,QUALIFICATION,PROVIDER_REVIEW,,,,,Shortlisting tests interview if applicable and document verification require provider assessment,true,SRC0020

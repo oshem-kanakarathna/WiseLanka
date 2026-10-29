@@ -567,6 +567,8 @@ function appendAcademicProgression(card, programme) {
         if (providers.length) {
             item.appendChild(createElement("p", "", "Provider: " + providers.join(", ")));
         }
+        if (pathway.source_url) appendOfficialLink(item, {application_url: pathway.source_url}, "Progression source ↗");
+        if (pathway.supporting_source_url) appendOfficialLink(item, {application_url: pathway.supporting_source_url}, "Admission process source ↗");
         if (pathway.conditions) {
             item.appendChild(createElement("p", "", "Conditions: " + pathway.conditions));
         }
@@ -589,7 +591,7 @@ function appendAcademicInsights(card, insight) {
         const list = createElement("ul");
         (group.requirements || []).forEach(requirement => {
             const item = createElement("li", "", `${formatStatus(requirement.status)}: ${requirement.description || "Recorded requirement"}. ${requirement.explanation}`);
-            if (requirement.source_url) appendOfficialLink(item, {application_url: requirement.source_url}, "Requirement source ↗");
+            if (requirement.source_url) appendOfficialLink(item, {application_url: requirement.source_url}, `Requirement source${requirement.source_organisation ? " — " + requirement.source_organisation : ""}${requirement.source_accessed ? " (accessed " + requirement.source_accessed + ")" : ""} ↗`);
             list.appendChild(item);
         });
         section.appendChild(list);
@@ -604,6 +606,10 @@ function renderLearnerInsights(data) {
         appendDetail(panel, "Your reported qualifications", data.existing_qualifications.map(q => [q.title, q.framework, q.level].filter(Boolean).join(" · ")).join("; "));
         appendDetail(panel, "Qualification assessment limits", data.qualification_note);
     }
+    (data.held_qualification_progression || []).forEach(progression => {
+        appendDetail(panel, "Progression from your reported qualification", progression.qualification_name);
+        appendAcademicProgression(panel, {progression});
+    });
     const skills = data.learner_skill_insights;
     if (skills) {
         panel.appendChild(createElement("h3", "", "Your skills and development interests"));
@@ -718,6 +724,7 @@ function createRecommendationCard(programme) {
         describePreferences(programme.preference_assessment)
     );
 
+    appendDetail(card, "Programme context", programme.programme_notes);
     appendAcademicProgression(card, programme);
     if (programme.academic_gap_insights) appendAcademicInsights(card, programme.academic_gap_insights);
     else appendEvidence(card, programme);
@@ -830,6 +837,11 @@ async function submitLearnerProfile(event) {
     const option = createOption("NOT_REPORTED");
     option.textContent = "Not reported";
     document.getElementById(id).appendChild(option);
+});
+document.querySelectorAll(".al-subject").forEach(select => {
+    ["Business Studies", "Accounting", "Economics", "Engineering Technology", "Science for Technology"].forEach(subject => {
+        select.appendChild(createOption(subject));
+    });
 });
 createOlSubjects();
 updateEducationLevel();

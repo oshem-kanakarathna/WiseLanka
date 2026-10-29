@@ -42,8 +42,8 @@ def test_six_subjects_can_already_meet_requirements():
 def test_legacy_al(education):
     response = submit(education)
     assert response.status_code == 200
-    assert response.json()['count'] == 3
-    assert all(p['eligible'] for p in response.json()['recommendations'])
+    assert response.json()['count'] == 5
+    assert all(p['eligible'] for p in response.json()['recommendations'] if p['programme_id'] in {'PRG0001', 'PRG0002', 'PRG0003'})
 
 
 @pytest.mark.parametrize('education', [
