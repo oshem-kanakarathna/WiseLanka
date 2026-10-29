@@ -1,0 +1,15 @@
+citation,url,access_depth,claim_scope,checked_date
+Hevner et al. (2004),https://aisel.aisnet.org/misq/vol28/iss1/6/,Publisher abstract and metadata,Artifact construction/evaluation framing; not detailed full-text appraisal,2026-10-29
+Peffers et al. (2007),https://zhang.ist.psu.edu/teaching/504/readings/Peffers.pdf,Original paper PDF available; methodology sections inspected,DSR activity framing; publisher direct fetch 403,2026-10-29
+Burke (2002),https://link.springer.com/article/10.1023/A:1021240730564,Publisher abstract and metadata,General hybrid framing; no claim of replicating experiments,2026-10-29
+Salton and Buckley (1988),https://www.sciencedirect.com/science/article/pii/0306457388900210,Publisher preview/abstract,Term-weighting baseline rationale; full methodological comparison pending,2026-10-29
+Reimers and Gurevych (2019),https://aclanthology.org/D19-1410/,Proceedings abstract and metadata,Sentence embeddings/cosine rationale; no benchmark transfer,2026-10-29
+Wang et al. (2020),https://proceedings.neurips.cc/paper/2020/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html,Original proceedings abstract; paper opening text,Distillation rationale; not validation of deployed export,2026-10-29
+Deschênes (2020),https://link.springer.com/article/10.1186/s41239-020-00219-w,Open article abstract/introduction and evaluation discussion,Separate accuracy/satisfaction/learning performance; learning-resource domain differs,2026-10-29
+Da Silva et al. (2023),https://link.springer.com/article/10.1007/s10639-022-11341-9,Publisher abstract and metadata; full text subscription,High-level trends only; no unseen findings used,2026-10-29
+Tintarev and Masthoff (2012),https://link.springer.com/article/10.1007/s11257-011-9117-5,Publisher abstract and metadata,Explanation goals/trade-offs; no transfer of empirical effects,2026-10-29
+Järvelin and Kekäläinen (2002),https://faculty.cc.gatech.edu/~zha/CS8803WST/dcg.pdf,Original paper accessible via university-hosted copy,Graded ranking evaluation; ACM direct fetch403,2026-10-29
+National Education Commission (2016),https://www.nec.gov.lk/wp-content/uploads/2016/04/8-Final-2.pdf,Official report title/publication and context sections,Historical Sri Lankan context; not contemporary prevalence,2026-10-29
+Sentence Transformers (n.d.),https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/blob/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md,Pinned model card; local checksum-verified copy,Model-specific provenance; actual inference checked in source,2026-10-29
+UGC (2025/2026),https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf,Actual PDF inspected during WP5; see hash/page register,Selected formal admission conditions; independent domain review pending,2026-10-29
+W3C (2024),https://www.w3.org/TR/2024/REC-WCAG22-20241212/,Official recommendation structure and criteria overview,Manual audit framework; not a conformance claim,2026-10-29

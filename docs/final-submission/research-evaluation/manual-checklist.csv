@@ -1,0 +1,13 @@
+check_id,category,check,status,reviewer,date,evidence
+K1,keyboard,Tab order and focus throughout profile results assistant and row removal,PENDING,,,
+K2,keyboard,Focus recovery after validation network failures and speech stop,PENDING,,,
+SR1,screen-reader,VoiceOver with Safari announces labels statuses sources and current language,PENDING,,,
+SR2,screen-reader,NVDA with a supported browser announces errors and changing results,PENDING,,,
+Z1,zoom,Real browser zoom at 200 and 400 percent retains controls and reading order,PENDING,,,
+L1,Sinhala,Fluent speaker reviews terminology controls validation and disclaimers,PENDING,,,
+L2,Tamil,Fluent speaker reviews terminology controls validation and disclaimers,PENDING,,,
+V1,voice,Native browser permission refusal and start stop with explicit consent,PENDING,,,
+V2,voice,Native English transcript accuracy and editable text fallback,PENDING,,,
+V3,voice,Native Sinhala and Tamil language availability or explicit failure,PENDING,,,
+B1,browsers,Firefox Safari Edge and real mobile browser journeys,PENDING,,,
+C1,contrast,Manual review of disabled focused error and all dynamic contrast states,PENDING,,,

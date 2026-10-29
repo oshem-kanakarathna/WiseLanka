@@ -1,0 +1,15 @@
+claim,reported_value,evidence_type,artifact,limit
+Backend tests,205 passed,measured,docs/evidence/wp5/backend.log,Automated tested execution; not national educational accuracy
+Browser tests,36 passed,measured and partly mocked,docs/evidence/wp5/browser.log,Some API/speech behaviours mocked
+Live integration,5 workflows passed,measured,docs/evidence/wp5/verification.json,Local browser/API/model environment
+Reference scenarios,14 passed,synthetic measured,docs/evidence/wp5/scenario-results.json,Implementer-authored expected rules
+Source review,Selected official sources checked,recorded source inspection,docs/evidence/wp5/EDUCATIONAL_SOURCE_REVIEW.md,Not all legacy relationships independently verified
+Ranking comparison,9 cases; no independent labels,synthetic measured,docs/evidence/wp5/comparison.json,No recommendation quality superiority
+Model loading,0.287573875 seconds,measured,docs/evidence/wp5/performance.json,Not full cold-machine startup/download
+Warm ASGI p95,0.014949708 seconds,measured,docs/evidence/wp5/performance.json,40 sequential in-process requests
+Memory,302.328125 MiB,measured,docs/evidence/wp5/performance.json,Whole process high-water RSS
+Accessibility,0 detected violations in9 states,automated measured,docs/evidence/wp5/accessibility-final.json,Not full conformance; manual checks pending
+Adult usability,No results,pending,docs/final-submission/research-evaluation/ANALYSIS_PLAN_AND_RESULTS_PLACEHOLDER.md,Signed ethics conditions not inspected
+Relevance quality / nDCG,Not computed,pending,docs/evidence/wp5/AI_EVALUATION_PROTOCOL.md,Independent judgements unavailable
+Translation accuracy,Not independently verified,pending,docs/evidence/wp5/study/manual-checklist.csv,Draft135-key catalogues
+Native speech accuracy,Not measured,mocked functional tests; native pending,docs/evidence/wp5/wp4-regression/voice-capability.json,No claim of offline or universal language support

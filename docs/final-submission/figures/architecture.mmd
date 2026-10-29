@@ -1,0 +1,20 @@
+flowchart TB
+  U["Learner: education, awards, interests, optional skills"] --> UI["HTML / CSS / JavaScript interface"]
+  UI --> API["FastAPI typed request validation"]
+  CSV[("CSV catalogue + sources + integrity checks")] --> RULE["Authoritative eligibility and gaps"]
+  API --> P["Personalisation orchestration"]
+  P --> RULE
+  RULE --> GROUP["MET / NOT_ASSESSED / NOT_MET"]
+  GROUP --> RANK["Within-group semantic / TF-IDF / deterministic ranking"]
+  CSV --> RANK
+  MODEL["Frozen local MiniLM ONNX"] --> RANK
+  P --> DOMAIN["Progression / alternatives / skills / scholarships"]
+  CSV --> DOMAIN
+  RANK --> RESPONSE["Separate assessment, relevance, reasons and sources"]
+  DOMAIN --> RESPONSE
+  RESPONSE --> UI
+  API --> CHAT["Read-only guided assistant"]
+  CHAT --> RULE
+  CHAT --> DOMAIN
+  CHAT --> UI
+  UI -. optional .-> SPEECH["Browser speech service + editable text fallback"]

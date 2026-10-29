@@ -1,0 +1,22 @@
+sequenceDiagram
+  participant L as Learner / browser
+  participant A as FastAPI validation
+  participant P as Personalisation
+  participant E as Eligibility / gaps
+  participant R as Relevance ranker
+  participant K as CSV / local model
+  L->>A: Typed profile (synthetic in evaluation)
+  A->>P: Validated evidence and preferences
+  P->>E: Academic results / completeness / reported awards
+  E->>K: Read requirements and source metadata
+  E-->>P: Canonical three-state assessments
+  P->>R: Candidates with immutable academic groups + preferences
+  R->>K: Read descriptors; optional local frozen encoder
+  alt Preferences and model available
+    R-->>P: Within-group semantic relevance
+  else Empty preference / unavailable model
+    R-->>P: Explicit unassessed / deterministic fallback
+  end
+  P-->>A: Academic, relevance, skills and conditional routes separately
+  A-->>L: Results, uncertainty, source links and disclaimers
+  Note over L,K: Guided assistant reuses engines and does not mutate ranking or eligibility

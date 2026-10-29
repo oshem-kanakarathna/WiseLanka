@@ -1,0 +1,11 @@
+{
+  "provenance": "Exact text supplied by author in current alignment request; original DOCX not inspected",
+  "main": "How can an AI-powered, policy-aware Education and Career Pathway Intelligence System support Sri Lankan learners through personalised, explainable, and accessible pathway recommendations?",
+  "supporting": {
+    "I": "How can learner profiles, eligibility requirements and pathway knowledge be integrated to generate suitable recommendations?",
+    "II": "How can explainable recommendation mechanisms improve user understanding and trust?",
+    "III": "How can alternative pathway generation and skill-gap identification support educational and career planning?",
+    "IV": "How can multilingual support, mobile usability and voice-assisted input improve accessibility?",
+    "V": "How effective is the prototype in providing relevant and usable pathway guidance?"
+  }
+}

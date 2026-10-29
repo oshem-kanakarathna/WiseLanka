@@ -1,0 +1,11 @@
+{
+  "wp5_checkpoint": "07f4b97",
+  "tracked_application_changes": [],
+  "new_materials_scope": "docs/final-submission only, plus original preserved untracked backups",
+  "backup_sha256": {
+    "frontend/components/learner-profile.js.bak": "289cd52dee28689ed481e321fd0f583a1441a99512fcc4e742ef1945560edb49",
+    "frontend/components/learner-profile.js.pre-progression.bak": "7f648844f74e27360dc36325e5a58ac5dab5fccea15c71323dcb95e17158b306"
+  },
+  "new_backend_or_browser_execution_claimed": false,
+  "note": "WP5 logs inspected; WP6 modifies academic materials only. Existing application tests not rerun for prose/layout changes."
+}

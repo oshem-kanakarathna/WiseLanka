@@ -1,0 +1,33 @@
+{
+  "purpose": "Mechanical exact-text/evidence/format/preservation checks; not academic reference accuracy, empirical evaluation or university approval",
+  "exact_question_text_checks": {
+    "chapters/01-introduction.md": true,
+    "appendices/A-approved-baseline.md": true,
+    "viva/RESEARCH_QUESTIONS.md": true,
+    "RESEARCH_QUESTION_TRACEABILITY.md": true,
+    "DISSERTATION_DRAFT.md": true
+  },
+  "exact_main_question_in_poster_source": true,
+  "poster_pdf_pages": 1,
+  "poster_pdf_points": [
+    0.0,
+    0.0,
+    2383.9199,
+    1684.08
+  ],
+  "reference_register_entries": 14,
+  "all_register_entries_have_chapter_occurrences": true,
+  "saved_wp5_checks": 13,
+  "saved_wp5_nonzero_exit_codes": 0,
+  "application_tests_rerun_for_this_review": false,
+  "tracked_source_changes": [],
+  "backup_hashes_unchanged": true,
+  "git_head": "07f4b97",
+  "git_commits_or_pushes_performed": false,
+  "programme_count_checked_from_csv": 11,
+  "domain_counts_checked_from_csv": {
+    "Information Technology": 7,
+    "Business and Management": 1,
+    "Engineering": 3
+  }
+}
