@@ -176,7 +176,7 @@ def evaluate_requirement(
 
     if requirement_type == "PROVIDER_REVIEW":
         return {"requirement_id": requirement["requirement_id"], "passed": False,
-                "status": "NOT_ASSESSED", "message": requirement["description"]}
+                "status": "NOT_ASSESSED", "assessment_kind": "PROVIDER_REVIEW", "message": requirement["description"]}
     if requirement_type == "QUALIFICATION_HELD":
         reported = any(item.get("qualification_id") == requirement.get("qualification_id")
                        for item in (existing_qualifications or []))
@@ -812,7 +812,7 @@ def assess_academic_gaps(programme_id, student_results, education_complete=None,
             elif not outcome["passed"]:
                 subject_rule = kind in {"SUBJECT_GRADE", "O_LEVEL_SUBJECT_CREDIT"}
                 if subject_rule and row["subject_name"].strip() not in results:
-                    status = "NOT_ASSESSED"
+                    status = "NOT_MET" if complete.get(level) is True else "NOT_ASSESSED"
                 elif not subject_rule and not complete.get(level, True):
                     status = "NOT_ASSESSED"
                     reason = (

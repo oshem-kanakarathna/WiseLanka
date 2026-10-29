@@ -1,0 +1,135 @@
+[
+  {
+    "check": "backend",
+    "exit_code": 0,
+    "elapsed_seconds": 1.528,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-m",
+      "pytest",
+      "tests",
+      "-q"
+    ]
+  },
+  {
+    "check": "browser",
+    "exit_code": 0,
+    "elapsed_seconds": 15.031,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "frontend/browser_tests",
+      "-p",
+      "test_*.py"
+    ]
+  },
+  {
+    "check": "csv-integrity",
+    "exit_code": 0,
+    "elapsed_seconds": 0.023,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-m",
+      "backend.app.data_integrity"
+    ]
+  },
+  {
+    "check": "scenario-evaluation",
+    "exit_code": 0,
+    "elapsed_seconds": 1.56,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "scripts/evaluate_wp5.py"
+    ]
+  },
+  {
+    "check": "ranker-comparison",
+    "exit_code": 0,
+    "elapsed_seconds": 1.367,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-c",
+      "import importlib.util; from pathlib import Path; s=importlib.util.spec_from_file_location('evaluation','scripts/evaluate_wp3.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.OUTPUT=Path('/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/wp5');m.OUTPUT.mkdir(parents=True,exist_ok=True);m.main()"
+    ]
+  },
+  {
+    "check": "live-original",
+    "exit_code": 0,
+    "elapsed_seconds": 0.441,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "frontend/browser_tests/live_integration_check.py"
+    ]
+  },
+  {
+    "check": "live-wp1",
+    "exit_code": 0,
+    "elapsed_seconds": 1.111,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "frontend/browser_tests/live_learner_gap_check.py"
+    ]
+  },
+  {
+    "check": "live-wp2",
+    "exit_code": 0,
+    "elapsed_seconds": 0.718,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-c",
+      "import importlib.util; from pathlib import Path; s=importlib.util.spec_from_file_location('evaluation','frontend/browser_tests/live_wp2_check.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.EVIDENCE=Path('/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/wp5/wp2-regression');m.EVIDENCE.mkdir(parents=True,exist_ok=True);m.main()"
+    ]
+  },
+  {
+    "check": "live-wp3",
+    "exit_code": 0,
+    "elapsed_seconds": 0.629,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-c",
+      "import importlib.util; from pathlib import Path; s=importlib.util.spec_from_file_location('evaluation','frontend/browser_tests/live_wp3_check.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.OUTPUT=Path('/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/wp5/wp3-regression');m.OUTPUT.mkdir(parents=True,exist_ok=True);m.main()"
+    ]
+  },
+  {
+    "check": "live-wp4",
+    "exit_code": 0,
+    "elapsed_seconds": 1.435,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-c",
+      "import importlib.util; from pathlib import Path; s=importlib.util.spec_from_file_location('evaluation','frontend/browser_tests/live_wp4_check.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.OUT=Path('/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/wp5/wp4-regression');m.OUT.mkdir(parents=True,exist_ok=True);m.main()"
+    ]
+  },
+  {
+    "check": "accessibility",
+    "exit_code": 0,
+    "elapsed_seconds": 3.882,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "scripts/audit_accessibility_wp5.py"
+    ]
+  },
+  {
+    "check": "runtime-probe",
+    "exit_code": 0,
+    "elapsed_seconds": 0.875,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "scripts/probe_runtime_wp5.py"
+    ]
+  },
+  {
+    "check": "pip-check",
+    "exit_code": 0,
+    "elapsed_seconds": 0.309,
+    "command": [
+      "/private/tmp/wiselanka-wp5-venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ]
+  }
+]

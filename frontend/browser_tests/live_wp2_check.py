@@ -43,7 +43,7 @@ def main():
             assert progression.get_by_role('link',name='Progression source').count()==1
             progression.screenshot(path=str(EVIDENCE/'vocational-progression.png'))
             print('PASS: reported vocational award leads to sourced conditional progression without admission guarantee')
-            scenarios=[('IT','PRG0001',{'Combined Mathematics':'B','Physics':'C','Chemistry':'C'},'MET'),
+            scenarios=[('IT','PRG0001',{'Combined Mathematics':'B','Physics':'C','Chemistry':'C'},'NOT_ASSESSED'),
                        ('Engineering','PRG0009',{'Combined Mathematics':'B','Physics':'C','Chemistry':'C'},'NOT_ASSESSED'),
                        ('Unmet Physics','PRG0009',{'Combined Mathematics':'B','Physics':'F','Chemistry':'C'},'NOT_MET'),
                        ('Missing Physics','PRG0009',{'Combined Mathematics':'B'},'NOT_ASSESSED'),

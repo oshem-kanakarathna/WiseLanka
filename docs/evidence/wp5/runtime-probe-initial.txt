@@ -1,0 +1,1 @@
+Initial probe exited 1: audit script expected DETERMINISTIC but documented API fallback method is RULE_BASED_FALLBACK. Corrected probe assertion; no application change. See final runtime-network.json for rerun.

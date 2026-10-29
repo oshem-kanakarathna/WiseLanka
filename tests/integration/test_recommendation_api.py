@@ -54,7 +54,7 @@ def test_recommendations_strong_profile():
 
         assert (
             result["category"]
-            == "ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -104,7 +104,7 @@ def test_recommendations_near_profile():
 
         assert (
             result["category"]
-            == "NEARLY_ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -115,7 +115,7 @@ def test_recommendations_near_profile():
         assert (
             len(
                 result[
-                    "failed_requirements"
+                    "not_assessed_requirements"
                 ]
             )
             > 0
@@ -159,7 +159,7 @@ def test_recommendations_unrelated_profile():
 
     assert (
         results["PRG0001"]["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -363,7 +363,7 @@ def test_recommendations_nested_al_profile():
 
         assert (
             result["category"]
-            == "ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (

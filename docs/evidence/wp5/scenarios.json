@@ -1,0 +1,352 @@
+[
+  {
+    "id": "OL6",
+    "synthetic": true,
+    "learner_category": "O/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0004",
+    "education": {
+      "O_LEVEL": {
+        "Mathematics": "C",
+        "English": "C",
+        "Science": "C",
+        "ICT": "S",
+        "Sinhala": "S",
+        "History": "S"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "MET",
+    "reference_rule_ids": [
+      "REQ0014",
+      "REQ0015",
+      "REQ0016",
+      "REQ0017"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "OL9",
+    "synthetic": true,
+    "learner_category": "O/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0004",
+    "education": {
+      "O_LEVEL": {
+        "Mathematics": "C",
+        "English": "C",
+        "Science": "C",
+        "ICT": "S",
+        "Sinhala": "S",
+        "History": "S",
+        "Commerce": "C",
+        "Geography": "S",
+        "Art": "S"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "MET",
+    "reference_rule_ids": [
+      "REQ0014",
+      "REQ0015",
+      "REQ0016",
+      "REQ0017"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "OL_gap",
+    "synthetic": true,
+    "learner_category": "O/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0004",
+    "education": {
+      "O_LEVEL": {
+        "Mathematics": "S",
+        "English": "C",
+        "Science": "C",
+        "ICT": "S",
+        "Sinhala": "S",
+        "History": "S"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_MET",
+    "reference_rule_ids": [
+      "REQ0014",
+      "REQ0015",
+      "REQ0016",
+      "REQ0017"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "OL_missing",
+    "synthetic": true,
+    "learner_category": "O/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0004",
+    "education": {
+      "O_LEVEL": {
+        "English": "C"
+      }
+    },
+    "education_complete": {
+      "O_LEVEL": false
+    },
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0014",
+      "REQ0015",
+      "REQ0016",
+      "REQ0017"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_IT",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0001",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0001",
+      "REQ0002",
+      "REQ0003",
+      "REQ0004",
+      "REQ0005",
+      "REQ0032"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_CS",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0002",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0006",
+      "REQ0007",
+      "REQ0008",
+      "REQ0009",
+      "REQ0033"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_AI",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0003",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0010",
+      "REQ0011",
+      "REQ0012",
+      "REQ0013",
+      "REQ0034"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_Business",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "Business",
+    "programme_id": "PRG0008",
+    "education": {
+      "A_LEVEL": {
+        "Business Studies": "B",
+        "Accounting": "C",
+        "Economics": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0019",
+      "REQ0020",
+      "REQ0021"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_Engineering",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "Engineering",
+    "programme_id": "PRG0009",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "B",
+        "Physics": "C",
+        "Chemistry": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0022",
+      "REQ0023",
+      "REQ0024",
+      "REQ0025"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "AL_Engineering_gap",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "Engineering",
+    "programme_id": "PRG0009",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "B",
+        "Physics": "F",
+        "Chemistry": "C"
+      }
+    },
+    "education_complete": {},
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_MET",
+    "reference_rule_ids": [
+      "REQ0022",
+      "REQ0023",
+      "REQ0024",
+      "REQ0025"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "NVQ4",
+    "synthetic": true,
+    "learner_category": "Vocational",
+    "domain": "Engineering",
+    "programme_id": "PRG0010",
+    "education": {},
+    "education_complete": {},
+    "existing_qualifications": [
+      {
+        "qualification_id": "QLF0012",
+        "title": "Electrician (NVQ Level 4 Certificate)"
+      }
+    ],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0026",
+      "REQ0027",
+      "REQ0028"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "NVQ6",
+    "synthetic": true,
+    "learner_category": "Vocational",
+    "domain": "Engineering",
+    "programme_id": "PRG0011",
+    "education": {},
+    "education_complete": {},
+    "existing_qualifications": [
+      {
+        "qualification_id": "QLF0010",
+        "title": "Higher National Diploma in Mechatronics Technology"
+      }
+    ],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0029",
+      "REQ0030",
+      "REQ0031"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "unknown_award",
+    "synthetic": true,
+    "learner_category": "Early-career",
+    "domain": "Engineering",
+    "programme_id": "PRG0011",
+    "education": {},
+    "education_complete": {},
+    "existing_qualifications": [
+      {
+        "title": "Synthetic unverified award",
+        "framework": "NVQ",
+        "level": "6"
+      }
+    ],
+    "expected_academic_status": "NOT_ASSESSED",
+    "reference_rule_ids": [
+      "REQ0029",
+      "REQ0030",
+      "REQ0031"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  },
+  {
+    "id": "confirmed_OR_gap",
+    "synthetic": true,
+    "learner_category": "A/L academic",
+    "domain": "IT",
+    "programme_id": "PRG0001",
+    "education": {
+      "A_LEVEL": {
+        "Combined Mathematics": "S",
+        "Physics": "S",
+        "Chemistry": "S"
+      }
+    },
+    "education_complete": {
+      "A_LEVEL": true
+    },
+    "existing_qualifications": [],
+    "expected_academic_status": "NOT_MET",
+    "reference_rule_ids": [
+      "REQ0001",
+      "REQ0002",
+      "REQ0003",
+      "REQ0004",
+      "REQ0005",
+      "REQ0032"
+    ],
+    "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+  }
+]

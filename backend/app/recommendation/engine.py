@@ -571,6 +571,11 @@ def calculate_match_score(
         [],
     )
 
+    # Subject-match scores describe academic evidence, not unresolved provider decisions.
+    groups = [group for group in groups if not all(
+        item.get("assessment_kind") == "PROVIDER_REVIEW"
+        for item in group.get("requirements", [])
+    )]
     if not groups:
         return 0.0
 
@@ -677,7 +682,9 @@ def classify_programme(
         evaluation
     )
 
-    if evaluation["eligible"]:
+    if evaluation.get("academic_gap_insights", {}).get("status") == "NOT_ASSESSED":
+        category = "NOT_ASSESSED"
+    elif evaluation["eligible"]:
 
         category = "ELIGIBLE"
 
@@ -800,6 +807,14 @@ def classify_programme(
                         message
                     )
 
+    insight = evaluation.get("academic_gap_insights", {})
+    if insight:
+        failed_requirements = [rule["explanation"]
+            for group in insight["groups"] if group["status"] == "NOT_MET"
+            for rule in group["requirements"] if rule["status"] == "NOT_MET"]
+    not_assessed = [rule["explanation"]
+        for group in insight.get("groups", []) if group["status"] != "MET"
+        for rule in group["requirements"] if rule["status"] == "NOT_ASSESSED"]
     return {
         "programme_notes": evaluation.get("programme_notes", ""),
         "programme_id":
@@ -888,6 +903,7 @@ def classify_programme(
 
         "failed_requirements":
             failed_requirements,
+        "not_assessed_requirements": not_assessed,
 
         # ------------------------------------
         # Career intelligence

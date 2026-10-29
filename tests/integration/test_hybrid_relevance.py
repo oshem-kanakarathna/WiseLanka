@@ -14,7 +14,7 @@ def test_api_unavailable_model_preserves_academic_fields(monkeypatch):
     assert result.status_code==200
     data=result.json()
     assert data['ranking']['method']=='RULE_BASED_FALLBACK'
-    assert all(p['eligible'] for p in data['recommendations'] if p['programme_id'] in {'PRG0001','PRG0002','PRG0003'})
+    assert all(not p['eligible'] and p['academic_gap_insights']['status']=='NOT_ASSESSED' for p in data['recommendations'] if p['programme_id'] in {'PRG0001','PRG0002','PRG0003'})
     assert all(p['relevance']['score'] is None for p in data['recommendations'])
 
 

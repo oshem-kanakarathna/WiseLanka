@@ -1,0 +1,498 @@
+............................F........FF...............................F. [ 36%]
+..........FFF..F...........F................F........................... [ 72%]
+.F..............FFFFF...................................                 [100%]
+=================================== FAILURES ===================================
+_____________ test_api_unavailable_model_preserves_academic_fields _____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10640b670>
+
+    def test_api_unavailable_model_preserves_academic_fields(monkeypatch):
+        monkeypatch.setattr(engine,'get_encoder',lambda:(None,'missing'))
+        result=client.post('/personalised-recommendations',json={'learner_profile':{
+            'education':{'Physics':'C','Chemistry':'C','Combined Mathematics':'B'},
+            'career_intention':'Create intelligent software',
+        }})
+        assert result.status_code==200
+        data=result.json()
+        assert data['ranking']['method']=='RULE_BASED_FALLBACK'
+>       assert all(p['eligible'] for p in data['recommendations'] if p['programme_id'] in {'PRG0001','PRG0002','PRG0003'})
+E       assert False
+E        +  where False = all(<generator object test_api_unavailable_model_preserves_academic_fields.<locals>.<genexpr> at 0x1063f1190>)
+
+tests/integration/test_hybrid_relevance.py:17: AssertionError
+__________________________ test_legacy_al[education0] __________________________
+
+education = {'Chemistry': 'C', 'Combined Mathematics': 'B', 'Physics': 'B'}
+
+    @pytest.mark.parametrize('education', [
+        {'Physics': 'B', 'Chemistry': 'C', 'Combined Mathematics': 'B'},
+        {'A_LEVEL': {'Physics': 'B', 'Chemistry': 'C', 'Combined Mathematics': 'B'}},
+    ])
+    def test_legacy_al(education):
+        response = submit(education)
+        assert response.status_code == 200
+        assert response.json()['count'] == 5
+>       assert all(p['eligible'] for p in response.json()['recommendations'] if p['programme_id'] in {'PRG0001', 'PRG0002', 'PRG0003'})
+E       assert False
+E        +  where False = all(<generator object test_legacy_al.<locals>.<genexpr> at 0x10643e350>)
+
+tests/integration/test_learner_gap_api.py:46: AssertionError
+__________________________ test_legacy_al[education1] __________________________
+
+education = {'A_LEVEL': {'Chemistry': 'C', 'Combined Mathematics': 'B', 'Physics': 'B'}}
+
+    @pytest.mark.parametrize('education', [
+        {'Physics': 'B', 'Chemistry': 'C', 'Combined Mathematics': 'B'},
+        {'A_LEVEL': {'Physics': 'B', 'Chemistry': 'C', 'Combined Mathematics': 'B'}},
+    ])
+    def test_legacy_al(education):
+        response = submit(education)
+        assert response.status_code == 200
+        assert response.json()['count'] == 5
+>       assert all(p['eligible'] for p in response.json()['recommendations'] if p['programme_id'] in {'PRG0001', 'PRG0002', 'PRG0003'})
+E       assert False
+E        +  where False = all(<generator object test_legacy_al.<locals>.<genexpr> at 0x1065443c0>)
+
+tests/integration/test_learner_gap_api.py:46: AssertionError
+_______________ test_personalised_endpoint_preserves_eligibility _______________
+
+    def test_personalised_endpoint_preserves_eligibility():
+        response = client.post(
+            "/personalised-recommendations",
+            json=make_profile(),
+        )
+    
+        assert response.status_code == 200
+    
+        for programme in response.json()["recommendations"]:
+            if programme["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+>           assert programme["eligible"] is True
+E           assert False is True
+
+tests/integration/test_personalisation_api.py:60: AssertionError
+_____________________ test_recommendations_strong_profile ______________________
+
+    def test_recommendations_strong_profile():
+        """
+        A strong legacy flat A/L profile should
+        return all currently supported A/L-entry
+        degree programmes as eligible.
+        """
+    
+        response = client.post(
+            "/recommendations",
+            json={
+                "student_results": {
+                    "Combined Mathematics": "B",
+                    "Physics": "C",
+                    "Chemistry": "C",
+                }
+            },
+        )
+    
+        assert response.status_code == 200
+    
+        data = response.json()
+    
+        assert data["count"] == 5
+    
+        programme_ids = {
+            result["programme_id"]
+            for result in data["recommendations"]
+        }
+    
+        assert programme_ids == {
+            "PRG0001",
+            "PRG0002",
+            "PRG0003",
+            "PRG0008",
+            "PRG0009",
+        }
+    
+        for result in data["recommendations"]:
+            if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+    
+>           assert (
+                result["category"]
+                == "ELIGIBLE"
+            )
+E           AssertionError: assert 'NEARLY_ELIGIBLE' == 'ELIGIBLE'
+E             
+E             - ELIGIBLE
+E             + NEARLY_ELIGIBLE
+
+tests/integration/test_recommendation_api.py:55: AssertionError
+______________________ test_recommendations_near_profile _______________________
+
+    def test_recommendations_near_profile():
+        """
+        An A/L profile that passes the general
+        subject requirements but misses the
+        required C-grade mathematics/physics
+        condition should be nearly eligible.
+        """
+    
+        response = client.post(
+            "/recommendations",
+            json={
+                "student_results": {
+                    "Combined Mathematics": "S",
+                    "Physics": "S",
+                    "Chemistry": "C",
+                }
+            },
+        )
+    
+        assert response.status_code == 200
+    
+        data = response.json()
+    
+        assert data["count"] == 5
+    
+        for result in data["recommendations"]:
+            if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+    
+>           assert (
+                result["category"]
+                == "NEARLY_ELIGIBLE"
+            )
+E           AssertionError: assert 'NOT_ELIGIBLE' == 'NEARLY_ELIGIBLE'
+E             
+E             - NEARLY_ELIGIBLE
+E             + NOT_ELIGIBLE
+
+tests/integration/test_recommendation_api.py:105: AssertionError
+____________________ test_recommendations_unrelated_profile ____________________
+
+    def test_recommendations_unrelated_profile():
+        """
+        An unrelated A/L profile should not be
+        classified as eligible for the currently
+        supported computing degree programmes.
+        """
+    
+        response = client.post(
+            "/recommendations",
+            json={
+                "student_results": {
+                    "Sinhala": "A",
+                    "Art": "B",
+                    "Geography": "C",
+                }
+            },
+        )
+    
+        assert response.status_code == 200
+    
+        data = response.json()
+    
+        assert data["count"] == 5
+    
+        results = {
+            item["programme_id"]: item
+            for item
+            in data["recommendations"]
+        }
+    
+        assert (
+            results["PRG0001"]["category"]
+            == "NOT_ELIGIBLE"
+        )
+    
+        assert (
+            results["PRG0001"]["match_score"]
+            == 50.0
+        )
+    
+        assert (
+            results["PRG0002"]["category"]
+            == "NOT_ELIGIBLE"
+        )
+    
+>       assert (
+            results["PRG0002"]["match_score"]
+            == 0.0
+        )
+E       assert 16.7 == 0.0
+
+tests/integration/test_recommendation_api.py:175: AssertionError
+____________________ test_recommendations_nested_al_profile ____________________
+
+    def test_recommendations_nested_al_profile():
+        """
+        The newer nested A/L profile format should
+        produce the same immediate A/L programme
+        recommendations as the legacy flat format.
+        """
+    
+        response = client.post(
+            "/recommendations",
+            json={
+                "student_results": {
+                    "A_LEVEL": {
+                        "Combined Mathematics": "B",
+                        "Physics": "C",
+                        "Chemistry": "C",
+                    }
+                }
+            },
+        )
+    
+        assert response.status_code == 200
+    
+        data = response.json()
+    
+        assert data["count"] == 5
+    
+        programme_ids = {
+            result["programme_id"]
+            for result in data["recommendations"]
+        }
+    
+        assert programme_ids == {
+            "PRG0001",
+            "PRG0002",
+            "PRG0003",
+            "PRG0008",
+            "PRG0009",
+        }
+    
+        assert "PRG0004" not in programme_ids
+    
+        for result in data["recommendations"]:
+            if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+    
+>           assert (
+                result["category"]
+                == "ELIGIBLE"
+            )
+E           AssertionError: assert 'NEARLY_ELIGIBLE' == 'ELIGIBLE'
+E             
+E             - ELIGIBLE
+E             + NEARLY_ELIGIBLE
+
+tests/integration/test_recommendation_api.py:364: AssertionError
+___________________ test_it_al_legacy_requirements_still_met ___________________
+
+    def test_it_al_legacy_requirements_still_met():
+>       assert by_id(post(MATHS), 'PRG0001')['academic_gap_insights']['status'] == 'MET'
+E       AssertionError: assert 'NOT_ASSESSED' == 'MET'
+E         
+E         - MET
+E         + NOT_ASSESSED
+
+tests/integration/test_wp2_scenarios.py:24: AssertionError
+__________________ test_or_group_does_not_require_all_options __________________
+
+    def test_or_group_does_not_require_all_options():
+        data = engine.assess_academic_gaps('PRG0001', {'Physics': 'C', 'Chemistry': 'S', 'Art': 'S'})
+>       assert data['status'] == 'MET'
+E       AssertionError: assert 'NOT_ASSESSED' == 'MET'
+E         
+E         - MET
+E         + NOT_ASSESSED
+
+tests/unit/test_academic_gap_insights.py:18: AssertionError
+_____________ test_personalisation_preserves_academic_eligibility ______________
+
+    def test_personalisation_preserves_academic_eligibility():
+        response = personalise_recommendations({
+            "education": STRONG_AL_RESULTS,
+            "career_goal_id": "CAR0001",
+        })
+    
+        programme = get_programme(response, "PRG0001")
+    
+>       assert programme["eligible"] is True
+E       assert False is True
+
+tests/unit/test_personalisation_engine.py:32: AssertionError
+_______________________ test_strong_profile_is_eligible ________________________
+
+    def test_strong_profile_is_eligible():
+    
+        profile = {
+            "Combined Mathematics": "B",
+            "Physics": "C",
+            "Chemistry": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        for programme_id in [
+            "PRG0001",
+            "PRG0002",
+            "PRG0003",
+        ]:
+    
+            result = get_result_by_programme(
+                results,
+                programme_id,
+            )
+    
+>           assert result["eligible"] is True
+E           assert False is True
+
+tests/unit/test_recommendation_engine.py:48: AssertionError
+_____________________ test_near_profile_is_nearly_eligible _____________________
+
+    def test_near_profile_is_nearly_eligible():
+    
+        profile = {
+            "Combined Mathematics": "S",
+            "Physics": "S",
+            "Chemistry": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        for programme_id in [
+            "PRG0001",
+            "PRG0002",
+            "PRG0003",
+        ]:
+    
+            result = get_result_by_programme(
+                results,
+                programme_id,
+            )
+    
+            assert result["eligible"] is False
+    
+>           assert (
+                result["category"]
+                == "NEARLY_ELIGIBLE"
+            )
+E           AssertionError: assert 'NOT_ELIGIBLE' == 'NEARLY_ELIGIBLE'
+E             
+E             - NEARLY_ELIGIBLE
+E             + NOT_ELIGIBLE
+
+tests/unit/test_recommendation_engine.py:90: AssertionError
+__________________ test_unrelated_profile_not_nearly_eligible __________________
+
+    def test_unrelated_profile_not_nearly_eligible():
+    
+        profile = {
+            "Sinhala": "A",
+            "Art": "B",
+            "Geography": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        result_1 = get_result_by_programme(
+            results,
+            "PRG0001",
+        )
+    
+        result_2 = get_result_by_programme(
+            results,
+            "PRG0002",
+        )
+    
+        result_3 = get_result_by_programme(
+            results,
+            "PRG0003",
+        )
+    
+        assert (
+            result_1["category"]
+            == "NOT_ELIGIBLE"
+        )
+    
+        assert (
+            result_1["match_score"]
+            == 50.0
+        )
+    
+        assert (
+            result_2["category"]
+            == "NOT_ELIGIBLE"
+        )
+    
+>       assert (
+            result_2["match_score"]
+            == 0.0
+        )
+E       assert 16.7 == 0.0
+
+tests/unit/test_recommendation_engine.py:147: AssertionError
+_________ test_eligible_programme_has_no_false_failed_or_requirements __________
+
+    def test_eligible_programme_has_no_false_failed_or_requirements():
+    
+        profile = {
+            "Combined Mathematics": "B",
+            "Physics": "C",
+            "Chemistry": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        for result in results:
+            if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+    
+>           assert result["eligible"] is True
+E           assert False is True
+
+tests/unit/test_recommendation_engine.py:184: AssertionError
+______________ test_near_profile_keeps_useful_failed_requirements ______________
+
+    def test_near_profile_keeps_useful_failed_requirements():
+    
+        profile = {
+            "Combined Mathematics": "S",
+            "Physics": "S",
+            "Chemistry": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        for result in results:
+            if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+                continue
+    
+>           assert (
+                result["category"]
+                == "NEARLY_ELIGIBLE"
+            )
+E           AssertionError: assert 'NOT_ELIGIBLE' == 'NEARLY_ELIGIBLE'
+E             
+E             - NEARLY_ELIGIBLE
+E             + NOT_ELIGIBLE
+
+tests/unit/test_recommendation_engine.py:213: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_hybrid_relevance.py::test_api_unavailable_model_preserves_academic_fields
+FAILED tests/integration/test_learner_gap_api.py::test_legacy_al[education0]
+FAILED tests/integration/test_learner_gap_api.py::test_legacy_al[education1]
+FAILED tests/integration/test_personalisation_api.py::test_personalised_endpoint_preserves_eligibility
+FAILED tests/integration/test_recommendation_api.py::test_recommendations_strong_profile
+FAILED tests/integration/test_recommendation_api.py::test_recommendations_near_profile
+FAILED tests/integration/test_recommendation_api.py::test_recommendations_unrelated_profile
+FAILED tests/integration/test_recommendation_api.py::test_recommendations_nested_al_profile
+FAILED tests/integration/test_wp2_scenarios.py::test_it_al_legacy_requirements_still_met
+FAILED tests/unit/test_academic_gap_insights.py::test_or_group_does_not_require_all_options
+FAILED tests/unit/test_personalisation_engine.py::test_personalisation_preserves_academic_eligibility
+FAILED tests/unit/test_recommendation_engine.py::test_strong_profile_is_eligible
+FAILED tests/unit/test_recommendation_engine.py::test_near_profile_is_nearly_eligible
+FAILED tests/unit/test_recommendation_engine.py::test_unrelated_profile_not_nearly_eligible
+FAILED tests/unit/test_recommendation_engine.py::test_eligible_programme_has_no_false_failed_or_requirements
+FAILED tests/unit/test_recommendation_engine.py::test_near_profile_keeps_useful_failed_requirements
+16 failed, 184 passed in 1.42s

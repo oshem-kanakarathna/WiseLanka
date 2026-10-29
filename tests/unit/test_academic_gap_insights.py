@@ -15,7 +15,8 @@ def test_missing_source_evidence_is_not_assessed(monkeypatch):
 
 def test_or_group_does_not_require_all_options():
     data = engine.assess_academic_gaps('PRG0001', {'Physics': 'C', 'Chemistry': 'S', 'Art': 'S'})
-    assert data['status'] == 'MET'
+    assert data['status'] == 'NOT_ASSESSED'
+    assert next(g for g in data['groups'] if g['operator']=='OR')['status']=='MET'
     assert any(r['status'] == 'NOT_ASSESSED' for g in data['groups'] for r in g['requirements'])
 
 

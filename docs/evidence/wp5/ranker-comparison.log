@@ -1,0 +1,22 @@
+{
+  "python": "3.9.6 (default, Apr 30 2025, 02:07:17) \n[Clang 17.0.0 (clang-1700.0.13.5)]",
+  "platform": "macOS-15.5-arm64-arm-64bit",
+  "processor": "arm64",
+  "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "versions": {
+    "numpy": "1.26.4",
+    "onnxruntime": "1.19.2",
+    "tokenizers": "0.20.3",
+    "fastapi": "0.128.8",
+    "pydantic": "2.13.5"
+  },
+  "model_load_seconds": 0.287573875,
+  "first_ASGI_request_seconds_after_scenarios": 0.01829379200000003,
+  "warm_ASGI_requests": 40,
+  "warm_median_seconds": 0.013536104000000049,
+  "warm_p95_seconds": 0.014949708000000062,
+  "process_peak_before_model_MiB": 40.609375,
+  "process_peak_after_requests_MiB": 302.328125,
+  "memory_note": "Process high-water RSS, not isolated model allocations. Latency uses in-process FastAPI TestClient, not network/browser latency."
+}
+Compared 9 synthetic scenarios; nDCG not computed without independent labels.

@@ -538,3 +538,6 @@ nav a.active {
         gap: 10px;
     }
 }
+
+/* WP5: contrast on the pale page background. */
+.hero > p, footer > span { color: #526278; }

@@ -1,0 +1,9 @@
+learner-profile en False [] {'390': True, '320': True}
+learner-profile en True [] {'390': True, '320': True}
+learner-profile si False [] {'390': True, '320': True}
+learner-profile si True [] {'390': True, '320': True}
+learner-profile ta False [] {'390': True, '320': True}
+learner-profile ta True [] {'390': True, '320': True}
+eligibility en False [] {'390': True, '320': True}
+recommendations en False [] {'390': True, '320': True}
+scholarships en False [] {'390': True, '320': True}

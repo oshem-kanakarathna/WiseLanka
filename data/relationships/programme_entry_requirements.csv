@@ -22,10 +22,13 @@ REQ0021,PRG0008,GRP012,AND,A_LEVEL,PROVIDER_REVIEW,,,,,Provider must confirm age
 REQ0022,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Combined Mathematics,S,,,A/L Combined Mathematics pass,true,SRC0017
 REQ0023,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Physics,S,,,A/L Physics pass,true,SRC0017
 REQ0024,PRG0009,GRP013,AND,A_LEVEL,SUBJECT_GRADE,Chemistry,S,,,A/L Chemistry pass,true,SRC0017
-REQ0025,PRG0009,GRP014,AND,A_LEVEL,PROVIDER_REVIEW,,,,,Government university selection policy is not assessed by subject grades alone,true,SRC0017
+REQ0025,PRG0009,GRP014,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: one sitting within three attempts; Common General Paper minimum 30 percent; applicable selection cut-offs require provider verification,true,SRC0021
 REQ0026,PRG0010,GRP015,OR,QUALIFICATION,QUALIFICATION_HELD,,,,QLF0012,Selected route: NVQ Level 4 Electrician certificate reported,true,SRC0018
 REQ0027,PRG0010,GRP015,OR,QUALIFICATION,PROVIDER_REVIEW,,,,,Other listed NVQ trades or specified A/L stream route require provider review,true,SRC0018
 REQ0028,PRG0010,GRP016,AND,QUALIFICATION,PROVIDER_REVIEW,,,,,Provider must verify the reported certificate and current admission arrangements,true,SRC0018
 REQ0029,PRG0011,GRP017,OR,QUALIFICATION,QUALIFICATION_HELD,,,,QLF0010,Selected route: NVQ Level 6 Mechatronics qualification reported,true,SRC0019
 REQ0030,PRG0011,GRP017,OR,QUALIFICATION,PROVIDER_REVIEW,,,,,Other accepted disciplines or entry categories require provider review,true,SRC0019
 REQ0031,PRG0011,GRP018,AND,QUALIFICATION,PROVIDER_REVIEW,,,,,Shortlisting tests interview if applicable and document verification require provider assessment,true,SRC0020
+REQ0032,PRG0001,GRP019,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021
+REQ0033,PRG0002,GRP020,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021
+REQ0034,PRG0003,GRP021,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021

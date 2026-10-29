@@ -1,0 +1,25 @@
+# Approved-baseline requirements audit
+
+Implementation status and validation are separate. This audit uses the supplied approved excerpts, not an unseen original DOCX. IMPLEMENTED means bounded prototype functionality exists; it does not mean national coverage, educational effectiveness or satisfactory usability has been demonstrated. No original proposal, signed ethics conditions, research questions, detailed NFR specification, interim report, supervisor feedback or marking rubric was located. Those documents remain required for final submission alignment.
+
+| Requirement | Status | Functionality / repository anchors | Verification / remaining limits |
+|---|---|---|---|
+| Objective I: critical literature review | UNVERIFIED | WP3/WP5 algorithm decisions are implementation evidence, not a critical literature review | No completed source-based dissertation literature review verified; consult original proposal/research questions |
+| Objective II: Sri Lankan learner challenges | PARTIAL | Structured learner categories and uncertainty states in backend/app/personalisation/models.py:49; synthetic scenarios.json | Context-informed design; no empirical learner-needs study or independent validation claimed |
+| Objective III: structured knowledge | IMPLEMENTED | data/entities/, data/relationships/, data/metadata/evidence_sources.csv; backend/app/data_integrity.py | CSV integrity and rule-evidence.csv; curated 11-programme scope, selected sources refreshed, national completeness unclaimed |
+| Objective IV: hybrid recommendation | IMPLEMENTED | backend/app/relevance/engine.py:67; encoder.py:15; backend/app/personalisation/engine.py:188; eligibility/engine.py:599 | ranker-comparison.log, comparison.json; fixed pretrained semantic model, no feedback training; independent relevance quality unmeasured |
+| Objective V: web prototype / gaps / links | IMPLEMENTED | frontend/pages/learner-profile.html; backend/app/eligibility/engine.py:776; skills/engine.py:4; progression/engine.py:117 | backend/browser and five live logs; missing provider decisions stay unknown, source/skill coverage limited |
+| Objective VI: accessibility / languages / voice | PARTIAL | frontend/components/i18n.js:45; guided-assistant.js:99; data/localisation/ui.json | 135 keys per language; axe automated scan and reflow; fluent review, native speech and assistive-technology checks pending |
+| Objective VII: evaluation | PARTIAL | scripts/evaluate_wp5.py; tests/; frontend/browser_tests/; study/ | Functional/scenario/runtime evidence exists. Adult human usability and independent relevance evaluation not executed |
+| Objective VIII: limitations / future work | PARTIAL | this evidence directory, AI_EVALUATION_PROTOCOL.md, OPEN_ISSUES.md | Technical limitations documented; final dissertation synthesis and supervisor review remain WP6 |
+| FR1 learner profiles | IMPLEMENTED | backend/app/personalisation/models.py:49; frontend/components/learner-profile.js | Six/nine O/L, A/L, vocational and early-career synthetic regression; no account/persistence required |
+| FR2 qualifications / interests | IMPLEMENTED | models.py:10,49; frontend/components/learner-profile.js | Structured awards, grades, optional skills and interests validated; qualifications are reported evidence, not certified equivalence |
+| FR3 personalised recommendations | IMPLEMENTED | personalisation/engine.py:188; relevance/engine.py:67 | deterministic/TF-IDF/semantic comparison, cold start and fallback tests; similarity is not eligibility or success probability |
+| FR4 alternatives | IMPLEMENTED | backend/app/progression/engine.py:117; backend/app/alternative_pathways/engine.py | Live WP2 vocational progression; finite curated edges and conditions, never guaranteed admission |
+| FR5 academic / skill gaps | IMPLEMENTED | eligibility/engine.py:776; skills/engine.py:4 | MET/NOT_MET/NOT_ASSESSED; reported vs unreported skills; no competence testing or credential verification |
+| FR6 explanations | IMPLEMENTED | assistant/engine.py:40; eligibility/engine.py:776; relevance/engine.py:67 | source-linked reasons, uncertainty and method labels tested; comprehension remains unmeasured |
+| FR7 official links | IMPLEMENTED | evidence_sources.csv; frontend/components/learner-profile.js; guided-assistant.js | Source IDs/URLs reach responses; live links can change, selected educational-source review only |
+| FR8 chatbot support | IMPLEMENTED | backend/app/assistant/engine.py:17,40; frontend/components/guided-assistant.js | Guided supported intents and unsupported-question refusal; not unrestricted generative AI |
+| FR9 basic voice input | PARTIAL | frontend/components/guided-assistant.js:99 | Implemented detection, opt-in, editable transcript, denial/language/error states, text fallback; mocked functional tests only, native transcription/languages pending |
+
+Acceptance of prototype implementation must be distinguished from completion of research evaluation. Objective VII is not complete until approved human work or a supervisor-approved change to evaluation scope is actually documented. No change to approved objectives is proposed here.

@@ -22,7 +22,7 @@ def get_result_by_programme(
 # Strong profile
 # --------------------------------------------------
 
-def test_strong_profile_is_eligible():
+def test_strong_subject_profile_requires_provider_review():
 
     profile = {
         "Combined Mathematics": "B",
@@ -45,11 +45,11 @@ def test_strong_profile_is_eligible():
             programme_id,
         )
 
-        assert result["eligible"] is True
+        assert result["eligible"] is False
 
         assert (
             result["category"]
-            == "ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -62,7 +62,7 @@ def test_strong_profile_is_eligible():
 # Near profile
 # --------------------------------------------------
 
-def test_near_profile_is_nearly_eligible():
+def test_partial_subject_match_requires_provider_review():
 
     profile = {
         "Combined Mathematics": "S",
@@ -89,7 +89,7 @@ def test_near_profile_is_nearly_eligible():
 
         assert (
             result["category"]
-            == "NEARLY_ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -131,7 +131,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_1["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -181,7 +181,7 @@ def test_eligible_programme_has_no_false_failed_or_requirements():
         if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
             continue
 
-        assert result["eligible"] is True
+        assert result["eligible"] is False
 
         assert (
             result["failed_requirements"]
@@ -212,13 +212,13 @@ def test_near_profile_keeps_useful_failed_requirements():
 
         assert (
             result["category"]
-            == "NEARLY_ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
             len(
                 result[
-                    "failed_requirements"
+                    "not_assessed_requirements"
                 ]
             )
             > 0

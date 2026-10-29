@@ -57,8 +57,8 @@ def test_personalised_endpoint_preserves_eligibility():
     for programme in response.json()["recommendations"]:
         if programme["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
             continue
-        assert programme["eligible"] is True
-        assert programme["category"] == "ELIGIBLE"
+        assert programme["eligible"] is False
+        assert programme["category"] == "NOT_ASSESSED"
         assert programme["academic_match_score"] == 100.0
 
 

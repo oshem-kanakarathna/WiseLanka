@@ -1,0 +1,148 @@
+{
+  "synthetic_scenarios": [
+    {
+      "scenario": "OL6",
+      "expected": "MET",
+      "actual": "MET",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "OL9",
+      "expected": "MET",
+      "actual": "MET",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "OL_gap",
+      "expected": "NOT_MET",
+      "actual": "NOT_MET",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "OL_missing",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_IT",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_CS",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_AI",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_Business",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_Engineering",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "AL_Engineering_gap",
+      "expected": "NOT_MET",
+      "actual": "NOT_MET",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "NVQ4",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "NVQ6",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "unknown_award",
+      "expected": "NOT_ASSESSED",
+      "actual": "NOT_ASSESSED",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    },
+    {
+      "scenario": "confirmed_OR_gap",
+      "expected": "NOT_MET",
+      "actual": "NOT_MET",
+      "passed": true,
+      "assistant_unchanged_ranking": true,
+      "ranking_method": "SEMANTIC"
+    }
+  ],
+  "count": 14,
+  "functional_passes": 14,
+  "national_admissions_accuracy_measured": false,
+  "performance": {
+    "environment": "in-process FastAPI TestClient, warm model",
+    "requests": 40,
+    "median_seconds": 0.013291520999999973,
+    "p95_seconds": 0.015999499999999944
+  },
+  "invalid_grade_http_status": 422,
+  "integrity": {
+    "institution_types": 12,
+    "programme_types": 16,
+    "qualification_frameworks": 3,
+    "qualification_types": 18,
+    "study_modes": 6,
+    "institutions": 11,
+    "qualifications": 12,
+    "programmes": 11,
+    "careers": 5,
+    "skills": 13,
+    "scholarships": 1,
+    "sources": 21,
+    "recognition": 18,
+    "requirements": 33,
+    "progression": 5,
+    "programme_careers": 15,
+    "programme_skills": 22,
+    "career_skills": 28,
+    "scholarship_requirements": 7,
+    "scholarship_applicability": 2
+  }
+}

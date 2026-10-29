@@ -21,7 +21,9 @@ def by_id(data, programme):
 
 
 def test_it_al_legacy_requirements_still_met():
-    assert by_id(post(MATHS), 'PRG0001')['academic_gap_insights']['status'] == 'MET'
+    result=by_id(post(MATHS), 'PRG0001')['academic_gap_insights']
+    assert result['groups'][0]['status']=='MET'
+    assert result['status']=='NOT_ASSESSED'
 
 
 def test_business_al_route_met_but_selection_not_inferred():

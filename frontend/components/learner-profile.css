@@ -573,3 +573,6 @@ input:not([type="checkbox"]) {
 html:lang(si) body { font-family: "Noto Sans Sinhala", "Sinhala Sangam MN", sans-serif; }
 html:lang(ta) body { font-family: "Noto Sans Tamil", "Tamil Sangam MN", sans-serif; }
 #assistantResponse a { display: block; margin: 10px 0; }
+
+/* WP5: measured WCAG contrast correction for small accent labels. */
+:root { --accent: #08766e; }

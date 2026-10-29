@@ -1,0 +1,30 @@
+{
+  "transport": "local HTTP urllib, existing warm server, no browser rendering",
+  "requests": 40,
+  "median_seconds": 0.013282478999999958,
+  "p95_seconds": 0.013572416999999996,
+  "missing_model_subprocess_exit_code": 0,
+  "missing_model_response": {
+    "legacy_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "requested_method": "semantic",
+    "method": "RULE_BASED_FALLBACK",
+    "status": "UNAVAILABLE",
+    "fallback_reason": "LOCAL_MODEL_UNAVAILABLE",
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+    "group_order": [
+      "MET",
+      "NOT_ASSESSED",
+      "NOT_MET"
+    ],
+    "scope": "Relevance within academic groups; not a learned preference model."
+  },
+  "recovery": "Following isolated failure, real-model server still responds SEMANTIC; failed model setup in a running process requires restart after provisioning."
+}

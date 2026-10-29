@@ -1,0 +1,13 @@
+{
+  "scope": "Tracked working-tree text plus WP5 scripts; heuristic pattern scan only. Does not inspect complete history, binaries, arbitrary PII or excluded local files.",
+  "patterns": [
+    "private_key",
+    "aws_access_key",
+    "github_token",
+    "openai_style_key"
+  ],
+  "matches": [],
+  "tracked_file_count": 225,
+  "model_weights_tracked": false,
+  "backup_files_tracked": false
+}
