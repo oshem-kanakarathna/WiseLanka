@@ -1,5 +1,6 @@
 # Dissertation–poster–viva consistency review
 
+**Baseline update:** this earlier review predates inspection of the confirmed original proposal/interim. Its missing-document/NFR assumptions are superseded by alignment/ACADEMIC_ALIGNMENT_REPORT.md. Scientific evaluation and rubric limitations remain; historical findings are retained.
 The editable dissertation sources, combined draft, poster source/PDF and viva materials were reviewed together. This is consistency checking, not institutional-format approval.
 
 | Topic | Outcome | Qualification |

@@ -4,7 +4,7 @@
 
 The executed checks support a bounded claim: the current artifact consistently processes the tested profile, policy, relevance and interaction scenarios, with reproducible local inference and explicit uncertainty. Five live journeys demonstrate integration beyond mocked responses. Fresh installation and separate asset provisioning strengthen confidence that the prototype is not dependent solely on an old developer environment.
 
-The UGC correction is a stronger research observation than a raw increase in test count. It shows that formal rule execution can be reliable while the knowledge representation remains incomplete. The repair changed academic conclusions conservatively instead of using semantic confidence to conceal the omission. This supports the design decision to separate source validation, rule execution and relevance.
+The original-document comparison shows that August already delivered the core layered artifact, while October added structured profile/gap, semantic-ranking and bounded access/support capabilities. Original and refined requirement numbers describe different concepts, so apparent requirement-count growth is not proof of improved compliance. The UGC correction is a stronger research observation than a raw increase in test count. It shows that formal rule execution can be reliable while the knowledge representation remains incomplete. The repair changed academic conclusions conservatively instead of using semantic confidence to conceal the omission. This supports the design decision to separate source validation, rule execution and relevance.
 
 ## 9.2 What the evidence does not support
 
@@ -32,7 +32,7 @@ The exact questions in section 1.3 now guide the following evidence-bounded resp
 |---|---|---|
 | MRQ | A local prototype integrates policy-aware assessments, relevance and interaction mechanisms | That intended learners receive effective personalised, explainable and accessible support in practice |
 | SRQ-I | Typed profiles, sourced rule groups and pathway relationships are integrated and exercised | Independent educational suitability and comprehensive policy coverage |
-| SRQ-II | Source/status explanations and comprehension instruments exist | Improved understanding or trust; no adult study/comparison or dedicated trust measure |
+| SRQ-II | Source/status explanations and draft comprehension, transparency and reliance instruments exist | Improved understanding or trust; no adult study or comparison has been executed and no trust findings exist |
 | SRQ-III | Conditional routes and self-report gap comparisons execute | Better educational/career planning or objective learner competence |
 | SRQ-IV | Language controls, reflow and optional speech/text states are technically demonstrated | Accessibility improvement, fluent translation quality, native speech and comprehensive manual accessibility |
 | SRQ-V | Functional/scenario/runtime results are recorded | Independently measured relevance, usability or comparative ranking-quality improvement |

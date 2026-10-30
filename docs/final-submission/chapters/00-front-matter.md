@@ -1,11 +1,11 @@
 # WiseLanka
-## An AI-powered, policy-aware education and career pathway intelligence prototype for Sri Lankan learners
+## DESIGN AND DEVELOPMENT OF AN AI-POWERED, POLICY-AWARE EDUCATION AND CAREER PATHWAY INTELLIGENCE SYSTEM FOR SRI LANKAN LEARNERS
 
 University of West London — final-year project
 
-**First complete working draft — 29 October 2026. Not approved for submission.**
+**Working draft revised against original proposal and August interim — 29 October 2026. Not approved for submission.**
 
-Author/student number: [AUTHOR TO COMPLETE]. Course/module, supervisor, word limit, required cover sheet and submission date: [OFFICIAL BRIEF REQUIRED]. This document uses the approved excerpts supplied by the author. The original DOCX and institutional instructions have not been inspected. November dates are project targets, not the dates on which evidence was collected.
+Author: Oshem Thirsha Kanakarathna. Student ID: 34164665. Module: CP6SL460, School of Computing and Engineering. Supervisor as listed on both originals: Dr. Ama Kulathilake. Current cover-sheet requirements, word limit and submission date still require the actual assessment brief. The author-confirmed original proposal and interim DOCX files have now been inspected; their hashes and review coverage are recorded in alignment/SOURCE_REVIEW.json. November is the accelerated working target, not a verified university deadline.
 
 ### Abstract
 

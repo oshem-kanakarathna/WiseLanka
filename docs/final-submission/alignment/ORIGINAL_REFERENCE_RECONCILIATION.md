@@ -1,0 +1,22 @@
+# Original bibliographies and final citation reconciliation
+
+Both original bibliographies were read: 19 entries in the proposal and 23 in the interim. Reading a submitted citation does not verify its bibliographic accuracy or the underlying research. The final draft therefore retains checked sources, adds a closer major/career-guidance comparator and flags unresolved entries instead of inheriting the whole earlier list.
+
+| Earlier source(s) | Final-draft disposition | Verification limit / action |
+|---|---|---|
+| Hevner et al. (2004); Deschênes (2020); Peffers et al. (2007, interim) | Retained with checked identities and explicit access limits | Publisher metadata/abstract for Hevner; selected open sections for Deschênes; original method passages for Peffers. Not all full papers critically appraised |
+| Lahoud et al. (2023) | Restored as a relevant university-major/career comparator in chapter 2 | Publisher confirms five authors, volume/pages and 2022-online/2023-volume distinction. Abstract/introduction inspected; no reported effect transferred to WiseLanka |
+| NEC career-guidance study labelled 2014 | Uses first-publication year 2016, retaining Research Series (2014) No.08 | Actual official title/publication text checked earlier. Do not conflate it with NEC's separate 2016 policy-framework report |
+| NEC (2016), Raising the Quality of Education | Not promoted as a newly verified source | Distinct work; retrieve and inspect before adding substantive claims |
+| CareerMe 2026a/2026b; CareerOne 2026 | Current homepage/specific TVEC document used for narrowly described advertised features | Earlier access year is not necessarily publication year; undated CareerMe homepage cited n.d. CareerOne direct PDF fetch timed out; indexed official text only |
+| UGC handbook listed with NEC as publisher | Does not inherit that corporate-publisher combination; current UGC 2025/2026 edition used | Edition-specific WP5 source register governs current rules; do not imply the earlier edition was the final rule source |
+| TVEC (2025), generic “TVET Pathway Information” | Not treated as a verified publication identity | Specific CareerOne operational directive is a separate, identifiable source, not a silent repair of that generic entry |
+| Atay; Seesukong; Perera/Open Smart Bot; Hendahewa; Wickramarathna; Munasingha; Induruwage | Potentially useful local/comparative literature; not imported as verified findings | Several original author fields concatenate initials and “a.”/“et al.” incorrectly. Verify complete authors, exact titles/venues and original full texts first |
+| Zayed, Salman and Hasasneh (2022) | Bibliographic identity supported by publisher-indexed metadata; no new finding used | Full-text direct access blocked during review. A genuine record does not verify a proposed interpretation of its experiments |
+| Pereira et al. (2023), conversational-agent scoping review | Not imported with the proposal's truncated https://doi.org/1 | Verify actual paper identity, complete DOI, authors and findings; do not guess a repaired DOI |
+| Arrieta et al. (2020, interim); Saunders et al. (2019, interim) | Not newly cited to support uninspected detailed claims | Publisher/full-text verification and exact edition/authorship remain pending; pragmatic orientation is attributed to the interim itself |
+| “Sri Laka Development Update” (2024, interim) | Not promoted into a precise World Bank citation | Entry has ambiguous author/title/edition and spelling; identify the actual report before use |
+
+The current final bibliography contains 20 entries, including the two private project documents and six additions recorded during this reconciliation. Its item-level register is `review/REFERENCE_VERIFICATION_REGISTER.csv`; `SOURCE_REGISTER.csv` records actual access depth. References added in earlier WP6 work support methods absent from the original bibliography, including sentence embeddings, term weighting and graded ranking evaluation. These are reasoned additions, not claims that the proposal originally contained them.
+
+The continuous draft is mechanically rebuilt from chapter sources. Each of the 20 entries has an identified chapter citation; link/citation presence checks are not proof of source interpretation or academic completeness. The literature review remains a focused narrative review. Fuller critical comparison, university referencing-style confirmation and author reading remain necessary for final submission.

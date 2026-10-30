@@ -2,11 +2,11 @@
 
 ## 6.1 Curated snapshot
 
-The WP5 snapshot has 11 programmes, 11 institutions, 12 qualifications, 33 entry-rule rows, five progression relationships, 21 source records, five careers and 13 skills. Domain counts are IT seven, Business and Management one, Engineering three, including two vocational-related programmes. The catalogue is sufficient to demonstrate different routes but too small and uneven to represent national opportunity or learner demand.
+The August report screenshots (appendix C, Figures 23–30), corroborated by commit `050ba57` dated 20 August 2026, show seven computing programmes, seven qualifications, 17 requirement rows, three progression edges and 14 source records. This is a source/code snapshot, not proof of national coverage or every uncommitted interim state. The WP5 snapshot has 11 programmes, 11 institutions, 12 qualifications, 33 entry-rule rows, five progression relationships, 21 source records, five careers and 13 skills. Domain counts are IT seven, Business and Management one, Engineering three, including two vocational-related programmes. The catalogue is sufficient to demonstrate different routes but too small and uneven to represent national opportunity or learner demand.
 
 Programme titles include Moratuwa IT and AI, UCSC Computer Science, IIT Computing Foundation and three related degrees, OUSL Management Studies, Peradeniya Engineering, Jaffna University College HND Mechatronics and UoVT Engineering Technology in Mechatronics. The programme inventory in appendix B retains exact stored titles and source URLs rather than silently rewriting provider terminology.
 
-The five progression edges comprise three foundation-to-degree routes and two conditional vocational routes. The AI/Data Science foundation route records the published 40% condition in each named module; all edges have `guaranteed=false`. NVQ route records do not infer universal qualification equivalence or exemption. Current provider checks are unresolved where necessary.
+The five progression edges comprise three foundation-to-degree routes and two conditional vocational routes. The AI/Data Science foundation route records the published 40% condition in each named module; all edges have `guaranteed=false`. Interim Figures 17/42 and its progression CSV screenshot display 50%, so the final report must state that a correction occurred rather than copying that historical condition as current policy (Kanakarathna, 2026b; Informatics Institute of Technology, n.d.). No evidence establishes that the provider changed its policy between those dates. NVQ route records do not infer universal qualification equivalence or exemption. Current provider checks are unresolved where necessary.
 
 ## 6.2 Source selection and provenance
 

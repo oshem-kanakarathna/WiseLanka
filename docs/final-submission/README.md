@@ -1,6 +1,6 @@
 # WiseLanka final academic review pack
 
-**First complete working draft — not finalised or submitted.** University of West London. Evidence date: 29 October 2026; November is the project completion target. The actual module brief/rubric and original academic documents remain unavailable.
+**First complete working draft — not finalised or submitted.** University of West London. Evidence date: 29 October 2026; November is the project completion target. The two author-confirmed original academic DOCX files have now been reviewed locally; the actual module brief/rubric and signed ethics conditions remain outstanding.
 
 Start with the [dissertation draft](DISSERTATION_DRAFT.md), then the [deliverable inventory](DELIVERABLE_INVENTORY.md) and [baseline/blockers](BASELINE_AND_BLOCKERS.md). The [quality review](QUALITY_REVIEW.md) maps every objective and FR to evidence and limitations.
 
@@ -26,4 +26,8 @@ CLAIM_REGISTER.csv links each numerical or pending claim to its actual evidence 
 
 ## Academic alignment review
 
-The exact main and five supporting research questions have now been restored from the author's supplied text. Begin with the [chapter quality audit](review/DISSERTATION_QUALITY_AUDIT.md), [objective/question traceability](RESEARCH_QUESTION_TRACEABILITY.md), [reference findings](review/REFERENCE_FINDINGS.md) and [missing-document checklist](review/MISSING_DOCUMENTS_CHECKLIST.md). The item-level reference register is review/REFERENCE_VERIFICATION_REGISTER.csv. Verdict: not submission-ready; approved adult evaluation and other identified validation remain pending.
+The exact main and five supporting research questions have now been confirmed against proposal §1.4 and interim §1.4. Begin with the [chapter quality audit](review/DISSERTATION_QUALITY_AUDIT.md), [objective/question traceability](RESEARCH_QUESTION_TRACEABILITY.md), [reference findings](review/REFERENCE_FINDINGS.md) and [missing-document checklist](review/MISSING_DOCUMENTS_CHECKLIST.md). The item-level reference register is review/REFERENCE_VERIFICATION_REGISTER.csv. Verdict: not submission-ready; approved adult evaluation and other identified validation remain pending.
+
+## Original proposal and interim reconciliation — current review
+
+Start with the [academic alignment report](alignment/ACADEMIC_ALIGNMENT_REPORT.md). The [exact baseline](alignment/APPROVED_BASELINE.md), [proposal-to-delivery matrix](alignment/PROPOSAL_TO_IMPLEMENTATION.md), [August-to-October comparison](alignment/INTERIM_TO_FINAL.md), [requirements crosswalk](alignment/REQUIREMENTS_TRACEABILITY.md) and [technology justification](alignment/TECHNOLOGY_JUSTIFICATION.md) supersede earlier assumptions that these originals were unavailable. [Significant discrepancies](alignment/CONTRADICTIONS_AND_LIMITS.md) require explicit acknowledgement, not silent scope changes. Private originals/raw extraction are excluded from this repository. This review made no application changes or Git commit.

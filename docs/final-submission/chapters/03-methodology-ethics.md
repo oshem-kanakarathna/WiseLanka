@@ -9,7 +9,7 @@ Peffers et al. (2007) describe a process involving problem identification, solut
 | DSR activity | WiseLanka evidence | Status |
 |---|---|---|
 | Problem identification | Approved excerpts; historical policy context; developer motivation | Needs broader current learner evidence |
-| Objectives for solution | Approved objectives and FR1–FR9 | Question excerpts restored; original DOCX and detailed NFRs awaiting inspection |
+| Objectives for solution | Approved objectives and FR1–FR9 | Original aim/objectives/questions/FRs/NFRs/deliverables now checked; broader current learner evidence remains limited |
 | Design/development | CSV knowledge, modular engines, web UI, WP1–WP4 | Implemented bounded artifact |
 | Demonstration | Synthetic profiles and five live workflows | Executed technical demonstrations |
 | Evaluation | Automated/scenario/source review, runtime and accessibility checks | Executed technical evaluation; human/relevance work pending |
@@ -17,7 +17,18 @@ Peffers et al. (2007) describe a process involving problem identification, solut
 
 ## 3.2 Iteration and traceability
 
-WP1 addressed profiles and evidence-aware gaps. WP2 extended sourced domain/progression coverage. WP3 introduced frozen semantic ranking and TF–IDF comparison. WP4 added bounded guidance, interface languages and speech controls. WP5 evaluated integration and corrected omissions. Local checkpoints establish an inspectable artifact history, but they do not document every development conversation or substitute for a research diary. The author should add genuine dated supervisor feedback and decisions where available.
+The August report describes applied DSR, a pragmatic orientation and deductive translation of requirements into rules, with iteration informed by testing (Kanakarathna, 2026b, §§3.1–3.4). This characterises the research's practical orientation; it does not establish a complete mixed-method human study. Its technical demonstrations precede the unfinished user-evaluation stage.
+
+| Stage | Evidence-grounded development |
+|---|---|
+| August interim | Layered FastAPI/HTML/CSS/JS artifact, seven computing records, three foundation routes and 40 passing tests in report screenshots |
+| WP1 | More complete O/L entry, typed categories/awards, self-report skills and evidence-aware gaps |
+| WP2 | Four programme additions, two vocational progression edges, source/integrity refinements and threshold correction |
+| WP3 | Actual frozen MiniLM ONNX inference, grouped relevance, TF–IDF comparison and explicit fallback |
+| WP4 | Read-only guided assistant, draft interface languages and browser voice/text states |
+| WP5 | Integration/reproducibility/source/accessibility evaluation and conservative policy corrections |
+
+This chronology distinguishes implemented evidence from the earlier hybrid/accessibility ambition. The full [interim-to-final comparison](../alignment/INTERIM_TO_FINAL.md) records source locations and the corroborating August Git snapshot. Local checkpoints establish an inspectable artifact history, but they do not document every development conversation or substitute for a research diary. The author should add genuine dated supervisor feedback and decisions where available.
 
 A concrete refinement cycle occurred in WP5. Source inspection revealed omitted UGC general-entry evidence; the rules were revised to retain NOT_ASSESSED, regression expectations were updated and affected suites rerun. Automated accessibility findings also led to specific semantic/contrast repairs. These cases show how evaluation informed the artifact, rather than asserting usefulness from test counts alone.
 
@@ -39,4 +50,4 @@ Browser speech can involve third-party processing. Native voice testing with par
 
 Internal validity is limited by implementation-authored expectations and lack of independent ranking labels. Construct validity requires distinguishing task completion from satisfaction and similarity from educational suitability. External validity is limited by 11 programmes, uneven domain coverage and one measured machine/browser setup. Reproducibility is strengthened by logs, exit codes, CSV hashes, pinned model revision and dependency lock, but changing official pages can still alter the underlying evidence.
 
-The researcher must preserve negative findings and exclusions. No invented participants, source endorsements or superiority claims fill missing results. AI-assisted drafting must be disclosed according to the actual module conditions; this draft is not a signed originality statement. The supplied exact research questions are now mapped in RESEARCH_QUESTION_TRACEABILITY.md. Original-document comparison and approved ethics conditions remain prerequisites for final methodological alignment.
+The researcher must preserve negative findings and exclusions. No invented participants, source endorsements or superiority claims fill missing results. AI-assisted drafting must be disclosed according to the actual module conditions; this draft is not a signed originality statement. The supplied exact research questions are now mapped in RESEARCH_QUESTION_TRACEABILITY.md. The original-document comparison is now recorded; signed ethics conditions, the actual rubric and genuine human/independent evaluation remain prerequisites for final methodological closure.

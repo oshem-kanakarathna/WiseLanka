@@ -11,9 +11,10 @@ for p in parts:
  if p.parent!=ROOT:
   content=re.sub(r'(?<=\]\()\.\./\.\./evidence/', '../evidence/',content)
   content=re.sub(r'(?<=\]\()\.\./figures/', 'figures/',content)
+  content=re.sub(r'(?<=\]\()\.\./alignment/', 'alignment/',content)
   content=re.sub(r'(?<=\]\()\.\./RESEARCH_QUESTION_TRACEABILITY\.md', 'RESEARCH_QUESTION_TRACEABILITY.md',content)
  text+=content+'\n\n---\n\n'
-(ROOT/'DISSERTATION_DRAFT.md').write_text(text)
+(ROOT/'DISSERTATION_DRAFT.md').write_text(text.rstrip()+'\n')
 broken=[]
 for p in ROOT.rglob('*.md'):
  for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',p.read_text()):

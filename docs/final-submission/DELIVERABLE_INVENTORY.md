@@ -1,13 +1,13 @@
 # WP6 deliverable inventory and review state
 
-Date:29 October2026. WP5 is preserved as `07f4b97`. All new academic work is uncommitted for review; no push/publication/submission. Both unrelated JavaScript backups remain preserved.
+Date:29 October2026. WP5 is preserved as `07f4b97`. Earlier draft academic materials are checkpointed as9ffb2f3; this reconciliation and research-preparation changes remain uncommitted for review; no push/publication/submission. Both unrelated JavaScript backups remain preserved.
 
 | Deliverable | Location | State | Remaining action |
 |---|---|---|---|
-| Continuous dissertation draft | DISSERTATION_DRAFT.md | First complete working draft, approximately 8,100 chapter words | Author/supervisor revision; official format/word limit; pending real evaluation |
-| Editable chapter sources | chapters/00–10 | All requested subject areas drafted | Exact question excerpts restored; original DOCX/NFRs and institutional content still missing |
+| Continuous dissertation draft | DISSERTATION_DRAFT.md | First complete working draft, chapter word count recorded in PACK_CHECKS.json | Author/supervisor revision; official format/word limit; pending real evaluation |
+| Editable chapter sources | chapters/00–10 | All requested subject areas drafted | Exact baseline now confirmed against both original DOCX files; institutional brief and final human findings remain pending |
 | References and source access register | REFERENCES.md; SOURCE_REGISTER.csv | Checked bibliography with access limits recorded | Author reads full texts/expands critique; confirm citation style |
-| Approved baseline and evidence appendices | appendices/A–E | Supplied excerpts, catalogue, diagrams, observed rankings and evidence index prepared | Original DOCX reconciliation; add genuine ethics/administrative appendices |
+| Approved baseline and evidence appendices | appendices/A–F | Verified original baseline, catalogue, diagrams, observed rankings and reconciliation index prepared | Original reconciliation completed; add genuine approved ethics/administrative appendices |
 | Requirements/quality audit | QUALITY_REVIEW.md; WP5 matrix | All8 objectives and FR1–FR9 reviewed | Human/relevance/manual findings and rubric mapping remain |
 | Adult ethics-review instruments | research-evaluation/ | Information/consent/tasks/questions/analysis and blank templates prepared | Required local fields/approval before recruitment; no results collected |
 | Poster content + editable layout | poster/POSTER_CONTENT.md; research-poster.html | Provisional professional three-column draft | Official dimensions/branding/template and author details pending |
@@ -24,8 +24,19 @@ No adult participant feedback, task statistics, satisfaction/SUS score, explanat
 
 ## Missing university documents and release blockers
 
-See BASELINE_AND_BLOCKERS.md for the original proposal DOCX, interim, signed ethics/approved instruments, assessment brief/rubric, supervisor feedback and poster/viva requirements. The exact main/five supporting questions have been restored from the author’s latest excerpts; original-document verification and detailed NFRs remain pending. Permitted AI assistance and declaration rules must be verified for this module. No final submission should occur before these gates and author review.
+The proposal and interim are now inspected, including all nine FRs, seven NFRs and ten deliverables. See BASELINE_AND_BLOCKERS.md for the remaining signed ethics/approved instruments, assessment brief/rubric, supervisor feedback and poster/viva requirements. Permitted AI assistance and declaration rules must be verified for this module. No final submission should occur before these gates and author review.
 
 Feature freeze remains appropriate for the bounded prototype, subject to any critical defect found during further review. This pack completes a first-draft production task; it does not complete unperformed research or authorise external submission.
 
 The academic alignment review restores the exact supplied questions and adds a chapter audit, objective/question traceability, reference-verification register and missing-document checklist under review/. The draft remains not submission-ready.
+
+## Original-document alignment deliverables
+
+- alignment/APPROVED_BASELINE.md and .json: exact title, aim, eight objectives, six questions, FR1–9, NFR1–7 and D1–10.
+- alignment/PROPOSAL_TO_IMPLEMENTATION.md and INTERIM_TO_FINAL.md: commitment comparison and historical development, including inspected 40-test screenshots.
+- alignment/REQUIREMENTS_TRACEABILITY.md and requirements-traceability.csv: original and interim namespaces, implementation/evidence/status/limitations.
+- alignment/TECHNOLOGY_JUSTIFICATION.md and CONTRADICTIONS_AND_LIMITS.md: actual engineering choices and unresolved discrepancies.
+- alignment/ORIGINAL_REFERENCE_RECONCILIATION.md and review/REFERENCE_VERIFICATION_REGISTER.csv: source-quality findings and current 20-entry verification register with access limits.
+- alignment/ACADEMIC_ALIGNMENT_REPORT.md: current review conclusions and outstanding research/academic work.
+
+All eleven chapter source files were revised selectively; the continuous draft is rebuilt from them. Original DOCX files and extracted images remain outside the repository. Saved application evidence is unchanged.

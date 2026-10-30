@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-29",
+  "type": "Document-only consistency/preservation checks; no application-suite execution",
+  "original_docx_hashes_unchanged": true,
+  "exact_title_aim_objectives_questions_match_both_originals": true,
+  "all_original_FR_NFR_deliverable_wording_present_in_draft": true,
+  "original_FR_NFR_traceability_rows": 16,
+  "current_cited_reference_register_rows": 20,
+  "references_with_identified_chapter_citations": 20,
+  "broken_local_markdown_links": [],
+  "saved_WP5_verification_records_all_exit_zero": 13,
+  "saved_backend_test_count": 205,
+  "saved_browser_test_count": 36,
+  "backups_hashes_unchanged": true,
+  "tracked_changes_only_in_final_submission": true,
+  "staged_files": [],
+  "no_application_tests_rerun": true,
+  "limitations": "Mechanical checks do not verify educational effectiveness, reference interpretation, ethics approval or university format compliance.",
+  "poster_pdf_pages_checked_with_pypdf": 1,
+  "git_diff_whitespace_check_exit_code": 0
+}

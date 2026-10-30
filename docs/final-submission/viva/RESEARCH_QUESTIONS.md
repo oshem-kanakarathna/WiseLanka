@@ -16,4 +16,4 @@ IV. How can multilingual support, mobile usability and voice-assisted input impr
 
 V. How effective is the prototype in providing relevant and usable pathway guidance?
 
-Provenance: author-supplied approved excerpts; original DOCX not inspected. Use dissertation section 9.4 for bounded answers and ../RESEARCH_QUESTION_TRACEABILITY.md for evidence mapping. Improved understanding/trust/accessibility and effective relevance/usability have not been established by the technical tests.
+Provenance: exact text confirmed against both original WORK DOCX files; see ../alignment/SOURCE_REVIEW.json. Use dissertation section 9.4 for bounded answers and ../RESEARCH_QUESTION_TRACEABILITY.md for evidence mapping. Improved understanding/trust/accessibility and effective relevance/usability have not been established by the technical tests.

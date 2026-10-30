@@ -1,5 +1,6 @@
 # Academic and technical consistency review
 
+**Baseline update:** this earlier review predates inspection of the confirmed original proposal/interim. Its missing-document/NFR assumptions are superseded by alignment/ACADEMIC_ALIGNMENT_REPORT.md. Scientific evaluation and rubric limitations remain; historical findings are retained.
 This is a review of the prepared draft, not a prediction of assessment classification or institutional approval. The exact question excerpts have been restored; the original DOCX, rubric and approved ethics conditions remain unavailable. No feature was introduced in WP6 and no performance/relevance/human result was fabricated to complete a chapter.
 
 ## Objective-level review

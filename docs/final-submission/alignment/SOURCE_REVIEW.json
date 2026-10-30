@@ -1,0 +1,72 @@
+{
+  "review_date": "2026-10-29",
+  "author_confirmed_files": true,
+  "approval_designation": "Author identifies these as intended original approved proposal and interim; no new approval letter/ethics release inferred",
+  "sources": {
+    "proposal": {
+      "local_path": "/Users/dan/Documents/UWL/FP/WORK/Final Project Proposal_ 34164665.docx",
+      "sha256": "eac0df49220314630311f1bcc22cac544d487c8be58c01c8a7b206f59022201a",
+      "reviewed_body_blocks": 409,
+      "top_level_tables": 11,
+      "additional_content_controls_read": 6,
+      "bibliography_entries_read": 19,
+      "embedded_media_inspected": 8,
+      "tracked_insertions_deletions": 0,
+      "coverage": "All document narrative/tables, content-control bibliography/TOC, embedded diagrams/screenshots/branding, appendices and supplementary note/header/footer text. External linked documents not included."
+    },
+    "interim": {
+      "local_path": "/Users/dan/Documents/UWL/FP/WORK/Project Interim Report _Draft_Oshem.docx",
+      "sha256": "baf953efeec088a1ac2a4e70da8c1afebf1fadaa5e53a6bc2f9c50f6b6bcdd60",
+      "reviewed_body_blocks": 648,
+      "top_level_tables": 23,
+      "additional_content_controls_read": 3,
+      "bibliography_entries_read": 23,
+      "embedded_media_inspected": 44,
+      "tracked_insertions_deletions": 0,
+      "coverage": "All document narrative/tables, content-control bibliography/TOC, embedded diagrams/screenshots/branding, appendices and supplementary note/header/footer text. External linked documents not included."
+    }
+  },
+  "baseline_validation": {
+    "title_matches_both_covers": true,
+    "aim_matches_proposal_interim_previous_excerpt": true,
+    "all_eight_objectives_match": true,
+    "all_six_research_questions_match": true,
+    "original_FR_count": 9,
+    "original_NFR_count": 7,
+    "deliverables_count": 10
+  },
+  "historical_git_snapshot": {
+    "commit": "050ba57",
+    "date": "2026-08-20T17:10:50+05:30",
+    "counts_and_blobs": {
+      "data/reference/programmes.csv": {
+        "rows": 7,
+        "blob": "b3952a1db385fa5e8159016d8d2b134e9f65a42e"
+      },
+      "data/reference/qualifications.csv": {
+        "rows": 7,
+        "blob": "e2b757ec369f9a82b6b446b2d4962cf47bc6eea4"
+      },
+      "data/relationships/programme_entry_requirements.csv": {
+        "rows": 17,
+        "blob": "5ec1db8973f1881070937339ba1a1b43e807e098"
+      },
+      "data/relationships/qualification_progression.csv": {
+        "rows": 3,
+        "blob": "1bc78a931fbffc3348274cb7cc230bd3c7e6b030"
+      },
+      "data/reference/careers.csv": {
+        "rows": 5,
+        "blob": "ebccb76f9ec7d362622772144e573e6684a9f927"
+      },
+      "data/metadata/evidence_sources.csv": {
+        "rows": 14,
+        "blob": "cf286d916bd62c5468d8309f04c99a4d7a5b1701"
+      }
+    }
+  },
+  "historical_test_evidence": "Interim Table14/Figs16 and38:40 passed in separate screenshots, not rerun here",
+  "external_private_appendix_links": "Not accessed or represented as reviewed approval/feedback",
+  "source_files_copied_into_repository": false,
+  "raw_extraction_or_images_copied_into_repository": false
+}

@@ -1,5 +1,5 @@
 {
-  "provenance": "Exact text supplied by author in current alignment request; original DOCX not inspected",
+  "provenance": "Exact text now validated against the confirmed original proposal and August interim; see alignment/SOURCE_REVIEW.json",
   "main": "How can an AI-powered, policy-aware Education and Career Pathway Intelligence System support Sri Lankan learners through personalised, explainable, and accessible pathway recommendations?",
   "supporting": {
     "I": "How can learner profiles, eligibility requirements and pathway knowledge be integrated to generate suitable recommendations?",

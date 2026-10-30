@@ -19,17 +19,18 @@
 - [C-architecture-diagrams](appendices/C-architecture-diagrams.md)
 - [D-observed-rankings](appendices/D-observed-rankings.md)
 - [E-evidence-index](appendices/E-evidence-index.md)
+- [F-original-document-reconciliation](appendices/F-original-document-reconciliation.md)
 
 ---
 
 # WiseLanka
-## An AI-powered, policy-aware education and career pathway intelligence prototype for Sri Lankan learners
+## DESIGN AND DEVELOPMENT OF AN AI-POWERED, POLICY-AWARE EDUCATION AND CAREER PATHWAY INTELLIGENCE SYSTEM FOR SRI LANKAN LEARNERS
 
 University of West London — final-year project
 
-**First complete working draft — 29 October 2026. Not approved for submission.**
+**Working draft revised against original proposal and August interim — 29 October 2026. Not approved for submission.**
 
-Author/student number: [AUTHOR TO COMPLETE]. Course/module, supervisor, word limit, required cover sheet and submission date: [OFFICIAL BRIEF REQUIRED]. This document uses the approved excerpts supplied by the author. The original DOCX and institutional instructions have not been inspected. November dates are project targets, not the dates on which evidence was collected.
+Author: Oshem Thirsha Kanakarathna. Student ID: 34164665. Module: CP6SL460, School of Computing and Engineering. Supervisor as listed on both originals: Dr. Ama Kulathilake. Current cover-sheet requirements, word limit and submission date still require the actual assessment brief. The author-confirmed original proposal and interim DOCX files have now been inspected; their hashes and review coverage are recorded in alignment/SOURCE_REVIEW.json. November is the accelerated working target, not a verified university deadline.
 
 ### Abstract
 
@@ -62,7 +63,7 @@ The practical problem addressed here is the combination of distributed education
 
 The approved aim is: “The aim of this project is to design, develop, and evaluate an AI-powered, policy-aware Education and Career Pathway Intelligence System that provides personalised, explainable, and accessible education and career guidance for Sri Lankan learners.”
 
-The eight approved objectives are reproduced without alteration in appendix A, together with FR1–FR9. In this dissertation they connect literature/problem investigation (I–II), structured knowledge and hybrid recommendation (III–IV), a usable web artifact (V–VI), and evaluation/limitations (VII–VIII). Implementation evidence is strongest for III–V; human and language/accessibility validation is incomplete. A functional prototype alone cannot establish attainment of the whole research aim.
+The eight approved objectives are reproduced without alteration in appendix A, together with original FR1–FR9, NFR1–NFR7 and deliverables D1–D10. These have now been checked against the original proposal (Kanakarathna, 2026a), not merely conversation excerpts. In this dissertation they connect literature/problem investigation (I–II), structured knowledge and hybrid recommendation (III–IV), a usable web artifact (V–VI), and evaluation/limitations (VII–VIII). Implementation evidence is strongest for III–V; human and language/accessibility validation is incomplete. A functional prototype alone cannot establish attainment of the whole research aim.
 
 ## 1.3 Approved research questions
 
@@ -82,13 +83,13 @@ IV. How can multilingual support, mobile usability and voice-assisted input impr
 
 V. How effective is the prototype in providing relevant and usable pathway guidance?
 
-These exact questions were supplied by the author during the academic alignment review. They are accepted baseline excerpts; the original proposal DOCX has not been inspected. MRQ denotes the main question and SRQ-I–V denote the supporting questions, distinct from objective numbers. The [research-question traceability](RESEARCH_QUESTION_TRACEABILITY.md) maps each question to components, methods, evidence and remaining work. Questions concerning improvement, relevance and usability do not yet have empirical answers.
+These exact questions have now been checked against original proposal §1.4 and interim §1.4 (Kanakarathna, 2026a; 2026b). Their wording and the eight objective statements agree across the confirmed documents and the previously supplied excerpts. MRQ denotes the main question and SRQ-I–V denote the supporting questions, distinct from objective numbers. The [research-question traceability](RESEARCH_QUESTION_TRACEABILITY.md) maps each question to components, methods, evidence and remaining work. Questions concerning improvement, relevance and usability do not yet have empirical answers.
 
 ## 1.4 Scope and intended contribution
 
-Target users are A/L learners, vocational learners and early-career users. O/L results support relevant entry routes. Initial domains are IT, Business and Management, and Engineering. The delivered catalogue has seven IT, one Business and three Engineering programmes; it is deliberately uneven and cannot support national coverage claims. Nationwide production deployment, full national education coverage, advanced deep-learning predictive modelling and unrestricted conversational AI are outside the approved scope. Accounts and durable profile storage were not implemented because no demonstrated requirement justified them.
+Target users are A/L learners, vocational learners and early-career users. O/L results support relevant entry routes. Initial domains are IT, Business and Management, and Engineering. The delivered catalogue has seven IT, one Business and three Engineering programmes; it is deliberately uneven and cannot support national coverage claims. Nationwide production deployment, full national education coverage, advanced deep-learning predictive modelling and unrestricted conversational AI are outside the approved scope. Accounts and durable profile storage were not implemented in the author-authorised bounded prototype. Broader role/storage features in the proposal diagrams remain an explicit scope interpretation requiring supervisor acknowledgement, as discussed in section 4.6.
 
-The contribution is an integrated artifact in which sourced constraints, learner self-reports and AI-derived relevance remain distinguishable. A second contribution is an auditable evaluation record that exposes where software behaviour has been verified and where educational accuracy, relevance or usability still requires independent work. This is an application/design contribution, not a new embedding algorithm or a claim to have solved career decision-making.
+The interim report dated 25 August 2026 already documented a rule-driven FastAPI/HTML/CSS/JavaScript prototype with O/L/A/L input, qualification progression, career relationships and 40 passing automated tests (Kanakarathna, 2026b, §4.8–5.2). October work extended that artifact rather than starting it anew. The contribution is an integrated artifact in which sourced constraints, learner self-reports and AI-derived relevance remain distinguishable. A second contribution is an auditable evaluation record that exposes where software behaviour has been verified and where educational accuracy, relevance or usability still requires independent work. This is an application/design contribution, not a new embedding algorithm or a claim to have solved career decision-making.
 
 ## 1.5 Dissertation structure
 
@@ -108,6 +109,8 @@ This is a focused narrative review, not a completed systematic review. WP6 searc
 Deschênes (2020) reviews 56 studies concerning learner agency and distinguishes accuracy, satisfaction and learning-performance evaluation. This distinction is valuable because an algorithm can retrieve related content without helping a learner make a justified decision. The review concerns learning contexts rather than Sri Lankan admission decisions, so direct transfer of findings would be inappropriate. WiseLanka therefore preserves exploration and official links rather than presenting its order as a uniquely correct pathway.
 
 Da Silva et al. (2023), whose publisher abstract was checked, report that hybrid approaches were prominent in their selected studies while pedagogical effectiveness received less evaluation attention. Their sample and time window limit generalisation. The implication for this project is methodological: functional success and ranking comparisons should be accompanied by separate relevance and human-comprehension protocols. This does not establish that WiseLanka improves education or that hybridity itself produces benefit.
+
+Lahoud et al. (2023), already cited in both original reports, directly compares university-major/career guidance approaches using a Lebanese case study. Its knowledge-based, ontology/case-based and collaborative combinations provide a closer comparator than generic course-resource retrieval. WiseLanka does not reproduce that data-rich hybrid or its study results: it lacks historical preference labels and instead constrains frozen content similarity with explicit rules. The distinction narrows the contribution to a locally curated, policy-aware integration, rather than claiming that combining techniques is novel. The article methods and population differ from this prototype and cannot supply its missing relevance or usability findings.
 
 ## 2.3 Explicit constraints and hybrid recommendation
 
@@ -133,6 +136,8 @@ The proposed explanation questions separately test recognition of NOT_ASSESSED, 
 
 The NEC report provides historical context for career-guidance research (National Education Commission, 2016). It cannot establish that the selected 11 programmes represent contemporary learner demand. Independent adult needs/usability evidence and review of current policy remain important. A prototype which centralises information also risks amplifying curation bias: seven IT programmes have more opportunities to appear than the single Business programme.
 
+The original reports compare CareerMe and CareerOne, but their broad descriptions of limited integration do not establish absence of competing functionality. CareerMe's inspected homepage explicitly advertises degree, subject and skills matching and three-language career testing (CareerMe, n.d.). TVEC's published CareerOne operational guidance describes vocational career/navigation and employment support (TVEC, 2025). These are provider descriptions, not independently tested effectiveness claims. Their overlap means WiseLanka should be defended through its explicit rule/uncertainty/progression design and evidence, not an unsupported “first” or “only” platform claim. No exhaustive competitor audit or real learner comparison was performed.
+
 WCAG supplies testable accessibility criteria (W3C, 2024). Automated checks detect some implementation faults but cannot establish all interaction or language-quality requirements. Accordingly, WiseLanka combines measured automated scans with pending manual keyboard, screen-reader, zoom and fluent-language review. Interface availability should be distinguished from practical accessibility for a particular person and browser.
 
 ## 2.7 Evaluation and the bounded research gap
@@ -151,7 +156,7 @@ The gap addressed is therefore a local design/evaluation problem: can a small, s
 | Collaborative/feedback learning | Could model observed preferences | No legitimate training labels | Defer; design opt-in future study |
 | Unrestricted generative guidance | Flexible conversational surface | Unsupported educational claims, extra dependencies | Use read-only guided intents instead |
 
-The review supports a justified prototype design, while its access and coverage limitations prevent a claim that Objective I is already fully satisfied.
+The review supports a justified prototype design, while its access and coverage limitations prevent a claim that Objective I is already fully satisfied. The proposal/interim bibliography was also read: malformed author strings, the incomplete conversational-review DOI and generic policy entries are flagged in alignment/CONTRADICTIONS_AND_LIMITS.md. Earlier citation presence is not verification, and those entries are not automatically promoted into this final bibliography.
 
 
 ---
@@ -167,7 +172,7 @@ Peffers et al. (2007) describe a process involving problem identification, solut
 | DSR activity | WiseLanka evidence | Status |
 |---|---|---|
 | Problem identification | Approved excerpts; historical policy context; developer motivation | Needs broader current learner evidence |
-| Objectives for solution | Approved objectives and FR1–FR9 | Question excerpts restored; original DOCX and detailed NFRs awaiting inspection |
+| Objectives for solution | Approved objectives and FR1–FR9 | Original aim/objectives/questions/FRs/NFRs/deliverables now checked; broader current learner evidence remains limited |
 | Design/development | CSV knowledge, modular engines, web UI, WP1–WP4 | Implemented bounded artifact |
 | Demonstration | Synthetic profiles and five live workflows | Executed technical demonstrations |
 | Evaluation | Automated/scenario/source review, runtime and accessibility checks | Executed technical evaluation; human/relevance work pending |
@@ -175,7 +180,18 @@ Peffers et al. (2007) describe a process involving problem identification, solut
 
 ## 3.2 Iteration and traceability
 
-WP1 addressed profiles and evidence-aware gaps. WP2 extended sourced domain/progression coverage. WP3 introduced frozen semantic ranking and TF–IDF comparison. WP4 added bounded guidance, interface languages and speech controls. WP5 evaluated integration and corrected omissions. Local checkpoints establish an inspectable artifact history, but they do not document every development conversation or substitute for a research diary. The author should add genuine dated supervisor feedback and decisions where available.
+The August report describes applied DSR, a pragmatic orientation and deductive translation of requirements into rules, with iteration informed by testing (Kanakarathna, 2026b, §§3.1–3.4). This characterises the research's practical orientation; it does not establish a complete mixed-method human study. Its technical demonstrations precede the unfinished user-evaluation stage.
+
+| Stage | Evidence-grounded development |
+|---|---|
+| August interim | Layered FastAPI/HTML/CSS/JS artifact, seven computing records, three foundation routes and 40 passing tests in report screenshots |
+| WP1 | More complete O/L entry, typed categories/awards, self-report skills and evidence-aware gaps |
+| WP2 | Four programme additions, two vocational progression edges, source/integrity refinements and threshold correction |
+| WP3 | Actual frozen MiniLM ONNX inference, grouped relevance, TF–IDF comparison and explicit fallback |
+| WP4 | Read-only guided assistant, draft interface languages and browser voice/text states |
+| WP5 | Integration/reproducibility/source/accessibility evaluation and conservative policy corrections |
+
+This chronology distinguishes implemented evidence from the earlier hybrid/accessibility ambition. The full [interim-to-final comparison](alignment/INTERIM_TO_FINAL.md) records source locations and the corroborating August Git snapshot. Local checkpoints establish an inspectable artifact history, but they do not document every development conversation or substitute for a research diary. The author should add genuine dated supervisor feedback and decisions where available.
 
 A concrete refinement cycle occurred in WP5. Source inspection revealed omitted UGC general-entry evidence; the rules were revised to retain NOT_ASSESSED, regression expectations were updated and affected suites rerun. Automated accessibility findings also led to specific semantic/contrast repairs. These cases show how evaluation informed the artifact, rather than asserting usefulness from test counts alone.
 
@@ -197,7 +213,7 @@ Browser speech can involve third-party processing. Native voice testing with par
 
 Internal validity is limited by implementation-authored expectations and lack of independent ranking labels. Construct validity requires distinguishing task completion from satisfaction and similarity from educational suitability. External validity is limited by 11 programmes, uneven domain coverage and one measured machine/browser setup. Reproducibility is strengthened by logs, exit codes, CSV hashes, pinned model revision and dependency lock, but changing official pages can still alter the underlying evidence.
 
-The researcher must preserve negative findings and exclusions. No invented participants, source endorsements or superiority claims fill missing results. AI-assisted drafting must be disclosed according to the actual module conditions; this draft is not a signed originality statement. The supplied exact research questions are now mapped in RESEARCH_QUESTION_TRACEABILITY.md. Original-document comparison and approved ethics conditions remain prerequisites for final methodological alignment.
+The researcher must preserve negative findings and exclusions. No invented participants, source endorsements or superiority claims fill missing results. AI-assisted drafting must be disclosed according to the actual module conditions; this draft is not a signed originality statement. The supplied exact research questions are now mapped in RESEARCH_QUESTION_TRACEABILITY.md. The original-document comparison is now recorded; signed ethics conditions, the actual rubric and genuine human/independent evaluation remain prerequisites for final methodological closure.
 
 
 ---
@@ -206,9 +222,11 @@ The researcher must preserve negative findings and exclusions. No invented parti
 
 ## 4.1 Baseline and boundaries
 
-Appendix A preserves the supplied approved aim, eight objectives and FR1–FR9. The target categories are A/L, vocational and early-career learners; O/L results support foundation entry. Profiles collect educational evidence, interests, optional career intentions/preferences, structured awards and optional self-reported skills. Accounts or durable storage were unnecessary for the bounded prototype. The original detailed NFRs are unavailable; the quality attributes discussed here are implemented design concerns, not invented approved requirements or numerical targets.
+Appendix A preserves the original-document-verified aim, eight objectives, questions, FR1–FR9, NFR1–NFR7 and D1–D10. The target categories are A/L, vocational and early-career learners; O/L results support foundation entry. Profiles collect educational evidence, interests, optional career intentions/preferences, structured awards and optional self-reported skills. The approved NFRs are user-friendly interface, mobile-friendly usability, acceptable response time, reliable educational datasets, modular system architecture, future scalability support and explainable recommendation outputs (Kanakarathna, 2026a, Table 3). They are qualitative: this proposal supplies no numerical latency, load or participant target. Measured local timings therefore cannot retrospectively create a passed service-level target.
 
-The [WP5 matrix](../evidence/wp5/REQUIREMENTS_TRACEABILITY.md) separates implementation status from validation. This distinction prevents the existence of a microphone button or translation catalogue from being counted as evidence of universal accessibility. It also exposes the incomplete human-evaluation element of Objective VII.
+The interim introduces FR01–FR10 and NFR01–NFR08, refining implementation concerns rather than reproducing the proposal's numbering. The [updated traceability](alignment/REQUIREMENTS_TRACEABILITY.md) explicitly prefixes original P-FR/P-NFR and interim I-FR/I-NFR. For example, original FR8 is chatbot support, whereas interim FR08 is career pathway guidance. Neither that scheme nor the interim's paraphrased objective-area tables replaces the original requirements.
+
+The original-document traceability now supersedes the baseline-availability assumptions in the historical [WP5 matrix](../evidence/wp5/REQUIREMENTS_TRACEABILITY.md), while retaining its distinction between implementation and validation. This distinction prevents the existence of a microphone button or translation catalogue from being counted as evidence of universal accessibility. It also exposes the incomplete human-evaluation element of Objective VII.
 
 ## 4.2 Information model
 
@@ -236,6 +254,8 @@ The trade-off is limited language/interaction depth: semantic preferences remain
 
 ## 4.6 Alternatives considered
 
+The proposal's conceptual architecture/use-case figures depict accounts, staff roles, notifications, analytics and persistent databases beyond its concise FR tables. These are not implemented; absence must be documented, not silently treated as an approved exclusion. Current author instructions retain the bounded account-free prototype. Supervisor acknowledgement of this interpretation is still needed; no formal academic scope amendment has been inferred.
+
 A database could offer richer query/concurrency support, but for this small curated snapshot it would add migration and operational work without resolving source correctness. A frontend framework migration would likewise not improve admission evidence. A large or paid generative service would introduce cost, privacy and grounding challenges. The implemented modular FastAPI/CSV/vanilla-JavaScript architecture meets the bounded artifact needs and leaves deployment scaling as future work. Diagrams in appendix C show these component responsibilities and data flow.
 
 
@@ -243,13 +263,21 @@ A database could offer richer query/concurrency support, but for this small cura
 
 # 5. Architecture and implementation
 
-## 5.1 Request lifecycle
+## 5.1 Proposed stack and implemented architecture
+
+The proposal suggests Streamlit, Python, Pandas, SQLite/CSV/JSON and lightweight NLP/LLM support (Kanakarathna, 2026a, Table 8 and appendix D). By August, the interim explicitly documents Python/FastAPI, HTML/CSS/JavaScript and structured CSV files (Kanakarathna, 2026b, §§4.3–4.6). October preserved and extended that separation. It would therefore be inaccurate to describe either an unchanged Streamlit implementation or a new October frontend replacement.
+
+The retained architecture permits direct API/domain tests and explicit browser control over dynamic rows, translation, voice and responsive cards. Its cost is coordination of separate browser/API state, CORS and accessible DOM behaviour. CSV files remain within the proposal's main-table options and suit this small versioned corpus, with strict validation compensating for absent database constraints. Neither Pandas nor an application database is currently needed by the implemented row-based rules; no comparative benchmark established that they would be inferior.
+
+Frozen ONNX relevance supplies genuine NLP inference without a paid generation service or invented training data. Explanations and guided chat are deterministic and source-grounded, narrower than the optional LLM-assisted technology illustration. That is a justified engineering interpretation, not proof that every illustrated component was delivered. The [technology decision record](alignment/TECHNOLOGY_JUSTIFICATION.md) preserves alternatives, trade-offs and the remaining supervisor scope decision.
+
+## 5.2 Request lifecycle
 
 The browser builds a learner profile from examination rows, category, structured qualifications, skills and interests. Validation rejects duplicate subjects and invalid grades while supporting existing six-subject profiles and nine-subject O/L entry. It does not force nine subjects for every assessment. The FastAPI route delegates to typed models and domain engines rather than embedding separate educational logic in JavaScript.
 
 `backend/app/data_loader.py` resolves project-root-relative paths and distinguishes missing/malformed files from genuine empty data. Startup invokes `data_integrity.validate_catalogue()`. This protects against broken relationships and malformed data before returning guidance, although syntactically valid but inaccurate policy text still requires source review.
 
-## 5.2 Domain engines
+## 5.3 Domain engines
 
 | Module | Responsibility | Boundary |
 |---|---|---|
@@ -265,19 +293,19 @@ The browser builds a learner profile from examination rows, category, structured
 
 Programme–career alignment and learner-specific skill comparison are separate operations. An unreported skill produces no negative competence conclusion. Reported skills remain self-reports, while a learner-marked development opportunity is an expressed goal. Career-skill mappings lack per-edge source citations; the interface states this evidential weakness.
 
-## 5.3 Hybrid integration and compatibility
+## 5.4 Hybrid integration and compatibility
 
 The personalisation response contains `recommendations`, `academic_insights`, `learner_skill_insights`, held-qualification progression and `ranking`. Per-programme `relevance` identifies the method, score, input summary, catalogue facts and source link. Qualification-only profiles can explore `academic_insights` while `recommendations` remains empty; the system does not manufacture grade evidence from a reported award.
 
 Canonical academic status determines the outer ordering MET → NOT_ASSESSED → NOT_MET. Similarity orders only inside a group. Existing baseline position and programme ID provide stable ties. Thus an attractive but failed Engineering programme remains unmet, and a source-incomplete programme cannot be silently promoted to eligible. Prior UI/API fields remain available for compatibility, with clearer uncertainty labels where WP5 corrected policy omissions.
 
-## 5.4 Interface, guided support and voice
+## 5.5 Interface, guided support and voice
 
 `frontend/components/learner-profile.js` manages forms/results; `i18n.js` applies the shared translation catalogue; `guided-assistant.js` handles structured guidance and browser speech states. The 135-key catalogues cover major controls, validation, status and assistant labels in each language. Detailed educational content retains its original language where translation is unverified.
 
 Speech recognition uses browser-provided interfaces where available. Explicit opt-in precedes microphone activation; transcripts enter editable text and do not automatically submit. Unsupported browsers, denied permission, errors and unavailable languages produce recoverable states. No audio store was added. Mocked event tests verify those transitions, but do not establish actual microphone permission behaviour, transcription quality or offline operation.
 
-## 5.5 Reproducible runtime
+## 5.6 Reproducible runtime
 
 The tested environment uses Python 3.9.6 with pinned optional AI dependencies and CPU inference. Weights are downloaded explicitly, checksum-verified and excluded from Git; runtime model loading is local-only. A missing optional runtime or model produces explicit RULE_BASED_FALLBACK and null semantic scores. Empty interests yield NOT_ASSESSED relevance instead of invented preference evidence. Model-load failure is cached, so provisioning a model into a previously failed process requires a restart.
 
@@ -290,11 +318,11 @@ The architecture avoids accounts, databases, microservices and paid inference. T
 
 ## 6.1 Curated snapshot
 
-The WP5 snapshot has 11 programmes, 11 institutions, 12 qualifications, 33 entry-rule rows, five progression relationships, 21 source records, five careers and 13 skills. Domain counts are IT seven, Business and Management one, Engineering three, including two vocational-related programmes. The catalogue is sufficient to demonstrate different routes but too small and uneven to represent national opportunity or learner demand.
+The August report screenshots (appendix C, Figures 23–30), corroborated by commit `050ba57` dated 20 August 2026, show seven computing programmes, seven qualifications, 17 requirement rows, three progression edges and 14 source records. This is a source/code snapshot, not proof of national coverage or every uncommitted interim state. The WP5 snapshot has 11 programmes, 11 institutions, 12 qualifications, 33 entry-rule rows, five progression relationships, 21 source records, five careers and 13 skills. Domain counts are IT seven, Business and Management one, Engineering three, including two vocational-related programmes. The catalogue is sufficient to demonstrate different routes but too small and uneven to represent national opportunity or learner demand.
 
 Programme titles include Moratuwa IT and AI, UCSC Computer Science, IIT Computing Foundation and three related degrees, OUSL Management Studies, Peradeniya Engineering, Jaffna University College HND Mechatronics and UoVT Engineering Technology in Mechatronics. The programme inventory in appendix B retains exact stored titles and source URLs rather than silently rewriting provider terminology.
 
-The five progression edges comprise three foundation-to-degree routes and two conditional vocational routes. The AI/Data Science foundation route records the published 40% condition in each named module; all edges have `guaranteed=false`. NVQ route records do not infer universal qualification equivalence or exemption. Current provider checks are unresolved where necessary.
+The five progression edges comprise three foundation-to-degree routes and two conditional vocational routes. The AI/Data Science foundation route records the published 40% condition in each named module; all edges have `guaranteed=false`. Interim Figures 17/42 and its progression CSV screenshot display 50%, so the final report must state that a correction occurred rather than copying that historical condition as current policy (Kanakarathna, 2026b; Informatics Institute of Technology, n.d.). No evidence establishes that the provider changed its policy between those dates. NVQ route records do not infer universal qualification equivalence or exemption. Current provider checks are unresolved where necessary.
 
 ## 6.2 Source selection and provenance
 
@@ -326,6 +354,8 @@ Limited Business coverage can distort exploration. Self-reported awards are not 
 # 7. Hybrid AI recommendation methodology
 
 ## 7.1 Separation of decisions
+
+The interim's implemented recommendation function sorted deterministic match scores; its AI-powered title and planned hybrid discussion are not evidence of pretrained inference at that stage. WP3 subsequently introduced the frozen encoder and TF–IDF comparison. This is a methodological extension of the earlier explicit-constraint design, not retroactive training or an August model result (Kanakarathna, 2026b, §4.5.3 and appendix D).
 
 Let A(p,x) be the canonical academic assessment of programme p using learner evidence x, with values MET, NOT_ASSESSED or NOT_MET. Let R(p,q) be a content-relevance score for stated preference text q. Ranking is lexicographic: first the fixed academic group, then decreasing available relevance, then stable baseline position and programme ID. R never changes A. A high R is neither admission probability nor evidence of career success.
 
@@ -368,7 +398,11 @@ No nDCG value is currently computed. Future feedback learning would require opt-
 
 The evaluated code/data checkpoint is `07f4b97` (WP5). Individual logs, command lines, exit codes, model/dependency versions and dataset hashes are saved under docs/evidence/wp5/. `scripts/verify_wp5.py` runs all final checks with local API/static servers and writes a new verification manifest. Re-running changes the local evidence outputs, so preserve the submitted snapshot before further experiments. WP6 documentation work has not added application features or silently rerun these measurements.
 
-## 8.2 Executed technical evaluation
+## 8.2 August baseline and executed October verification
+
+The original interim Table 14 and Figures 16/38 show 40 automated tests passing, corroborating the August development baseline (Kanakarathna, 2026b). Two screenshot runs have different durations; they are not 80 tests or current reruns. Its representative case tables supplement, rather than add to, that automated count. The October suites cover expanded and revised behaviours, so a change from 40 to 205 does not quantify accuracy or educational improvement. Historical state-university Eligible/100% examples predate WP5's additional unknown UGC evidence and must remain labelled historical.
+
+The following results are preserved only because the final WP5 logs and all 13 manifest exit codes support them:
 
 | Layer | Actual result | Interpretation |
 |---|---|---|
@@ -404,9 +438,9 @@ Browser tests verify that language switching preserves entered data and results,
 
 ## 8.6 Human study and independent labels — pending
 
-The ethics-review package contains adult-only information/consent drafts, six synthetic task cards, observer records, an eight-item custom questionnaire and objective explanation questions. It is not yet released for recruitment. Signed approval conditions, contacts, recruitment, storage/retention and withdrawal details must be verified first. No sample size or achieved demographic balance is fabricated.
+The ethics-review package contains adult-only information/consent drafts, six synthetic task cards, observer records, an eight-item custom questionnaire and objective explanation questions. It is not yet released for recruitment. Signed approval conditions, contacts, recruitment, storage/retention and withdrawal details must be verified first. No sample size or achieved demographic balance is fabricated. Interim appendix H links an existing Google Forms questionnaire and participant/consent/task documents. Their linked content and approval status were not inspected; reconcile them with the newer draft instruments before use, rather than silently replacing earlier study materials.
 
-Planned analysis distinguishes unassisted versus assisted task success, elapsed time, errors, comprehension and subjective clarity. The custom questionnaire is not SUS. The current instruments include comprehension probes and perceived clarity items, but no defined comparison condition or dedicated trust measure. They cannot establish that explanations improve understanding/trust, or that access features improve accessibility relative to a baseline. Such claims require an appropriate design and approved instruments, or explicitly bounded descriptive conclusions. An optional standard SUS instrument requires appropriate source/licence/institutional review before use; no SUS result exists. Independent relevance judgements use a separate blinded protocol and must not be treated as satisfaction ratings.
+Planned analysis distinguishes unassisted versus assisted task success, elapsed time, errors, comprehension and subjective clarity. The custom questionnaire is not SUS. The earlier instruments contain comprehension probes and perceived clarity items. The later v0.2 research-preparation package proposes a counterbalanced source-lookup comparison and custom transparency/bounded-reliance items, but neither its administration nor any ethics amendment is approved by the two reviewed documents. These proposals provide no actual trust, usability or causal-improvement results. Any eventual comparison requires the signed conditions, declared design and appropriately limited interpretation. An optional standard SUS instrument requires appropriate source/licence/institutional review before use; no SUS result exists. Independent relevance judgements use a separate blinded protocol and must not be treated as satisfaction ratings.
 
 **Results insertion area — NOT COLLECTED:** approved ethics/version; eligible adult sample and recruitment; task completion/time distributions; explanation comprehension; questionnaire response distributions; language/accessibility observations; independent relevance agreement and nDCG where computable. Replace this paragraph only with actual collected and auditable evidence, retaining missingness and adverse findings.
 
@@ -419,7 +453,7 @@ Planned analysis distinguishes unassisted versus assisted task success, elapsed 
 
 The executed checks support a bounded claim: the current artifact consistently processes the tested profile, policy, relevance and interaction scenarios, with reproducible local inference and explicit uncertainty. Five live journeys demonstrate integration beyond mocked responses. Fresh installation and separate asset provisioning strengthen confidence that the prototype is not dependent solely on an old developer environment.
 
-The UGC correction is a stronger research observation than a raw increase in test count. It shows that formal rule execution can be reliable while the knowledge representation remains incomplete. The repair changed academic conclusions conservatively instead of using semantic confidence to conceal the omission. This supports the design decision to separate source validation, rule execution and relevance.
+The original-document comparison shows that August already delivered the core layered artifact, while October added structured profile/gap, semantic-ranking and bounded access/support capabilities. Original and refined requirement numbers describe different concepts, so apparent requirement-count growth is not proof of improved compliance. The UGC correction is a stronger research observation than a raw increase in test count. It shows that formal rule execution can be reliable while the knowledge representation remains incomplete. The repair changed academic conclusions conservatively instead of using semantic confidence to conceal the omission. This supports the design decision to separate source validation, rule execution and relevance.
 
 ## 9.2 What the evidence does not support
 
@@ -447,7 +481,7 @@ The exact questions in section 1.3 now guide the following evidence-bounded resp
 |---|---|---|
 | MRQ | A local prototype integrates policy-aware assessments, relevance and interaction mechanisms | That intended learners receive effective personalised, explainable and accessible support in practice |
 | SRQ-I | Typed profiles, sourced rule groups and pathway relationships are integrated and exercised | Independent educational suitability and comprehensive policy coverage |
-| SRQ-II | Source/status explanations and comprehension instruments exist | Improved understanding or trust; no adult study/comparison or dedicated trust measure |
+| SRQ-II | Source/status explanations and draft comprehension, transparency and reliance instruments exist | Improved understanding or trust; no adult study or comparison has been executed and no trust findings exist |
 | SRQ-III | Conditional routes and self-report gap comparisons execute | Better educational/career planning or objective learner competence |
 | SRQ-IV | Language controls, reflow and optional speech/text states are technically demonstrated | Accessibility improvement, fluent translation quality, native speech and comprehensive manual accessibility |
 | SRQ-V | Functional/scenario/runtime results are recorded | Independently measured relevance, usability or comparative ranking-quality improvement |
@@ -471,11 +505,11 @@ WiseLanka remains a curated prototype. It covers 11 programmes unevenly across t
 
 The frozen semantic model performs no feedback learning. Its English content similarity has no independently measured recommendation-quality advantage here. Draft Sinhala/Tamil interface strings are not evidence of fluent educational translation or cross-language semantic capability. Browser speech is optional, vendor-dependent and not verified with native audio. Human usability, screen-reader operation, translation quality and actual educational benefit remain unmeasured.
 
-The exact main and supporting research questions are now restored from author-supplied excerpts. The original proposal DOCX, detailed NFRs, approved ethics conditions, interim report, supervisor feedback and assessment/rubric/poster instructions remain unavailable. This draft cannot be called institutionally final or fully proposal-audited until those are inspected. No promise of assessment classification follows from the technical evidence.
+The author-confirmed original proposal and August interim have now been reviewed. Their title, exact aim/objectives/questions, approved FR/NFRs and deliverables are reconciled with the artifact; no replacement requirements were invented. Signed ethics conditions, actual adult feedback, independent relevance judgements, fluent/native/manual review, supervisor scope decisions and assessment/rubric/poster instructions remain outstanding. The proposal diagrams contain undelivered role/account features beyond the concise FRs, so this ambiguity cannot be declared resolved by implementation success alone. No promise of assessment classification follows from the technical evidence.
 
 ## 10.2 Prioritised future work
 
-First reconcile the academic baseline and signed ethics conditions, then complete approved adult task-based usability and explanation evaluation. Review translations with fluent speakers and test native speech, screen readers and target mobile browsers. Conduct independent source/rule adjudication, prioritising unclear provider routes and weak relationship provenance. Freeze a held-out relevance set, obtain blinded independent judgements and compare methods using appropriate within-group metrics.
+First resolve the remaining proposal-scope interpretation and signed ethics conditions, then complete approved adult task-based usability and explanation evaluation. Review translations with fluent speakers and test native speech, screen readers and target mobile browsers. Conduct independent source/rule adjudication, prioritising unclear provider routes and weak relationship provenance. Freeze a held-out relevance set, obtain blinded independent judgements and compare methods using appropriate within-group metrics.
 
 Only after legitimate opt-in feedback exists should controlled learning be considered. A future ranker would need versioned training data, participant-level separation, privacy review, bias monitoring and reversible audited promotion. It must continue to rank within authoritative academic groups. No click should be silently interpreted as verified relevance, and no learned score should rewrite policy.
 
@@ -492,7 +526,7 @@ The defensible conclusion is that the proposed separation can be implemented and
 
 # References — provisional author–date style
 
-All web sources below were checked on 29 October 2026. This is a working bibliography, not confirmation of the required UWL referencing style. Access depth and restrictions are recorded in SOURCE_REGISTER.csv. Article page ranges below are bibliographic ranges, not fabricated pinpoint citations. No detailed claim is based on an inaccessible full text.
+Web-source access was checked on 29 October 2026 at the depths recorded below; the CareerOne document was available as indexed official text while direct retrieval timed out. The two private project documents were inspected locally, not uploaded. This is a working bibliography, not confirmation of the required UWL referencing style. Access depth and restrictions are recorded in SOURCE_REGISTER.csv. Article page ranges below are bibliographic ranges, not fabricated pinpoint citations. No detailed claim is based on an inaccessible full text.
 
 Burke, R. (2002) ‘Hybrid recommender systems: Survey and experiments’, *User Modeling and User-Adapted Interaction*, 12, pp. 331–370. Available at: https://link.springer.com/article/10.1023/A:1021240730564 .
 
@@ -522,6 +556,20 @@ Wang, W., Wei, F., Dong, L., Bao, H., Yang, N. and Zhou, M. (2020) ‘MiniLM: De
 
 World Wide Web Consortium (W3C) (2024) *Web Content Accessibility Guidelines (WCAG) 2.2*. Recommendation, 12 December 2024. Version checked: https://www.w3.org/TR/2024/REC-WCAG22-20241212/ . The executed axe scan used the narrower WCAG 2.0/2.1 tag set, not a complete WCAG 2.2 audit.
 
+## Sources added during original-document reconciliation
+
+Kanakarathna, O.T. (2026a) *Design and Development of an AI-Powered, Policy-Aware Education and Career Pathway Intelligence System for Sri Lankan Learners*. Final Project Proposal, CP6SL460, University of West London. Unpublished author-supplied private document; inspected locally. No public URL or unverified submission/approval date is assigned.
+
+Kanakarathna, O.T. (2026b) *Design and Development of an AI-Powered, Policy-Aware Education and Career Pathway Intelligence System for Sri Lankan Learners*. Project Interim Report, 25 August 2026, CP6SL460, University of West London. Unpublished author-supplied private document; inspected locally. Document identities/hashes are recorded in alignment/SOURCE_REVIEW.json; original files are not distributed with this pack.
+
+Lahoud, C., Moussa, S., Obeid, C., El Khoury, H. and Champin, P.-A. (2023) ‘A comparative analysis of different recommender systems for university major and career domain guidance’, *Education and Information Technologies*, 28, pp. 8733–8759. https://doi.org/10.1007/s10639-022-11541-3 . Online publication 28 December 2022; this draft uses the 2023 volume year. Publisher metadata, abstract and introductory comparison inspected; full methodological appraisal remains pending.
+
+CareerMe (n.d.) *CareerMe — Get Personalized Career Guidance — Sri Lanka*. Available at: https://careerme.lk/ . Homepage features checked; these are provider claims, not independent effectiveness evidence.
+
+Tertiary and Vocational Education Commission (TVEC) (2025) *Operational Directives/Guideline, Mandatory Requirements of the “Career One” TVET Career Platform*. Annexure I, effective September 2025. Available at: https://www.careerone.gov.lk/storage/newsletter/Annexure_I.Operational%20directives%20guideline-mandatory%20requirements.pdf . Official indexed title/background text inspected; direct PDF retrieval timed out. Used only to identify advertised scope, not evaluate platform quality.
+
+Informatics Institute of Technology (n.d.) *IIT International Foundation*. Available at: https://www.iit.ac.lk/foundation/it/ . Official entry/progression section checked on 29 October 2026; no publication date established. The four-module 40% condition and conditional year-one progression are distinct from guaranteed admission.
+
 ## Educational and technical supporting registers
 
 Official provider/source URLs, organisations, conditions and stored verification dates are listed in appendix B and data/metadata/evidence_sources.csv. The full rule-to-source inventory is docs/evidence/wp5/rule-evidence.csv. These records must be retained with the dissertation; a provider link is not independent verification of every career or recognition relationship.
@@ -531,13 +579,17 @@ Repository evidence is cited by artifact path and WP5 commit 07f4b97 throughout 
 
 ---
 
-# Appendix A. Approved excerpts and missing authoritative text
+# Appendix A. Original approved proposal baseline
 
-Source: excerpts supplied by the project author in the task conversation. The original submitted DOCX remains to be compared. No altered aim or objectives are proposed.
+Both author-confirmed WORK DOCX files have been inspected. The original proposal is the requirements authority; the interim refines implementation concerns without replacing its IDs. Hashes and actual sections/tables/figures reviewed are in alignment/SOURCE_REVIEW.json. Source text below is reproduced without changing approved wording.
+
+## Exact project title
+
+DESIGN AND DEVELOPMENT OF AN AI-POWERED, POLICY-AWARE EDUCATION AND CAREER PATHWAY INTELLIGENCE SYSTEM FOR SRI LANKAN LEARNERS
 
 ## Aim
 
-“The aim of this project is to design, develop, and evaluate an AI-powered, policy-aware Education and Career Pathway Intelligence System that provides personalised, explainable, and accessible education and career guidance for Sri Lankan learners.”
+The aim of this project is to design, develop, and evaluate an AI-powered, policy-aware Education and Career Pathway Intelligence System that provides personalised, explainable, and accessible education and career guidance for Sri Lankan learners.
 
 ## Objectives
 
@@ -559,29 +611,50 @@ VIII. To identify limitations of the proposed solution and recommend future impr
 
 ## Functional requirements
 
-- FR1: Allow users to create learner profiles.
-- FR2: Collect educational qualifications and interests.
-- FR3: Generate personalised pathway recommendations.
-- FR4: Provide alternative progression routes.
-- FR5: Identify skill or qualification gaps.
-- FR6: Explain recommendation outputs.
-- FR7: Display official educational resource links.
-- FR8: Provide chatbot-assisted support.
-- FR9: Support basic voice-assisted input.
+| ID | Original wording |
+|---|---|
+| FR1 | Allow users to create learner profiles |
+| FR2 | Collect educational qualifications and interests |
+| FR3 | Generate personalised pathway recommendations |
+| FR4 | Provide alternative progression routes |
+| FR5 | Identify skill or qualification gaps |
+| FR6 | Explain recommendation outputs |
+| FR7 | Display official educational resource links |
+| FR8 | Provide chatbot-assisted support |
+| FR9 | Support basic voice-assisted input |
 
-## Approved scope excerpts
+## Non-functional requirements
 
-Target users: A/L students, vocational learners and early-career users. Initial domains: Information Technology, Business and Management, and Engineering. Core scope: personalised recommendations, alternative pathways, skill-gap identification, scholarship awareness, explanation-based guidance, official resource links, guided chatbot support, mobile usability and basic voice assistance. Technical approach: structured educational knowledge, rule-based eligibility filtering and lightweight AI-assisted recommendation techniques.
+| ID | Original wording |
+|---|---|
+| NFR1 | User-friendly interface |
+| NFR2 | Mobile-friendly usability |
+| NFR3 | Acceptable response time |
+| NFR4 | Reliable educational datasets |
+| NFR5 | Modular system architecture |
+| NFR6 | Future scalability support |
+| NFR7 | Explainable recommendation outputs |
 
-Out of scope: nationwide production deployment, full national education coverage, advanced deep-learning predictive modelling and unrestricted conversational AI. Research methodology: Design Science Research supported by Agile-inspired iterative prototyping. Evaluation: functional testing, scenario testing, usability feedback, explanation review and accessibility review. Human evaluation must follow approved ethics conditions, including avoiding under-18 participants.
+## Intended deliverables
 
-## Approved research questions
+| ID | Original wording |
+|---|---|
+| D1 | Project proposal |
+| D2 | Literature review |
+| D3 | Requirements specification |
+| D4 | Structured pathway knowledge base |
+| D5 | Web-based prototype |
+| D6 | Recommendation engine |
+| D7 | Chatbot support module |
+| D8 | Evaluation and testing report |
+| D9 | Final project report |
+| D10 | Poster and viva presentation |
 
-**MAIN RESEARCH QUESTION**
+## Main research question
 
 How can an AI-powered, policy-aware Education and Career Pathway Intelligence System support Sri Lankan learners through personalised, explainable, and accessible pathway recommendations?
 
-**SUPPORTING RESEARCH QUESTIONS**
+## Supporting research questions
 
 I. How can learner profiles, eligibility requirements and pathway knowledge be integrated to generate suitable recommendations?
 
@@ -593,11 +666,21 @@ IV. How can multilingual support, mobile usability and voice-assisted input impr
 
 V. How effective is the prototype in providing relevant and usable pathway guidance?
 
-Provenance: exact text supplied by the author during this review, not extracted from an inspected DOCX.
+## Scope, methodology and evaluation
 
-## Detailed NFRs
+The system will primarily target A/L students, vocational learners, and early-career users seeking educational or career progression guidance. The prototype will initially focus on selected domains including Information Technology, Business and Management, and Engineering.
 
-Detailed approved NFRs: [ORIGINAL TEXT REQUIRED]. Research-question wording is now available, while the original proposal and remaining academic documents still require inspection. See ../BASELINE_AND_BLOCKERS.md.
+The recommendation process will utilise structured pathway knowledge, rule-based eligibility filtering, and lightweight AI-assisted recommendation techniques. The system will operate using curated educational and career-related datasets rather than real-time nationwide institutional integration.
+
+The project will not include large-scale production deployment, full national educational coverage, advanced deep-learning-based predictive modelling, or unrestricted conversational AI functionality. These areas are identified as potential future enhancements beyond the scope of Version 1.
+
+This project adopts Design Science Research (DSR) as the main research methodology because the study involves designing, developing and evaluating a software artefact that addresses a real educational guidance problem. DSR is suitable for Information Systems projects where knowledge is generated through the construction and evaluation of an artefact (Hevner, March, Park, & Ram, 2004).
+
+The project will also use an Agile-inspired iterative prototyping approach for development. DSR provides the research structure, while iterative prototyping supports incremental construction of the knowledge base, recommendation engine, explanation layer, chatbot support and accessibility features.
+
+The prototype will be evaluated using a mixed evaluation approach. Functional testing will check whether the system features work correctly, while scenario-based testing will assess whether recommendations are suitable for different learner profiles. Usability feedback will be collected from adult users where appropriate, using simple rating-scale and open-ended questions.
+
+The [full extracted baseline](alignment/APPROVED_BASELINE.md) also preserves the scope/evaluation tables. [Original/refined traceability](alignment/REQUIREMENTS_TRACEABILITY.md) distinguishes P-FR1–9/P-NFR1–7 from I-FR01–10/I-NFR01–08. Proposed diagrams contain additional undelivered role/account features; see the explicit discrepancy register rather than silently expanding or reducing the approved scope. Signed ethics conditions and the actual assessment brief are separate outstanding evidence.
 
 
 ---
@@ -683,3 +766,21 @@ Author-supplied personal reflection, supervision log, ethics approval and origin
 
 ---
 
+# Appendix F. Original-document reconciliation and historical evidence
+
+The two author-confirmed WORK documents are private sources, cited as Kanakarathna(2026a,b); no source DOCX or extracted image is included in this repository. The review covered narrative/tables, embedded diagrams/screenshots, bibliography content controls and appendices. External linked ethics/Google Forms/logbook materials were not accessed, and their existence is not approval or research findings.
+
+| Artifact | What it establishes |
+|---|---|
+| alignment/APPROVED_BASELINE.md and JSON | Exact title, aim,8 objectives,6 questions,FR1–9,NFR1–7,D1–10,scope/method/evaluation from proposal |
+| alignment/PROPOSAL_TO_IMPLEMENTATION.md | Proposal→interim→final comparison, including deliverables and undelivered diagram elements |
+| alignment/REQUIREMENTS_TRACEABILITY.md and CSV | All16 approved requirements plus all10 interimFR and8 interimNFR refinements, source/evidence/status/limits |
+| alignment/INTERIM_TO_FINAL.md | August40-test artifact,7-programme snapshot and later WP1–WP5 evolution without retroactive attribution |
+| alignment/TECHNOLOGY_JUSTIFICATION.md | Proposed Streamlit stack versus already-interimFastAPI/HTML/CSV and later frozenONNX assistance, including costs/alternatives |
+| alignment/CONTRADICTIONS_AND_LIMITS.md | Diagram scope, numbering,50→40threshold correction,UGC eligibility change, planning/bibliography/linked-document caveats |
+| alignment/SOURCE_REVIEW.json | Local-file hashes, review coverage, original matching checks and read-only historical Git corroboration |
+
+Interim Figures16/38 show separate40-pass runs. October205-backend/36-browser results and live/scenario/accessibility data come from their saved WP5 evidence, not from the interim. Passing either suite does not establish comprehensive educational validity or human satisfaction. The current40%threshold is source-grounded; historical50%screenshots remain historical and are not edited.
+
+
+---

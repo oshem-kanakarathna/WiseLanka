@@ -1,6 +1,6 @@
 # References — provisional author–date style
 
-All web sources below were checked on 29 October 2026. This is a working bibliography, not confirmation of the required UWL referencing style. Access depth and restrictions are recorded in SOURCE_REGISTER.csv. Article page ranges below are bibliographic ranges, not fabricated pinpoint citations. No detailed claim is based on an inaccessible full text.
+Web-source access was checked on 29 October 2026 at the depths recorded below; the CareerOne document was available as indexed official text while direct retrieval timed out. The two private project documents were inspected locally, not uploaded. This is a working bibliography, not confirmation of the required UWL referencing style. Access depth and restrictions are recorded in SOURCE_REGISTER.csv. Article page ranges below are bibliographic ranges, not fabricated pinpoint citations. No detailed claim is based on an inaccessible full text.
 
 Burke, R. (2002) ‘Hybrid recommender systems: Survey and experiments’, *User Modeling and User-Adapted Interaction*, 12, pp. 331–370. Available at: https://link.springer.com/article/10.1023/A:1021240730564 .
 
@@ -29,6 +29,20 @@ University Grants Commission Sri Lanka (2025/2026) *University Admissions Handbo
 Wang, W., Wei, F., Dong, L., Bao, H., Yang, N. and Zhou, M. (2020) ‘MiniLM: Deep self-attention distillation for task-agnostic compression of pre-trained Transformers’, *Advances in Neural Information Processing Systems*, 33. Available at: https://proceedings.neurips.cc/paper/2020/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html .
 
 World Wide Web Consortium (W3C) (2024) *Web Content Accessibility Guidelines (WCAG) 2.2*. Recommendation, 12 December 2024. Version checked: https://www.w3.org/TR/2024/REC-WCAG22-20241212/ . The executed axe scan used the narrower WCAG 2.0/2.1 tag set, not a complete WCAG 2.2 audit.
+
+## Sources added during original-document reconciliation
+
+Kanakarathna, O.T. (2026a) *Design and Development of an AI-Powered, Policy-Aware Education and Career Pathway Intelligence System for Sri Lankan Learners*. Final Project Proposal, CP6SL460, University of West London. Unpublished author-supplied private document; inspected locally. No public URL or unverified submission/approval date is assigned.
+
+Kanakarathna, O.T. (2026b) *Design and Development of an AI-Powered, Policy-Aware Education and Career Pathway Intelligence System for Sri Lankan Learners*. Project Interim Report, 25 August 2026, CP6SL460, University of West London. Unpublished author-supplied private document; inspected locally. Document identities/hashes are recorded in alignment/SOURCE_REVIEW.json; original files are not distributed with this pack.
+
+Lahoud, C., Moussa, S., Obeid, C., El Khoury, H. and Champin, P.-A. (2023) ‘A comparative analysis of different recommender systems for university major and career domain guidance’, *Education and Information Technologies*, 28, pp. 8733–8759. https://doi.org/10.1007/s10639-022-11541-3 . Online publication 28 December 2022; this draft uses the 2023 volume year. Publisher metadata, abstract and introductory comparison inspected; full methodological appraisal remains pending.
+
+CareerMe (n.d.) *CareerMe — Get Personalized Career Guidance — Sri Lanka*. Available at: https://careerme.lk/ . Homepage features checked; these are provider claims, not independent effectiveness evidence.
+
+Tertiary and Vocational Education Commission (TVEC) (2025) *Operational Directives/Guideline, Mandatory Requirements of the “Career One” TVET Career Platform*. Annexure I, effective September 2025. Available at: https://www.careerone.gov.lk/storage/newsletter/Annexure_I.Operational%20directives%20guideline-mandatory%20requirements.pdf . Official indexed title/background text inspected; direct PDF retrieval timed out. Used only to identify advertised scope, not evaluate platform quality.
+
+Informatics Institute of Technology (n.d.) *IIT International Foundation*. Available at: https://www.iit.ac.lk/foundation/it/ . Official entry/progression section checked on 29 October 2026; no publication date established. The four-module 40% condition and conditional year-one progression are distinct from guaranteed admission.
 
 ## Educational and technical supporting registers
 

@@ -2,6 +2,8 @@
 
 ## 7.1 Separation of decisions
 
+The interim's implemented recommendation function sorted deterministic match scores; its AI-powered title and planned hybrid discussion are not evidence of pretrained inference at that stage. WP3 subsequently introduced the frozen encoder and TF–IDF comparison. This is a methodological extension of the earlier explicit-constraint design, not retroactive training or an August model result (Kanakarathna, 2026b, §4.5.3 and appendix D).
+
 Let A(p,x) be the canonical academic assessment of programme p using learner evidence x, with values MET, NOT_ASSESSED or NOT_MET. Let R(p,q) be a content-relevance score for stated preference text q. Ranking is lexicographic: first the fixed academic group, then decreasing available relevance, then stable baseline position and programme ID. R never changes A. A high R is neither admission probability nor evidence of career success.
 
 The programme corpus uses recorded title, field, domain and qualification type. It excludes eligibility outcomes and administrative notes from semantic text. It therefore contains short identity/subject descriptors rather than full course curricula. The learner query combines explicit interests, optional English career intention and selected career name, capped at 1,000 characters; tokenisation truncates model input to 256 wordpieces. This restricts both interpretation depth and potential evidence content.

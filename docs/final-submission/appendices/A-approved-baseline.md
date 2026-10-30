@@ -1,10 +1,14 @@
-# Appendix A. Approved excerpts and missing authoritative text
+# Appendix A. Original approved proposal baseline
 
-Source: excerpts supplied by the project author in the task conversation. The original submitted DOCX remains to be compared. No altered aim or objectives are proposed.
+Both author-confirmed WORK DOCX files have been inspected. The original proposal is the requirements authority; the interim refines implementation concerns without replacing its IDs. Hashes and actual sections/tables/figures reviewed are in alignment/SOURCE_REVIEW.json. Source text below is reproduced without changing approved wording.
+
+## Exact project title
+
+DESIGN AND DEVELOPMENT OF AN AI-POWERED, POLICY-AWARE EDUCATION AND CAREER PATHWAY INTELLIGENCE SYSTEM FOR SRI LANKAN LEARNERS
 
 ## Aim
 
-“The aim of this project is to design, develop, and evaluate an AI-powered, policy-aware Education and Career Pathway Intelligence System that provides personalised, explainable, and accessible education and career guidance for Sri Lankan learners.”
+The aim of this project is to design, develop, and evaluate an AI-powered, policy-aware Education and Career Pathway Intelligence System that provides personalised, explainable, and accessible education and career guidance for Sri Lankan learners.
 
 ## Objectives
 
@@ -26,29 +30,50 @@ VIII. To identify limitations of the proposed solution and recommend future impr
 
 ## Functional requirements
 
-- FR1: Allow users to create learner profiles.
-- FR2: Collect educational qualifications and interests.
-- FR3: Generate personalised pathway recommendations.
-- FR4: Provide alternative progression routes.
-- FR5: Identify skill or qualification gaps.
-- FR6: Explain recommendation outputs.
-- FR7: Display official educational resource links.
-- FR8: Provide chatbot-assisted support.
-- FR9: Support basic voice-assisted input.
+| ID | Original wording |
+|---|---|
+| FR1 | Allow users to create learner profiles |
+| FR2 | Collect educational qualifications and interests |
+| FR3 | Generate personalised pathway recommendations |
+| FR4 | Provide alternative progression routes |
+| FR5 | Identify skill or qualification gaps |
+| FR6 | Explain recommendation outputs |
+| FR7 | Display official educational resource links |
+| FR8 | Provide chatbot-assisted support |
+| FR9 | Support basic voice-assisted input |
 
-## Approved scope excerpts
+## Non-functional requirements
 
-Target users: A/L students, vocational learners and early-career users. Initial domains: Information Technology, Business and Management, and Engineering. Core scope: personalised recommendations, alternative pathways, skill-gap identification, scholarship awareness, explanation-based guidance, official resource links, guided chatbot support, mobile usability and basic voice assistance. Technical approach: structured educational knowledge, rule-based eligibility filtering and lightweight AI-assisted recommendation techniques.
+| ID | Original wording |
+|---|---|
+| NFR1 | User-friendly interface |
+| NFR2 | Mobile-friendly usability |
+| NFR3 | Acceptable response time |
+| NFR4 | Reliable educational datasets |
+| NFR5 | Modular system architecture |
+| NFR6 | Future scalability support |
+| NFR7 | Explainable recommendation outputs |
 
-Out of scope: nationwide production deployment, full national education coverage, advanced deep-learning predictive modelling and unrestricted conversational AI. Research methodology: Design Science Research supported by Agile-inspired iterative prototyping. Evaluation: functional testing, scenario testing, usability feedback, explanation review and accessibility review. Human evaluation must follow approved ethics conditions, including avoiding under-18 participants.
+## Intended deliverables
 
-## Approved research questions
+| ID | Original wording |
+|---|---|
+| D1 | Project proposal |
+| D2 | Literature review |
+| D3 | Requirements specification |
+| D4 | Structured pathway knowledge base |
+| D5 | Web-based prototype |
+| D6 | Recommendation engine |
+| D7 | Chatbot support module |
+| D8 | Evaluation and testing report |
+| D9 | Final project report |
+| D10 | Poster and viva presentation |
 
-**MAIN RESEARCH QUESTION**
+## Main research question
 
 How can an AI-powered, policy-aware Education and Career Pathway Intelligence System support Sri Lankan learners through personalised, explainable, and accessible pathway recommendations?
 
-**SUPPORTING RESEARCH QUESTIONS**
+## Supporting research questions
 
 I. How can learner profiles, eligibility requirements and pathway knowledge be integrated to generate suitable recommendations?
 
@@ -60,8 +85,18 @@ IV. How can multilingual support, mobile usability and voice-assisted input impr
 
 V. How effective is the prototype in providing relevant and usable pathway guidance?
 
-Provenance: exact text supplied by the author during this review, not extracted from an inspected DOCX.
+## Scope, methodology and evaluation
 
-## Detailed NFRs
+The system will primarily target A/L students, vocational learners, and early-career users seeking educational or career progression guidance. The prototype will initially focus on selected domains including Information Technology, Business and Management, and Engineering.
 
-Detailed approved NFRs: [ORIGINAL TEXT REQUIRED]. Research-question wording is now available, while the original proposal and remaining academic documents still require inspection. See ../BASELINE_AND_BLOCKERS.md.
+The recommendation process will utilise structured pathway knowledge, rule-based eligibility filtering, and lightweight AI-assisted recommendation techniques. The system will operate using curated educational and career-related datasets rather than real-time nationwide institutional integration.
+
+The project will not include large-scale production deployment, full national educational coverage, advanced deep-learning-based predictive modelling, or unrestricted conversational AI functionality. These areas are identified as potential future enhancements beyond the scope of Version 1.
+
+This project adopts Design Science Research (DSR) as the main research methodology because the study involves designing, developing and evaluating a software artefact that addresses a real educational guidance problem. DSR is suitable for Information Systems projects where knowledge is generated through the construction and evaluation of an artefact (Hevner, March, Park, & Ram, 2004).
+
+The project will also use an Agile-inspired iterative prototyping approach for development. DSR provides the research structure, while iterative prototyping supports incremental construction of the knowledge base, recommendation engine, explanation layer, chatbot support and accessibility features.
+
+The prototype will be evaluated using a mixed evaluation approach. Functional testing will check whether the system features work correctly, while scenario-based testing will assess whether recommendations are suitable for different learner profiles. Usability feedback will be collected from adult users where appropriate, using simple rating-scale and open-ended questions.
+
+The [full extracted baseline](../alignment/APPROVED_BASELINE.md) also preserves the scope/evaluation tables. [Original/refined traceability](../alignment/REQUIREMENTS_TRACEABILITY.md) distinguishes P-FR1–9/P-NFR1–7 from I-FR01–10/I-NFR01–08. Proposed diagrams contain additional undelivered role/account features; see the explicit discrepancy register rather than silently expanding or reducing the approved scope. Signed ethics conditions and the actual assessment brief are separate outstanding evidence.

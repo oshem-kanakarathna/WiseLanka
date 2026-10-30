@@ -1,5 +1,6 @@
 # Reference verification findings
 
+**Baseline update:** this earlier review predates inspection of the confirmed original proposal/interim. Its missing-document/NFR assumptions are superseded by alignment/ACADEMIC_ALIGNMENT_REPORT.md. Scientific evaluation and rubric limitations remain; historical findings are retained.
 Fourteen bibliography entries were audited against the chapter citations, original publisher/proceedings/standards sources where accessible, available original-paper material and the saved educational-source evidence. REFERENCE_VERIFICATION_REGISTER.csv records every entry, citation locations, access depth, interpretation and remaining work. A live link or a citation-pattern match is not academic validation.
 
 ## Results and corrections
