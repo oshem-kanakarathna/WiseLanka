@@ -1,0 +1,61 @@
+{
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "intra_op_threads": 1,
+  "inter_op_threads": 1,
+  "execution_mode": "ExecutionMode.ORT_SEQUENTIAL",
+  "graph_optimisation": "GraphOptimizationLevel.ORT_ENABLE_ALL",
+  "cpu_memory_arena": true,
+  "tokenizer_truncation": {
+    "max_length": 256,
+    "stride": 0,
+    "strategy": "longest_first",
+    "direction": "right"
+  },
+  "tokenizer_padding": {
+    "length": null,
+    "pad_to_multiple_of": null,
+    "pad_id": 0,
+    "pad_token": "[PAD]",
+    "pad_type_id": 0,
+    "direction": "right"
+  },
+  "inputs": [
+    {
+      "name": "input_ids",
+      "type": "tensor(int64)",
+      "shape": [
+        "batch_size",
+        "sequence_length"
+      ]
+    },
+    {
+      "name": "attention_mask",
+      "type": "tensor(int64)",
+      "shape": [
+        "batch_size",
+        "sequence_length"
+      ]
+    },
+    {
+      "name": "token_type_ids",
+      "type": "tensor(int64)",
+      "shape": [
+        "batch_size",
+        "sequence_length"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "last_hidden_state",
+      "type": "tensor(float)",
+      "shape": [
+        "batch_size",
+        "sequence_length",
+        384
+      ]
+    }
+  ]
+}

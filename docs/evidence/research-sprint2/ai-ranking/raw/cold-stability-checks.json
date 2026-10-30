@@ -1,0 +1,92 @@
+[
+  {
+    "method": "deterministic",
+    "repetition": 0,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "deterministic",
+    "repetition": 1,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "deterministic",
+    "repetition": 2,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "deterministic",
+    "repetition": 3,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "deterministic",
+    "repetition": 4,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "tfidf",
+    "repetition": 0,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "tfidf",
+    "repetition": 1,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "tfidf",
+    "repetition": 2,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "tfidf",
+    "repetition": 3,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "tfidf",
+    "repetition": 4,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "semantic",
+    "repetition": 0,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "semantic",
+    "repetition": 1,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "semantic",
+    "repetition": 2,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "semantic",
+    "repetition": 3,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  },
+  {
+    "method": "semantic",
+    "repetition": 4,
+    "order_matches_warm": true,
+    "scores_match_warm": true
+  }
+]

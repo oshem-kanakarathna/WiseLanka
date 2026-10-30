@@ -1,0 +1,752 @@
+[
+  {
+    "requested_method": "deterministic",
+    "actual_method": "DETERMINISTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.9228749999999966,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.809958999999999,
+    "second_rank_ms": 0.4788750000000036,
+    "rss_before_method_MiB": 13.96875,
+    "peak_rss_after_MiB": 14.125,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "deterministic",
+      "method": "DETERMINISTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 0,
+    "subprocess_wall_ms": 55.98112500000063,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "deterministic",
+    "actual_method": "DETERMINISTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5371669999999982,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7770829999999979,
+    "second_rank_ms": 0.4577090000000006,
+    "rss_before_method_MiB": 13.875,
+    "peak_rss_after_MiB": 14.0625,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "deterministic",
+      "method": "DETERMINISTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 1,
+    "subprocess_wall_ms": 38.343625000000436,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "deterministic",
+    "actual_method": "DETERMINISTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.540541000000002,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7124579999999991,
+    "second_rank_ms": 0.4420839999999988,
+    "rss_before_method_MiB": 13.390625,
+    "peak_rss_after_MiB": 13.5625,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "deterministic",
+      "method": "DETERMINISTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 2,
+    "subprocess_wall_ms": 37.23804200000025,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "deterministic",
+    "actual_method": "DETERMINISTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.4948330000000001,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7118750000000007,
+    "second_rank_ms": 0.4975000000000014,
+    "rss_before_method_MiB": 13.8125,
+    "peak_rss_after_MiB": 13.984375,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "deterministic",
+      "method": "DETERMINISTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 3,
+    "subprocess_wall_ms": 38.26124999999969,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "deterministic",
+    "actual_method": "DETERMINISTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5812910000000011,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7611670000000001,
+    "second_rank_ms": 0.4893750000000002,
+    "rss_before_method_MiB": 13.890625,
+    "peak_rss_after_MiB": 14.0625,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "deterministic",
+      "method": "DETERMINISTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 4,
+    "subprocess_wall_ms": 38.98308299999975,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "tfidf",
+    "actual_method": "TFIDF",
+    "fallback_reason": null,
+    "module_import_ms": 0.5987499999999986,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.76325,
+    "second_rank_ms": 0.47162499999999985,
+    "rss_before_method_MiB": 13.65625,
+    "peak_rss_after_MiB": 13.8125,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.391094,
+      "PRG0001": 0.0,
+      "PRG0002": 0.0,
+      "PRG0003": 0.0,
+      "PRG0008": 0.0
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "tfidf",
+      "method": "TFIDF",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 0,
+    "subprocess_wall_ms": 38.42012500000003,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "tfidf",
+    "actual_method": "TFIDF",
+    "fallback_reason": null,
+    "module_import_ms": 0.5787920000000015,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7512089999999992,
+    "second_rank_ms": 0.4637080000000002,
+    "rss_before_method_MiB": 13.671875,
+    "peak_rss_after_MiB": 13.828125,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.391094,
+      "PRG0001": 0.0,
+      "PRG0002": 0.0,
+      "PRG0003": 0.0,
+      "PRG0008": 0.0
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "tfidf",
+      "method": "TFIDF",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 1,
+    "subprocess_wall_ms": 38.61937499999968,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "tfidf",
+    "actual_method": "TFIDF",
+    "fallback_reason": null,
+    "module_import_ms": 0.5740000000000016,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7232920000000004,
+    "second_rank_ms": 0.5096669999999983,
+    "rss_before_method_MiB": 13.640625,
+    "peak_rss_after_MiB": 13.765625,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.391094,
+      "PRG0001": 0.0,
+      "PRG0002": 0.0,
+      "PRG0003": 0.0,
+      "PRG0008": 0.0
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "tfidf",
+      "method": "TFIDF",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 2,
+    "subprocess_wall_ms": 37.718958000000136,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "tfidf",
+    "actual_method": "TFIDF",
+    "fallback_reason": null,
+    "module_import_ms": 0.6163330000000001,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7730830000000009,
+    "second_rank_ms": 0.4807920000000007,
+    "rss_before_method_MiB": 13.875,
+    "peak_rss_after_MiB": 14.078125,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.391094,
+      "PRG0001": 0.0,
+      "PRG0002": 0.0,
+      "PRG0003": 0.0,
+      "PRG0008": 0.0
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "tfidf",
+      "method": "TFIDF",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 3,
+    "subprocess_wall_ms": 38.04895800000008,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "tfidf",
+    "actual_method": "TFIDF",
+    "fallback_reason": null,
+    "module_import_ms": 0.5502079999999999,
+    "model_load_ms": 0,
+    "first_rank_ms": 0.7150000000000003,
+    "second_rank_ms": 0.4701670000000005,
+    "rss_before_method_MiB": 13.671875,
+    "peak_rss_after_MiB": 13.828125,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.391094,
+      "PRG0001": 0.0,
+      "PRG0002": 0.0,
+      "PRG0003": 0.0,
+      "PRG0008": 0.0
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "tfidf",
+      "method": "TFIDF",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 4,
+    "subprocess_wall_ms": 37.8783330000001,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "semantic",
+    "actual_method": "SEMANTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5742499999999984,
+    "model_load_ms": 329.060625,
+    "first_rank_ms": 86.22045899999998,
+    "second_rank_ms": 4.08149999999996,
+    "rss_before_method_MiB": 13.75,
+    "peak_rss_after_MiB": 305.40625,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0003",
+      "PRG0002",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.082923,
+      "PRG0001": 0.081768,
+      "PRG0003": 0.063976,
+      "PRG0002": 0.047529,
+      "PRG0008": 0.042319
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "SEMANTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 0,
+    "subprocess_wall_ms": 481.9159580000001,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "semantic",
+    "actual_method": "SEMANTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.6157079999999995,
+    "model_load_ms": 287.16216699999995,
+    "first_rank_ms": 79.28599999999997,
+    "second_rank_ms": 3.585958999999972,
+    "rss_before_method_MiB": 13.90625,
+    "peak_rss_after_MiB": 282.59375,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0003",
+      "PRG0002",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.082923,
+      "PRG0001": 0.081768,
+      "PRG0003": 0.063976,
+      "PRG0002": 0.047529,
+      "PRG0008": 0.042319
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "SEMANTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 1,
+    "subprocess_wall_ms": 433.5913749999998,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "semantic",
+    "actual_method": "SEMANTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5888339999999999,
+    "model_load_ms": 263.166458,
+    "first_rank_ms": 81.07424999999996,
+    "second_rank_ms": 3.462583000000019,
+    "rss_before_method_MiB": 13.78125,
+    "peak_rss_after_MiB": 319.046875,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0003",
+      "PRG0002",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.082923,
+      "PRG0001": 0.081768,
+      "PRG0003": 0.063976,
+      "PRG0002": 0.047529,
+      "PRG0008": 0.042319
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "SEMANTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 2,
+    "subprocess_wall_ms": 406.808292,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "semantic",
+    "actual_method": "SEMANTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5284169999999998,
+    "model_load_ms": 258.92958300000004,
+    "first_rank_ms": 82.37462499999998,
+    "second_rank_ms": 3.715625,
+    "rss_before_method_MiB": 14.0,
+    "peak_rss_after_MiB": 318.828125,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0003",
+      "PRG0002",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.082923,
+      "PRG0001": 0.081768,
+      "PRG0003": 0.063976,
+      "PRG0002": 0.047529,
+      "PRG0008": 0.042319
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "SEMANTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 3,
+    "subprocess_wall_ms": 401.417833,
+    "exit_code": 0
+  },
+  {
+    "requested_method": "semantic",
+    "actual_method": "SEMANTIC",
+    "fallback_reason": null,
+    "module_import_ms": 0.5465000000000019,
+    "model_load_ms": 285.27091699999994,
+    "first_rank_ms": 78.29545800000004,
+    "second_rank_ms": 3.34404100000002,
+    "rss_before_method_MiB": 14.0,
+    "peak_rss_after_MiB": 318.921875,
+    "order": [
+      "PRG0009",
+      "PRG0001",
+      "PRG0003",
+      "PRG0002",
+      "PRG0008"
+    ],
+    "scores": {
+      "PRG0009": 0.082923,
+      "PRG0001": 0.081768,
+      "PRG0003": 0.063976,
+      "PRG0002": 0.047529,
+      "PRG0008": 0.042319
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "SEMANTIC",
+      "status": "AVAILABLE",
+      "fallback_reason": null,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    "repetition": 4,
+    "subprocess_wall_ms": 426.4715409999997,
+    "exit_code": 0
+  }
+]

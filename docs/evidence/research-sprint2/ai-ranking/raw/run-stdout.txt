@@ -1,0 +1,14 @@
+{
+  "scenarios": 21,
+  "comparator_rows": 63,
+  "warm_calls": 1890,
+  "cold_workers": 15,
+  "policy_assertions_passed": true,
+  "stable_rank_and_scores": true,
+  "missing_model_fallback_passed": true,
+  "expected_invalid_method_exception": true,
+  "unhandled_exceptions": 0,
+  "independent_labels": false,
+  "relevance_metrics_computed": false,
+  "candidate_generation_timing_excluded": true
+}

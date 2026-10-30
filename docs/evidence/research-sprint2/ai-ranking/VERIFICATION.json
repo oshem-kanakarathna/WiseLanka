@@ -1,0 +1,23 @@
+{
+  "checked_utc": "2026-10-30T14:57:41.515321+00:00",
+  "checkpoint_commit": "a8c67caed5111137989767dea28e248e01a6c19e",
+  "application_version": "0.6.0",
+  "production_code_and20_datasets_unchanged": true,
+  "actual_model_hashes_unchanged": true,
+  "protected_tracked_files_and_backups_unchanged": true,
+  "original_sprint2a_evidence_unchanged": true,
+  "staging_empty": true,
+  "valid_synthetic_scenarios": 21,
+  "comparisons": 63,
+  "warm_samples": 1890,
+  "cold_workers": 15,
+  "all_policy_checks_passed": true,
+  "all_repeated_orders_scores_stable": true,
+  "blinded_pairs_per_pack": 127,
+  "all_relevance_fields_blank": true,
+  "independent_labels_available": false,
+  "ranking_quality_metrics_computed": false,
+  "run_exit_code": 0,
+  "full_application_suite_rerun_in_partB": false,
+  "only_partA_created_a_commit": true
+}

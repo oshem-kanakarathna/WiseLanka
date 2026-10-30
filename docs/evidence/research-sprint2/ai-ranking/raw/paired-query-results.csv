@@ -1,0 +1,13 @@
+pair,method,case_a,case_b,top1_a,top1_b,ordered_top3_a,ordered_top3_b,same_top1,interpretation
+IT,deterministic,F01,F02,PRG0001,PRG0001,"[""PRG0001"", ""PRG0002"", ""PRG0003""]","[""PRG0001"", ""PRG0002"", ""PRG0003""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+IT,tfidf,F01,F02,PRG0009,PRG0001,"[""PRG0009"", ""PRG0001"", ""PRG0002""]","[""PRG0001"", ""PRG0002"", ""PRG0003""]",False,Descriptive paired-query behaviour;neither query supplies a reference ranking
+IT,semantic,F01,F02,PRG0009,PRG0008,"[""PRG0009"", ""PRG0001"", ""PRG0003""]","[""PRG0008"", ""PRG0001"", ""PRG0003""]",False,Descriptive paired-query behaviour;neither query supplies a reference ranking
+BUSINESS,deterministic,F03,F04,PRG0008,PRG0008,"[""PRG0008"", ""PRG0001"", ""PRG0002""]","[""PRG0008"", ""PRG0001"", ""PRG0002""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+BUSINESS,tfidf,F03,F04,PRG0008,PRG0008,"[""PRG0008"", ""PRG0009"", ""PRG0001""]","[""PRG0008"", ""PRG0009"", ""PRG0001""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+BUSINESS,semantic,F03,F04,PRG0008,PRG0008,"[""PRG0008"", ""PRG0001"", ""PRG0003""]","[""PRG0008"", ""PRG0001"", ""PRG0002""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+ENGINEERING,deterministic,F05,F06,PRG0001,PRG0001,"[""PRG0001"", ""PRG0002"", ""PRG0003""]","[""PRG0001"", ""PRG0002"", ""PRG0003""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+ENGINEERING,tfidf,F05,F06,PRG0009,PRG0001,"[""PRG0009"", ""PRG0008"", ""PRG0001""]","[""PRG0001"", ""PRG0002"", ""PRG0003""]",False,Descriptive paired-query behaviour;neither query supplies a reference ranking
+ENGINEERING,semantic,F05,F06,PRG0009,PRG0009,"[""PRG0009"", ""PRG0003"", ""PRG0008""]","[""PRG0009"", ""PRG0008"", ""PRG0003""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+VOCATIONAL,deterministic,F07,F08,PRG0001,PRG0001,"[""PRG0001"", ""PRG0002"", ""PRG0003""]","[""PRG0001"", ""PRG0002"", ""PRG0003""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking
+VOCATIONAL,tfidf,F07,F08,PRG0011,PRG0007,"[""PRG0011"", ""PRG0010"", ""PRG0007""]","[""PRG0007"", ""PRG0008"", ""PRG0001""]",False,Descriptive paired-query behaviour;neither query supplies a reference ranking
+VOCATIONAL,semantic,F07,F08,PRG0010,PRG0010,"[""PRG0010"", ""PRG0011"", ""PRG0004""]","[""PRG0010"", ""PRG0011"", ""PRG0004""]",True,Descriptive paired-query behaviour;neither query supplies a reference ranking

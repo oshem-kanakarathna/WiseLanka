@@ -1,0 +1,122 @@
+{
+  "scenarios": 21,
+  "development": 9,
+  "followup": 12,
+  "comparisons": 63,
+  "warm_repetitions_per_cell": 30,
+  "warm_total": 1890,
+  "fresh_process_repetitions_per_method": 5,
+  "differences": {
+    "DEVELOPMENT_REUSED": {
+      "deterministic_vs_tfidf": {
+        "n": 9,
+        "full_order_differs": 5,
+        "top1_differs": 5,
+        "ordered_top3_differs": 5
+      },
+      "deterministic_vs_semantic": {
+        "n": 9,
+        "full_order_differs": 8,
+        "top1_differs": 7,
+        "ordered_top3_differs": 8
+      },
+      "tfidf_vs_semantic": {
+        "n": 9,
+        "full_order_differs": 8,
+        "top1_differs": 3,
+        "ordered_top3_differs": 8
+      }
+    },
+    "FROZEN_FOLLOWUP": {
+      "deterministic_vs_tfidf": {
+        "n": 12,
+        "full_order_differs": 8,
+        "top1_differs": 5,
+        "ordered_top3_differs": 8
+      },
+      "deterministic_vs_semantic": {
+        "n": 12,
+        "full_order_differs": 11,
+        "top1_differs": 7,
+        "ordered_top3_differs": 9
+      },
+      "tfidf_vs_semantic": {
+        "n": 12,
+        "full_order_differs": 11,
+        "top1_differs": 5,
+        "ordered_top3_differs": 10
+      }
+    },
+    "ALL": {
+      "deterministic_vs_tfidf": {
+        "n": 21,
+        "full_order_differs": 13,
+        "top1_differs": 10,
+        "ordered_top3_differs": 13
+      },
+      "deterministic_vs_semantic": {
+        "n": 21,
+        "full_order_differs": 19,
+        "top1_differs": 14,
+        "ordered_top3_differs": 17
+      },
+      "tfidf_vs_semantic": {
+        "n": 21,
+        "full_order_differs": 19,
+        "top1_differs": 8,
+        "ordered_top3_differs": 18
+      }
+    }
+  },
+  "warm_actual_method_only": {
+    "deterministic": {
+      "samples": 600,
+      "median_ms": 0.46735399999975336,
+      "p95_ms": 0.6253750000002611,
+      "min_ms": 0.3999170000001939,
+      "max_ms": 1.0725830000000158
+    },
+    "tfidf": {
+      "samples": 600,
+      "median_ms": 0.46627099999985155,
+      "p95_ms": 0.6007500000002608,
+      "min_ms": 0.40404199999999335,
+      "max_ms": 0.9670829999999242
+    },
+    "semantic": {
+      "samples": 600,
+      "median_ms": 3.2538124999996754,
+      "p95_ms": 4.67424999999988,
+      "min_ms": 2.0689999999996544,
+      "max_ms": 7.340958000000342
+    }
+  },
+  "cold": {
+    "deterministic": {
+      "first_rank_ms_median": 0.7611670000000001,
+      "model_load_ms_median": 0,
+      "subprocess_wall_ms_median": 38.343625000000436,
+      "peak_rss_after_MiB_median": 14.0625
+    },
+    "tfidf": {
+      "first_rank_ms_median": 0.7512089999999992,
+      "model_load_ms_median": 0,
+      "subprocess_wall_ms_median": 38.04895800000008,
+      "peak_rss_after_MiB_median": 13.828125
+    },
+    "semantic": {
+      "first_rank_ms_median": 81.07424999999996,
+      "model_load_ms_median": 285.27091699999994,
+      "subprocess_wall_ms_median": 426.4715409999997,
+      "peak_rss_after_MiB_median": 318.828125
+    }
+  },
+  "candidate_pool_counts": {
+    "5": 14,
+    "11": 4,
+    "1": 1,
+    "6": 2
+  },
+  "labels": false,
+  "relevance_metrics_computed": false
+}

@@ -1,0 +1,68 @@
+{
+  "PRG0001": {
+    "text": "Bachelor of Science Honours in Information Technology. Information Technology. Information Technology. Bachelors Honours Degree",
+    "source_id": "SRC0001",
+    "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+    "programme_name": "Bachelor of Science Honours in Information Technology"
+  },
+  "PRG0002": {
+    "text": "Bachelor of Science in Computer Science. Computer Science. Information Technology. Bachelors Degree",
+    "source_id": "SRC0005",
+    "source_url": "https://cmb.ac.lk/undergraduate-programmes",
+    "programme_name": "Bachelor of Science in Computer Science"
+  },
+  "PRG0003": {
+    "text": "Bachelor of Science Honours in Artificial Intelligence. Artificial Intelligence. Information Technology. Bachelors Honours Degree",
+    "source_id": "SRC0006",
+    "source_url": "https://uom.lk/itfac/bachelor-science-honours-artificial-intelligence",
+    "programme_name": "Bachelor of Science Honours in Artificial Intelligence"
+  },
+  "PRG0004": {
+    "text": "IIT International Foundation - Computing (IT) Pathway. Computing. Information Technology. Foundation Qualification",
+    "source_id": "SRC0010",
+    "source_url": "https://www.iit.ac.lk/foundation/it/",
+    "programme_name": "IIT International Foundation - Computing (IT) Pathway"
+  },
+  "PRG0005": {
+    "text": "BEng (Hons) Software Engineering. Software Engineering. Information Technology. Bachelors Honours Degree",
+    "source_id": "SRC0012",
+    "source_url": "https://www.iit.ac.lk/course/beng-software-engineering/",
+    "programme_name": "BEng (Hons) Software Engineering"
+  },
+  "PRG0006": {
+    "text": "BSc (Hons) Computer Science. Computer Science. Information Technology. Bachelors Honours Degree",
+    "source_id": "SRC0013",
+    "source_url": "https://www.iit.ac.lk/course/bsc-computer-science/",
+    "programme_name": "BSc (Hons) Computer Science"
+  },
+  "PRG0007": {
+    "text": "BSc (Hons) Artificial Intelligence and Data Science. Artificial Intelligence and Data Science. Information Technology. Bachelors Honours Degree",
+    "source_id": "SRC0014",
+    "source_url": "https://www.iit.ac.lk/course/bsc-artificial-intelligence-and-data-science/",
+    "programme_name": "BSc (Hons) Artificial Intelligence and Data Science"
+  },
+  "PRG0008": {
+    "text": "Bachelor of Management Studies Honours. Management. Business and Management. Bachelors Honours Degree",
+    "source_id": "SRC0016",
+    "source_url": "https://ou.ac.lk/programme/bachelor-of-management-studies-honours-2/",
+    "programme_name": "Bachelor of Management Studies Honours"
+  },
+  "PRG0009": {
+    "text": "Bachelor of the Science of Engineering Honours. Engineering. Engineering. Bachelors Honours Degree",
+    "source_id": "SRC0017",
+    "source_url": "https://eng.pdn.ac.lk/academic/undergraduate-programme/",
+    "programme_name": "Bachelor of the Science of Engineering Honours"
+  },
+  "PRG0010": {
+    "text": "Higher National Diploma in Mechatronics Technology. Mechatronics Technology. Engineering. Higher National Diploma",
+    "source_id": "SRC0018",
+    "source_url": "https://ucj.ac.lk/hndmnt/",
+    "programme_name": "Higher National Diploma in Mechatronics Technology"
+  },
+  "PRG0011": {
+    "text": "Bachelor of Engineering Technology in Mechatronics Technology. Mechatronics Technology. Engineering. Bachelors Degree",
+    "source_id": "SRC0019",
+    "source_url": "https://uovt.ac.lk/en/academics/courses/btech-mechatronics-technology",
+    "programme_name": "Bachelor of Engineering Technology in Mechatronics Technology"
+  }
+}

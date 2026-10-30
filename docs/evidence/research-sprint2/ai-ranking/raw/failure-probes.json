@@ -1,0 +1,104 @@
+{
+  "real_missing_model_process": {
+    "requested_method": "semantic",
+    "actual_method": "RULE_BASED_FALLBACK",
+    "fallback_reason": "LOCAL_MODEL_UNAVAILABLE",
+    "module_import_ms": 0.5617919999999985,
+    "model_load_ms": 0,
+    "first_rank_ms": 108.47845799999999,
+    "second_rank_ms": 1.1360420000000038,
+    "rss_before_method_MiB": 13.78125,
+    "peak_rss_after_MiB": 40.703125,
+    "order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "scores": {
+      "PRG0001": null,
+      "PRG0002": null,
+      "PRG0003": null,
+      "PRG0008": null,
+      "PRG0009": null
+    },
+    "metadata": {
+      "legacy_order": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "requested_method": "semantic",
+      "method": "RULE_BASED_FALLBACK",
+      "status": "UNAVAILABLE",
+      "fallback_reason": "LOCAL_MODEL_UNAVAILABLE",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    }
+  },
+  "empty_candidates": [
+    {
+      "legacy_order": [],
+      "requested_method": "deterministic",
+      "method": "RULE_BASED_FALLBACK",
+      "status": "NOT_ASSESSED",
+      "fallback_reason": "NO_CANDIDATES",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    {
+      "legacy_order": [],
+      "requested_method": "tfidf",
+      "method": "RULE_BASED_FALLBACK",
+      "status": "NOT_ASSESSED",
+      "fallback_reason": "NO_CANDIDATES",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    },
+    {
+      "legacy_order": [],
+      "requested_method": "semantic",
+      "method": "RULE_BASED_FALLBACK",
+      "status": "NOT_ASSESSED",
+      "fallback_reason": "NO_CANDIDATES",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "catalogue_hash": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+      "group_order": [
+        "MET",
+        "NOT_ASSESSED",
+        "NOT_MET"
+      ],
+      "scope": "Relevance within academic groups; not a learned preference model."
+    }
+  ],
+  "invalid_method": {
+    "exception": "ValueError",
+    "message": "Unsupported relevance method",
+    "expected": true
+  }
+}

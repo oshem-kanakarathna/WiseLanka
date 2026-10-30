@@ -1,0 +1,493 @@
+[
+  {
+    "scenario_id": "D01",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D02",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D03",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D04",
+    "baseline_order": [
+      "PRG0008",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D05",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D06",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0009",
+      "PRG0008"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008"
+      ],
+      "NOT_MET": [
+        "PRG0009"
+      ]
+    }
+  },
+  {
+    "scenario_id": "D07",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D08",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "D09",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0004",
+      "PRG0005",
+      "PRG0006",
+      "PRG0007",
+      "PRG0008",
+      "PRG0009",
+      "PRG0010",
+      "PRG0011"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F01",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F02",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F03",
+    "baseline_order": [
+      "PRG0008",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0008"
+      ],
+      "NOT_MET": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009"
+      ]
+    }
+  },
+  {
+    "scenario_id": "F04",
+    "baseline_order": [
+      "PRG0008",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0008"
+      ],
+      "NOT_MET": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009"
+      ]
+    }
+  },
+  {
+    "scenario_id": "F05",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F06",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F07",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0004",
+      "PRG0005",
+      "PRG0006",
+      "PRG0007",
+      "PRG0008",
+      "PRG0009",
+      "PRG0010",
+      "PRG0011"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F08",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0004",
+      "PRG0005",
+      "PRG0006",
+      "PRG0007",
+      "PRG0008",
+      "PRG0009",
+      "PRG0010",
+      "PRG0011"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F09",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0004",
+      "PRG0005",
+      "PRG0006",
+      "PRG0007",
+      "PRG0008",
+      "PRG0009",
+      "PRG0010",
+      "PRG0011"
+    ],
+    "partitions": {
+      "MET": [],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F10",
+    "baseline_order": [
+      "PRG0004"
+    ],
+    "partitions": {
+      "MET": [
+        "PRG0004"
+      ],
+      "NOT_ASSESSED": [],
+      "NOT_MET": []
+    }
+  },
+  {
+    "scenario_id": "F11",
+    "baseline_order": [
+      "PRG0004",
+      "PRG0009",
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0008"
+    ],
+    "partitions": {
+      "MET": [
+        "PRG0004"
+      ],
+      "NOT_ASSESSED": [
+        "PRG0008"
+      ],
+      "NOT_MET": [
+        "PRG0009",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003"
+      ]
+    }
+  },
+  {
+    "scenario_id": "F12",
+    "baseline_order": [
+      "PRG0001",
+      "PRG0002",
+      "PRG0003",
+      "PRG0004",
+      "PRG0008",
+      "PRG0009"
+    ],
+    "partitions": {
+      "MET": [
+        "PRG0004"
+      ],
+      "NOT_ASSESSED": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "NOT_MET": []
+    }
+  }
+]

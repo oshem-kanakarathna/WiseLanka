@@ -1,0 +1,32 @@
+[
+  {
+    "scenario": "F01",
+    "tfidf_top1": "PRG0009",
+    "overlapping_tokens": [
+      "engineering"
+    ],
+    "not_a_relevance_label": true
+  },
+  {
+    "scenario": "F02",
+    "tfidf_top1": "PRG0001",
+    "overlapping_tokens": [],
+    "not_a_relevance_label": true
+  },
+  {
+    "scenario": "F06",
+    "tfidf_top1": "PRG0001",
+    "overlapping_tokens": [
+      "in"
+    ],
+    "not_a_relevance_label": true
+  },
+  {
+    "scenario": "F08",
+    "tfidf_top1": "PRG0007",
+    "overlapping_tokens": [
+      "and"
+    ],
+    "not_a_relevance_label": true
+  }
+]

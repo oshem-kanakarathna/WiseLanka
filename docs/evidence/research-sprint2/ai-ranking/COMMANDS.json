@@ -1,0 +1,20 @@
+{
+  "cwd": "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka",
+  "comparison": {
+    "command": [
+      "/private/tmp/wiselanka-repro-venv/bin/python",
+      "docs/evidence/research-sprint2/ai-ranking/run_experiment.py"
+    ],
+    "exit_code": 0,
+    "stdout": "raw/run-stdout.txt",
+    "stderr": "raw/run-stderr.txt"
+  },
+  "analysis": {
+    "command": [
+      "python3",
+      "docs/evidence/research-sprint2/ai-ranking/analyse_results.py"
+    ],
+    "exit_code": 0
+  },
+  "notes": "Additional read-only dependency/runtime metadata and lexical diagnostics are recorded in raw/. No production changes or human evaluation."
+}
