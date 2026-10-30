@@ -1,0 +1,13 @@
+{
+  "source_initial_sandbox_fetch": 2,
+  "source_authorised_retry": 0,
+  "supplementary_direct_fetch": 0,
+  "source_text_extraction": 0,
+  "synthetic_API_harness": 0,
+  "focused_existing_regressions": 0,
+  "csv_integrity": 0,
+  "pip_freeze": 0,
+  "note": "Zero harness exit means measurement completed;42/45 agreement,not45 passing correctness tests.",
+  "initial_syntax_compile_default_cache": 1,
+  "syntax_compile_with_task_tmp_cache": 0
+}

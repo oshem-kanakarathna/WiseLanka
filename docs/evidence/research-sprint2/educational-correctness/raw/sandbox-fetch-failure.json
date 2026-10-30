@@ -1,0 +1,170 @@
+[
+  {
+    "source_id": "SRC0001",
+    "requested_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+    "retrieved_utc": "2026-10-30T05:25:40.087453+00:00",
+    "historical_retrieved_date": "2026-08-08",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0002",
+    "requested_url": "https://uom.lk/eap/academicprograms",
+    "retrieved_utc": "2026-10-30T05:25:40.087781+00:00",
+    "historical_retrieved_date": "2026-08-08",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0003",
+    "requested_url": "https://www.ugc.ac.lk/downloads/OrdersAndOrdinances/UniversityOfMoratuwa/2024_11_29/English.pdf",
+    "retrieved_utc": "2026-10-30T05:25:40.087911+00:00",
+    "historical_retrieved_date": "2026-08-08",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0004",
+    "requested_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+    "retrieved_utc": "2026-10-30T05:25:40.088017+00:00",
+    "historical_retrieved_date": "2026-08-11",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0005",
+    "requested_url": "https://cmb.ac.lk/undergraduate-programmes",
+    "retrieved_utc": "2026-10-30T05:25:40.088119+00:00",
+    "historical_retrieved_date": "2026-08-11",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0006",
+    "requested_url": "https://uom.lk/itfac/bachelor-science-honours-artificial-intelligence",
+    "retrieved_utc": "2026-10-30T05:25:40.111996+00:00",
+    "historical_retrieved_date": "2026-08-11",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0007",
+    "requested_url": "https://www.icta.lk/projects/capacity-building/national-it-bpm-workforce-survey",
+    "retrieved_utc": "2026-10-30T05:25:40.112598+00:00",
+    "historical_retrieved_date": "2026-08-17",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0008",
+    "requested_url": "https://www.icta.lk/resources/monitoring-and-evaluation/monitoring-and-evaluation-reports",
+    "retrieved_utc": "2026-10-30T05:25:40.113114+00:00",
+    "historical_retrieved_date": "2026-08-17",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0009",
+    "requested_url": "https://www.iit.ac.lk/foundation/",
+    "retrieved_utc": "2026-10-30T05:25:40.113606+00:00",
+    "historical_retrieved_date": "2026-08-18",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0011",
+    "requested_url": "https://www.iit.ac.lk/about/academic-partners/",
+    "retrieved_utc": "2026-10-30T05:25:40.114096+00:00",
+    "historical_retrieved_date": "2026-08-18",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0010",
+    "requested_url": "https://www.iit.ac.lk/foundation/it/",
+    "retrieved_utc": "2026-10-30T05:25:40.121154+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0012",
+    "requested_url": "https://www.iit.ac.lk/course/beng-software-engineering/",
+    "retrieved_utc": "2026-10-30T05:25:40.121757+00:00",
+    "historical_retrieved_date": "2026-08-19",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0013",
+    "requested_url": "https://www.iit.ac.lk/course/bsc-computer-science/",
+    "retrieved_utc": "2026-10-30T05:25:40.128970+00:00",
+    "historical_retrieved_date": "2026-08-19",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0014",
+    "requested_url": "https://www.iit.ac.lk/course/bsc-artificial-intelligence-and-data-science/",
+    "retrieved_utc": "2026-10-30T05:25:40.129440+00:00",
+    "historical_retrieved_date": "2026-08-19",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0015",
+    "requested_url": "https://www.mohe.gov.lk/images/pdf/Hungrian_UG_Web_Notice_2026.pdf",
+    "retrieved_utc": "2026-10-30T05:25:40.129877+00:00",
+    "historical_retrieved_date": "2026-09-14",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0016",
+    "requested_url": "https://ou.ac.lk/programme/bachelor-of-management-studies-honours-2/",
+    "retrieved_utc": "2026-10-30T05:25:40.132482+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0017",
+    "requested_url": "https://eng.pdn.ac.lk/academic/undergraduate-programme/",
+    "retrieved_utc": "2026-10-30T05:25:40.137266+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0018",
+    "requested_url": "https://ucj.ac.lk/hndmnt/",
+    "retrieved_utc": "2026-10-30T05:25:40.140602+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0019",
+    "requested_url": "https://uovt.ac.lk/en/academics/courses/btech-mechatronics-technology",
+    "retrieved_utc": "2026-10-30T05:25:40.141327+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0020",
+    "requested_url": "https://uovt.ac.lk/en/academics/admission_page",
+    "retrieved_utc": "2026-10-30T05:25:40.144189+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  },
+  {
+    "source_id": "SRC0021",
+    "requested_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+    "retrieved_utc": "2026-10-30T05:25:40.149030+00:00",
+    "historical_retrieved_date": "2026-10-29",
+    "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "http_status": null
+  }
+]

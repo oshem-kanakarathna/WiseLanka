@@ -1,0 +1,1024 @@
+{
+  "omitted": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": []
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+        "O_LEVEL Mathematics: C (credit pass C or above required)",
+        "O_LEVEL English: C (credit pass C or above required)"
+      ],
+      "failed": [
+        "5 O/L subjects passed; 6 required"
+      ],
+      "not_assessed": [],
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0009",
+          "source_url": "https://www.iit.ac.lk/foundation/",
+          "source_organisation": "Informatics Institute of Technology",
+          "source_accessed": "2026-08-18"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0004",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP007",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0014",
+                "status": "NOT_MET",
+                "description": "At least six GCE O/L subjects must be passed",
+                "explanation": "5 O/L subjects passed; 6 required",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP008",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0015",
+                "status": "MET",
+                "description": "At least three GCE O/L subjects must have credit passes",
+                "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP009",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0016",
+                "status": "MET",
+                "description": "Mathematics must have a credit pass",
+                "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP010",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0017",
+                "status": "MET",
+                "description": "English must have a credit pass",
+                "explanation": "O_LEVEL English: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "empty": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": {}
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+        "O_LEVEL Mathematics: C (credit pass C or above required)",
+        "O_LEVEL English: C (credit pass C or above required)"
+      ],
+      "failed": [
+        "5 O/L subjects passed; 6 required"
+      ],
+      "not_assessed": [],
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0009",
+          "source_url": "https://www.iit.ac.lk/foundation/",
+          "source_organisation": "Informatics Institute of Technology",
+          "source_accessed": "2026-08-18"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0004",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP007",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0014",
+                "status": "NOT_MET",
+                "description": "At least six GCE O/L subjects must be passed",
+                "explanation": "5 O/L subjects passed; 6 required",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP008",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0015",
+                "status": "MET",
+                "description": "At least three GCE O/L subjects must have credit passes",
+                "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP009",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0016",
+                "status": "MET",
+                "description": "Mathematics must have a credit pass",
+                "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP010",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0017",
+                "status": "MET",
+                "description": "English must have a credit pass",
+                "explanation": "O_LEVEL English: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "false": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": {
+        "O_LEVEL": false
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "eligible": false,
+      "assessment_status": "NOT_ASSESSED",
+      "summary": "Eligibility is not assessed: input or rule evidence is incomplete, or provider review is required. This is not a rejection.",
+      "passed": [
+        "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+        "O_LEVEL Mathematics: C (credit pass C or above required)",
+        "O_LEVEL English: C (credit pass C or above required)"
+      ],
+      "failed": [],
+      "not_assessed": [
+        "The submitted results are incomplete; the recorded requirement is not yet demonstrated."
+      ],
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0009",
+          "source_url": "https://www.iit.ac.lk/foundation/",
+          "source_organisation": "Informatics Institute of Technology",
+          "source_accessed": "2026-08-18"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0004",
+        "status": "NOT_ASSESSED",
+        "groups": [
+          {
+            "group_id": "GRP007",
+            "operator": "AND",
+            "status": "NOT_ASSESSED",
+            "requirements": [
+              {
+                "requirement_id": "REQ0014",
+                "status": "NOT_ASSESSED",
+                "description": "At least six GCE O/L subjects must be passed",
+                "explanation": "The submitted results are incomplete; the recorded requirement is not yet demonstrated.",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP008",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0015",
+                "status": "MET",
+                "description": "At least three GCE O/L subjects must have credit passes",
+                "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP009",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0016",
+                "status": "MET",
+                "description": "Mathematics must have a credit pass",
+                "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP010",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0017",
+                "status": "MET",
+                "description": "English must have a credit pass",
+                "explanation": "O_LEVEL English: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          }
+        ],
+        "next_step": "Supply missing results or ask the provider to assess your qualifications. Missing evidence is not a rejection, and a reported award is not assumed equivalent to examination results."
+      }
+    }
+  },
+  "true": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": {
+        "O_LEVEL": true
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+        "O_LEVEL Mathematics: C (credit pass C or above required)",
+        "O_LEVEL English: C (credit pass C or above required)"
+      ],
+      "failed": [
+        "5 O/L subjects passed; 6 required"
+      ],
+      "not_assessed": [],
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0009",
+          "source_url": "https://www.iit.ac.lk/foundation/",
+          "source_organisation": "Informatics Institute of Technology",
+          "source_accessed": "2026-08-18"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0004",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP007",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0014",
+                "status": "NOT_MET",
+                "description": "At least six GCE O/L subjects must be passed",
+                "explanation": "5 O/L subjects passed; 6 required",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP008",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0015",
+                "status": "MET",
+                "description": "At least three GCE O/L subjects must have credit passes",
+                "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP009",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0016",
+                "status": "MET",
+                "description": "Mathematics must have a credit pass",
+                "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP010",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0017",
+                "status": "MET",
+                "description": "English must have a credit pass",
+                "explanation": "O_LEVEL English: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "null": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": null
+    },
+    "http_status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "dict_type",
+          "loc": [
+            "body",
+            "education_complete"
+          ],
+          "msg": "Input should be a valid dictionary",
+          "input": null
+        }
+      ]
+    }
+  },
+  "level_null": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": {
+        "O_LEVEL": null
+      }
+    },
+    "http_status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "bool_type",
+          "loc": [
+            "body",
+            "education_complete",
+            "O_LEVEL"
+          ],
+          "msg": "Input should be a valid boolean",
+          "input": null
+        }
+      ]
+    }
+  },
+  "empty_string": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "existing_qualifications": [],
+      "education_complete": {
+        "O_LEVEL": ""
+      }
+    },
+    "http_status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "bool_parsing",
+          "loc": [
+            "body",
+            "education_complete",
+            "O_LEVEL"
+          ],
+          "msg": "Input should be a valid boolean, unable to interpret input",
+          "input": ""
+        }
+      ]
+    }
+  },
+  "exact_EC08": {
+    "request": {
+      "programme_id": "PRG0004",
+      "student_results": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S"
+        }
+      },
+      "education_complete": {},
+      "existing_qualifications": []
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+        "O_LEVEL Mathematics: C (credit pass C or above required)",
+        "O_LEVEL English: C (credit pass C or above required)"
+      ],
+      "failed": [
+        "5 O/L subjects passed; 6 required"
+      ],
+      "not_assessed": [],
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0009",
+          "source_url": "https://www.iit.ac.lk/foundation/",
+          "source_organisation": "Informatics Institute of Technology",
+          "source_accessed": "2026-08-18"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0004",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP007",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0014",
+                "status": "NOT_MET",
+                "description": "At least six GCE O/L subjects must be passed",
+                "explanation": "5 O/L subjects passed; 6 required",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP008",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0015",
+                "status": "MET",
+                "description": "At least three GCE O/L subjects must have credit passes",
+                "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP009",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0016",
+                "status": "MET",
+                "description": "Mathematics must have a credit pass",
+                "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP010",
+            "operator": "AND",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0017",
+                "status": "MET",
+                "description": "English must have a credit pass",
+                "explanation": "O_LEVEL English: C (credit pass C or above required)",
+                "source_id": "SRC0009",
+                "source_url": "https://www.iit.ac.lk/foundation/",
+                "source_organisation": "Informatics Institute of Technology",
+                "source_accessed": "2026-08-18"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "AL_count": {
+    "request": {
+      "programme_id": "PRG0001",
+      "student_results": {
+        "A_LEVEL": {
+          "Physics": "C",
+          "Chemistry": "S"
+        }
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0001",
+      "programme_name": "Bachelor of Science Honours in Information Technology",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "A_LEVEL Physics: C (minimum C)"
+      ],
+      "failed": [
+        "2 A/L subjects passed; 3 required"
+      ],
+      "not_assessed": [
+        "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified"
+      ],
+      "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0001",
+          "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+          "source_organisation": "University of Moratuwa",
+          "source_accessed": "2026-08-08"
+        },
+        {
+          "source_id": "SRC0021",
+          "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+          "source_organisation": "University Grants Commission Sri Lanka",
+          "source_accessed": "2026-10-29"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0001",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP001",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0001",
+                "status": "NOT_MET",
+                "description": "Pass all three subjects offered at GCE Advanced Level",
+                "explanation": "2 A/L subjects passed; 3 required",
+                "source_id": "SRC0001",
+                "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+                "source_organisation": "University of Moratuwa",
+                "source_accessed": "2026-08-08"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP002",
+            "operator": "OR",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0002",
+                "status": "NOT_ASSESSED",
+                "description": "Accepted subject with minimum grade C",
+                "explanation": "A_LEVEL Higher Mathematics was not provided",
+                "source_id": "SRC0001",
+                "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+                "source_organisation": "University of Moratuwa",
+                "source_accessed": "2026-08-08"
+              },
+              {
+                "requirement_id": "REQ0003",
+                "status": "NOT_ASSESSED",
+                "description": "Accepted subject with minimum grade C",
+                "explanation": "A_LEVEL Combined Mathematics was not provided",
+                "source_id": "SRC0001",
+                "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+                "source_organisation": "University of Moratuwa",
+                "source_accessed": "2026-08-08"
+              },
+              {
+                "requirement_id": "REQ0004",
+                "status": "NOT_ASSESSED",
+                "description": "Accepted subject with minimum grade C",
+                "explanation": "A_LEVEL Mathematics was not provided",
+                "source_id": "SRC0001",
+                "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+                "source_organisation": "University of Moratuwa",
+                "source_accessed": "2026-08-08"
+              },
+              {
+                "requirement_id": "REQ0005",
+                "status": "MET",
+                "description": "Accepted subject with minimum grade C",
+                "explanation": "A_LEVEL Physics: C (minimum C)",
+                "source_id": "SRC0001",
+                "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+                "source_organisation": "University of Moratuwa",
+                "source_accessed": "2026-08-08"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP019",
+            "operator": "AND",
+            "status": "NOT_ASSESSED",
+            "requirements": [
+              {
+                "requirement_id": "REQ0032",
+                "status": "NOT_ASSESSED",
+                "description": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+                "explanation": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+                "source_id": "SRC0021",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-10-29"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "AL_set_count": {
+    "request": {
+      "programme_id": "PRG0002",
+      "student_results": {
+        "A_LEVEL": {
+          "Physics": "C"
+        }
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0002",
+      "programme_name": "Bachelor of Science in Computer Science",
+      "eligible": false,
+      "assessment_status": "NOT_MET",
+      "summary": "At least one recorded requirement is not met. Review the groups and official sources.",
+      "passed": [
+        "A_LEVEL Physics: C (minimum C)"
+      ],
+      "failed": [
+        "1 approved A_LEVEL subjects met grade S or above; 3 required. Matched: Physics: C"
+      ],
+      "not_assessed": [
+        "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified"
+      ],
+      "source_url": "https://cmb.ac.lk/undergraduate-programmes",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0004",
+          "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+          "source_organisation": "University Grants Commission Sri Lanka",
+          "source_accessed": "2026-08-11"
+        },
+        {
+          "source_id": "SRC0021",
+          "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+          "source_organisation": "University Grants Commission Sri Lanka",
+          "source_accessed": "2026-10-29"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0002",
+        "status": "NOT_MET",
+        "groups": [
+          {
+            "group_id": "GRP003",
+            "operator": "AND",
+            "status": "NOT_MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0006",
+                "status": "NOT_MET",
+                "description": "At least three approved A/L subjects must be passed",
+                "explanation": "1 approved A_LEVEL subjects met grade S or above; 3 required. Matched: Physics: C",
+                "source_id": "SRC0004",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-08-11"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP004",
+            "operator": "OR",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0007",
+                "status": "NOT_ASSESSED",
+                "description": "At least one required mathematics or physics subject must have minimum grade C",
+                "explanation": "A_LEVEL Combined Mathematics was not provided",
+                "source_id": "SRC0004",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-08-11"
+              },
+              {
+                "requirement_id": "REQ0008",
+                "status": "MET",
+                "description": "At least one required mathematics or physics subject must have minimum grade C",
+                "explanation": "A_LEVEL Physics: C (minimum C)",
+                "source_id": "SRC0004",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-08-11"
+              },
+              {
+                "requirement_id": "REQ0009",
+                "status": "NOT_ASSESSED",
+                "description": "At least one required mathematics or physics subject must have minimum grade C",
+                "explanation": "A_LEVEL Higher Mathematics was not provided",
+                "source_id": "SRC0004",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-08-11"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP020",
+            "operator": "AND",
+            "status": "NOT_ASSESSED",
+            "requirements": [
+              {
+                "requirement_id": "REQ0033",
+                "status": "NOT_ASSESSED",
+                "description": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+                "explanation": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+                "source_id": "SRC0021",
+                "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+                "source_organisation": "University Grants Commission Sri Lanka",
+                "source_accessed": "2026-10-29"
+              }
+            ]
+          }
+        ],
+        "next_step": "Review the unmet requirement groups and official sources. Ask the provider about resits or documented alternative entry routes; an OR group requires only one accepted option."
+      }
+    }
+  },
+  "qualification": {
+    "request": {
+      "programme_id": "PRG0010",
+      "student_results": {},
+      "existing_qualifications": [
+        {
+          "qualification_id": "QLF0012",
+          "title": "Electrician (NVQ Level 4 Certificate)"
+        }
+      ]
+    },
+    "http_status": 200,
+    "response": {
+      "programme_id": "PRG0010",
+      "programme_name": "Higher National Diploma in Mechatronics Technology",
+      "eligible": false,
+      "assessment_status": "NOT_ASSESSED",
+      "summary": "Eligibility is not assessed: input or rule evidence is incomplete, or provider review is required. This is not a rejection.",
+      "passed": [
+        "Reported qualification matches the selected entry category; authenticity is not verified."
+      ],
+      "failed": [],
+      "not_assessed": [
+        "Provider must verify the reported certificate and current admission arrangements"
+      ],
+      "source_url": "https://ucj.ac.lk/hndmnt/",
+      "requirement_sources": [
+        {
+          "source_id": "SRC0018",
+          "source_url": "https://ucj.ac.lk/hndmnt/",
+          "source_organisation": "University College of Jaffna",
+          "source_accessed": "2026-10-29"
+        }
+      ],
+      "academic_gap_insights": {
+        "programme_id": "PRG0010",
+        "status": "NOT_ASSESSED",
+        "groups": [
+          {
+            "group_id": "GRP015",
+            "operator": "OR",
+            "status": "MET",
+            "requirements": [
+              {
+                "requirement_id": "REQ0026",
+                "status": "MET",
+                "description": "Selected route: NVQ Level 4 Electrician certificate reported",
+                "explanation": "Reported qualification matches the selected entry category; authenticity is not verified.",
+                "source_id": "SRC0018",
+                "source_url": "https://ucj.ac.lk/hndmnt/",
+                "source_organisation": "University College of Jaffna",
+                "source_accessed": "2026-10-29"
+              },
+              {
+                "requirement_id": "REQ0027",
+                "status": "NOT_ASSESSED",
+                "description": "Other listed NVQ trades or specified A/L stream route require provider review",
+                "explanation": "Other listed NVQ trades or specified A/L stream route require provider review",
+                "source_id": "SRC0018",
+                "source_url": "https://ucj.ac.lk/hndmnt/",
+                "source_organisation": "University College of Jaffna",
+                "source_accessed": "2026-10-29"
+              }
+            ]
+          },
+          {
+            "group_id": "GRP016",
+            "operator": "AND",
+            "status": "NOT_ASSESSED",
+            "requirements": [
+              {
+                "requirement_id": "REQ0028",
+                "status": "NOT_ASSESSED",
+                "description": "Provider must verify the reported certificate and current admission arrangements",
+                "explanation": "Provider must verify the reported certificate and current admission arrangements",
+                "source_id": "SRC0018",
+                "source_url": "https://ucj.ac.lk/hndmnt/",
+                "source_organisation": "University College of Jaffna",
+                "source_accessed": "2026-10-29"
+              }
+            ]
+          }
+        ],
+        "next_step": "Supply missing results or ask the provider to assess your qualifications. Missing evidence is not a rejection, and a reported award is not assumed equivalent to examination results."
+      }
+    }
+  }
+}

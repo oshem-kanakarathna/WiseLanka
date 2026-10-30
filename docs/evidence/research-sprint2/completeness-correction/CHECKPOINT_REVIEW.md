@@ -1,0 +1,11 @@
+# Research checkpoint review — 30 October 2026
+
+Reviewed the exact two production-file changes, new23-case completeness tests, three revised existing test files and preserved execution outputs. The engine change requires an explicit level-specific true before an insufficient count establishes NOT_MET; known below-minimum named grades and positive sufficient counts retain their semantics. Omitted/empty/false inputs remain unknown when insufficient; invalid null/empty-string values return422. Qualification rules are unchanged.
+
+Test revisions are justified by the intended evidence contract: two old fixtures intended a confirmed complete count deficit and now say so; two unrelated-subject tests lacked a completeness declaration and now expect unknown rather than rejection. The original red runs are retained. No educational grade/count threshold or ranking algorithm was changed to fit an expected answer.
+
+Saved verification supports228 backend,36 browser,5 live workflows plusEC08 HTTP and CSV integrity. The45-case replay changes EC08 only at decision level (42→43 agreements); two missing-input reference limitations remain. Original Sprint2A source/oracle/output hashes and both backups match the preservation manifest. No material implementation or evidence-integrity defect was found in this review.
+
+Selective checkpoint includes correction source/tests, small textual correction evidence, and the original textual Sprint2A baseline/harness required to reproduce the controlled comparison. Downloaded source bodies/PDFs, screenshot binaries, bytecode, unrelated academic preparation, private originals and backups are excluded and retained locally. No participant information was collected. This checkpoint approves the scoped correction, not universal educational accuracy or final academic submission. No push authorised.
+
+The full staged whitespace check reports trailing whitespace inside three preserved archival outputs: the exact patch and two red pytest logs. Those bytes are retained as evidence, not cleaned or silently normalised. Source/tests and all other staged documentation pass the normal whitespace check with only these three archive paths excluded. This is output-format whitespace, not a code or evidence-integrity defect.

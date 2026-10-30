@@ -13,8 +13,8 @@ def submit(education=None, **extra):
     }})
 
 
-def test_six_subject_compatibility():
-    result = submit().json()
+def test_complete_six_subject_profile_preserves_unmet_credit_count():
+    result = submit(education_complete={'O_LEVEL': True}).json()
     assert result['count'] == 1
     assert result['recommendations'][0]['eligible'] is False
     assert result['academic_insights'][0]['status'] == 'NOT_MET'
@@ -134,7 +134,8 @@ def test_structured_context_does_not_change_legacy_recommendation_fields():
 
 
 def test_qualification_alongside_exams_preserves_exam_rule_failure():
-    response = submit(existing_qualifications=[{'title': 'Synthetic additional award'}])
+    response = submit(education_complete={'O_LEVEL': True},
+                      existing_qualifications=[{'title': 'Synthetic additional award'}])
     assert response.status_code == 200
     assert response.json()['academic_insights'][0]['status'] == 'NOT_MET'
 

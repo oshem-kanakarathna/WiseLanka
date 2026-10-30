@@ -1,0 +1,2767 @@
+{
+  "data/master/institution_types.csv": [
+    {
+      "institution_type_id": "ITP001",
+      "institution_type_name": "University",
+      "description": "Higher education institution providing university-level education and qualifications"
+    },
+    {
+      "institution_type_id": "ITP002",
+      "institution_type_name": "Higher Education Institute",
+      "description": "Institution providing higher education programmes outside the general university classification"
+    },
+    {
+      "institution_type_id": "ITP003",
+      "institution_type_name": "Vocational Training Institute",
+      "description": "Institution primarily providing vocational or occupational education and training"
+    },
+    {
+      "institution_type_id": "ITP004",
+      "institution_type_name": "Technical College",
+      "description": "Institution primarily providing technical and vocational education"
+    },
+    {
+      "institution_type_id": "ITP005",
+      "institution_type_name": "Professional Body",
+      "description": "Organisation responsible for professional education standards qualifications or membership pathways"
+    },
+    {
+      "institution_type_id": "ITP006",
+      "institution_type_name": "Awarding Organisation",
+      "description": "Organisation that awards or certifies qualifications delivered directly or through approved providers"
+    },
+    {
+      "institution_type_id": "ITP007",
+      "institution_type_name": "Training Provider",
+      "description": "Organisation providing structured education training or skills-development programmes"
+    },
+    {
+      "institution_type_id": "ITP008",
+      "institution_type_name": "School",
+      "description": "Institution providing primary or secondary school education"
+    },
+    {
+      "institution_type_id": "ITP009",
+      "institution_type_name": "Government Education Agency",
+      "description": "Government organisation responsible for education training qualifications or educational administration"
+    },
+    {
+      "institution_type_id": "ITP010",
+      "institution_type_name": "Regulatory Authority",
+      "description": "Organisation responsible for regulating recognising accrediting or quality-assuring education or training"
+    },
+    {
+      "institution_type_id": "ITP011",
+      "institution_type_name": "Examination Body",
+      "description": "Organisation responsible for administering examinations or awarding examination-based qualifications"
+    },
+    {
+      "institution_type_id": "ITP012",
+      "institution_type_name": "International Awarding Body",
+      "description": "International organisation awarding qualifications that may be delivered by institutions in Sri Lanka"
+    }
+  ],
+  "data/master/programme_types.csv": [
+    {
+      "programme_type_id": "PTP001",
+      "programme_type_name": "School Pathway",
+      "description": "Structured school education pathway"
+    },
+    {
+      "programme_type_id": "PTP002",
+      "programme_type_name": "Foundation Programme",
+      "description": "Programme preparing learners for entry into higher education"
+    },
+    {
+      "programme_type_id": "PTP003",
+      "programme_type_name": "Certificate Programme",
+      "description": "Programme leading to a certificate-level qualification"
+    },
+    {
+      "programme_type_id": "PTP004",
+      "programme_type_name": "Diploma Programme",
+      "description": "Programme leading to a diploma qualification"
+    },
+    {
+      "programme_type_id": "PTP005",
+      "programme_type_name": "Higher Diploma Programme",
+      "description": "Programme leading to a higher diploma qualification"
+    },
+    {
+      "programme_type_id": "PTP006",
+      "programme_type_name": "NVQ Programme",
+      "description": "Vocational programme aligned with the National Vocational Qualifications Framework"
+    },
+    {
+      "programme_type_id": "PTP007",
+      "programme_type_name": "Undergraduate Degree Programme",
+      "description": "Programme leading to a bachelors-level degree"
+    },
+    {
+      "programme_type_id": "PTP008",
+      "programme_type_name": "Top-up Degree Programme",
+      "description": "Programme providing advanced entry toward completion of a bachelors degree"
+    },
+    {
+      "programme_type_id": "PTP009",
+      "programme_type_name": "Postgraduate Programme",
+      "description": "Programme undertaken after an undergraduate qualification"
+    },
+    {
+      "programme_type_id": "PTP010",
+      "programme_type_name": "Doctoral Programme",
+      "description": "Programme leading toward a doctoral qualification"
+    },
+    {
+      "programme_type_id": "PTP011",
+      "programme_type_name": "Professional Programme",
+      "description": "Programme leading to a professional qualification or professional membership pathway"
+    },
+    {
+      "programme_type_id": "PTP012",
+      "programme_type_name": "Industry Certification Programme",
+      "description": "Training programme preparing learners for an industry certification"
+    },
+    {
+      "programme_type_id": "PTP013",
+      "programme_type_name": "Short Course",
+      "description": "Short-duration programme focused on a specific area of learning or skill development"
+    },
+    {
+      "programme_type_id": "PTP014",
+      "programme_type_name": "Microcredential Programme",
+      "description": "Focused programme leading to a microcredential"
+    },
+    {
+      "programme_type_id": "PTP015",
+      "programme_type_name": "Bridging Programme",
+      "description": "Programme designed to satisfy progression or entry gaps between qualifications"
+    },
+    {
+      "programme_type_id": "PTP016",
+      "programme_type_name": "Apprenticeship",
+      "description": "Structured occupational training combining formal learning with workplace experience"
+    }
+  ],
+  "data/master/qualification_frameworks.csv": [
+    {
+      "framework_id": "FRM001",
+      "framework_name": "Sri Lanka Qualifications Framework",
+      "framework_owner": "University Grants Commission",
+      "country": "Sri Lanka",
+      "description": "National qualifications framework covering senior secondary undergraduate and postgraduate qualification levels across 12 levels"
+    },
+    {
+      "framework_id": "FRM002",
+      "framework_name": "National Vocational Qualifications Framework",
+      "framework_owner": "Tertiary and Vocational Education Commission",
+      "country": "Sri Lanka",
+      "description": "National vocational qualifications framework covering occupational and technical qualifications across 7 levels"
+    },
+    {
+      "framework_id": "FRM003",
+      "framework_name": "Regulated Qualifications Framework",
+      "framework_owner": "Office of Qualifications and Examinations Regulation",
+      "country": "England",
+      "description": "Framework used for regulated qualifications in England with qualification levels from Entry Level through Level 8"
+    }
+  ],
+  "data/master/qualification_types.csv": [
+    {
+      "qualification_type_id": "QTP001",
+      "qualification_type_name": "School Qualification",
+      "description": "Formal school-level examination or qualification"
+    },
+    {
+      "qualification_type_id": "QTP002",
+      "qualification_type_name": "Foundation Qualification",
+      "description": "Pre-degree or bridging qualification preparing learners for higher education"
+    },
+    {
+      "qualification_type_id": "QTP003",
+      "qualification_type_name": "Certificate",
+      "description": "Formal certificate-level qualification"
+    },
+    {
+      "qualification_type_id": "QTP004",
+      "qualification_type_name": "Advanced Certificate",
+      "description": "Qualification above certificate level where applicable"
+    },
+    {
+      "qualification_type_id": "QTP005",
+      "qualification_type_name": "Diploma",
+      "description": "Diploma-level academic vocational or professional qualification"
+    },
+    {
+      "qualification_type_id": "QTP006",
+      "qualification_type_name": "Higher Diploma",
+      "description": "Higher diploma or equivalent advanced diploma-level qualification"
+    },
+    {
+      "qualification_type_id": "QTP007",
+      "qualification_type_name": "NVQ Qualification",
+      "description": "Qualification belonging to the National Vocational Qualifications Framework"
+    },
+    {
+      "qualification_type_id": "QTP008",
+      "qualification_type_name": "Bachelors Degree",
+      "description": "Undergraduate bachelors degree qualification"
+    },
+    {
+      "qualification_type_id": "QTP009",
+      "qualification_type_name": "Bachelors Honours Degree",
+      "description": "Undergraduate bachelors degree with honours"
+    },
+    {
+      "qualification_type_id": "QTP010",
+      "qualification_type_name": "Postgraduate Certificate",
+      "description": "Postgraduate certificate-level qualification"
+    },
+    {
+      "qualification_type_id": "QTP011",
+      "qualification_type_name": "Postgraduate Diploma",
+      "description": "Postgraduate diploma-level qualification"
+    },
+    {
+      "qualification_type_id": "QTP012",
+      "qualification_type_name": "Masters Degree",
+      "description": "Masters-level postgraduate qualification"
+    },
+    {
+      "qualification_type_id": "QTP013",
+      "qualification_type_name": "MPhil",
+      "description": "Master of Philosophy qualification"
+    },
+    {
+      "qualification_type_id": "QTP014",
+      "qualification_type_name": "Doctoral Qualification",
+      "description": "Doctoral-level qualification such as a PhD or equivalent doctorate"
+    },
+    {
+      "qualification_type_id": "QTP015",
+      "qualification_type_name": "Professional Qualification",
+      "description": "Qualification awarded through a professional education or membership pathway"
+    },
+    {
+      "qualification_type_id": "QTP016",
+      "qualification_type_name": "Industry Certification",
+      "description": "Industry or vendor certification demonstrating a specific professional or technical competency"
+    },
+    {
+      "qualification_type_id": "QTP017",
+      "qualification_type_name": "Microcredential",
+      "description": "Short focused credential representing assessed learning or competency"
+    },
+    {
+      "qualification_type_id": "QTP018",
+      "qualification_type_name": "Short Course Award",
+      "description": "Certificate or award from a short learning programme that may fall outside a formal qualification framework"
+    }
+  ],
+  "data/master/study_modes.csv": [
+    {
+      "study_mode_id": "STM001",
+      "study_mode_name": "Full-time",
+      "description": "Programme undertaken on a full-time study basis"
+    },
+    {
+      "study_mode_id": "STM002",
+      "study_mode_name": "Part-time",
+      "description": "Programme undertaken on a part-time study basis"
+    },
+    {
+      "study_mode_id": "STM003",
+      "study_mode_name": "Online",
+      "description": "Programme primarily undertaken through online learning"
+    },
+    {
+      "study_mode_id": "STM004",
+      "study_mode_name": "Blended",
+      "description": "Programme combining online and in-person learning"
+    },
+    {
+      "study_mode_id": "STM005",
+      "study_mode_name": "Distance",
+      "description": "Programme primarily delivered through distance learning"
+    },
+    {
+      "study_mode_id": "STM006",
+      "study_mode_name": "Weekend",
+      "description": "Programme primarily scheduled during weekends"
+    }
+  ],
+  "data/metadata/evidence_sources.csv": [
+    {
+      "source_id": "SRC0001",
+      "source_title": "University of Moratuwa BScHons IT official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "University of Moratuwa",
+      "source_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+      "publication_date": "",
+      "retrieved_date": "2026-08-08",
+      "authority_level": "Primary Official Source",
+      "notes": "Used for programme structure admission criteria SLQF level and medium of instruction"
+    },
+    {
+      "source_id": "SRC0002",
+      "source_title": "University of Moratuwa academic programmes page",
+      "source_type": "Official Academic Programme Directory",
+      "issuing_organisation": "University of Moratuwa",
+      "source_url": "https://uom.lk/eap/academicprograms",
+      "publication_date": "",
+      "retrieved_date": "2026-08-08",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify programme title duration and course code"
+    },
+    {
+      "source_id": "SRC0003",
+      "source_title": "University of Moratuwa Universities Act Gazette record",
+      "source_type": "Government Gazette",
+      "issuing_organisation": "Government of Sri Lanka",
+      "source_url": "https://www.ugc.ac.lk/downloads/OrdersAndOrdinances/UniversityOfMoratuwa/2024_11_29/English.pdf",
+      "publication_date": "2024-11-29",
+      "retrieved_date": "2026-08-08",
+      "authority_level": "Primary Legal Source",
+      "notes": "Confirms University of Moratuwa status under the Universities Act framework"
+    },
+    {
+      "source_id": "SRC0004",
+      "source_title": "UGC University Admissions Handbook 2025/2026",
+      "source_type": "Official Admissions Handbook",
+      "issuing_organisation": "University Grants Commission Sri Lanka",
+      "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf",
+      "publication_date": "",
+      "retrieved_date": "2026-08-11",
+      "authority_level": "Primary Regulatory Source",
+      "notes": "Used to verify Computer Science admission requirements and programme availability"
+    },
+    {
+      "source_id": "SRC0005",
+      "source_title": "University of Colombo Undergraduate Programmes",
+      "source_type": "Official Programme Directory",
+      "issuing_organisation": "University of Colombo",
+      "source_url": "https://cmb.ac.lk/undergraduate-programmes",
+      "publication_date": "",
+      "retrieved_date": "2026-08-11",
+      "authority_level": "Primary Official Source",
+      "notes": "Confirms BSc in Computer Science under UCSC"
+    },
+    {
+      "source_id": "SRC0006",
+      "source_title": "University of Moratuwa BSc Honours in Artificial Intelligence official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "University of Moratuwa",
+      "source_url": "https://uom.lk/itfac/bachelor-science-honours-artificial-intelligence",
+      "publication_date": "",
+      "retrieved_date": "2026-08-11",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify programme title provider programme purpose and current availability"
+    },
+    {
+      "source_id": "SRC0007",
+      "source_title": "ICTA National IT-BPM Workforce Survey",
+      "source_type": "National Workforce Survey",
+      "issuing_organisation": "Information and Communication Technology Agency of Sri Lanka",
+      "source_url": "https://www.icta.lk/projects/capacity-building/national-it-bpm-workforce-survey",
+      "publication_date": "",
+      "retrieved_date": "2026-08-17",
+      "authority_level": "Primary Government Industry Source",
+      "notes": "Used to support Sri Lankan ICT workforce demand skills supply-gap and future-role evidence"
+    },
+    {
+      "source_id": "SRC0008",
+      "source_title": "ICTA National IT-BPM Workforce Survey Report",
+      "source_type": "Government Workforce Report",
+      "issuing_organisation": "Information and Communication Technology Agency of Sri Lanka",
+      "source_url": "https://www.icta.lk/resources/monitoring-and-evaluation/monitoring-and-evaluation-reports",
+      "publication_date": "",
+      "retrieved_date": "2026-08-17",
+      "authority_level": "Primary Government Industry Source",
+      "notes": "Used to support ICT workforce composition software engineering employment-category and workforce-demand evidence"
+    },
+    {
+      "source_id": "SRC0009",
+      "source_title": "IIT International Foundation official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/foundation/",
+      "publication_date": "",
+      "retrieved_date": "2026-08-18",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify IIT International Foundation Level 3 status pathways NQual awarding relationship and Ofqual-regulated status"
+    },
+    {
+      "source_id": "SRC0011",
+      "source_title": "IIT Academic Partners official page",
+      "source_type": "Official Academic Partners Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/about/academic-partners/",
+      "publication_date": "",
+      "retrieved_date": "2026-08-18",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify IIT academic partnerships with University of Westminster and Robert Gordon University"
+    },
+    {
+      "source_id": "SRC0010",
+      "source_title": "IIT Computing Foundation progression page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/foundation/it/",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "Rechecked: Computing Foundation entry and progression; current AI progression module threshold is 40 percent; earlier stored 50 percent superseded"
+    },
+    {
+      "source_id": "SRC0012",
+      "source_title": "IIT BEng Honours Software Engineering official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/course/beng-software-engineering/",
+      "publication_date": "",
+      "retrieved_date": "2026-08-19",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify programme title duration delivery institution awarding university and current programme availability"
+    },
+    {
+      "source_id": "SRC0013",
+      "source_title": "IIT BSc Honours Computer Science official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/course/bsc-computer-science/",
+      "publication_date": "",
+      "retrieved_date": "2026-08-19",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify programme title duration delivery institution awarding university and current programme availability"
+    },
+    {
+      "source_id": "SRC0014",
+      "source_title": "IIT BSc Honours Artificial Intelligence and Data Science official programme page",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "Informatics Institute of Technology",
+      "source_url": "https://www.iit.ac.lk/course/bsc-artificial-intelligence-and-data-science/",
+      "publication_date": "",
+      "retrieved_date": "2026-08-19",
+      "authority_level": "Primary Official Source",
+      "notes": "Used to verify programme title duration delivery institution awarding university and current programme availability"
+    },
+    {
+      "source_id": "SRC0015",
+      "source_title": "Stipendium Hungaricum Undergraduate Scholarships Hungary 2026/27 official notice",
+      "source_type": "Official Scholarship Notice",
+      "issuing_organisation": "Ministry of Education Higher Education and Vocational Education Sri Lanka",
+      "source_url": "https://www.mohe.gov.lk/images/pdf/Hungrian_UG_Web_Notice_2026.pdf",
+      "publication_date": "",
+      "retrieved_date": "2026-09-14",
+      "authority_level": "Primary Government Source",
+      "notes": "Used to verify Sri Lankan applicant eligibility fields of study and application conditions for the 2026/27 undergraduate Stipendium Hungaricum scholarship"
+    },
+    {
+      "source_id": "SRC0016",
+      "source_title": "OUSL Bachelor of Management Studies Honours",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "The Open University of Sri Lanka",
+      "source_url": "https://ou.ac.lk/programme/bachelor-of-management-studies-honours-2/",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "A/L route and alternative awards; age and selection conditions checked; no SLQF level inferred"
+    },
+    {
+      "source_id": "SRC0017",
+      "source_title": "Peradeniya undergraduate engineering",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "University of Peradeniya",
+      "source_url": "https://eng.pdn.ac.lk/academic/undergraduate-programme/",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "Three specified A/L passes and government admission policy; four-year full-time course; no accreditation inferred"
+    },
+    {
+      "source_id": "SRC0018",
+      "source_title": "UCJ HND Mechatronics",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "University College of Jaffna",
+      "source_url": "https://ucj.ac.lk/hndmnt/",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "NVQ Level 4 named trades or specified A/L streams; programme includes NVQ levels 5 and 6"
+    },
+    {
+      "source_id": "SRC0019",
+      "source_title": "UoVT Mechatronics Engineering Technology",
+      "source_type": "Official Programme Page",
+      "issuing_organisation": "University of Vocational Technology",
+      "source_url": "https://uovt.ac.lk/en/academics/courses/btech-mechatronics-technology",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "Degree title duration and NVQ entry categories checked; accepted disciplines include Mechatronics; framework level unverified"
+    },
+    {
+      "source_id": "SRC0020",
+      "source_title": "UoVT admission process",
+      "source_type": "Official Admissions Guidance",
+      "issuing_organisation": "University of Vocational Technology",
+      "source_url": "https://uovt.ac.lk/en/academics/admission_page",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Official Source",
+      "notes": "General NVQ 5/6 entry subject to programme rules; testing interview when applicable and document verification"
+    },
+    {
+      "source_id": "SRC0021",
+      "source_title": "UGC Admissions Handbook 2025/2026 general entry and selection",
+      "source_type": "Official Admissions Handbook",
+      "issuing_organisation": "University Grants Commission Sri Lanka",
+      "source_url": "https://www.ugc.ac.lk/downloads/admissions/Handbook_2025_26/student_handbook_english.pdf#page=16",
+      "publication_date": "",
+      "retrieved_date": "2026-10-29",
+      "authority_level": "Primary Regulatory Source",
+      "notes": "PDF pages 16-17 (printed 9-10): single sitting within three attempts; Common General Paper minimum 30 percent; selection cut-offs vary by programme district and year. Reviewed locally with pypdf 5.9.0."
+    }
+  ],
+  "data/metadata/recognition_records.csv": [
+    {
+      "recognition_id": "REC0001",
+      "entity_type": "Institution",
+      "entity_id": "INS0001",
+      "authority_id": "Government of Sri Lanka",
+      "recognition_type": "Established University",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0003",
+      "last_verified_date": "2026-08-09",
+      "confidence_level": "High",
+      "notes": "University status supported by official legal evidence under the Universities Act framework"
+    },
+    {
+      "recognition_id": "REC0002",
+      "entity_type": "Programme",
+      "entity_id": "PRG0001",
+      "authority_id": "University of Moratuwa",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0001",
+      "last_verified_date": "2026-08-09",
+      "confidence_level": "High",
+      "notes": "Programme details verified using the official University of Moratuwa programme page"
+    },
+    {
+      "recognition_id": "REC0003",
+      "entity_type": "Qualification",
+      "entity_id": "QLF0001",
+      "authority_id": "University of Moratuwa",
+      "recognition_type": "SLQF Level Declaration",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0001",
+      "last_verified_date": "2026-08-09",
+      "confidence_level": "High",
+      "notes": "Official programme page identifies the degree programme as SLQF Level 6"
+    },
+    {
+      "recognition_id": "REC0004",
+      "entity_type": "Programme",
+      "entity_id": "PRG0002",
+      "authority_id": "University Grants Commission Sri Lanka",
+      "recognition_type": "Official University Admission Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0004",
+      "last_verified_date": "2026-08-11",
+      "confidence_level": "High",
+      "notes": "Computer Science course and eligibility verified using current UGC admissions handbook"
+    },
+    {
+      "recognition_id": "REC0005",
+      "entity_type": "Programme",
+      "entity_id": "PRG0002",
+      "authority_id": "University of Colombo",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0005",
+      "last_verified_date": "2026-08-11",
+      "confidence_level": "High",
+      "notes": "University of Colombo programme directory lists the BSc in Computer Science under UCSC"
+    },
+    {
+      "recognition_id": "REC0006",
+      "entity_type": "Programme",
+      "entity_id": "PRG0003",
+      "authority_id": "University of Moratuwa",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0006",
+      "last_verified_date": "2026-08-11",
+      "confidence_level": "High",
+      "notes": "Artificial Intelligence programme details verified using the official University of Moratuwa programme page"
+    },
+    {
+      "recognition_id": "REC0007",
+      "entity_type": "Programme",
+      "entity_id": "PRG0004",
+      "authority_id": "Informatics Institute of Technology",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0009",
+      "last_verified_date": "2026-08-18",
+      "confidence_level": "High",
+      "notes": "IIT official Foundation pages verify the Computing pathway duration entry requirements and academic progression"
+    },
+    {
+      "recognition_id": "REC0008",
+      "entity_type": "Qualification",
+      "entity_id": "QLF0004",
+      "authority_id": "Informatics Institute of Technology",
+      "recognition_type": "Level and Awarding Body Declaration",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0009",
+      "last_verified_date": "2026-08-18",
+      "confidence_level": "High",
+      "notes": "IIT states that the International Foundation uses an Ofqual-regulated Level 3 qualification awarded through NQual"
+    },
+    {
+      "recognition_id": "REC0009",
+      "entity_type": "Programme",
+      "entity_id": "PRG0005",
+      "authority_id": "Informatics Institute of Technology",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0012",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT official programme page verifies the Software Engineering programme and its awarding university"
+    },
+    {
+      "recognition_id": "REC0010",
+      "entity_type": "Qualification",
+      "entity_id": "QLF0005",
+      "authority_id": "University of Westminster",
+      "recognition_type": "Awarding University Declaration",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0012",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT identifies University of Westminster as the awarding university for BEng Honours Software Engineering"
+    },
+    {
+      "recognition_id": "REC0011",
+      "entity_type": "Programme",
+      "entity_id": "PRG0006",
+      "authority_id": "Informatics Institute of Technology",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0013",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT official programme page verifies the Computer Science programme and its awarding university"
+    },
+    {
+      "recognition_id": "REC0012",
+      "entity_type": "Qualification",
+      "entity_id": "QLF0006",
+      "authority_id": "University of Westminster",
+      "recognition_type": "Awarding University Declaration",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0013",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT identifies University of Westminster as the awarding university for BSc Honours Computer Science"
+    },
+    {
+      "recognition_id": "REC0013",
+      "entity_type": "Programme",
+      "entity_id": "PRG0007",
+      "authority_id": "Informatics Institute of Technology",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0014",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT official programme page verifies the Artificial Intelligence and Data Science programme and its awarding university"
+    },
+    {
+      "recognition_id": "REC0014",
+      "entity_type": "Qualification",
+      "entity_id": "QLF0007",
+      "authority_id": "Robert Gordon University",
+      "recognition_type": "Awarding University Declaration",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0014",
+      "last_verified_date": "2026-08-19",
+      "confidence_level": "High",
+      "notes": "IIT identifies Robert Gordon University as the awarding university for BSc Honours Artificial Intelligence and Data Science"
+    },
+    {
+      "recognition_id": "REC0015",
+      "entity_type": "Programme",
+      "entity_id": "PRG0008",
+      "authority_id": "The Open University of Sri Lanka",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0016",
+      "last_verified_date": "2026-10-29",
+      "confidence_level": "High",
+      "notes": "Verified only as a listing by the provider; not regulator or professional accreditation"
+    },
+    {
+      "recognition_id": "REC0016",
+      "entity_type": "Programme",
+      "entity_id": "PRG0009",
+      "authority_id": "University of Peradeniya",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0017",
+      "last_verified_date": "2026-10-29",
+      "confidence_level": "High",
+      "notes": "Verified only as a listing by the provider; not regulator or professional accreditation"
+    },
+    {
+      "recognition_id": "REC0017",
+      "entity_type": "Programme",
+      "entity_id": "PRG0010",
+      "authority_id": "University College of Jaffna",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0018",
+      "last_verified_date": "2026-10-29",
+      "confidence_level": "High",
+      "notes": "Verified only as a listing by the provider; not regulator or professional accreditation"
+    },
+    {
+      "recognition_id": "REC0018",
+      "entity_type": "Programme",
+      "entity_id": "PRG0011",
+      "authority_id": "University of Vocational Technology",
+      "recognition_type": "Official Programme Listing",
+      "status": "Verified",
+      "valid_from": "",
+      "valid_until": "",
+      "source_id": "SRC0019",
+      "last_verified_date": "2026-10-29",
+      "confidence_level": "High",
+      "notes": "Verified only as a listing by the provider; not regulator or professional accreditation"
+    }
+  ],
+  "data/reference/careers.csv": [
+    {
+      "career_id": "CAR0001",
+      "career_name": "Software Engineer",
+      "career_category": "Software Development",
+      "industry": "Information Technology",
+      "description": "Designs develops tests and maintains software applications and systems",
+      "minimum_qualification_level": "Bachelor's Degree",
+      "sri_lanka_demand": "High",
+      "international_potential": "Unknown",
+      "remote_work_potential": "High",
+      "self_employment_potential": "Medium",
+      "active_status": "Active",
+      "notes": "Sri Lankan ICT demand classification supported by ICTA workforce evidence; international potential remains Unknown until separately evidenced"
+    },
+    {
+      "career_id": "CAR0002",
+      "career_name": "Data Scientist",
+      "career_category": "Data and Analytics",
+      "industry": "Information Technology",
+      "description": "Uses statistical programming and analytical techniques to extract insights from data",
+      "minimum_qualification_level": "Bachelor's Degree",
+      "sri_lanka_demand": "High",
+      "international_potential": "Unknown",
+      "remote_work_potential": "High",
+      "self_employment_potential": "Medium",
+      "active_status": "Active",
+      "notes": "Sri Lankan ICT demand classification supported by ICTA workforce and skills evidence; international potential remains Unknown until separately evidenced"
+    },
+    {
+      "career_id": "CAR0003",
+      "career_name": "Artificial Intelligence Engineer",
+      "career_category": "Artificial Intelligence",
+      "industry": "Information Technology",
+      "description": "Develops and integrates artificial intelligence and machine learning systems",
+      "minimum_qualification_level": "Bachelor's Degree",
+      "sri_lanka_demand": "High",
+      "international_potential": "Unknown",
+      "remote_work_potential": "High",
+      "self_employment_potential": "Medium",
+      "active_status": "Active",
+      "notes": "Sri Lankan ICT demand classification supported by ICTA future-role and skills evidence; international potential remains Unknown until separately evidenced"
+    },
+    {
+      "career_id": "CAR0004",
+      "career_name": "Machine Learning Engineer",
+      "career_category": "Artificial Intelligence",
+      "industry": "Information Technology",
+      "description": "Builds trains evaluates and deploys machine learning models and supporting systems",
+      "minimum_qualification_level": "Bachelor's Degree",
+      "sri_lanka_demand": "High",
+      "international_potential": "Unknown",
+      "remote_work_potential": "High",
+      "self_employment_potential": "Medium",
+      "active_status": "Active",
+      "notes": "Sri Lankan ICT demand classification supported by ICTA future-role and skills evidence; international potential remains Unknown until separately evidenced"
+    },
+    {
+      "career_id": "CAR0005",
+      "career_name": "Systems Analyst",
+      "career_category": "Information Systems",
+      "industry": "Information Technology",
+      "description": "Analyses organisational and technical requirements and helps design information-system solutions",
+      "minimum_qualification_level": "Bachelor's Degree",
+      "sri_lanka_demand": "Unknown",
+      "international_potential": "Unknown",
+      "remote_work_potential": "Medium",
+      "self_employment_potential": "Medium",
+      "active_status": "Active",
+      "notes": "Demand and international potential remain Unknown until sufficient occupation-specific evidence is linked"
+    }
+  ],
+  "data/reference/institutions.csv": [
+    {
+      "institution_id": "INS0001",
+      "institution_name": "University of Moratuwa",
+      "institution_type": "University",
+      "ownership_type": "Government",
+      "awarding_authority": "true",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "city": "Moratuwa",
+      "official_website": "https://uom.lk",
+      "active_status": "Active",
+      "notes": "State university operating under the Sri Lankan Universities Act framework"
+    },
+    {
+      "institution_id": "INS0002",
+      "institution_name": "University of Colombo",
+      "institution_type": "University",
+      "ownership_type": "Government",
+      "awarding_authority": "true",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "city": "Colombo",
+      "official_website": "https://cmb.ac.lk",
+      "active_status": "Active",
+      "notes": "State university and awarding institution"
+    },
+    {
+      "institution_id": "INS0003",
+      "institution_name": "University of Colombo School of Computing",
+      "institution_type": "University School",
+      "ownership_type": "Government",
+      "awarding_authority": "false",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "city": "Colombo",
+      "official_website": "https://ucsc.cmb.ac.lk",
+      "active_status": "Active",
+      "notes": "Academic provider within the University of Colombo"
+    },
+    {
+      "institution_id": "INS0004",
+      "institution_name": "Informatics Institute of Technology",
+      "institution_type": "Higher Education Institute",
+      "ownership_type": "Private",
+      "awarding_authority": "false",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "city": "Colombo",
+      "official_website": "https://www.iit.ac.lk",
+      "active_status": "Active",
+      "notes": "Private higher education institute delivering computing and business education including UK-partnered programmes"
+    },
+    {
+      "institution_id": "INS0005",
+      "institution_name": "NQual",
+      "institution_type": "Awarding Organisation",
+      "ownership_type": "Private",
+      "awarding_authority": "true",
+      "country": "England",
+      "province": "",
+      "district": "",
+      "city": "",
+      "official_website": "https://www.nqual.co.uk",
+      "active_status": "Active",
+      "notes": "UK awarding organisation associated with the Ofqual-regulated Level 3 qualification delivered through IIT"
+    },
+    {
+      "institution_id": "INS0006",
+      "institution_name": "University of Westminster",
+      "institution_type": "University",
+      "ownership_type": "Public",
+      "awarding_authority": "true",
+      "country": "United Kingdom",
+      "province": "",
+      "district": "",
+      "city": "London",
+      "official_website": "https://www.westminster.ac.uk",
+      "active_status": "Active",
+      "notes": "UK university awarding IIT Software Engineering and Computer Science qualifications"
+    },
+    {
+      "institution_id": "INS0007",
+      "institution_name": "Robert Gordon University",
+      "institution_type": "University",
+      "ownership_type": "Public",
+      "awarding_authority": "true",
+      "country": "United Kingdom",
+      "province": "",
+      "district": "",
+      "city": "Aberdeen",
+      "official_website": "https://www.rgu.ac.uk",
+      "active_status": "Active",
+      "notes": "UK university awarding IIT Artificial Intelligence and Data Science qualifications"
+    },
+    {
+      "institution_id": "INS0008",
+      "institution_name": "The Open University of Sri Lanka",
+      "institution_type": "University",
+      "ownership_type": "",
+      "awarding_authority": "true",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "city": "",
+      "official_website": "https://ou.ac.lk",
+      "active_status": "Active",
+      "notes": "Official programme provider; no professional accreditation claim"
+    },
+    {
+      "institution_id": "INS0009",
+      "institution_name": "University of Peradeniya",
+      "institution_type": "University",
+      "ownership_type": "",
+      "awarding_authority": "true",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "city": "",
+      "official_website": "https://www.pdn.ac.lk",
+      "active_status": "Active",
+      "notes": "Faculty official undergraduate listing"
+    },
+    {
+      "institution_id": "INS0010",
+      "institution_name": "University College of Jaffna",
+      "institution_type": "University College",
+      "ownership_type": "",
+      "awarding_authority": "",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "city": "",
+      "official_website": "https://ucj.ac.lk",
+      "active_status": "Active",
+      "notes": "Programme provider; separate awarding authority not established in checked page"
+    },
+    {
+      "institution_id": "INS0011",
+      "institution_name": "University of Vocational Technology",
+      "institution_type": "University",
+      "ownership_type": "",
+      "awarding_authority": "true",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "city": "",
+      "official_website": "https://uovt.ac.lk",
+      "active_status": "Active",
+      "notes": "Official degree provider; no regulator accreditation inferred from branding"
+    }
+  ],
+  "data/reference/programmes.csv": [
+    {
+      "programme_id": "PRG0001",
+      "programme_name": "Bachelor of Science Honours in Information Technology",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0001",
+      "awarding_body_id": "INS0001",
+      "qualification_id": "QLF0001",
+      "field_of_study": "Information Technology",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "Moratuwa",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "UGC annual intake",
+      "application_url": "https://www.uom.lk/itfac/education/undergraduate/it",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-08",
+      "notes": "Four academic years with industrial training",
+      "domain": "Information Technology",
+      "source_id": "SRC0001"
+    },
+    {
+      "programme_id": "PRG0002",
+      "programme_name": "Bachelor of Science in Computer Science",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0003",
+      "awarding_body_id": "INS0002",
+      "qualification_id": "QLF0002",
+      "field_of_study": "Computer Science",
+      "specialisation": "",
+      "duration_months": "36",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "UCSC",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "UGC annual intake",
+      "application_url": "https://cmb.ac.lk/undergraduate-programmes",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-11",
+      "notes": "Three-year BSc in Computer Science offered through UCSC",
+      "domain": "Information Technology",
+      "source_id": "SRC0005"
+    },
+    {
+      "programme_id": "PRG0003",
+      "programme_name": "Bachelor of Science Honours in Artificial Intelligence",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0001",
+      "awarding_body_id": "INS0001",
+      "qualification_id": "QLF0003",
+      "field_of_study": "Artificial Intelligence",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "Moratuwa",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "UGC annual intake",
+      "application_url": "https://uom.lk/itfac/bachelor-science-honours-artificial-intelligence",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-11",
+      "notes": "Four-year honours undergraduate Artificial Intelligence programme offered by University of Moratuwa",
+      "domain": "Information Technology",
+      "source_id": "SRC0006"
+    },
+    {
+      "programme_id": "PRG0004",
+      "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+      "programme_type": "Foundation Programme",
+      "provider_institution_id": "INS0004",
+      "awarding_body_id": "INS0005",
+      "qualification_id": "QLF0004",
+      "field_of_study": "Computing",
+      "specialisation": "Computing (IT) Pathway",
+      "duration_months": "8",
+      "study_mode": "",
+      "delivery_mode": "",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "January/May/September",
+      "application_url": "https://www.iit.ac.lk/foundation/it/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-18",
+      "notes": "Pre-university computing pathway preparing students for progression into Software Engineering Computer Science or Artificial Intelligence and Data Science degrees",
+      "domain": "Information Technology",
+      "source_id": "SRC0010"
+    },
+    {
+      "programme_id": "PRG0005",
+      "programme_name": "BEng (Hons) Software Engineering",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0004",
+      "awarding_body_id": "INS0006",
+      "qualification_id": "QLF0005",
+      "field_of_study": "Software Engineering",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "Colombo",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "January/September",
+      "application_url": "https://www.iit.ac.lk/course/beng-software-engineering/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-19",
+      "notes": "Four-year full-time Software Engineering degree delivered by IIT and awarded by University of Westminster",
+      "domain": "Information Technology",
+      "source_id": "SRC0012"
+    },
+    {
+      "programme_id": "PRG0006",
+      "programme_name": "BSc (Hons) Computer Science",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0004",
+      "awarding_body_id": "INS0006",
+      "qualification_id": "QLF0006",
+      "field_of_study": "Computer Science",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "Colombo",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "January/September",
+      "application_url": "https://www.iit.ac.lk/course/bsc-computer-science/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-19",
+      "notes": "Four-year full-time Computer Science degree delivered by IIT and awarded by University of Westminster",
+      "domain": "Information Technology",
+      "source_id": "SRC0013"
+    },
+    {
+      "programme_id": "PRG0007",
+      "programme_name": "BSc (Hons) Artificial Intelligence and Data Science",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0004",
+      "awarding_body_id": "INS0007",
+      "qualification_id": "QLF0007",
+      "field_of_study": "Artificial Intelligence and Data Science",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "Physical",
+      "language": "English",
+      "country": "Sri Lanka",
+      "province": "Western",
+      "district": "Colombo",
+      "campus": "Colombo",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "LKR",
+      "intake_information": "January/September",
+      "application_url": "https://www.iit.ac.lk/course/bsc-artificial-intelligence-and-data-science/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-08-19",
+      "notes": "Four-year full-time Artificial Intelligence and Data Science degree delivered by IIT and awarded by Robert Gordon University",
+      "domain": "Information Technology",
+      "source_id": "SRC0014"
+    },
+    {
+      "programme_id": "PRG0008",
+      "programme_name": "Bachelor of Management Studies Honours",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0008",
+      "awarding_body_id": "INS0008",
+      "qualification_id": "QLF0008",
+      "field_of_study": "Management",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "",
+      "delivery_mode": "",
+      "language": "",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "campus": "",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "",
+      "intake_information": "",
+      "application_url": "https://ou.ac.lk/programme/bachelor-of-management-studies-honours-2/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-10-29",
+      "notes": "A/L route is represented with alternative entry and admission checks left to provider; published 2026 application period is historical; check next call",
+      "domain": "Business and Management",
+      "source_id": "SRC0016"
+    },
+    {
+      "programme_id": "PRG0009",
+      "programme_name": "Bachelor of the Science of Engineering Honours",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0009",
+      "awarding_body_id": "INS0009",
+      "qualification_id": "QLF0009",
+      "field_of_study": "Engineering",
+      "specialisation": "",
+      "duration_months": "48",
+      "study_mode": "Full-time",
+      "delivery_mode": "",
+      "language": "",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "campus": "",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "",
+      "intake_information": "",
+      "application_url": "https://eng.pdn.ac.lk/academic/undergraduate-programme/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-10-29",
+      "notes": "Subject minima are not selection or admission; government policy and specialisation allocation require separate assessment",
+      "domain": "Engineering",
+      "source_id": "SRC0017"
+    },
+    {
+      "programme_id": "PRG0010",
+      "programme_name": "Higher National Diploma in Mechatronics Technology",
+      "programme_type": "Vocational Diploma Programme",
+      "provider_institution_id": "INS0010",
+      "awarding_body_id": "",
+      "qualification_id": "QLF0010",
+      "field_of_study": "Mechatronics Technology",
+      "specialisation": "",
+      "duration_months": "",
+      "study_mode": "",
+      "delivery_mode": "",
+      "language": "",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "campus": "",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "",
+      "intake_information": "",
+      "application_url": "https://ucj.ac.lk/hndmnt/",
+      "programme_status": "Active",
+      "last_verified_date": "2026-10-29",
+      "notes": "Selected NVQ Level 4 Electrician route represented; other named trades and A/L alternatives need provider assessment; awarding authority left unverified",
+      "domain": "Engineering",
+      "source_id": "SRC0018"
+    },
+    {
+      "programme_id": "PRG0011",
+      "programme_name": "Bachelor of Engineering Technology in Mechatronics Technology",
+      "programme_type": "Undergraduate Degree Programme",
+      "provider_institution_id": "INS0011",
+      "awarding_body_id": "INS0011",
+      "qualification_id": "QLF0011",
+      "field_of_study": "Mechatronics Technology",
+      "specialisation": "",
+      "duration_months": "36",
+      "study_mode": "",
+      "delivery_mode": "",
+      "language": "",
+      "country": "Sri Lanka",
+      "province": "",
+      "district": "",
+      "campus": "",
+      "total_fee_lkr": "",
+      "application_fee_lkr": "",
+      "currency": "",
+      "intake_information": "",
+      "application_url": "https://uovt.ac.lk/en/academics/courses/btech-mechatronics-technology",
+      "programme_status": "Active",
+      "last_verified_date": "2026-10-29",
+      "notes": "Selected NVQ 6 Mechatronics route; admissions testing and document verification remain unassessed; no exemptions or accreditation promised",
+      "domain": "Engineering",
+      "source_id": "SRC0019"
+    }
+  ],
+  "data/reference/qualifications.csv": [
+    {
+      "qualification_id": "QLF0001",
+      "qualification_name": "Bachelor of Science Honours in Information Technology",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "Sri Lanka Qualifications Framework",
+      "framework_level": "6",
+      "awarding_body_id": "INS0001",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "48",
+      "credit_value": "150",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "Honours undergraduate IT qualification offered by University of Moratuwa",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0002",
+      "qualification_name": "Bachelor of Science in Computer Science",
+      "qualification_type": "Bachelors Degree",
+      "framework_name": "Sri Lanka Qualifications Framework",
+      "framework_level": "5",
+      "awarding_body_id": "INS0002",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "36",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "Three-year undergraduate Computer Science qualification delivered through UCSC",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0003",
+      "qualification_name": "Bachelor of Science Honours in Artificial Intelligence",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "Sri Lanka Qualifications Framework",
+      "framework_level": "6",
+      "awarding_body_id": "INS0001",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "Four-year honours undergraduate qualification in Artificial Intelligence offered by University of Moratuwa",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0004",
+      "qualification_name": "Level 3 Diploma",
+      "qualification_type": "Foundation Qualification",
+      "framework_name": "Regulated Qualifications Framework",
+      "framework_level": "3",
+      "awarding_body_id": "INS0005",
+      "education_sector": "Pre-University Education",
+      "field_specific": "false",
+      "minimum_duration_months": "",
+      "credit_value": "",
+      "country": "England",
+      "active_status": "Active",
+      "notes": "Ofqual-regulated Level 3 qualification awarded through NQual and used by IIT within its International Foundation Programme",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0005",
+      "qualification_name": "BEng (Hons) Software Engineering",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0006",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "United Kingdom",
+      "active_status": "Active",
+      "notes": "Undergraduate honours Software Engineering qualification awarded by University of Westminster and delivered through IIT",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0006",
+      "qualification_name": "BSc (Hons) Computer Science",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0006",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "United Kingdom",
+      "active_status": "Active",
+      "notes": "Undergraduate honours Computer Science qualification awarded by University of Westminster and delivered through IIT",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0007",
+      "qualification_name": "BSc (Hons) Artificial Intelligence and Data Science",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0007",
+      "education_sector": "Higher Education",
+      "field_specific": "true",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "United Kingdom",
+      "active_status": "Active",
+      "notes": "Undergraduate honours Artificial Intelligence and Data Science qualification awarded by Robert Gordon University and delivered through IIT",
+      "source_id": "",
+      "last_verified_date": ""
+    },
+    {
+      "qualification_id": "QLF0008",
+      "qualification_name": "Bachelor of Management Studies Honours",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0008",
+      "education_sector": "Higher Education",
+      "field_specific": "",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "",
+      "source_id": "SRC0016",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "qualification_id": "QLF0009",
+      "qualification_name": "Bachelor of the Science of Engineering Honours",
+      "qualification_type": "Bachelors Honours Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0009",
+      "education_sector": "Higher Education",
+      "field_specific": "",
+      "minimum_duration_months": "48",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "",
+      "source_id": "SRC0017",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "qualification_id": "QLF0010",
+      "qualification_name": "Higher National Diploma in Mechatronics Technology",
+      "qualification_type": "Higher National Diploma",
+      "framework_name": "National Vocational Qualifications",
+      "framework_level": "6",
+      "awarding_body_id": "",
+      "education_sector": "Vocational Education",
+      "field_specific": "",
+      "minimum_duration_months": "",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "",
+      "source_id": "SRC0018",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "qualification_id": "QLF0011",
+      "qualification_name": "Bachelor of Engineering Technology in Mechatronics Technology",
+      "qualification_type": "Bachelors Degree",
+      "framework_name": "",
+      "framework_level": "",
+      "awarding_body_id": "INS0011",
+      "education_sector": "Higher Education",
+      "field_specific": "",
+      "minimum_duration_months": "36",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "",
+      "source_id": "SRC0019",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "qualification_id": "QLF0012",
+      "qualification_name": "Electrician (NVQ Level 4 Certificate)",
+      "qualification_type": "Certificate",
+      "framework_name": "National Vocational Qualifications",
+      "framework_level": "4",
+      "awarding_body_id": "",
+      "education_sector": "Vocational Education",
+      "field_specific": "",
+      "minimum_duration_months": "",
+      "credit_value": "",
+      "country": "Sri Lanka",
+      "active_status": "Active",
+      "notes": "Entry qualification category named by UCJ; not a specific provider programme or verified learner certificate",
+      "source_id": "SRC0018",
+      "last_verified_date": "2026-10-29"
+    }
+  ],
+  "data/reference/scholarships.csv": [
+    {
+      "scholarship_id": "SCH0001",
+      "scholarship_name": "Stipendium Hungaricum Undergraduate Scholarship 2026/27",
+      "provider_name": "Government of Hungary / Ministry of Education Sri Lanka",
+      "scholarship_type": "International Undergraduate Scholarship",
+      "coverage_description": "Tuition-free study with scholarship support subject to the official programme conditions",
+      "target_group": "Sri Lankan undergraduate applicants meeting the published academic and eligibility conditions",
+      "application_url": "https://www.mohe.gov.lk/images/pdf/Hungrian_UG_Web_Notice_2026.pdf",
+      "opening_date": "2025-11-01",
+      "closing_date": "2026-01-15",
+      "status": "Closed",
+      "last_verified_date": "2026-09-14",
+      "notes": "Eligibility and benefits must be interpreted together with the current official call and final selection remains with the awarding authorities"
+    }
+  ],
+  "data/reference/skills.csv": [
+    {
+      "skill_id": "SKL0001",
+      "skill_name": "Programming",
+      "skill_category": "Software Development",
+      "description": "Ability to design and implement computer programs using programming languages",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0002",
+      "skill_name": "Object-Oriented Programming",
+      "skill_category": "Software Development",
+      "description": "Ability to develop software using object-oriented concepts such as classes objects inheritance and encapsulation",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0003",
+      "skill_name": "Algorithms and Data Structures",
+      "skill_category": "Computer Science",
+      "description": "Ability to understand design and apply algorithms and appropriate data structures to computational problems",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0004",
+      "skill_name": "Database Systems",
+      "skill_category": "Data Management",
+      "description": "Ability to design query and work with structured database systems",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0005",
+      "skill_name": "Web Development",
+      "skill_category": "Software Development",
+      "description": "Ability to develop web-based applications and services",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0006",
+      "skill_name": "Software Engineering",
+      "skill_category": "Software Development",
+      "description": "Ability to apply systematic software development design testing and maintenance practices",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0007",
+      "skill_name": "Mathematics for Computing",
+      "skill_category": "Computational Foundations",
+      "description": "Ability to apply mathematical concepts relevant to computing data science and artificial intelligence",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0008",
+      "skill_name": "Data Analysis",
+      "skill_category": "Data and Analytics",
+      "description": "Ability to examine process and interpret data to derive useful information and insights",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0009",
+      "skill_name": "Machine Learning",
+      "skill_category": "Artificial Intelligence",
+      "description": "Ability to develop train evaluate and apply machine learning models",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0010",
+      "skill_name": "Artificial Intelligence",
+      "skill_category": "Artificial Intelligence",
+      "description": "Ability to understand and develop computational systems that perform artificial-intelligence tasks",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0011",
+      "skill_name": "Data Engineering",
+      "skill_category": "Data and Analytics",
+      "description": "Ability to prepare transform manage and support data pipelines and data-intensive systems",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0012",
+      "skill_name": "Deep Learning",
+      "skill_category": "Artificial Intelligence",
+      "description": "Ability to understand develop and evaluate neural-network-based learning models",
+      "active_status": "Active"
+    },
+    {
+      "skill_id": "SKL0013",
+      "skill_name": "Systems Analysis",
+      "skill_category": "Information Systems",
+      "description": "Ability to analyse organisational requirements and translate them into information-system solutions",
+      "active_status": "Active"
+    }
+  ],
+  "data/relationships/career_skills.csv": [
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0001",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Programming is a core competency for software engineering"
+    },
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0002",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Object-oriented programming is commonly relevant to software design and implementation"
+    },
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0003",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Algorithms and data structures support efficient software problem solving"
+    },
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0004",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Database knowledge is relevant to many software systems"
+    },
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0005",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Web development is relevant to many software engineering roles"
+    },
+    {
+      "career_id": "CAR0001",
+      "skill_id": "SKL0006",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Software engineering practices are central to the occupation"
+    },
+    {
+      "career_id": "CAR0002",
+      "skill_id": "SKL0001",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Programming supports data processing analysis and modelling"
+    },
+    {
+      "career_id": "CAR0002",
+      "skill_id": "SKL0007",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Mathematical foundations support statistical and computational data analysis"
+    },
+    {
+      "career_id": "CAR0002",
+      "skill_id": "SKL0008",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Data analysis is a central competency for data science"
+    },
+    {
+      "career_id": "CAR0002",
+      "skill_id": "SKL0009",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Machine learning is strongly relevant to predictive data science work"
+    },
+    {
+      "career_id": "CAR0002",
+      "skill_id": "SKL0011",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Data engineering supports preparation and management of analytical data"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0001",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Programming is required to implement and integrate artificial intelligence systems"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0003",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Algorithms and data structures support artificial intelligence system development"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0007",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Mathematical foundations support artificial intelligence methods"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0009",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Machine learning is a major component of modern artificial intelligence engineering"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0010",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Artificial intelligence knowledge is central to the occupation"
+    },
+    {
+      "career_id": "CAR0003",
+      "skill_id": "SKL0012",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Deep learning is relevant to many advanced artificial intelligence applications"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0001",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Programming is required to build train and deploy machine learning systems"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0003",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Algorithmic knowledge supports machine learning system implementation"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0007",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Mathematics supports machine learning modelling and evaluation"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0008",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Data analysis supports exploration preparation and evaluation of machine learning data"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0009",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Machine learning is the central technical competency of the occupation"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0011",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Data engineering supports reliable machine learning data pipelines"
+    },
+    {
+      "career_id": "CAR0004",
+      "skill_id": "SKL0012",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Deep learning is relevant to advanced machine learning roles"
+    },
+    {
+      "career_id": "CAR0005",
+      "skill_id": "SKL0001",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Programming knowledge can support technical systems analysis"
+    },
+    {
+      "career_id": "CAR0005",
+      "skill_id": "SKL0004",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Database knowledge supports analysis of information systems"
+    },
+    {
+      "career_id": "CAR0005",
+      "skill_id": "SKL0006",
+      "importance_level": "Medium",
+      "expected_level": "Medium",
+      "notes": "Software engineering knowledge supports communication of system requirements and solutions"
+    },
+    {
+      "career_id": "CAR0005",
+      "skill_id": "SKL0013",
+      "importance_level": "High",
+      "expected_level": "High",
+      "notes": "Systems analysis is the central competency represented by the occupation"
+    }
+  ],
+  "data/relationships/programme_careers.csv": [
+    {
+      "programme_id": "PRG0001",
+      "career_id": "CAR0001",
+      "relevance_level": "High",
+      "notes": "Information Technology programme provides a strong pathway towards software engineering"
+    },
+    {
+      "programme_id": "PRG0001",
+      "career_id": "CAR0002",
+      "relevance_level": "Medium",
+      "notes": "Information Technology provides relevant computing foundations for progression towards data science"
+    },
+    {
+      "programme_id": "PRG0001",
+      "career_id": "CAR0003",
+      "relevance_level": "Medium",
+      "notes": "Information Technology provides computing foundations that can support progression towards artificial intelligence engineering"
+    },
+    {
+      "programme_id": "PRG0001",
+      "career_id": "CAR0004",
+      "relevance_level": "Medium",
+      "notes": "Information Technology provides computing foundations that can support progression towards machine learning engineering"
+    },
+    {
+      "programme_id": "PRG0001",
+      "career_id": "CAR0005",
+      "relevance_level": "High",
+      "notes": "Information Technology provides strong systems and organisational computing foundations relevant to systems analysis"
+    },
+    {
+      "programme_id": "PRG0002",
+      "career_id": "CAR0001",
+      "relevance_level": "High",
+      "notes": "Computer Science provides strong theoretical and practical foundations for software engineering"
+    },
+    {
+      "programme_id": "PRG0002",
+      "career_id": "CAR0002",
+      "relevance_level": "High",
+      "notes": "Computer Science provides programming algorithmic and computational foundations relevant to data science"
+    },
+    {
+      "programme_id": "PRG0002",
+      "career_id": "CAR0003",
+      "relevance_level": "High",
+      "notes": "Computer Science provides strong computational foundations for progression towards artificial intelligence engineering"
+    },
+    {
+      "programme_id": "PRG0002",
+      "career_id": "CAR0004",
+      "relevance_level": "High",
+      "notes": "Computer Science provides strong programming algorithmic and mathematical foundations relevant to machine learning engineering"
+    },
+    {
+      "programme_id": "PRG0002",
+      "career_id": "CAR0005",
+      "relevance_level": "Medium",
+      "notes": "Computer Science provides relevant computing foundations for systems analysis"
+    },
+    {
+      "programme_id": "PRG0003",
+      "career_id": "CAR0001",
+      "relevance_level": "Medium",
+      "notes": "Artificial Intelligence includes substantial computing and software-development foundations applicable to software engineering"
+    },
+    {
+      "programme_id": "PRG0003",
+      "career_id": "CAR0002",
+      "relevance_level": "High",
+      "notes": "Artificial Intelligence provides strong data analytical computational and machine-learning foundations relevant to data science"
+    },
+    {
+      "programme_id": "PRG0003",
+      "career_id": "CAR0003",
+      "relevance_level": "High",
+      "notes": "Artificial Intelligence programme directly aligns with artificial intelligence engineering"
+    },
+    {
+      "programme_id": "PRG0003",
+      "career_id": "CAR0004",
+      "relevance_level": "High",
+      "notes": "Artificial Intelligence programme directly develops foundations relevant to machine learning engineering"
+    },
+    {
+      "programme_id": "PRG0003",
+      "career_id": "CAR0005",
+      "relevance_level": "Low",
+      "notes": "Systems analysis is a possible but less directly aligned career pathway from an Artificial Intelligence programme"
+    }
+  ],
+  "data/relationships/programme_entry_requirements.csv": [
+    {
+      "requirement_id": "REQ0001",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP001",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "A_LEVEL_PASS",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "3",
+      "qualification_id": "",
+      "description": "Pass all three subjects offered at GCE Advanced Level",
+      "mandatory": "true",
+      "source_id": "SRC0001"
+    },
+    {
+      "requirement_id": "REQ0002",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP002",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Higher Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "Accepted subject with minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0001"
+    },
+    {
+      "requirement_id": "REQ0003",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP002",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Combined Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "Accepted subject with minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0001"
+    },
+    {
+      "requirement_id": "REQ0004",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP002",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "Accepted subject with minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0001"
+    },
+    {
+      "requirement_id": "REQ0005",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP002",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Physics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "Accepted subject with minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0001"
+    },
+    {
+      "requirement_id": "REQ0006",
+      "programme_id": "PRG0002",
+      "requirement_group_id": "GRP003",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_SET_COUNT",
+      "subject_name": "Combined Mathematics|Higher Mathematics|Mathematics|Physics|Chemistry|Information & Communication Technology",
+      "minimum_grade": "S",
+      "minimum_count": "3",
+      "qualification_id": "",
+      "description": "At least three approved A/L subjects must be passed",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0007",
+      "programme_id": "PRG0002",
+      "requirement_group_id": "GRP004",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Combined Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one required mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0008",
+      "programme_id": "PRG0002",
+      "requirement_group_id": "GRP004",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Physics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one required mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0009",
+      "programme_id": "PRG0002",
+      "requirement_group_id": "GRP004",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Higher Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one required mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0010",
+      "programme_id": "PRG0003",
+      "requirement_group_id": "GRP005",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_SET_COUNT",
+      "subject_name": "Combined Mathematics|Higher Mathematics|Mathematics|Physics|Chemistry|Information & Communication Technology",
+      "minimum_grade": "S",
+      "minimum_count": "3",
+      "qualification_id": "",
+      "description": "Three approved A/L subjects must have grade S or above",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0011",
+      "programme_id": "PRG0003",
+      "requirement_group_id": "GRP006",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Combined Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one core mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0012",
+      "programme_id": "PRG0003",
+      "requirement_group_id": "GRP006",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Physics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one core mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0013",
+      "programme_id": "PRG0003",
+      "requirement_group_id": "GRP006",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Higher Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "At least one core mathematics or physics subject must have minimum grade C",
+      "mandatory": "true",
+      "source_id": "SRC0004"
+    },
+    {
+      "requirement_id": "REQ0014",
+      "programme_id": "PRG0004",
+      "requirement_group_id": "GRP007",
+      "group_operator": "AND",
+      "education_level": "O_LEVEL",
+      "requirement_type": "O_LEVEL_PASS_COUNT",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "6",
+      "qualification_id": "",
+      "description": "At least six GCE O/L subjects must be passed",
+      "mandatory": "true",
+      "source_id": "SRC0009"
+    },
+    {
+      "requirement_id": "REQ0015",
+      "programme_id": "PRG0004",
+      "requirement_group_id": "GRP008",
+      "group_operator": "AND",
+      "education_level": "O_LEVEL",
+      "requirement_type": "O_LEVEL_CREDIT_COUNT",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "3",
+      "qualification_id": "",
+      "description": "At least three GCE O/L subjects must have credit passes",
+      "mandatory": "true",
+      "source_id": "SRC0009"
+    },
+    {
+      "requirement_id": "REQ0016",
+      "programme_id": "PRG0004",
+      "requirement_group_id": "GRP009",
+      "group_operator": "AND",
+      "education_level": "O_LEVEL",
+      "requirement_type": "O_LEVEL_SUBJECT_CREDIT",
+      "subject_name": "Mathematics",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "Mathematics must have a credit pass",
+      "mandatory": "true",
+      "source_id": "SRC0009"
+    },
+    {
+      "requirement_id": "REQ0017",
+      "programme_id": "PRG0004",
+      "requirement_group_id": "GRP010",
+      "group_operator": "AND",
+      "education_level": "O_LEVEL",
+      "requirement_type": "O_LEVEL_SUBJECT_CREDIT",
+      "subject_name": "English",
+      "minimum_grade": "C",
+      "minimum_count": "1",
+      "qualification_id": "",
+      "description": "English must have a credit pass",
+      "mandatory": "true",
+      "source_id": "SRC0009"
+    },
+    {
+      "requirement_id": "REQ0019",
+      "programme_id": "PRG0008",
+      "requirement_group_id": "GRP011",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "A_LEVEL_PASS",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "3",
+      "qualification_id": "",
+      "description": "A/L route: three passes; same sitting must be checked separately",
+      "mandatory": "true",
+      "source_id": "SRC0016"
+    },
+    {
+      "requirement_id": "REQ0020",
+      "programme_id": "PRG0008",
+      "requirement_group_id": "GRP011",
+      "group_operator": "OR",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Alternative OUSL foundation or advanced certificate or Senate-accepted qualification requires provider review",
+      "mandatory": "true",
+      "source_id": "SRC0016"
+    },
+    {
+      "requirement_id": "REQ0021",
+      "programme_id": "PRG0008",
+      "requirement_group_id": "GRP012",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Provider must confirm age 18 at registration; same-sitting results and any required selection test",
+      "mandatory": "true",
+      "source_id": "SRC0016"
+    },
+    {
+      "requirement_id": "REQ0022",
+      "programme_id": "PRG0009",
+      "requirement_group_id": "GRP013",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Combined Mathematics",
+      "minimum_grade": "S",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "A/L Combined Mathematics pass",
+      "mandatory": "true",
+      "source_id": "SRC0017"
+    },
+    {
+      "requirement_id": "REQ0023",
+      "programme_id": "PRG0009",
+      "requirement_group_id": "GRP013",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Physics",
+      "minimum_grade": "S",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "A/L Physics pass",
+      "mandatory": "true",
+      "source_id": "SRC0017"
+    },
+    {
+      "requirement_id": "REQ0024",
+      "programme_id": "PRG0009",
+      "requirement_group_id": "GRP013",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "SUBJECT_GRADE",
+      "subject_name": "Chemistry",
+      "minimum_grade": "S",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "A/L Chemistry pass",
+      "mandatory": "true",
+      "source_id": "SRC0017"
+    },
+    {
+      "requirement_id": "REQ0025",
+      "programme_id": "PRG0009",
+      "requirement_group_id": "GRP014",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "UGC general entry and selection not assessed: one sitting within three attempts; Common General Paper minimum 30 percent; applicable selection cut-offs require provider verification",
+      "mandatory": "true",
+      "source_id": "SRC0021"
+    },
+    {
+      "requirement_id": "REQ0026",
+      "programme_id": "PRG0010",
+      "requirement_group_id": "GRP015",
+      "group_operator": "OR",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "QUALIFICATION_HELD",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "QLF0012",
+      "description": "Selected route: NVQ Level 4 Electrician certificate reported",
+      "mandatory": "true",
+      "source_id": "SRC0018"
+    },
+    {
+      "requirement_id": "REQ0027",
+      "programme_id": "PRG0010",
+      "requirement_group_id": "GRP015",
+      "group_operator": "OR",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Other listed NVQ trades or specified A/L stream route require provider review",
+      "mandatory": "true",
+      "source_id": "SRC0018"
+    },
+    {
+      "requirement_id": "REQ0028",
+      "programme_id": "PRG0010",
+      "requirement_group_id": "GRP016",
+      "group_operator": "AND",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Provider must verify the reported certificate and current admission arrangements",
+      "mandatory": "true",
+      "source_id": "SRC0018"
+    },
+    {
+      "requirement_id": "REQ0029",
+      "programme_id": "PRG0011",
+      "requirement_group_id": "GRP017",
+      "group_operator": "OR",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "QUALIFICATION_HELD",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "QLF0010",
+      "description": "Selected route: NVQ Level 6 Mechatronics qualification reported",
+      "mandatory": "true",
+      "source_id": "SRC0019"
+    },
+    {
+      "requirement_id": "REQ0030",
+      "programme_id": "PRG0011",
+      "requirement_group_id": "GRP017",
+      "group_operator": "OR",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Other accepted disciplines or entry categories require provider review",
+      "mandatory": "true",
+      "source_id": "SRC0019"
+    },
+    {
+      "requirement_id": "REQ0031",
+      "programme_id": "PRG0011",
+      "requirement_group_id": "GRP018",
+      "group_operator": "AND",
+      "education_level": "QUALIFICATION",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "Shortlisting tests interview if applicable and document verification require provider assessment",
+      "mandatory": "true",
+      "source_id": "SRC0020"
+    },
+    {
+      "requirement_id": "REQ0032",
+      "programme_id": "PRG0001",
+      "requirement_group_id": "GRP019",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+      "mandatory": "true",
+      "source_id": "SRC0021"
+    },
+    {
+      "requirement_id": "REQ0033",
+      "programme_id": "PRG0002",
+      "requirement_group_id": "GRP020",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+      "mandatory": "true",
+      "source_id": "SRC0021"
+    },
+    {
+      "requirement_id": "REQ0034",
+      "programme_id": "PRG0003",
+      "requirement_group_id": "GRP021",
+      "group_operator": "AND",
+      "education_level": "A_LEVEL",
+      "requirement_type": "PROVIDER_REVIEW",
+      "subject_name": "",
+      "minimum_grade": "",
+      "minimum_count": "",
+      "qualification_id": "",
+      "description": "UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified",
+      "mandatory": "true",
+      "source_id": "SRC0021"
+    }
+  ],
+  "data/relationships/programme_skills.csv": [
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0001",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Programming is developed through software development and programming modules in the programme"
+    },
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0002",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Object-oriented programming is explicitly represented within the programme curriculum"
+    },
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0003",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Algorithms and data structures form part of the programme computing foundations"
+    },
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0004",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Database knowledge is developed as part of the software engineering curriculum"
+    },
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0005",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Web application development is represented within the programme curriculum"
+    },
+    {
+      "programme_id": "PRG0005",
+      "skill_id": "SKL0006",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Software engineering is a central competency of the degree programme"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0001",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Programming and software development are core components of the computer science programme"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0002",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Object-oriented programming is represented within the programme curriculum"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0003",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Algorithmic and computational problem solving are developed within the computer science curriculum"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0004",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Database systems are represented within the computer science curriculum"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0005",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Web development is represented within the programme curriculum"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0006",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Software development and engineering practices contribute to programme learning"
+    },
+    {
+      "programme_id": "PRG0006",
+      "skill_id": "SKL0009",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Machine learning is represented as an advanced area within the programme curriculum"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0001",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Programming is a core foundation of the artificial intelligence and data science programme"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0003",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Algorithms and data structures support artificial intelligence and data science problem solving"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0004",
+      "skill_level": "Medium",
+      "relationship_type": "Develops",
+      "notes": "Database concepts support data-centred computing within the programme"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0007",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Mathematical foundations are central to artificial intelligence and data science study"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0008",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Data analysis is a central competency developed by the programme"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0009",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Machine learning is a central area of study within the programme"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0010",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Artificial intelligence is a central area of study within the programme"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0011",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Data engineering concepts support the programme data science pathway"
+    },
+    {
+      "programme_id": "PRG0007",
+      "skill_id": "SKL0012",
+      "skill_level": "High",
+      "relationship_type": "Develops",
+      "notes": "Deep learning is represented within advanced artificial intelligence study"
+    }
+  ],
+  "data/relationships/qualification_progression.csv": [
+    {
+      "progression_id": "PROG0001",
+      "from_qualification_id": "QLF0004",
+      "to_qualification_id": "QLF0005",
+      "progression_type": "Direct Academic Progression",
+      "conditions": "Successful completion of the IIT Computing Foundation programme",
+      "guaranteed": "false",
+      "notes": "Foundation graduates may enter Year 1 of BEng Honours Software Engineering",
+      "source_id": "SRC0010",
+      "supporting_source_id": "",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "progression_id": "PROG0002",
+      "from_qualification_id": "QLF0004",
+      "to_qualification_id": "QLF0006",
+      "progression_type": "Direct Academic Progression",
+      "conditions": "Successful completion of the IIT Computing Foundation programme",
+      "guaranteed": "false",
+      "notes": "Foundation graduates may enter Year 1 of BSc Honours Computer Science",
+      "source_id": "SRC0010",
+      "supporting_source_id": "",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "progression_id": "PROG0003",
+      "from_qualification_id": "QLF0004",
+      "to_qualification_id": "QLF0007",
+      "progression_type": "Conditional Academic Progression",
+      "conditions": "Successful completion of the IIT Computing Foundation programme and minimum 40 percent in Mathematics for Computing Mathematics for Data Science Introduction to Programming and Computer Programming",
+      "guaranteed": "false",
+      "notes": "Foundation graduates may enter Year 1 of BSc Honours Artificial Intelligence and Data Science when the additional module threshold is satisfied",
+      "source_id": "SRC0010",
+      "supporting_source_id": "",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "progression_id": "PROG0004",
+      "from_qualification_id": "QLF0012",
+      "to_qualification_id": "QLF0010",
+      "progression_type": "Conditional Vocational Progression",
+      "conditions": "UCJ lists the NVQ Level 4 Electrician certificate as an entry route; provider must verify documents and current admissions",
+      "guaranteed": "false",
+      "notes": "",
+      "source_id": "SRC0018",
+      "supporting_source_id": "",
+      "last_verified_date": "2026-10-29"
+    },
+    {
+      "progression_id": "PROG0005",
+      "from_qualification_id": "QLF0010",
+      "to_qualification_id": "QLF0011",
+      "progression_type": "Conditional Vocational Progression",
+      "conditions": "NVQ Level 6 and Mechatronics are listed entry categories; programme-specific acceptance tests and document checks remain with UoVT; no exemption is inferred",
+      "guaranteed": "false",
+      "notes": "",
+      "source_id": "SRC0019",
+      "supporting_source_id": "SRC0020",
+      "last_verified_date": "2026-10-29"
+    }
+  ],
+  "data/relationships/scholarship_applicability.csv": [
+    {
+      "applicability_id": "SAPP0001",
+      "scholarship_id": "SCH0001",
+      "target_type": "FIELD",
+      "target_id": "",
+      "target_value": "STEM",
+      "relationship_type": "ELIGIBLE_FIELD",
+      "notes": "Scholarship is available for eligible undergraduate study in STEM fields subject to the official call",
+      "source_id": "SRC0015"
+    },
+    {
+      "applicability_id": "SAPP0002",
+      "scholarship_id": "SCH0001",
+      "target_type": "FIELD",
+      "target_id": "",
+      "target_value": "Agriculture",
+      "relationship_type": "ELIGIBLE_FIELD",
+      "notes": "Scholarship is available for eligible undergraduate study in Agriculture subject to the official call",
+      "source_id": "SRC0015"
+    }
+  ],
+  "data/relationships/scholarship_eligibility_requirements.csv": [
+    {
+      "requirement_id": "SREQ0001",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "CITIZENSHIP",
+      "field_name": "citizenship",
+      "operator": "EQUALS",
+      "required_value": "Sri Lanka",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "Sri Lankan citizen required",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0002",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "MINIMUM_AGE",
+      "field_name": "age_on_reference_date",
+      "operator": "GREATER_THAN",
+      "required_value": "18",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "Over 18 by 31 August 2026",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0003",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "A_LEVEL_EXAM_YEAR",
+      "field_name": "a_level_exam_year",
+      "operator": "EQUALS",
+      "required_value": "2024",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "2024 GCE A Level examination required",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0004",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "A_LEVEL_PASS_COUNT",
+      "field_name": "a_level_pass_count",
+      "operator": "GREATER_THAN_OR_EQUAL",
+      "required_value": "",
+      "minimum_value": "3",
+      "maximum_value": "",
+      "description": "At least three A Level passes required",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0005",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "O_LEVEL_ENGLISH_GRADE",
+      "field_name": "o_level_english_grade",
+      "operator": "GRADE_AT_LEAST",
+      "required_value": "C",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "At least C grade in O Level English required",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0006",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "A_LEVEL_ENGLISH_GRADE",
+      "field_name": "a_level_english_grade",
+      "operator": "GRADE_AT_LEAST",
+      "required_value": "S",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "At least S grade in A Level English required",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    },
+    {
+      "requirement_id": "SREQ0007",
+      "scholarship_id": "SCH0001",
+      "requirement_group_id": "SGRP001",
+      "group_operator": "AND",
+      "requirement_type": "STATE_UNIVERSITY_ENROLMENT",
+      "field_name": "state_university_internal_student",
+      "operator": "EQUALS",
+      "required_value": "false",
+      "minimum_value": "",
+      "maximum_value": "",
+      "description": "Applicant must not be an internal undergraduate at a Sri Lankan state university",
+      "mandatory": "true",
+      "source_id": "SRC0015"
+    }
+  ]
+}

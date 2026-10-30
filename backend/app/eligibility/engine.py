@@ -813,11 +813,11 @@ def assess_academic_gaps(programme_id, student_results, education_complete=None,
                 subject_rule = kind in {"SUBJECT_GRADE", "O_LEVEL_SUBJECT_CREDIT"}
                 if subject_rule and row["subject_name"].strip() not in results:
                     status = "NOT_MET" if complete.get(level) is True else "NOT_ASSESSED"
-                elif not subject_rule and not complete.get(level, True):
+                elif not subject_rule and complete.get(level) is not True:
                     status = "NOT_ASSESSED"
                     reason = (
-                        "The submitted results are incomplete; the recorded "
-                        "requirement is not yet demonstrated."
+                        "Examination completeness is not confirmed; the submitted "
+                        "results do not yet demonstrate this count requirement."
                     )
             items.append({
                 "requirement_id": outcome["requirement_id"],

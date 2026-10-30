@@ -1,0 +1,25 @@
+{
+  "git_head": "a19b68fa5b872fa9639eb653c3b528e803071a78",
+  "declared_app_version": "0.6.0",
+  "modified_existing_files": [
+    "backend/app/eligibility/engine.py",
+    "backend/app/personalisation/models.py",
+    "tests/integration/test_learner_gap_api.py",
+    "tests/integration/test_recommendation_api.py",
+    "tests/unit/test_recommendation_engine.py"
+  ],
+  "new_test": "tests/integration/test_exam_completeness.py",
+  "working_source_sha256": {
+    "backend/app/eligibility/engine.py": "2025a440c8254b50784325867918e10b70a298ed925a890c1044e5755a9f78b2",
+    "backend/app/personalisation/models.py": "b0750b78ebeaf4bf06ab8ca3af794ef90369e8f99b0685e93acd40e75659a5db",
+    "tests/integration/test_exam_completeness.py": "14d355b6ab1825ceb4f3ee4efb7906b1b4357274a6757aa101d633ca104f40ae",
+    "tests/integration/test_learner_gap_api.py": "3776e4c0c1059d47aa469b16eb6bc4174d28a3131c56275d2f3055d1cd2a81e5",
+    "tests/integration/test_recommendation_api.py": "9230ffb7d7f2f1c9ab3385bae3b6af7c323ff4ff62ad2c3ca5f0971aa6f0bcc0",
+    "tests/unit/test_recommendation_engine.py": "02787cf564fc5012f3104424621d1273c85f7f5dce9b0b67a8b9add89e6bc2f7"
+  },
+  "original_sprint2a_files_unchanged": 103,
+  "all20_CSVs_unchanged": true,
+  "original_academic_and_previous_WP_evidence_unchanged": true,
+  "backups_unchanged": true,
+  "staging_empty": true
+}

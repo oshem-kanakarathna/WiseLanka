@@ -1,0 +1,77 @@
+{
+  "new_tests_before_fix": {
+    "passed": 14,
+    "failed": 9,
+    "exit_code": 1
+  },
+  "first_backend_after_fix_before_fixture_revision": {
+    "passed": 224,
+    "failed": 4,
+    "exit_code": 1
+  },
+  "backend_final": {
+    "passed": 228,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "browser_initial_sandbox": {
+    "exit_code": 1,
+    "limitation": "Chromium launch blocked;follow-on loop errors"
+  },
+  "browser_final_authorised": {
+    "passed": 36,
+    "exit_code": 0
+  },
+  "replay_initial_wrapper_setup": {
+    "exit_code": 1,
+    "cause": "Missing new raw output directory"
+  },
+  "replay_final": {
+    "cases": 45,
+    "agreements": 43,
+    "disagreements": 2,
+    "exit_code": 0
+  },
+  "live": [
+    {
+      "workflow": "original",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-original.txt"
+    },
+    {
+      "workflow": "wp1",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-wp1.txt"
+    },
+    {
+      "workflow": "wp2",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-wp2.txt"
+    },
+    {
+      "workflow": "wp3",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-wp3.txt"
+    },
+    {
+      "workflow": "wp4",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-wp4.txt"
+    },
+    {
+      "workflow": "EC08-real-HTTP",
+      "exit_code": 0,
+      "api": "http://127.0.0.1:55615",
+      "output": "raw/live-EC08.json"
+    }
+  ],
+  "csv_integrity": {
+    "exit_code": 0
+  },
+  "evidence_limitation": "Regression and synthetic case agreement,not participant research or independent educational correctness approval."
+}

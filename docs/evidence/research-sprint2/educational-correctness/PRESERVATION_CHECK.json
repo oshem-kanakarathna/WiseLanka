@@ -1,0 +1,18 @@
+{
+  "all_preexisting_files_unchanged": true,
+  "protected_files": 351,
+  "git_head_unchanged": true,
+  "staging_empty": true,
+  "all_twenty_CSV_hashes_unchanged": true,
+  "oracle_unchanged_after_execution": true,
+  "registered_and_supplementary_snapshot_hashes_verified": 24,
+  "scenario_ids_unique": 45,
+  "programme_coverage": 11,
+  "programme_rows": 11,
+  "progression_rows": 5,
+  "matrix_findings": 23,
+  "agreements": 42,
+  "disagreements": 3,
+  "syntax_compile_after_task_cache_configuration": "passed",
+  "note": "No application,academic,rule,dataset,backup or previous-evidence mutation; no commit/push. Source/explanation review is evaluator-authored,not independent participant data."
+}

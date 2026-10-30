@@ -1,0 +1,19 @@
+{
+  "original_cases": 45,
+  "before_agreements": 42,
+  "after_agreements": 43,
+  "after_disagreements": [
+    "EC39",
+    "EC40"
+  ],
+  "only_decision_changes": [
+    {
+      "scenario_id": "EC08",
+      "before": "NOT_MET",
+      "after": "NOT_ASSESSED",
+      "expected": "NOT_ASSESSED"
+    }
+  ],
+  "original_expectations_unchanged": true,
+  "limitation": "Controlled regression comparison on existing synthetic cases, not new independent domain validation."
+}

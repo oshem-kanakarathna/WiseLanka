@@ -1,0 +1,39 @@
+[
+  {
+    "check": "focused-regressions",
+    "command": [
+      "/private/tmp/wiselanka-repro-venv/bin/python",
+      "-m",
+      "pytest",
+      "tests/unit/test_eligibility_engine.py",
+      "tests/unit/test_academic_gap_insights.py",
+      "tests/unit/test_progression_engine.py",
+      "tests/integration/test_wp2_scenarios.py",
+      "tests/integration/test_wp5_policy.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "output": "raw/focused-regressions.txt"
+  },
+  {
+    "check": "csv-integrity",
+    "command": [
+      "/private/tmp/wiselanka-repro-venv/bin/python",
+      "-m",
+      "backend.app.data_integrity"
+    ],
+    "exit_code": 0,
+    "output": "raw/csv-integrity.txt"
+  },
+  {
+    "check": "pip-freeze",
+    "command": [
+      "/private/tmp/wiselanka-repro-venv/bin/python",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "exit_code": 0,
+    "output": "raw/pip-freeze.txt"
+  }
+]

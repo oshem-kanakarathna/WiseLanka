@@ -1,0 +1,38 @@
+[
+  {
+    "source_id": "SUPP_IIT_ADMISSION",
+    "requested_url": "https://www.iit.ac.lk/admission/",
+    "retrieved_utc": "2026-10-30T05:52:58.814405+00:00",
+    "historical_retrieved_date": "",
+    "http_status": 200,
+    "final_url": "https://www.iit.ac.lk/admission/",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 189985,
+    "sha256": "a1598a6f05971c671f827602f2e3d81c068760c86846a6392ca18211080b2179",
+    "snapshot": "sources/SUPP_IIT_ADMISSION.html"
+  },
+  {
+    "source_id": "SUPP_UCSC",
+    "requested_url": "https://ucsc.cmb.ac.lk/ug-computer-science",
+    "retrieved_utc": "2026-10-30T05:52:59.718750+00:00",
+    "historical_retrieved_date": "",
+    "http_status": 200,
+    "final_url": "https://ucsc.cmb.ac.lk/ug-computer-science/",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 120626,
+    "sha256": "2e5249ad6ee0860d6d4843a10668dd7d3de87cae78b5417d283e189ef41f6e66",
+    "snapshot": "sources/SUPP_UCSC.html"
+  },
+  {
+    "source_id": "SUPP_UOVT_PROSPECTUS",
+    "requested_url": "https://uovt.ac.lk/documents/prospectus-2026-2027.pdf",
+    "retrieved_utc": "2026-10-30T05:53:00.637344+00:00",
+    "historical_retrieved_date": "",
+    "http_status": 200,
+    "final_url": "https://uovt.ac.lk/documents/prospectus-2026-2027.pdf",
+    "content_type": "application/pdf",
+    "bytes": 17014630,
+    "sha256": "cc3d60a3db48b1bfe8dbd081824a3b12f74861cb4a719fd8304de65721427842",
+    "snapshot": "sources/SUPP_UOVT_PROSPECTUS.pdf"
+  }
+]

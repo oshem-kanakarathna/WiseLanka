@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-10-30T05:33:56.562253+00:00",
+  "expectations_frozen_before_application_execution": true,
+  "scenario_count": 45,
+  "scenarios_sha256": "116d3f11fa1d2691f35a907b9d5d643e3ed695b337a979803a52e5f73b3091fc",
+  "provenance": "New hand-authored expectations from source text, not copied from existing test outcomes. Evaluator inspected code/tests and is not an independent educational adjudicator. Uncertainty cases add an explicit epistemic/design convention to official conditions.",
+  "primary_source_decision_subset": "oracle_type OFFICIAL_CONDITION and all_oracle_context_representable_in_API=true; uncertainty and design-only cases reported separately."
+}

@@ -1,0 +1,662 @@
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+======================================================================
+ERROR: test_api_network_failure (test_api_interaction.ApiInteractionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_api_interaction.py", line 147, in test_api_network_failure
+    browser = playwright.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-TZHO2L --remote-debugging-pipe --no-startup-window
+<launched> pid=79523
+[pid=79523][err] [1030/185810.790266:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79523][err] [1030/185810.805090:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79523][err] [1030/185810.806807:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79523][err] [1030/185810.811967:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79523: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-TZHO2L --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79523
+  - [pid=79523][err] [1030/185810.790266:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79523][err] [1030/185810.805090:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79523][err] [1030/185810.806807:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79523][err] [1030/185810.811967:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79523: Permission denied (1100)
+  - [pid=79523] <gracefully close start>
+  - [pid=79523] <kill>
+  - [pid=79523] <will force kill>
+  - [pid=79523] exception while trying to kill process: Error: kill EPERM
+  - [pid=79523] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79523] starting temporary directories cleanup
+  - [pid=79523] finished temporary directories cleanup
+  - [pid=79523] <gracefully close end>
+
+
+======================================================================
+ERROR: test_api_server_error (test_api_interaction.ApiInteractionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_api_interaction.py", line 99, in test_api_server_error
+    browser = playwright.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-vIkvzs --remote-debugging-pipe --no-startup-window
+<launched> pid=79525
+[pid=79525][err] [1030/185811.148054:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79525][err] [1030/185811.149149:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79525][err] [1030/185811.149435:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79525][err] [1030/185811.149458:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79525: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-vIkvzs --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79525
+  - [pid=79525][err] [1030/185811.148054:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79525][err] [1030/185811.149149:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79525][err] [1030/185811.149435:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79525][err] [1030/185811.149458:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79525: Permission denied (1100)
+  - [pid=79525] <gracefully close start>
+  - [pid=79525] <kill>
+  - [pid=79525] <will force kill>
+  - [pid=79525] exception while trying to kill process: Error: kill EPERM
+  - [pid=79525] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79525] starting temporary directories cleanup
+  - [pid=79525] finished temporary directories cleanup
+  - [pid=79525] <gracefully close end>
+
+
+======================================================================
+ERROR: test_malformed_api_response (test_api_interaction.ApiInteractionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_api_interaction.py", line 191, in test_malformed_api_response
+    browser = playwright.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-ayzFRe --remote-debugging-pipe --no-startup-window
+<launched> pid=79531
+[pid=79531][err] [1030/185811.503387:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79531][err] [1030/185811.504558:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79531][err] [1030/185811.504877:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79531][err] [1030/185811.504906:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79531: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-ayzFRe --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79531
+  - [pid=79531][err] [1030/185811.503387:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79531][err] [1030/185811.504558:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79531][err] [1030/185811.504877:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79531][err] [1030/185811.504906:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79531: Permission denied (1100)
+  - [pid=79531] <gracefully close start>
+  - [pid=79531] <kill>
+  - [pid=79531] <will force kill>
+  - [pid=79531] exception while trying to kill process: Error: kill EPERM
+  - [pid=79531] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79531] starting temporary directories cleanup
+  - [pid=79531] finished temporary directories cleanup
+  - [pid=79531] <gracefully close end>
+
+
+======================================================================
+ERROR: test_valid_profile_renders_mocked_recommendation (test_api_interaction.ApiInteractionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_api_interaction.py", line 15, in test_valid_profile_renders_mocked_recommendation
+    browser = playwright.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-OEmi0T --remote-debugging-pipe --no-startup-window
+<launched> pid=79533
+[pid=79533][err] [1030/185811.852965:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79533][err] [1030/185811.854092:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79533][err] [1030/185811.854382:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79533][err] [1030/185811.854404:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79533: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-OEmi0T --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79533
+  - [pid=79533][err] [1030/185811.852965:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79533][err] [1030/185811.854092:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79533][err] [1030/185811.854382:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79533][err] [1030/185811.854404:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79533: Permission denied (1100)
+  - [pid=79533] <gracefully close start>
+  - [pid=79533] <kill>
+  - [pid=79533] <will force kill>
+  - [pid=79533] exception while trying to kill process: Error: kill EPERM
+  - [pid=79533] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79533] starting temporary directories cleanup
+  - [pid=79533] finished temporary directories cleanup
+  - [pid=79533] <gracefully close end>
+
+
+======================================================================
+ERROR: test_explicit_offline_fallback_message (test_hybrid_rendering.HybridRenderingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_hybrid_rendering.py", line 28, in test_explicit_offline_fallback_message
+    browser=p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-JtP8t7 --remote-debugging-pipe --no-startup-window
+<launched> pid=79537
+[pid=79537][err] [1030/185812.222446:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79537][err] [1030/185812.223441:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79537][err] [1030/185812.223696:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79537][err] [1030/185812.223740:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79537: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-JtP8t7 --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79537
+  - [pid=79537][err] [1030/185812.222446:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79537][err] [1030/185812.223441:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79537][err] [1030/185812.223696:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79537][err] [1030/185812.223740:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79537: Permission denied (1100)
+  - [pid=79537] <gracefully close start>
+  - [pid=79537] <kill>
+  - [pid=79537] <will force kill>
+  - [pid=79537] exception while trying to kill process: Error: kill EPERM
+  - [pid=79537] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79537] starting temporary directories cleanup
+  - [pid=79537] finished temporary directories cleanup
+  - [pid=79537] <gracefully close end>
+
+
+======================================================================
+ERROR: test_relevance_and_uncertainty_remain_separate (test_hybrid_rendering.HybridRenderingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_hybrid_rendering.py", line 8, in test_relevance_and_uncertainty_remain_separate
+    browser=p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-Wi4Ifb --remote-debugging-pipe --no-startup-window
+<launched> pid=79540
+[pid=79540][err] [1030/185812.572107:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79540][err] [1030/185812.573124:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79540][err] [1030/185812.573376:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+[pid=79540][err] [1030/185812.573418:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79540: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-Wi4Ifb --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79540
+  - [pid=79540][err] [1030/185812.572107:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79540][err] [1030/185812.573124:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79540][err] [1030/185812.573376:WARNING:net/dns/dns_config_service_posix.cc:197] Failed to read DnsConfig.
+  - [pid=79540][err] [1030/185812.573418:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79540: Permission denied (1100)
+  - [pid=79540] <gracefully close start>
+  - [pid=79540] <kill>
+  - [pid=79540] <will force kill>
+  - [pid=79540] exception while trying to kill process: Error: kill EPERM
+  - [pid=79540] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79540] starting temporary directories cleanup
+  - [pid=79540] finished temporary directories cleanup
+  - [pid=79540] <gracefully close end>
+
+
+======================================================================
+ERROR: test_added_row_requires_grade_and_can_be_removed (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 13, in setUp
+    self.browser = self.playwright.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_generated.py", line 16269, in launch
+    self._sync(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_browser_type.py", line 98, in launch
+    await self._channel.send(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-g2CGMI --remote-debugging-pipe --no-startup-window
+<launched> pid=79549
+[pid=79549][err] [1030/185812.928065:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+[pid=79549][err] [1030/185812.929115:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+[pid=79549][err] [1030/185812.929393:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79549: Permission denied (1100)
+Call log:
+  - <launching> /Users/dan/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/7q/tr1whnfn4fg9dq6_vbx32jx80000gn/T/playwright_chromiumdev_profile-g2CGMI --remote-debugging-pipe --no-startup-window
+  - <launched> pid=79549
+  - [pid=79549][err] [1030/185812.928065:ERROR:base/power_monitor/thermal_state_observer_mac.mm:140] ThermalStateObserverMac unable to register to power notifications. Result: 9
+  - [pid=79549][err] [1030/185812.929115:ERROR:net/dns/dns_config_service_posix.cc:138] DNS config watch failed to start.
+  - [pid=79549][err] [1030/185812.929393:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.79549: Permission denied (1100)
+  - [pid=79549] <gracefully close start>
+  - [pid=79549] <kill>
+  - [pid=79549] <will force kill>
+  - [pid=79549] exception while trying to kill process: Error: kill EPERM
+  - [pid=79549] <process did exit: exitCode=null, signal=SIGTRAP>
+  - [pid=79549] starting temporary directories cleanup
+  - [pid=79549] finished temporary directories cleanup
+  - [pid=79549] <gracefully close end>
+
+
+======================================================================
+ERROR: test_complete_confirmation_conflicts_with_unreported_result (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_custom_subject_cannot_duplicate_fixed_mathematics (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_delayed_catalogue_updates_existing_row_without_losing_manual_input (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_empty_qualification_only_profile_is_blocked (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_mobile_reflow_and_labels (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_nine_subject_payload_and_skill_states (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_options_failure_keeps_manual_awards_available (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_qualification_middle_removal_focuses_next_row (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_qualification_only_early_career_payload (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_qualification_removal_returns_focus_to_add_button (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_retry_populates_existing_award_and_catalogue_edit_becomes_custom (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_subject_removal_returns_focus_to_previous_subject (test_learner_gaps.LearnerGapTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_gaps.py", line 12, in setUp
+    self.playwright = sync_playwright().start()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_duplicate_ol_subjects (test_learner_profile.LearnerProfileTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_profile.py", line 66, in test_duplicate_ol_subjects
+    with sync_playwright() as playwright:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_missing_al_grades (test_learner_profile.LearnerProfileTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_profile.py", line 44, in test_missing_al_grades
+    with sync_playwright() as playwright:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_missing_ol_grades (test_learner_profile.LearnerProfileTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_learner_profile.py", line 14, in test_missing_ol_grades
+    with sync_playwright() as playwright:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_no_progression_pathways (test_progression_rendering.ProgressionRenderingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_progression_rendering.py", line 51, in test_no_progression_pathways
+    with sync_playwright() as playwright:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_progression_card_displays_correctly (test_progression_rendering.ProgressionRenderingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_progression_rendering.py", line 14, in test_progression_card_displays_correctly
+    with sync_playwright() as playwright:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_legacy_pages_do_not_label_unknown_as_eligible_or_rejected (test_wp2_rendering.WP2RenderingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp2_rendering.py", line 8, in test_legacy_pages_do_not_label_unknown_as_eligible_or_rejected
+    with sync_playwright() as p:
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_assistant_error_after_success_not_overwritten_by_translation (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_assistant_request_text_and_keyboard (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_consent_and_permission_denial (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_languages_preserve_profile_and_rendered_results (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_localised_validation_and_dynamic_labels (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_missing_translation_keys_fail_closed_to_english (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_mobile_reflow_in_all_languages (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_native_unsupported_keeps_text_alternative (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_network_and_transcription_errors (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_recognition_language_unavailable (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_transcript_editable_not_auto_submitted (test_wp4_interaction.WP4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/frontend/browser_tests/test_wp4_interaction.py", line 11, in setUp
+    self.p=sync_playwright().start();self.browser=self.p.chromium.launch(headless=True)
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+  File "/private/tmp/wiselanka-repro-venv/lib/python3.9/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+----------------------------------------------------------------------
+Ran 36 tests in 2.774s
+
+FAILED (errors=36)

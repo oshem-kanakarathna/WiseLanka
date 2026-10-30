@@ -141,7 +141,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_2["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -151,7 +151,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_3["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (

@@ -55,7 +55,7 @@ class LearnerProfile(BaseModel):
     learner_category: Literal["AL_LEARNER", "VOCATIONAL_LEARNER", "EARLY_CAREER"] = "AL_LEARNER"
     existing_qualifications: list[ExistingQualification] = Field(default_factory=list, max_length=30)
     self_reported_skills: list[ReportedSkill] = Field(default_factory=list, max_length=100)
-    # Omitted flags preserve the interpretation of existing submitted results.
+    # An omitted flag leaves examination completeness unknown.
     education_complete: dict[Literal["O_LEVEL", "A_LEVEL"], bool] = Field(default_factory=dict)
 
     @field_validator("education")

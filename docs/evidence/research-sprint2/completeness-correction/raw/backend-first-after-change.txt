@@ -1,0 +1,137 @@
+.........................................................F.............. [ 31%]
+..........F........................F.................................... [ 63%]
+..............................................F......................... [ 94%]
+............                                                             [100%]
+=================================== FAILURES ===================================
+________________________ test_six_subject_compatibility ________________________
+
+    def test_six_subject_compatibility():
+        result = submit().json()
+        assert result['count'] == 1
+        assert result['recommendations'][0]['eligible'] is False
+>       assert result['academic_insights'][0]['status'] == 'NOT_MET'
+E       AssertionError: assert 'NOT_ASSESSED' == 'NOT_MET'
+E         
+E         - NOT_MET
+E         + NOT_ASSESSED
+
+tests/integration/test_learner_gap_api.py:20: AssertionError
+________ test_qualification_alongside_exams_preserves_exam_rule_failure ________
+
+    def test_qualification_alongside_exams_preserves_exam_rule_failure():
+        response = submit(existing_qualifications=[{'title': 'Synthetic additional award'}])
+        assert response.status_code == 200
+>       assert response.json()['academic_insights'][0]['status'] == 'NOT_MET'
+E       AssertionError: assert 'NOT_ASSESSED' == 'NOT_MET'
+E         
+E         - NOT_MET
+E         + NOT_ASSESSED
+
+tests/integration/test_learner_gap_api.py:139: AssertionError
+____________________ test_recommendations_unrelated_profile ____________________
+
+    def test_recommendations_unrelated_profile():
+        """
+        An unrelated A/L profile should not be
+        classified as eligible for the currently
+        supported computing degree programmes.
+        """
+    
+        response = client.post(
+            "/recommendations",
+            json={
+                "student_results": {
+                    "Sinhala": "A",
+                    "Art": "B",
+                    "Geography": "C",
+                }
+            },
+        )
+    
+        assert response.status_code == 200
+    
+        data = response.json()
+    
+        assert data["count"] == 5
+    
+        results = {
+            item["programme_id"]: item
+            for item
+            in data["recommendations"]
+        }
+    
+        assert (
+            results["PRG0001"]["category"]
+            == "NOT_ASSESSED"
+        )
+    
+        assert (
+            results["PRG0001"]["match_score"]
+            == 50.0
+        )
+    
+>       assert (
+            results["PRG0002"]["category"]
+            == "NOT_ELIGIBLE"
+        )
+E       AssertionError: assert 'NOT_ASSESSED' == 'NOT_ELIGIBLE'
+E         
+E         - NOT_ELIGIBLE
+E         + NOT_ASSESSED
+
+tests/integration/test_recommendation_api.py:170: AssertionError
+__________________ test_unrelated_profile_not_nearly_eligible __________________
+
+    def test_unrelated_profile_not_nearly_eligible():
+    
+        profile = {
+            "Sinhala": "A",
+            "Art": "B",
+            "Geography": "C",
+        }
+    
+        results = recommend_programmes(
+            profile
+        )
+    
+        result_1 = get_result_by_programme(
+            results,
+            "PRG0001",
+        )
+    
+        result_2 = get_result_by_programme(
+            results,
+            "PRG0002",
+        )
+    
+        result_3 = get_result_by_programme(
+            results,
+            "PRG0003",
+        )
+    
+        assert (
+            result_1["category"]
+            == "NOT_ASSESSED"
+        )
+    
+        assert (
+            result_1["match_score"]
+            == 50.0
+        )
+    
+>       assert (
+            result_2["category"]
+            == "NOT_ELIGIBLE"
+        )
+E       AssertionError: assert 'NOT_ASSESSED' == 'NOT_ELIGIBLE'
+E         
+E         - NOT_ELIGIBLE
+E         + NOT_ASSESSED
+
+tests/unit/test_recommendation_engine.py:142: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_learner_gap_api.py::test_six_subject_compatibility
+FAILED tests/integration/test_learner_gap_api.py::test_qualification_alongside_exams_preserves_exam_rule_failure
+FAILED tests/integration/test_recommendation_api.py::test_recommendations_unrelated_profile
+FAILED tests/unit/test_recommendation_engine.py::test_unrelated_profile_not_nearly_eligible
+4 failed, 224 passed in 1.55s

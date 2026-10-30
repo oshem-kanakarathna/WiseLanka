@@ -169,7 +169,7 @@ def test_recommendations_unrelated_profile():
 
     assert (
         results["PRG0002"]["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -179,7 +179,7 @@ def test_recommendations_unrelated_profile():
 
     assert (
         results["PRG0003"]["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (

@@ -1,0 +1,5 @@
+PASS: en real grounded eligibility response; translated controls; profile/results preserved; mobile reflow
+PASS: si real grounded eligibility response; translated controls; profile/results preserved; mobile reflow
+PASS: ta real grounded eligibility response; translated controls; profile/results preserved; mobile reflow
+PASS: assistant and language switching do not change academic decisions or semantic ranking
+PASS: unsupported question refused; voice detection recorded; no JavaScript page errors

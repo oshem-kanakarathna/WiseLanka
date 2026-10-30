@@ -1,0 +1,100 @@
+{
+  "programme_id": "PRG0004",
+  "programme_name": "IIT International Foundation - Computing (IT) Pathway",
+  "eligible": false,
+  "assessment_status": "NOT_ASSESSED",
+  "summary": "Eligibility is not assessed: input or rule evidence is incomplete, or provider review is required. This is not a rejection.",
+  "passed": [
+    "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+    "O_LEVEL Mathematics: C (credit pass C or above required)",
+    "O_LEVEL English: C (credit pass C or above required)"
+  ],
+  "failed": [],
+  "not_assessed": [
+    "Examination completeness is not confirmed; the submitted results do not yet demonstrate this count requirement."
+  ],
+  "source_url": "https://www.iit.ac.lk/foundation/it/",
+  "requirement_sources": [
+    {
+      "source_id": "SRC0009",
+      "source_url": "https://www.iit.ac.lk/foundation/",
+      "source_organisation": "Informatics Institute of Technology",
+      "source_accessed": "2026-08-18"
+    }
+  ],
+  "academic_gap_insights": {
+    "programme_id": "PRG0004",
+    "status": "NOT_ASSESSED",
+    "groups": [
+      {
+        "group_id": "GRP007",
+        "operator": "AND",
+        "status": "NOT_ASSESSED",
+        "requirements": [
+          {
+            "requirement_id": "REQ0014",
+            "status": "NOT_ASSESSED",
+            "description": "At least six GCE O/L subjects must be passed",
+            "explanation": "Examination completeness is not confirmed; the submitted results do not yet demonstrate this count requirement.",
+            "source_id": "SRC0009",
+            "source_url": "https://www.iit.ac.lk/foundation/",
+            "source_organisation": "Informatics Institute of Technology",
+            "source_accessed": "2026-08-18"
+          }
+        ]
+      },
+      {
+        "group_id": "GRP008",
+        "operator": "AND",
+        "status": "MET",
+        "requirements": [
+          {
+            "requirement_id": "REQ0015",
+            "status": "MET",
+            "description": "At least three GCE O/L subjects must have credit passes",
+            "explanation": "3 O/L subjects have credit passes; 3 required. Credits: Mathematics: C, English: C, Science: C",
+            "source_id": "SRC0009",
+            "source_url": "https://www.iit.ac.lk/foundation/",
+            "source_organisation": "Informatics Institute of Technology",
+            "source_accessed": "2026-08-18"
+          }
+        ]
+      },
+      {
+        "group_id": "GRP009",
+        "operator": "AND",
+        "status": "MET",
+        "requirements": [
+          {
+            "requirement_id": "REQ0016",
+            "status": "MET",
+            "description": "Mathematics must have a credit pass",
+            "explanation": "O_LEVEL Mathematics: C (credit pass C or above required)",
+            "source_id": "SRC0009",
+            "source_url": "https://www.iit.ac.lk/foundation/",
+            "source_organisation": "Informatics Institute of Technology",
+            "source_accessed": "2026-08-18"
+          }
+        ]
+      },
+      {
+        "group_id": "GRP010",
+        "operator": "AND",
+        "status": "MET",
+        "requirements": [
+          {
+            "requirement_id": "REQ0017",
+            "status": "MET",
+            "description": "English must have a credit pass",
+            "explanation": "O_LEVEL English: C (credit pass C or above required)",
+            "source_id": "SRC0009",
+            "source_url": "https://www.iit.ac.lk/foundation/",
+            "source_organisation": "Informatics Institute of Technology",
+            "source_accessed": "2026-08-18"
+          }
+        ]
+      }
+    ],
+    "next_step": "Supply missing results or ask the provider to assess your qualifications. Missing evidence is not a rejection, and a reported award is not assumed equivalent to examination results."
+  }
+}

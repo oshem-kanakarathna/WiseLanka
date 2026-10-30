@@ -1,0 +1,260 @@
+FFFFFFF.........FF.....                                                  [100%]
+=================================== FAILURES ===================================
+_ test_partial_ol_count_requires_level_specific_completeness[None-NOT_ASSESSED-/eligibility] _
+
+endpoint = '/eligibility', flags = None, expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[None-NOT_ASSESSED-/personalised-recommendations] _
+
+endpoint = '/personalised-recommendations', flags = None
+expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[flags1-NOT_ASSESSED-/eligibility] _
+
+endpoint = '/eligibility', flags = {}, expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[flags1-NOT_ASSESSED-/personalised-recommendations] _
+
+endpoint = '/personalised-recommendations', flags = {}
+expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[flags2-NOT_ASSESSED-/eligibility] _
+
+endpoint = '/eligibility', flags = {'A_LEVEL': True}, expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[flags2-NOT_ASSESSED-/personalised-recommendations] _
+
+endpoint = '/personalised-recommendations', flags = {'A_LEVEL': True}
+expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+>       assert insight['status'] == expected
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:31: AssertionError
+_ test_partial_ol_count_requires_level_specific_completeness[flags3-NOT_ASSESSED-/eligibility] _
+
+endpoint = '/eligibility', flags = {'O_LEVEL': False}, expected = 'NOT_ASSESSED'
+
+    @pytest.mark.parametrize('endpoint', ['/eligibility', '/personalised-recommendations'])
+    @pytest.mark.parametrize('flags, expected', [
+        (None, 'NOT_ASSESSED'),  # None here means omit the JSON field.
+        ({}, 'NOT_ASSESSED'),
+        ({'A_LEVEL': True}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': False}, 'NOT_ASSESSED'),
+        ({'O_LEVEL': True}, 'NOT_MET'),
+    ])
+    def test_partial_ol_count_requires_level_specific_completeness(endpoint, flags, expected):
+        context = {} if flags is None else {'education_complete': flags}
+        payload = ({'programme_id': 'PRG0004', 'student_results': FIVE, **context}
+                   if endpoint == '/eligibility' else
+                   {'learner_profile': {'education': FIVE, **context}})
+        response = client.post(endpoint, json=payload)
+        assert response.status_code == 200
+        data = response.json()
+        insight = (data['academic_gap_insights'] if endpoint == '/eligibility' else
+                   next(i for i in data['academic_insights'] if i['programme_id'] == 'PRG0004'))
+        assert insight['status'] == expected
+        count = next(g for g in insight['groups'] if g['group_id'] == 'GRP007')
+        assert count['status'] == expected
+        if endpoint == '/eligibility' and expected == 'NOT_ASSESSED':
+            assert data['failed'] == []
+            assert 'not a rejection' in data['summary']
+>           assert any('completeness' in message.lower() for message in data['not_assessed'])
+E           assert False
+E            +  where False = any(<generator object test_partial_ol_count_requires_level_specific_completeness.<locals>.<genexpr> at 0x10552add0>)
+
+tests/integration/test_exam_completeness.py:37: AssertionError
+_ test_al_count_predicates_follow_the_same_evidence_semantics[PRG0001-education0-GRP001] _
+
+pid = 'PRG0001', education = {'A_LEVEL': {'Chemistry': 'S', 'Physics': 'C'}}
+group_id = 'GRP001'
+
+    @pytest.mark.parametrize('pid, education, group_id', [
+        ('PRG0001', {'A_LEVEL': {'Physics': 'C', 'Chemistry': 'S'}}, 'GRP001'),
+        ('PRG0002', {'A_LEVEL': {'Physics': 'C'}}, 'GRP003'),
+    ])
+    def test_al_count_predicates_follow_the_same_evidence_semantics(pid, education, group_id):
+        unknown = assess_academic_gaps(pid, education)
+        complete = assess_academic_gaps(pid, education, {'A_LEVEL': True})
+>       assert next(g for g in unknown['groups'] if g['group_id'] == group_id)['status'] == 'NOT_ASSESSED'
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:58: AssertionError
+_ test_al_count_predicates_follow_the_same_evidence_semantics[PRG0002-education1-GRP003] _
+
+pid = 'PRG0002', education = {'A_LEVEL': {'Physics': 'C'}}, group_id = 'GRP003'
+
+    @pytest.mark.parametrize('pid, education, group_id', [
+        ('PRG0001', {'A_LEVEL': {'Physics': 'C', 'Chemistry': 'S'}}, 'GRP001'),
+        ('PRG0002', {'A_LEVEL': {'Physics': 'C'}}, 'GRP003'),
+    ])
+    def test_al_count_predicates_follow_the_same_evidence_semantics(pid, education, group_id):
+        unknown = assess_academic_gaps(pid, education)
+        complete = assess_academic_gaps(pid, education, {'A_LEVEL': True})
+>       assert next(g for g in unknown['groups'] if g['group_id'] == group_id)['status'] == 'NOT_ASSESSED'
+E       AssertionError: assert 'NOT_MET' == 'NOT_ASSESSED'
+E         
+E         - NOT_ASSESSED
+E         + NOT_MET
+
+tests/integration/test_exam_completeness.py:58: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[None-NOT_ASSESSED-/eligibility]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[None-NOT_ASSESSED-/personalised-recommendations]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[flags1-NOT_ASSESSED-/eligibility]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[flags1-NOT_ASSESSED-/personalised-recommendations]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[flags2-NOT_ASSESSED-/eligibility]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[flags2-NOT_ASSESSED-/personalised-recommendations]
+FAILED tests/integration/test_exam_completeness.py::test_partial_ol_count_requires_level_specific_completeness[flags3-NOT_ASSESSED-/eligibility]
+FAILED tests/integration/test_exam_completeness.py::test_al_count_predicates_follow_the_same_evidence_semantics[PRG0001-education0-GRP001]
+FAILED tests/integration/test_exam_completeness.py::test_al_count_predicates_follow_the_same_evidence_semantics[PRG0002-education1-GRP003]
+9 failed, 14 passed in 0.25s

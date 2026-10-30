@@ -1,0 +1,49 @@
+INFO:     Started server process [80285]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:55615 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55620 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55626 - "GET /profile-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55627 - "GET /assistant/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55627 - "OPTIONS /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55626 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "GET /assistant/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55634 - "GET /profile-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55634 - "OPTIONS /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55635 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55639 - "POST /personalised-recommendations HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55646 - "GET /assistant/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55645 - "GET /profile-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55645 - "OPTIONS /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55646 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55646 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "GET /progression/QLF0012 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55648 - "GET /progression/QLF0010 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55655 - "GET /assistant/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55654 - "GET /profile-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55654 - "OPTIONS /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55655 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55663 - "GET /assistant/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "GET /profile-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "OPTIONS /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55663 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55663 - "OPTIONS /assistant/guidance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "POST /assistant/guidance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "POST /assistant/guidance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "POST /assistant/guidance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55665 - "POST /personalised-recommendations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55662 - "POST /assistant/guidance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55666 - "POST /eligibility HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [80285]

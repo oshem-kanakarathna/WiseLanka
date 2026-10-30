@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/research-sprint2/completeness-correction/controlled_recheck.py", line 19, in <module>
+    m.main()
+  File "/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/research-sprint2/educational-correctness/run_evaluation.py", line 29, in main
+    with TestClient(app) as client,(OUT/'raw/api-responses.jsonl').open('w') as raw:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1242, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1110, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/dan/Documents/UWL/FP/WiseLanka/WiseLanka/docs/evidence/research-sprint2/completeness-correction/recheck/raw/api-responses.jsonl'
