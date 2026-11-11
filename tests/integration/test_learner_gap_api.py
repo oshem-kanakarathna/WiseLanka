@@ -15,24 +15,30 @@ def submit(education=None, **extra):
 
 def test_complete_six_subject_profile_preserves_unmet_credit_count():
     result = submit(education_complete={'O_LEVEL': True}).json()
-    assert result['count'] == 1
-    assert result['recommendations'][0]['eligible'] is False
-    assert result['academic_insights'][0]['status'] == 'NOT_MET'
-    credits = next(g for g in result['academic_insights'][0]['groups'] if g['group_id'] == 'GRP008')
+    assert result['count'] == 2  # IIT Foundation plus the source-grounded DTET ICT certificate.
+    foundation = next(item for item in result['recommendations'] if item['programme_id'] == 'PRG0004')
+    assert foundation['eligible'] is False
+    insight = next(item for item in result['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'NOT_MET'
+    credits = next(g for g in insight['groups'] if g['group_id'] == 'GRP008')
     assert credits['status'] == 'NOT_MET'
 
 
 def test_ninth_subject_credit_changes_real_rule_outcome():
     nine = {**SIX, 'Geography': 'F', 'Commerce': 'F', 'Art': 'C'}
     result = submit({'O_LEVEL': nine}).json()
-    assert result['recommendations'][0]['eligible'] is True
-    assert result['academic_insights'][0]['status'] == 'MET'
+    foundation = next(item for item in result['recommendations'] if item['programme_id'] == 'PRG0004')
+    assert foundation['eligible'] is True
+    insight = next(item for item in result['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'MET'
 
 
 def test_six_subjects_can_already_meet_requirements():
     result = submit({'O_LEVEL': {**SIX, 'Science': 'C'}}).json()
-    assert result['recommendations'][0]['eligible'] is True
-    assert result['academic_insights'][0]['status'] == 'MET'
+    foundation = next(item for item in result['recommendations'] if item['programme_id'] == 'PRG0004')
+    assert foundation['eligible'] is True
+    insight = next(item for item in result['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'MET'
 
 
 @pytest.mark.parametrize('education', [
@@ -42,7 +48,7 @@ def test_six_subjects_can_already_meet_requirements():
 def test_legacy_al(education):
     response = submit(education)
     assert response.status_code == 200
-    assert response.json()['count'] == 5
+    assert response.json()['count'] == 8
     assert all(p['academic_gap_insights']['status']=='NOT_ASSESSED' and not p['eligible'] for p in response.json()['recommendations'] if p['programme_id'] in {'PRG0001', 'PRG0002', 'PRG0003'})
 
 
@@ -58,13 +64,15 @@ def test_invalid_results_rejected(education):
 
 def test_incomplete_counts_and_missing_subject_not_false_negative():
     result = submit({'O_LEVEL': {'English': 'C'}}, education_complete={'O_LEVEL': False}).json()
-    assert result['academic_insights'][0]['status'] == 'NOT_ASSESSED'
-    assert all(g['status'] != 'NOT_MET' for g in result['academic_insights'][0]['groups'])
+    insight = next(item for item in result['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'NOT_ASSESSED'
+    assert all(g['status'] != 'NOT_MET' for g in insight['groups'])
 
 
 def test_supplied_low_grade_remains_unmet_even_if_profile_incomplete():
     result = submit({'O_LEVEL': {'English': 'S'}}, education_complete={'O_LEVEL': False}).json()
-    assert result['academic_insights'][0]['status'] == 'NOT_MET'
+    insight = next(item for item in result['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'NOT_MET'
 
 
 def test_qualification_only_does_not_infer_exam_equivalence():
@@ -137,7 +145,8 @@ def test_qualification_alongside_exams_preserves_exam_rule_failure():
     response = submit(education_complete={'O_LEVEL': True},
                       existing_qualifications=[{'title': 'Synthetic additional award'}])
     assert response.status_code == 200
-    assert response.json()['academic_insights'][0]['status'] == 'NOT_MET'
+    insight = next(item for item in response.json()['academic_insights'] if item['programme_id'] == 'PRG0004')
+    assert insight['status'] == 'NOT_MET'
 
 
 @pytest.mark.parametrize('award', [

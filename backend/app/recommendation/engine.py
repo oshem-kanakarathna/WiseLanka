@@ -175,12 +175,17 @@ def programme_matches_student_level(
     programme_id,
     student_levels,
     requirements=None,
+    existing_qualifications=None,
 ):
     """
-    A programme should only be evaluated when
-    the learner supplied at least one education
-    level used by that programme's entry
-    requirements.
+    A programme is an immediate recommendation
+    only when the learner has supplied the
+    highest academic stage used by its entry
+    requirements. Lower-level prerequisites can
+    remain missing and be explained as
+    NOT_ASSESSED, but an O/L-only profile must
+    not be shown an A/L-entry HND merely because
+    that HND also requires O/L English/Maths.
 
     This prevents:
 
@@ -199,17 +204,38 @@ def programme_matches_student_level(
         )
     )
 
+    programme_requirements = requirements or load_programme_entry_requirements()
+    held_requirement_ids = {
+        row.get("qualification_id", "").strip()
+        for row in programme_requirements
+        if row.get("programme_id") == programme_id
+        and row.get("requirement_type", "").strip().upper() == "QUALIFICATION_HELD"
+    }
+    reported_ids = {
+        item.get("qualification_id", "").strip()
+        for item in (existing_qualifications or [])
+        if isinstance(item, dict)
+    }
+    has_documented_qualification_route = bool(held_requirement_ids & reported_ids)
+    if has_documented_qualification_route:
+        return True
+
     # If a programme currently has no
     # structured entry requirements,
     # exclude it from eligibility-based
     # recommendation until evidence exists.
     if not programme_levels:
-        return False
+        return has_documented_qualification_route
 
-    return bool(
-        programme_levels
-        & student_levels
-    )
+    stage_rank = {"O_LEVEL": 1, "A_LEVEL": 2}
+    programme_stages = programme_levels & stage_rank.keys()
+    learner_stages = student_levels & stage_rank.keys()
+    if not programme_stages or not learner_stages:
+        return has_documented_qualification_route
+
+    programme_entry_stage = max(programme_stages, key=stage_rank.get)
+    learner_stage = max(learner_stages, key=stage_rank.get)
+    return programme_entry_stage == learner_stage
 
 
 # ------------------------------------
@@ -356,6 +382,7 @@ def get_programme_careers(
 
 def evaluate_all_programmes(
     student_profile,
+    existing_qualifications=None,
 ):
 
     programmes = load_active_programmes()
@@ -386,12 +413,14 @@ def evaluate_all_programmes(
             programme_id,
             student_levels,
             requirements,
+            existing_qualifications,
         ):
             continue
 
         evaluation = evaluate_programme(
             programme_id,
             student_profile,
+            existing_qualifications,
         )
 
         # ------------------------------------
@@ -399,7 +428,14 @@ def evaluate_all_programmes(
         # by the recommendation layer
         # ------------------------------------
 
-        evaluation["academic_gap_insights"] = {**assess_academic_gaps(programme_id, student_profile), "programme_name": programme["programme_name"]}
+        evaluation["academic_gap_insights"] = {
+            **assess_academic_gaps(
+                programme_id,
+                student_profile,
+                existing_qualifications=existing_qualifications,
+            ),
+            "programme_name": programme["programme_name"],
+        }
         evaluation["programme_notes"] = programme.get("notes", "")
         evaluation["programme_name"] = (
             programme["programme_name"]
@@ -952,10 +988,12 @@ def classify_programme(
 
 def recommend_programmes(
     student_profile,
+    existing_qualifications=None,
 ):
 
     evaluations = evaluate_all_programmes(
-        student_profile
+        student_profile,
+        existing_qualifications,
     )
 
     recommendations = []

@@ -213,7 +213,14 @@ def personalise_recommendations(
     if not isinstance(preferences, dict):
         raise ValueError("preferences must be an object.")
 
-    existing_recommendations = recommend_programmes(education)
+    existing_qualifications = [
+        item.model_dump() if hasattr(item, "model_dump") else item
+        for item in learner_profile["existing_qualifications"]
+    ]
+    existing_recommendations = recommend_programmes(
+        education,
+        existing_qualifications,
+    )
     skills = assess_learner_skills(career_goal_id, learner_profile["self_reported_skills"])
     assessed_programmes = existing_recommendations or [
         row for row in load_csv("reference/programmes.csv") if row.get("programme_status") == "Active"

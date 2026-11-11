@@ -12,10 +12,10 @@ REQ0010,PRG0003,GRP005,AND,A_LEVEL,SUBJECT_SET_COUNT,Combined Mathematics|Higher
 REQ0011,PRG0003,GRP006,OR,A_LEVEL,SUBJECT_GRADE,Combined Mathematics,C,1,,At least one core mathematics or physics subject must have minimum grade C,true,SRC0004
 REQ0012,PRG0003,GRP006,OR,A_LEVEL,SUBJECT_GRADE,Physics,C,1,,At least one core mathematics or physics subject must have minimum grade C,true,SRC0004
 REQ0013,PRG0003,GRP006,OR,A_LEVEL,SUBJECT_GRADE,Higher Mathematics,C,1,,At least one core mathematics or physics subject must have minimum grade C,true,SRC0004
-REQ0014,PRG0004,GRP007,AND,O_LEVEL,O_LEVEL_PASS_COUNT,,,6,,At least six GCE O/L subjects must be passed,true,SRC0009
-REQ0015,PRG0004,GRP008,AND,O_LEVEL,O_LEVEL_CREDIT_COUNT,,,3,,At least three GCE O/L subjects must have credit passes,true,SRC0009
-REQ0016,PRG0004,GRP009,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,Mathematics,C,1,,Mathematics must have a credit pass,true,SRC0009
-REQ0017,PRG0004,GRP010,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,English,C,1,,English must have a credit pass,true,SRC0009
+REQ0014,PRG0004,GRP007,AND,O_LEVEL,O_LEVEL_PASS_COUNT,,,6,,At least six GCE O/L subjects must be passed,true,SRC0010
+REQ0015,PRG0004,GRP008,AND,O_LEVEL,O_LEVEL_CREDIT_COUNT,,,3,,At least three GCE O/L subjects must have credit passes,true,SRC0010
+REQ0016,PRG0004,GRP009,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,Mathematics,C,1,,Mathematics must have a credit pass,true,SRC0010
+REQ0017,PRG0004,GRP010,AND,O_LEVEL,O_LEVEL_SUBJECT_CREDIT,English,C,1,,English must have a credit pass,true,SRC0010
 REQ0019,PRG0008,GRP011,OR,A_LEVEL,A_LEVEL_PASS,,,3,,A/L route: three passes; same sitting must be checked separately,true,SRC0016
 REQ0020,PRG0008,GRP011,OR,A_LEVEL,PROVIDER_REVIEW,,,,,Alternative OUSL foundation or advanced certificate or Senate-accepted qualification requires provider review,true,SRC0016
 REQ0021,PRG0008,GRP012,AND,A_LEVEL,PROVIDER_REVIEW,,,,,Provider must confirm age 18 at registration; same-sitting results and any required selection test,true,SRC0016
@@ -32,3 +32,12 @@ REQ0031,PRG0011,GRP018,AND,QUALIFICATION,PROVIDER_REVIEW,,,,,Shortlisting tests 
 REQ0032,PRG0001,GRP019,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021
 REQ0033,PRG0002,GRP020,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021
 REQ0034,PRG0003,GRP021,AND,A_LEVEL,PROVIDER_REVIEW,,,,,UGC general entry and selection not assessed: approved subjects in one sitting within three attempts; Common General Paper minimum 30 percent; applicable Z-score and district/year cut-off must be verified,true,SRC0021
+REQ0035,PRG0012,GRP022,AND,O_LEVEL,SUBJECT_GRADE,English,S,,,SLIATE HNDIT requires an ordinary pass in GCE O/L English,true,SRC0022
+REQ0036,PRG0012,GRP023,AND,O_LEVEL,SUBJECT_GRADE,Mathematics,S,,,SLIATE HNDIT requires an ordinary pass in GCE O/L Mathematics,true,SRC0022
+REQ0037,PRG0012,GRP024,AND,A_LEVEL,PROVIDER_REVIEW,,,,,"SLIATE states that applicants must have passed GCE A/L in one sitting in any stream; the reviewed page does not state an explicit pass count and the profile does not record sitting history, so confirm the exact rule with SLIATE",true,SRC0022
+REQ0038,PRG0012,GRP025,AND,A_LEVEL,PROVIDER_REVIEW,,,,,SLIATE selection is by A/L order of merit and an aptitude/IQ test; neither selection rank nor test result is assessed by WiseLanka,true,SRC0022
+REQ0039,PRG0013,GRP026,AND,O_LEVEL,SUBJECT_GRADE,English,S,,,SLIATE HNDM entry routes require an ordinary pass in GCE O/L English,true,SRC0023
+REQ0040,PRG0013,GRP027,AND,O_LEVEL,SUBJECT_GRADE,Mathematics,S,,,SLIATE HNDM entry routes require an ordinary pass in GCE O/L Mathematics,true,SRC0023
+REQ0041,PRG0013,GRP028,AND,A_LEVEL,PROVIDER_REVIEW,,,,,"SLIATE lists either GCE A/L in one sitting in any stream or specified DTET National Certificate routes; the catalogue does not model or authenticate those alternative awards, and sitting/current-intake conditions require provider confirmation",true,SRC0023
+REQ0042,PRG0014,GRP029,AND,O_LEVEL,PROVIDER_REVIEW,,,,,"DTET Gazette 2025-10-31 course K72S004F4.2 lists six O/L passes including medium language and English within no more than two sittings OR NVQ 3 in a relevant field. WiseLanka does not record sitting count or identify the examination medium language; confirm the applicable entry route and current intake with DTET",true,SRC0025
+REQ0043,PRG0015,GRP030,AND,A_LEVEL,PROVIDER_REVIEW,,,,,"DTET Gazette 2025-10-31 course K72T001F5.2 lists relevant-field NVQ 4 OR three A/L subjects including ICT in no more than one sitting (excluding GIT and General English). WiseLanka cannot assess sitting history or provider acceptance of the exact NVQ field; verify current intake and route with DTET",true,SRC0025

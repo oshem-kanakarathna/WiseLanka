@@ -12,6 +12,8 @@ from backend.app.personalisation.models import LearnerProfile, ExistingQualifica
 from backend.app.data_loader import load_csv, KnowledgeDataError
 from backend.app.data_integrity import validate_catalogue
 from backend.app.assistant.engine import GuidanceRequest, answer as guidance_answer, options as guidance_options
+from backend.app.research.api import router as research_router
+from backend.app.gemini_exploration.api import router as gemini_exploration_router
 
 from backend.app.eligibility.engine import (
     evaluate_programme, assess_academic_gaps,
@@ -80,6 +82,8 @@ app = FastAPI(
     ),
     version="0.6.0",
 )
+app.include_router(research_router)
+app.include_router(gemini_exploration_router)
 
 
 @app.exception_handler(FileNotFoundError)

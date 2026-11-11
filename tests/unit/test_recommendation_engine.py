@@ -356,9 +356,7 @@ def test_ol_profile_only_returns_ol_entry_programmes():
         for result in results
     }
 
-    assert programme_ids == {
-        "PRG0004"
-    }
+    assert programme_ids == {"PRG0004", "PRG0014"}
 
 
 def test_ol_foundation_profile_is_eligible():
@@ -378,9 +376,7 @@ def test_ol_foundation_profile_is_eligible():
         profile
     )
 
-    assert len(results) == 1
-
-    result = results[0]
+    result = next(item for item in results if item["programme_id"] == "PRG0004")
 
     assert (
         result["programme_id"]
@@ -435,6 +431,9 @@ def test_legacy_al_profile_excludes_ol_foundation():
         "PRG0003",
         "PRG0008",
         "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
 
 
@@ -465,6 +464,9 @@ def test_nested_al_profile_excludes_ol_foundation():
         "PRG0003",
         "PRG0008",
         "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
 
 def test_ol_foundation_recommendation_contains_progression():

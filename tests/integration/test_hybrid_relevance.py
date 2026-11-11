@@ -25,10 +25,12 @@ def test_vocational_exploration_has_relevance_without_eligibility_promotion():
     }})
     assert result.status_code==200
     data=result.json()
-    assert data['recommendations']==[]
+    route=next(p for p in data['recommendations'] if p['programme_id']=='PRG0011')
+    assert route['academic_gap_insights']['status']=='NOT_ASSESSED'
+    assert route['eligible'] is False
+    assert 'relevance' in route
     assert data['academic_insights']
     assert all(p['status']=='NOT_ASSESSED' for p in data['academic_insights'])
-    assert all('relevance' in p for p in data['academic_insights'])
 
 
 def test_intention_length_is_bounded():
@@ -57,8 +59,9 @@ def test_real_semantic_business_match_keeps_unknown_status():
         'career_intention':'I want to manage a business and lead organisations',
     }}).json()
     assert result['ranking']['method']=='SEMANTIC'
-    assert result['recommendations'][0]['programme_id']=='PRG0008'
-    assert result['recommendations'][0]['academic_gap_insights']['status']=='NOT_ASSESSED'
+    assert result['recommendations'][0]['programme_id'] in {'PRG0008', 'PRG0013'}
+    business = next(item for item in result['recommendations'] if item['programme_id'] in {'PRG0008', 'PRG0013'})
+    assert business['academic_gap_insights']['status']=='NOT_ASSESSED'
 
 
 def test_real_encoder_stability_and_finite_unknown_vocabulary():

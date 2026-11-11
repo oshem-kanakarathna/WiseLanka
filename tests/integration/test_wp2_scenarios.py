@@ -55,7 +55,9 @@ def test_vocational_qualification_and_conditional_pathway():
     data = post({}, learner_category='VOCATIONAL_LEARNER', existing_qualifications=[{
         'qualification_id': 'QLF0010', 'title': 'Higher National Diploma in Mechatronics Technology',
     }])
-    assert data['recommendations'] == []
+    recommendation = next(p for p in data['recommendations'] if p['programme_id']=='PRG0011')
+    assert recommendation['eligible'] is False
+    assert recommendation['academic_gap_insights']['status'] == 'NOT_ASSESSED'
     result = next(p for p in data['academic_insights'] if p['programme_id']=='PRG0011')
     assert result['groups'][0]['status'] == 'MET'  # Reported category, not verified award.
     assert result['status'] == 'NOT_ASSESSED'
@@ -110,6 +112,28 @@ def test_iit_progression_rechecked_threshold_and_source():
     assert '40 percent' in pathway['conditions']
     assert pathway['last_verified_date']=='2026-10-29'
     assert pathway['source_url']=='https://www.iit.ac.lk/foundation/it/'
+
+
+def test_iit_foundation_ol_requirements_link_to_detailed_entry_source():
+    result = client.post('/eligibility', json={
+        'programme_id': 'PRG0004',
+        'student_results': {'O_LEVEL': {
+            'Mathematics': 'A', 'English': 'A', 'Science': 'A',
+            'ICT': 'A', 'Sinhala': 'A', 'History': 'A',
+        }},
+        'education_complete': {'O_LEVEL': True},
+    })
+    assert result.status_code == 200
+    data = result.json()
+    assert data['assessment_status'] == 'MET'
+    source_by_id = {source['source_id']: source for source in data['requirement_sources']}
+    assert source_by_id['SRC0010']['source_url'] == 'https://www.iit.ac.lk/foundation/it/'
+    requirement_sources = {
+        item['requirement_id']: item['source_id']
+        for group in data['academic_gap_insights']['groups']
+        for item in group['requirements']
+    }
+    assert {requirement_sources[f'REQ00{i}'] for i in range(14, 18)} == {'SRC0010'}
 
 
 @pytest.mark.parametrize('endpoint, extra', [

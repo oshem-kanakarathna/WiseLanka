@@ -14,8 +14,9 @@ client = TestClient(app)
 def test_recommendations_strong_profile():
     """
     A strong legacy flat A/L profile should
-    return all currently supported A/L-entry
-    degree programmes as eligible.
+    return the catalogue's A/L-entry options;
+    unresolved provider selection conditions
+    remain NOT_ASSESSED.
     """
 
     response = client.post(
@@ -33,7 +34,7 @@ def test_recommendations_strong_profile():
 
     data = response.json()
 
-    assert data["count"] == 5
+    assert data["count"] == 8
 
     programme_ids = {
         result["programme_id"]
@@ -46,7 +47,15 @@ def test_recommendations_strong_profile():
         "PRG0003",
         "PRG0008",
         "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
+
+    for programme_id in ("PRG0012", "PRG0013", "PRG0015"):
+        candidate = next(item for item in data["recommendations"] if item["programme_id"] == programme_id)
+        assert candidate["category"] == "NOT_ASSESSED"
+        assert candidate["eligible"] is False
 
     for result in data["recommendations"]:
         if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
@@ -96,7 +105,7 @@ def test_recommendations_near_profile():
 
     data = response.json()
 
-    assert data["count"] == 5
+    assert data["count"] == 8
 
     for result in data["recommendations"]:
         if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
@@ -149,7 +158,7 @@ def test_recommendations_unrelated_profile():
 
     data = response.json()
 
-    assert data["count"] == 5
+    assert data["count"] == 8
 
     results = {
         item["programme_id"]: item
@@ -229,11 +238,9 @@ def test_recommendations_ol_profile():
 
     data = response.json()
 
-    assert data["count"] == 1
+    assert data["count"] == 2
 
-    recommendation = (
-        data["recommendations"][0]
-    )
+    recommendation = next(item for item in data["recommendations"] if item["programme_id"] == "PRG0004")
 
     assert (
         recommendation["programme_id"]
@@ -307,8 +314,12 @@ def test_ol_profile_excludes_al_programmes():
     assert "PRG0003" not in programme_ids
 
     assert programme_ids == {
-        "PRG0004"
+        "PRG0004",
+        "PRG0014",
     }
+    dtet_route = next(item for item in data["recommendations"] if item["programme_id"] == "PRG0014")
+    assert dtet_route["category"] == "NOT_ASSESSED"
+    assert dtet_route["eligible"] is False
 
 
 # ========================================
@@ -340,7 +351,7 @@ def test_recommendations_nested_al_profile():
 
     data = response.json()
 
-    assert data["count"] == 5
+    assert data["count"] == 8
 
     programme_ids = {
         result["programme_id"]
@@ -353,6 +364,9 @@ def test_recommendations_nested_al_profile():
         "PRG0003",
         "PRG0008",
         "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
 
     assert "PRG0004" not in programme_ids
