@@ -1,0 +1,155 @@
+/* WiseLanka shared visual foundation.
+   Page-specific stylesheets load first; these shared tokens intentionally
+   provide the common brand palette and type while leaving page layouts local. */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+:root {
+    /* Approved brand colours */
+    --brand-green: #064B2E;
+    --brand-gold: #F6C843;
+    --brand-maroon: #74162C;
+    --brand-orange: #E58224;
+    --brand-ivory: #FFF9EE;
+
+    /* Shared semantic colours */
+    --brand-ink: #202A24;
+    --brand-muted: #59645C;
+    --brand-border: #E8DECD;
+    --brand-surface: #FFFFFF;
+    --brand-soft-green: #EEF5EF;
+    --brand-soft-gold: #FFF5D7;
+    --brand-danger: #74162C;
+    --brand-success: #064B2E;
+    --brand-warning: #875600;
+
+    /* Typography, spacing, shape and elevation */
+    --font-body: "Plus Jakarta Sans", "Aptos", "Segoe UI", sans-serif;
+    --font-heading: "Playfair Display", Georgia, serif;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --radius-control: 0.65rem;
+    --radius-card: 1rem;
+    --radius-panel: 1.35rem;
+    --shadow-card: 0 12px 32px rgb(33 48 37 / 8%);
+    --shadow-raised: 0 18px 44px rgb(33 48 37 / 12%);
+    --content-width: 76rem;
+    --layout-gutter: clamp(1rem, 4vw, 2rem);
+
+    /* Bridge existing page styles onto the shared semantic palette. */
+    --primary: var(--brand-green);
+    --primary-dark: #043A24;
+    --accent: var(--brand-gold);
+    --background: var(--brand-ivory);
+    --page: var(--brand-ivory);
+    --surface: var(--brand-surface);
+    --surface-soft: var(--brand-soft-green);
+    --text: var(--brand-ink);
+    --muted: var(--brand-muted);
+    --border: var(--brand-border);
+    --navy: var(--brand-green);
+    --navy-2: #0B5A39;
+    --blue: var(--brand-green);
+    --blue-soft: var(--brand-soft-green);
+    --green: var(--brand-success);
+    --green-soft: var(--brand-soft-green);
+    --amber: var(--brand-warning);
+    --amber-soft: var(--brand-soft-gold);
+    --red: var(--brand-danger);
+    --danger: var(--brand-danger);
+    --radius: var(--radius-card);
+}
+
+html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--brand-ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+.display-heading {
+    font-family: var(--font-heading);
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-body);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--brand-maroon);
+    outline-offset: 3px;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+}
+
+/* Shared primitives for the forthcoming homepage and screen updates. */
+.wl-container {
+    width: min(100% - 2 * var(--layout-gutter), var(--content-width));
+    margin-inline: auto;
+}
+
+.wl-card {
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.wl-button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.7rem 1.1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    font: 600 0.95rem/1.2 var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wl-button--primary {
+    background: var(--brand-green);
+    color: #FFFFFF;
+}
+
+.wl-button--secondary {
+    background: var(--brand-soft-green);
+    border-color: var(--brand-green);
+    color: var(--brand-green);
+}
+
+.wl-button--accent {
+    background: var(--brand-gold);
+    color: #29230F;
+}
+
+@media (max-width: 48rem) {
+    :root {
+        --layout-gutter: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

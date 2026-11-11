@@ -1,0 +1,1019 @@
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import evaluate_programme, assess_academic_gaps
+from backend.app.progression.engine import get_progression_pathways
+
+
+def load_active_programmes():
+    return [row for row in load_csv("reference/programmes.csv")
+            if row.get("programme_status", "").strip().lower() == "active"]
+
+
+def load_active_careers():
+    return [row for row in load_csv("reference/careers.csv")
+            if row.get("active_status", "").strip().lower() == "active"]
+
+
+def load_programme_career_relationships():
+    return load_csv("relationships/programme_careers.csv")
+
+
+def load_programme_entry_requirements():
+    return load_csv("relationships/programme_entry_requirements.csv")
+
+
+# ------------------------------------
+# Detect education levels supplied
+# by the learner
+# ------------------------------------
+
+def detect_student_education_levels(
+    student_profile,
+):
+    """
+    Determine which education levels are
+    represented in the learner profile.
+
+    Supported formats:
+
+    Legacy flat A/L profile:
+
+        {
+            "Combined Mathematics": "B",
+            "Physics": "C",
+            "Chemistry": "C",
+        }
+
+    Multi-level profile:
+
+        {
+            "O_LEVEL": {...},
+            "A_LEVEL": {...},
+        }
+
+    A flat legacy profile remains A_LEVEL
+    for backward compatibility.
+    """
+
+    if not isinstance(
+        student_profile,
+        dict,
+    ):
+        return set()
+
+    recognised_levels = {
+        "O_LEVEL",
+        "A_LEVEL",
+    }
+
+    supplied_levels = set()
+
+    # ------------------------------------
+    # Detect nested education-level data
+    # ------------------------------------
+
+    for level in recognised_levels:
+
+        level_results = student_profile.get(
+            level
+        )
+
+        if (
+            isinstance(
+                level_results,
+                dict,
+            )
+            and level_results
+        ):
+            supplied_levels.add(
+                level
+            )
+
+    # ------------------------------------
+    # Legacy flat profile
+    #
+    # Existing WiseLanka behaviour treats
+    # flat subject dictionaries as A/L.
+    # ------------------------------------
+
+    nested_format = any(
+        key in recognised_levels
+        for key in student_profile
+    )
+
+    if (
+        student_profile
+        and not nested_format
+    ):
+        supplied_levels.add(
+            "A_LEVEL"
+        )
+
+    return supplied_levels
+
+
+# ------------------------------------
+# Get education levels required by
+# a programme
+# ------------------------------------
+
+def get_programme_education_levels(
+    programme_id,
+    requirements=None,
+):
+    """
+    Return the education levels used by a
+    programme's entry requirements.
+
+    Example:
+
+        PRG0001 -> {"A_LEVEL"}
+        PRG0004 -> {"O_LEVEL"}
+    """
+
+    if requirements is None:
+
+        requirements = (
+            load_programme_entry_requirements()
+        )
+
+    levels = set()
+
+    for requirement in requirements:
+
+        if (
+            requirement.get(
+                "programme_id",
+                "",
+            )
+            != programme_id
+        ):
+            continue
+
+        education_level = (
+            requirement.get(
+                "education_level",
+                "",
+            )
+            .strip()
+            .upper()
+        )
+
+        if education_level:
+            levels.add(
+                education_level
+            )
+
+    return levels
+
+
+# ------------------------------------
+# Check whether a programme is
+# relevant to the supplied profile
+# ------------------------------------
+
+def programme_matches_student_level(
+    programme_id,
+    student_levels,
+    requirements=None,
+    existing_qualifications=None,
+):
+    """
+    A programme is an immediate recommendation
+    only when the learner has supplied the
+    highest academic stage used by its entry
+    requirements. Lower-level prerequisites can
+    remain missing and be explained as
+    NOT_ASSESSED, but an O/L-only profile must
+    not be shown an A/L-entry HND merely because
+    that HND also requires O/L English/Maths.
+
+    This prevents:
+
+    - O/L learners receiving A/L degree
+      programmes as immediate recommendations.
+
+    - A/L learners receiving O/L-entry
+      foundation programmes as though those
+      were their primary current-level options.
+    """
+
+    programme_levels = (
+        get_programme_education_levels(
+            programme_id,
+            requirements,
+        )
+    )
+
+    programme_requirements = requirements or load_programme_entry_requirements()
+    held_requirement_ids = {
+        row.get("qualification_id", "").strip()
+        for row in programme_requirements
+        if row.get("programme_id") == programme_id
+        and row.get("requirement_type", "").strip().upper() == "QUALIFICATION_HELD"
+    }
+    reported_ids = {
+        item.get("qualification_id", "").strip()
+        for item in (existing_qualifications or [])
+        if isinstance(item, dict)
+    }
+    has_documented_qualification_route = bool(held_requirement_ids & reported_ids)
+    if has_documented_qualification_route:
+        return True
+
+    # If a programme currently has no
+    # structured entry requirements,
+    # exclude it from eligibility-based
+    # recommendation until evidence exists.
+    if not programme_levels:
+        return has_documented_qualification_route
+
+    stage_rank = {"O_LEVEL": 1, "A_LEVEL": 2}
+    programme_stages = programme_levels & stage_rank.keys()
+    learner_stages = student_levels & stage_rank.keys()
+    if not programme_stages or not learner_stages:
+        return has_documented_qualification_route
+
+    programme_entry_stage = max(programme_stages, key=stage_rank.get)
+    learner_stage = max(learner_stages, key=stage_rank.get)
+    return programme_entry_stage == learner_stage
+
+
+# ------------------------------------
+# Get careers related to a programme
+# ------------------------------------
+
+def get_programme_careers(
+    programme_id,
+):
+
+    careers = load_active_careers()
+
+    relationships = (
+        load_programme_career_relationships()
+    )
+
+    career_lookup = {
+        career["career_id"]: career
+        for career in careers
+    }
+
+    career_pathways = []
+
+    for relationship in relationships:
+
+        if (
+            relationship.get(
+                "programme_id"
+            )
+            != programme_id
+        ):
+            continue
+
+        career_id = relationship.get(
+            "career_id",
+            "",
+        )
+
+        career = career_lookup.get(
+            career_id
+        )
+
+        if career is None:
+            continue
+
+        career_pathways.append(
+            {
+                "career_id":
+                    career_id,
+
+                "career_name":
+                    career.get(
+                        "career_name",
+                        "",
+                    ),
+
+                "career_category":
+                    career.get(
+                        "career_category",
+                        "",
+                    ),
+
+                "industry":
+                    career.get(
+                        "industry",
+                        "",
+                    ),
+
+                "description":
+                    career.get(
+                        "description",
+                        "",
+                    ),
+
+                "minimum_qualification_level":
+                    career.get(
+                        "minimum_qualification_level",
+                        "",
+                    ),
+
+                "sri_lanka_demand":
+                    career.get(
+                        "sri_lanka_demand",
+                        "",
+                    ),
+
+                "international_potential":
+                    career.get(
+                        "international_potential",
+                        "",
+                    ),
+
+                "remote_work_potential":
+                    career.get(
+                        "remote_work_potential",
+                        "",
+                    ),
+
+                "self_employment_potential":
+                    career.get(
+                        "self_employment_potential",
+                        "",
+                    ),
+
+                "relevance_level":
+                    relationship.get(
+                        "relevance_level",
+                        "",
+                    ),
+
+                "relationship_notes":
+                    relationship.get(
+                        "notes",
+                        "",
+                    ),
+            }
+        )
+
+    # ------------------------------------
+    # Put highly relevant careers first
+    # ------------------------------------
+
+    relevance_order = {
+        "High": 0,
+        "Medium": 1,
+        "Low": 2,
+    }
+
+    career_pathways.sort(
+        key=lambda item:
+            relevance_order.get(
+                item["relevance_level"],
+                99,
+            )
+    )
+
+    return career_pathways
+
+
+# ------------------------------------
+# Evaluate student against relevant
+# active programmes
+# ------------------------------------
+
+def evaluate_all_programmes(
+    student_profile,
+    existing_qualifications=None,
+):
+
+    programmes = load_active_programmes()
+
+    requirements = (
+        load_programme_entry_requirements()
+    )
+
+    student_levels = (
+        detect_student_education_levels(
+            student_profile
+        )
+    )
+
+    results = []
+
+    for programme in programmes:
+
+        programme_id = programme[
+            "programme_id"
+        ]
+
+        # ------------------------------------
+        # Education-level filtering
+        # ------------------------------------
+
+        if not programme_matches_student_level(
+            programme_id,
+            student_levels,
+            requirements,
+            existing_qualifications,
+        ):
+            continue
+
+        evaluation = evaluate_programme(
+            programme_id,
+            student_profile,
+            existing_qualifications,
+        )
+
+        # ------------------------------------
+        # Add programme metadata needed
+        # by the recommendation layer
+        # ------------------------------------
+
+        evaluation["academic_gap_insights"] = {
+            **assess_academic_gaps(
+                programme_id,
+                student_profile,
+                existing_qualifications=existing_qualifications,
+            ),
+            "programme_name": programme["programme_name"],
+        }
+        evaluation["programme_notes"] = programme.get("notes", "")
+        evaluation["programme_name"] = (
+            programme["programme_name"]
+        )
+
+        evaluation["field_of_study"] = (
+            programme.get(
+                "field_of_study",
+                "",
+            )
+        )
+
+        evaluation["application_url"] = (
+            programme.get(
+                "application_url",
+                "",
+            )
+        )
+
+        evaluation["programme_type"] = (
+            programme.get(
+                "programme_type",
+                "",
+            )
+        )
+
+        evaluation["duration_months"] = (
+            programme.get(
+                "duration_months",
+                "",
+            )
+        )
+
+        evaluation["study_mode"] = (
+            programme.get(
+                "study_mode",
+                "",
+            )
+        )
+
+        evaluation["delivery_mode"] = (
+            programme.get(
+                "delivery_mode",
+                "",
+            )
+        )
+
+        evaluation["campus"] = (
+            programme.get(
+                "campus",
+                "",
+            )
+        )
+
+        # ------------------------------------
+        # Qualification metadata
+        # ------------------------------------
+
+        qualification_id = (
+            programme.get(
+                "qualification_id",
+                "",
+            )
+            .strip()
+        )
+
+        evaluation["qualification_id"] = (
+            qualification_id
+        )
+
+        # ------------------------------------
+        # Academic progression intelligence
+        #
+        # Progression is qualification-based.
+        #
+        # Example:
+        #
+        # PRG0004
+        #     ↓
+        # QLF0004
+        #     ↓
+        # QLF0005 / QLF0006 / QLF0007
+        # ------------------------------------
+
+        if qualification_id:
+
+            evaluation["progression"] = (
+                get_progression_pathways(
+                    qualification_id
+                )
+            )
+
+        else:
+
+            evaluation["progression"] = {
+                "qualification_id":
+                    None,
+
+                "qualification_name":
+                    None,
+
+                "count":
+                    0,
+
+                "pathways":
+                    [],
+            }
+
+        # ------------------------------------
+        # Record programme entry level
+        # ------------------------------------
+
+        evaluation[
+            "entry_education_levels"
+        ] = sorted(
+            get_programme_education_levels(
+                programme_id,
+                requirements,
+            )
+        )
+
+        # ------------------------------------
+        # Add career pathways
+        # ------------------------------------
+
+        evaluation["career_pathways"] = (
+            get_programme_careers(
+                programme_id
+            )
+        )
+
+        results.append(
+            evaluation
+        )
+
+    return results
+
+
+# ------------------------------------
+# Calculate programme match score
+# ------------------------------------
+
+def calculate_match_score(
+    evaluation,
+):
+    """
+    Calculate how closely the learner matches
+    the programme's entry requirements.
+
+    A fully passed requirement group receives
+    100%.
+
+    A failed group can receive partial credit
+    when the learner has actually supplied a
+    relevant subject but narrowly misses the
+    required minimum grade.
+
+    Missing relevant subjects do not receive
+    partial credit.
+
+    This prevents a learner with unrelated
+    subjects from appearing nearly eligible
+    simply because they satisfy a generic
+    requirement such as three A/L passes.
+    """
+
+    groups = evaluation.get(
+        "groups",
+        [],
+    )
+
+    # Subject-match scores describe academic evidence, not unresolved provider decisions.
+    groups = [group for group in groups if not all(
+        item.get("assessment_kind") == "PROVIDER_REVIEW"
+        for item in group.get("requirements", [])
+    )]
+    if not groups:
+        return 0.0
+
+    group_scores = []
+
+    for group in groups:
+
+        # ------------------------------------
+        # Fully passed group
+        # ------------------------------------
+
+        if group.get(
+            "passed",
+            False,
+        ):
+            group_scores.append(
+                100.0
+            )
+            continue
+
+        requirements = group.get(
+            "requirements",
+            [],
+        )
+
+        if not requirements:
+            group_scores.append(
+                0.0
+            )
+            continue
+
+        # ------------------------------------
+        # Check whether this failed group
+        # represents a genuine near match
+        # ------------------------------------
+
+        near_match_found = False
+
+        for requirement in requirements:
+
+            if requirement.get(
+                "passed",
+                False,
+            ):
+                continue
+
+            message = (
+                requirement.get(
+                    "message",
+                    "",
+                )
+                .strip()
+                .lower()
+            )
+
+            # Genuine near match:
+            #
+            # A relevant subject was supplied,
+            # but the learner missed the
+            # minimum grade.
+            #
+            # Missing subjects receive no
+            # partial credit.
+            if (
+                "minimum" in message
+                and "was not provided"
+                not in message
+            ):
+                near_match_found = True
+                break
+
+        if near_match_found:
+
+            group_scores.append(
+                50.0
+            )
+
+        else:
+
+            group_scores.append(
+                0.0
+            )
+
+    score = (
+        sum(group_scores)
+        / len(group_scores)
+    )
+
+    return round(
+        score,
+        1,
+    )
+
+
+# ------------------------------------
+# Classify programme result
+# ------------------------------------
+
+def classify_programme(
+    evaluation,
+):
+
+    score = calculate_match_score(
+        evaluation
+    )
+
+    if evaluation.get("academic_gap_insights", {}).get("status") == "NOT_ASSESSED":
+        category = "NOT_ASSESSED"
+    elif evaluation["eligible"]:
+
+        category = "ELIGIBLE"
+
+    elif score >= 75:
+
+        category = "NEARLY_ELIGIBLE"
+
+    else:
+
+        category = "NOT_ELIGIBLE"
+
+    passed_requirements = []
+    failed_requirements = []
+
+    for group in evaluation.get(
+        "groups",
+        [],
+    ):
+
+        requirements = group.get(
+            "requirements",
+            [],
+        )
+
+        operator = (
+            group.get(
+                "operator",
+                "AND",
+            )
+            .strip()
+            .upper()
+        )
+
+        group_passed = group.get(
+            "passed",
+            False,
+        )
+
+        # ------------------------------------
+        # Passed OR group
+        # ------------------------------------
+
+        if (
+            operator == "OR"
+            and group_passed
+        ):
+
+            for requirement in requirements:
+
+                if requirement.get(
+                    "passed",
+                    False,
+                ):
+
+                    message = requirement.get(
+                        "message",
+                        "",
+                    )
+
+                    if message:
+                        passed_requirements.append(
+                            message
+                        )
+
+            continue
+
+        # ------------------------------------
+        # Failed OR group
+        # ------------------------------------
+
+        if (
+            operator == "OR"
+            and not group_passed
+        ):
+
+            for requirement in requirements:
+
+                if not requirement.get(
+                    "passed",
+                    False,
+                ):
+
+                    message = requirement.get(
+                        "message",
+                        "",
+                    )
+
+                    if message:
+                        failed_requirements.append(
+                            message
+                        )
+
+            continue
+
+        # ------------------------------------
+        # AND groups
+        # ------------------------------------
+
+        for requirement in requirements:
+
+            message = requirement.get(
+                "message",
+                "",
+            )
+
+            if requirement.get(
+                "passed",
+                False,
+            ):
+
+                if message:
+                    passed_requirements.append(
+                        message
+                    )
+
+            else:
+
+                if message:
+                    failed_requirements.append(
+                        message
+                    )
+
+    insight = evaluation.get("academic_gap_insights", {})
+    if insight:
+        failed_requirements = [rule["explanation"]
+            for group in insight["groups"] if group["status"] == "NOT_MET"
+            for rule in group["requirements"] if rule["status"] == "NOT_MET"]
+    not_assessed = [rule["explanation"]
+        for group in insight.get("groups", []) if group["status"] != "MET"
+        for rule in group["requirements"] if rule["status"] == "NOT_ASSESSED"]
+    return {
+        "programme_notes": evaluation.get("programme_notes", ""),
+        "programme_id":
+            evaluation["programme_id"],
+
+        "programme_name":
+            evaluation.get(
+                "programme_name",
+                evaluation["programme_id"],
+            ),
+
+        "field_of_study":
+            evaluation.get(
+                "field_of_study",
+                "",
+            ),
+
+        "programme_type":
+            evaluation.get(
+                "programme_type",
+                "",
+            ),
+
+        "duration_months":
+            evaluation.get(
+                "duration_months",
+                "",
+            ),
+
+        "study_mode":
+            evaluation.get(
+                "study_mode",
+                "",
+            ),
+
+        "delivery_mode":
+            evaluation.get(
+                "delivery_mode",
+                "",
+            ),
+
+        "campus":
+            evaluation.get(
+                "campus",
+                "",
+            ),
+
+        "application_url":
+            evaluation.get(
+                "application_url",
+                "",
+            ),
+
+        # ------------------------------------
+        # Qualification information
+        # ------------------------------------
+
+        "qualification_id":
+            evaluation.get(
+                "qualification_id",
+                "",
+            ),
+
+        "entry_education_levels":
+            evaluation.get(
+                "entry_education_levels",
+                [],
+            ),
+
+        # ------------------------------------
+        # Eligibility result
+        # ------------------------------------
+
+        "academic_gap_insights": evaluation["academic_gap_insights"],
+        "eligible":
+            evaluation["eligible"],
+
+        "category":
+            category,
+
+        "match_score":
+            score,
+
+        "passed_requirements":
+            passed_requirements,
+
+        "failed_requirements":
+            failed_requirements,
+        "not_assessed_requirements": not_assessed,
+
+        # ------------------------------------
+        # Career intelligence
+        # ------------------------------------
+
+        "career_pathways":
+            evaluation.get(
+                "career_pathways",
+                [],
+            ),
+
+        # ------------------------------------
+        # Academic progression intelligence
+        # ------------------------------------
+
+        "progression":
+            evaluation.get(
+                "progression",
+                {
+                    "qualification_id":
+                        None,
+
+                    "qualification_name":
+                        None,
+
+                    "count":
+                        0,
+
+                    "pathways":
+                        [],
+                },
+            ),
+
+        # ------------------------------------
+        # Technical eligibility evidence
+        # ------------------------------------
+
+        "groups":
+            evaluation["groups"],
+    }
+
+
+# ------------------------------------
+# Generate programme recommendations
+# ------------------------------------
+
+def recommend_programmes(
+    student_profile,
+    existing_qualifications=None,
+):
+
+    evaluations = evaluate_all_programmes(
+        student_profile,
+        existing_qualifications,
+    )
+
+    recommendations = []
+
+    for evaluation in evaluations:
+
+        recommendation = (
+            classify_programme(
+                evaluation
+            )
+        )
+
+        recommendations.append(
+            recommendation
+        )
+
+    recommendations.sort(
+        key=lambda item:
+            item["match_score"],
+        reverse=True,
+    )
+
+    return recommendations

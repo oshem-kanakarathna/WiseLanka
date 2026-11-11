@@ -216,3 +216,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Downloaded frozen model assets (setup is explicit; never commit weights).
+.models/
+
+# Local operating-system and editor files.
+.DS_Store
+**/.DS_Store
+*.swp
+*~
+
+# Local environment files. Keep the documented template shareable.
+.env
+.env.*
+!.env.example
+
+# Local/private research databases and journals.
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sqlite-journal
+
+# Local backups and scratch outputs.
+*.bak
+*.bak.*
+*.tmp
+*.temp

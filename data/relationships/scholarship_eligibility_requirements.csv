@@ -1,0 +1,8 @@
+requirement_id,scholarship_id,requirement_group_id,group_operator,requirement_type,field_name,operator,required_value,minimum_value,maximum_value,description,mandatory,source_id
+SREQ0001,SCH0001,SGRP001,AND,CITIZENSHIP,citizenship,EQUALS,Sri Lanka,,,Sri Lankan citizen required,true,SRC0015
+SREQ0002,SCH0001,SGRP001,AND,MINIMUM_AGE,age_on_reference_date,GREATER_THAN,18,,,Over 18 by 31 August 2026,true,SRC0015
+SREQ0003,SCH0001,SGRP001,AND,A_LEVEL_EXAM_YEAR,a_level_exam_year,EQUALS,2024,,,2024 GCE A Level examination required,true,SRC0015
+SREQ0004,SCH0001,SGRP001,AND,A_LEVEL_PASS_COUNT,a_level_pass_count,GREATER_THAN_OR_EQUAL,,3,,At least three A Level passes required,true,SRC0015
+SREQ0005,SCH0001,SGRP001,AND,O_LEVEL_ENGLISH_GRADE,o_level_english_grade,GRADE_AT_LEAST,C,,,At least C grade in O Level English required,true,SRC0015
+SREQ0006,SCH0001,SGRP001,AND,A_LEVEL_ENGLISH_GRADE,a_level_english_grade,GRADE_AT_LEAST,S,,,At least S grade in A Level English required,true,SRC0015
+SREQ0007,SCH0001,SGRP001,AND,STATE_UNIVERSITY_ENROLMENT,state_university_internal_student,EQUALS,false,,,Applicant must not be an internal undergraduate at a Sri Lankan state university,true,SRC0015

@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Personalised education and career pathway guidance for Sri Lankan learners.">
+
+    <title>WiseLanka | My Learning Pathway</title>
+
+    <link rel="stylesheet" href="../components/learner-profile.css?v=20261020-2">
+    <link rel="stylesheet" href="../styles/design-system.css?v=20261107-1">
+
+    <script src="../components/i18n.js?v=1" defer></script>
+    <script src="../components/learner-profile.js?v=6" defer></script>
+    <script src="../components/guided-assistant.js?v=1" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+
+            <a class="brand" href="recommendations.html">
+                <span class="brand-icon">W</span>
+
+                <span class="brand-copy">
+                    <strong>WiseLanka</strong>
+                    <small>Know More. Choose Better.</small>
+                </span>
+            </a>
+
+            <nav class="page-nav" aria-label="Main navigation">
+                <a href="recommendations.html">Pathways</a>
+                <a href="eligibility.html">Eligibility</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="learner-profile.html" aria-current="page">
+                    My Profile
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="language-panel" aria-label="Interface language">
+            <label for="interfaceLanguage" data-i18n="language">Interface language</label>
+            <select id="interfaceLanguage"><option value="en">English</option><option value="si">සිංහල</option><option value="ta">தமிழ்</option></select>
+            <p id="translationNotice" data-i18n="review" role="status">Draft interface translations await fluent-speaker review. Official titles, source facts and detailed rule text remain in their original language. Semantic preference input remains English-only.</p>
+        </section>
+
+        <section class="hero">
+            <span class="eyebrow">Personalised Pathway Intelligence</span>
+
+            <h1>Find a pathway that fits your future.</h1>
+
+            <p>
+                Tell WiseLanka about your qualifications, interests,
+                career goals and study preferences. Explore education
+                pathways supported by our curated knowledge base.
+            </p>
+
+            <div class="trust-row">
+                <span>✓ Academic eligibility</span>
+                <span>✓ Career alignment</span>
+                <span>✓ Explainable guidance</span>
+            </div>
+        </section>
+
+        <div class="workspace">
+
+            <section class="profile-panel" aria-labelledby="profileHeading">
+
+                <div class="panel-heading">
+                    <span class="eyebrow">Your Profile</span>
+                    <h2 id="profileHeading">Build your learner profile</h2>
+                    <p>
+                        Complete the details below to explore your options.
+                    </p>
+                </div>
+
+                <form id="learnerProfileForm">
+                    <fieldset class="form-section">
+                        <legend>Your learner context</legend>
+                        <label for="learnerCategory">Learner category</label>
+                        <select id="learnerCategory">
+                            <option value="AL_LEARNER">A/L learner</option>
+                            <option value="VOCATIONAL_LEARNER">Vocational learner</option>
+                            <option value="EARLY_CAREER">Early-career user</option>
+                        </select>
+                        <p class="field-help">Category describes your context; it does not change admission rules.</p>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">01</span>
+                            Academic qualifications
+                        </legend>
+
+                        <label for="educationLevel">
+                            Current qualification level
+                        </label>
+
+                        <select id="educationLevel" required>
+                            <option value="A_LEVEL">GCE Advanced Level</option>
+                            <option value="O_LEVEL">GCE Ordinary Level</option>
+                            <option value="NONE">Existing qualification only</option>
+                        </select>
+
+                        <p class="field-help">
+                            Enter your actual examination results.
+                        </p>
+
+                        <div id="alSubjects" class="subject-group">
+
+                            <div class="subject-row">
+                                <label for="alSubject1">A/L Subject 1</label>
+                                <select id="alSubject1" class="al-subject">
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+
+                                <select id="alGrade1" aria-label="A/L subject 1 grade">
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="alSubject2">A/L Subject 2</label>
+                                <select id="alSubject2" class="al-subject">
+                                    <option value="Physics">Physics</option>
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+
+                                <select id="alGrade2" aria-label="A/L subject 2 grade">
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="alSubject3">A/L Subject 3</label>
+                                <select id="alSubject3" class="al-subject">
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Combined Mathematics">
+                                        Combined Mathematics
+                                    </option>
+                                    <option value="Higher Mathematics">
+                                        Higher Mathematics
+                                    </option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Information & Communication Technology">
+                                        Information & Communication Technology
+                                    </option>
+                                    <option value="Sinhala">Sinhala</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Geography">Geography</option>
+                                </select>
+
+                                <select id="alGrade3" aria-label="A/L subject 3 grade">
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div id="olSubjects" class="subject-group hidden">
+
+                            <div class="subject-row">
+                                <label for="olMathematics">Mathematics</label>
+                                <select id="olMathematics">
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+
+                            <div class="subject-row">
+                                <label for="olEnglish">English</label>
+                                <select id="olEnglish">
+                                    <option value="" selected disabled>Select grade</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="S">S</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+
+                            <div id="additionalOlSubjects"></div>
+
+                            <button type="button" id="addOlSubject" class="secondary-button">Add another O/L subject</button>
+                            <p class="field-help">Enter all available results, including nine subjects where applicable. Six-subject profiles remain supported. Use “Not reported” for an unavailable result; nine subjects are not required by every programme.</p>
+                        </div>
+                        <label class="choice" id="completeResultsLabel">
+                            <input type="checkbox" id="educationComplete">
+                            I have entered all my examination results for this level.
+                        </label>
+                        <p class="field-help">If unchecked, insufficient subject counts remain not assessed. A supplied grade below a required minimum can still show an unmet requirement.</p>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>Existing qualifications (optional)</legend>
+                        <p class="field-help">Record awards you already hold. Titles and framework levels are self-reported; they do not establish equivalence or admission eligibility. Do not enter certificate numbers or personal identifiers.</p>
+                        <div id="qualificationRows"></div>
+                        <button type="button" id="addQualification" class="secondary-button">Add an existing qualification</button>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>Self-reported skills (optional)</legend>
+                        <p class="field-help">Choose “I report this skill” or “I want to develop this skill”. Leaving a skill unreported does not mean you lack it. No competence test is performed.</p>
+                        <p id="profileOptionsStatus" class="field-help" role="status">Loading skill and qualification choices…</p>
+                        <button type="button" id="retryProfileOptions" class="secondary-button hidden">Retry loading choices</button>
+                        <div id="skillChoices"></div>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">02</span>
+                            Your interests
+                        </legend>
+
+                        <p class="field-help">
+                            Choose any topics that interest you.
+                        </p>
+
+                        <div class="choice-grid">
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Software Development">
+                                Software Development
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Artificial Intelligence">
+                                Artificial Intelligence
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Data Science">
+                                Data Science
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Information Technology">
+                                Information Technology
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Business">
+                                Business
+                            </label>
+
+                            <label class="choice">
+                                <input type="checkbox" name="interests"
+                                       value="Engineering">
+                                Engineering
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">03</span>
+                            Career goal
+                        </legend>
+
+                        <label for="careerIntention">Career intention (optional, English)</label>
+                        <input id="careerIntention" maxlength="300" aria-describedby="intentionHelp">
+                        <p id="intentionHelp" class="field-help">Describe work you want to do. Avoid names or personal identifiers. This text is processed locally and is not saved as feedback.</p>
+                        <label for="careerGoal">
+                            What career would you like to explore?
+                        </label>
+
+                        <select id="careerGoal">
+                            <option value="">I'm still exploring</option>
+                            <option value="CAR0001">Software Engineer</option>
+                            <option value="CAR0002">Data Scientist</option>
+                            <option value="CAR0003">AI Engineer</option>
+                            <option value="CAR0004">Machine Learning Engineer</option>
+                            <option value="CAR0005">Systems Analyst</option>
+                        </select>
+
+                        <p class="field-help">
+                            Career relationships are assessed only where
+                            the knowledge base contains supporting records.
+                        </p>
+                    </fieldset>
+
+                    <fieldset class="form-section">
+                        <legend>
+                            <span class="step-number">04</span>
+                            Study preferences
+                        </legend>
+
+                        <label for="studyMode">Preferred study mode</label>
+                        <select id="studyMode">
+                            <option value="">No preference</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                        </select>
+
+                        <label for="district">Preferred district</label>
+                        <select id="district">
+                            <option value="">No preference</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Gampaha">Gampaha</option>
+                            <option value="Kalutara">Kalutara</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Kurunegala">Kurunegala</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Jaffna">Jaffna</option>
+                            <option value="Other">Other / elsewhere</option>
+                        </select>
+                    </fieldset>
+
+                    <button type="submit" id="submitProfile" class="primary-button">
+                        Find My Personalised Pathways
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                    <p class="privacy-note">
+                        This prototype submits your profile to the
+                        WiseLanka API for assessment. Do not enter
+                        personal identifiers or sensitive information.
+                    </p>
+
+                </form>
+            </section>
+
+            <section class="results-panel" aria-labelledby="resultsHeading">
+
+                <div class="panel-heading">
+                    <span class="eyebrow">Your Pathways</span>
+                    <h2 id="resultsHeading">Personalised recommendations</h2>
+                    <p>
+                        Academic eligibility and career relevance are
+                        assessed separately.
+                    </p>
+                </div>
+
+                <div id="statusMessage" class="status-message" role="status" tabindex="-1"
+                     aria-live="polite" aria-atomic="true">
+                    Complete your profile and select
+                    “Find My Personalised Pathways” to begin.
+                </div>
+
+                <div id="resultsSummary" class="results-summary hidden"></div>
+
+                <div id="learnerInsights" role="region" aria-label="Learner-specific insights"></div>
+
+                <div id="recommendationList" class="recommendation-list"></div>
+
+                <p class="results-disclaimer">
+                    WiseLanka provides guidance based on its current
+                    curated records. Eligibility is not a guarantee
+                    of admission. Missing career evidence does not
+                    mean a programme is unsuitable.
+                </p>
+            </section>
+
+        </div>
+        <section id="guidedAssistant" class="assistant-panel" aria-labelledby="assistantHeading">
+            <h2 id="assistantHeading" data-i18n="assistant">WiseLanka guided assistant</h2>
+            <p data-i18n="assistant_scope">Choose a topic and programme. This is a bounded, rule-grounded assistant, not unrestricted generative AI.</p>
+            <form id="assistantForm">
+                <label for="assistantTopic" data-i18n="topic">Guidance topic</label>
+                <select id="assistantTopic">
+                    <option value="help" data-i18n="help">Supported questions</option>
+                    <option value="programme" data-i18n="programme">Programme information</option>
+                    <option value="eligibility" data-i18n="eligibility">Eligibility and qualification gaps</option>
+                    <option value="progression" data-i18n="progression">Possible Academic Progression</option>
+                    <option value="alternatives" data-i18n="alternatives">Alternative routes</option>
+                    <option value="skills_topic" data-i18n="skills_topic">Self-reported skill insights</option>
+                    <option value="careers" data-i18n="careers">Career relationships</option>
+                    <option value="scholarships" data-i18n="scholarships">Scholarships</option>
+                </select>
+                <label for="assistantProgramme" data-i18n="pick_programme">Select a programme</label>
+                <select id="assistantProgramme"><option value="" data-i18n="pick_programme">Select a programme</option></select>
+                <label class="choice"><input id="assistantUseProfile" type="checkbox"><span data-i18n="use_profile">Use my current profile for this guidance</span></label>
+                <label for="assistantQuestion" data-i18n="question">Optional question or voice transcript</label>
+                <textarea id="assistantQuestion" maxlength="300" rows="2" aria-describedby="assistantHeading"></textarea>
+                <button type="submit" id="assistantSend" class="primary-button" data-i18n="ask">Ask for guidance</button>
+            </form>
+            <details id="voicePanel">
+                <summary data-i18n="voice_start">Start voice input</summary>
+                <p id="voiceNotice" data-i18n="voice_notice">Optional speech recognition may send audio to your browser provider. WiseLanka does not record or store audio. Text input always works. Sinhala/Tamil recognition is not guaranteed.</p>
+                <label for="voiceLanguage" data-i18n="voice_language_label">Recognition language</label>
+                <select id="voiceLanguage"><option value="en-LK">English (Sri Lanka)</option><option value="si-LK">සිංහල — experimental</option><option value="ta-LK">தமிழ் — experimental</option></select>
+                <label class="choice"><input id="voiceConsent" type="checkbox"><span data-i18n="voice_consent">I understand and choose browser speech recognition.</span></label>
+                <button id="voiceStart" type="button" class="secondary-button" data-i18n="voice_start" aria-describedby="voiceNotice">Start voice input</button>
+                <button id="voiceStop" type="button" class="secondary-button" data-i18n="voice_stop" disabled>Stop listening</button>
+                <p id="voiceStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+            </details>
+            <div id="assistantStatus" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
+            <div id="assistantResponse" role="region" aria-label="Guidance response"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <strong>WiseLanka</strong>
+            <span>Know More. Choose Better.</span>
+            <span>Evidence-based education pathway intelligence.</span>
+        </div>
+    </footer>
+
+</body>
+</html>
