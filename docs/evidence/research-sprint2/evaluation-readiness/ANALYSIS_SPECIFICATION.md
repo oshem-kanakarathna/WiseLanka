@@ -1,0 +1,37 @@
+# Analysis specification — to freeze before approved collection
+
+No collected labels or usability responses exist. Preserve this version, approval reference and analysis decisions before collection. Any later deviations require date/reason and a separate sensitivity analysis; do not choose exclusions after seeing which method wins.
+
+## Independent relevance
+
+Unit is scenario × programme × judge. Join using pack + case + candidate via the researcher-only key; do not join on C001 alone. Verify grades {0,1,2,3}, UNJUDGEABLE or skipped, one initial response per judge/pair, correct versions and complete pool coverage. Preserve initial responses and conflicts. Ratings judge short-text content fit, not admission, satisfaction or educational effectiveness.
+
+Proposed minimum two independent qualified adult judges. Record broad expertise, implementation independence and prior exposure privately. Each judges the same pairs independently with a different permutation. Lock raw ratings and initial disagreement before any adjudication or method unblinding. Additional participants are not created by duplicating pack A/B. Calibration uses only the unrelated examples, not experiment cases.
+
+Primary relevance analysis is **within academic-status groups** for each judge separately: MET, NOT_ASSESSED, NOT_MET. Same scenario, candidate pool, status assignment and grade vector must be used for deterministic, TF–IDF and MiniLM. Groups with at least three candidates can support nDCG@3. For exactly two candidates report separately nDCG@2; singleton groups provide no ordering evidence and are excluded from comparison summaries. Do not merge statuses to manufacture a three-candidate group. Report group sizes and excluded denominators.
+
+Prespecified gain g(r)=2^r−1 and discount 1/log2(i+1): DCG@k=Σ(i=1..k)g(r_i)/log2(i+1); IDCG uses the same fully judged group sorted by grade; nDCG=DCG/IDCG. This exponential-gain formulation is documented in [Stanford CS276, Lecture 14, Manning and Nayak](https://web.stanford.edu/class/cs276/handouts/lecture14-learning-ranking.pdf), checked 30 October 2026. This is the selected implementation convention, not the only DCG variant. Use actual saved output order, including deterministic tie-breaking; no relevance-optimised reordering of score ties. Numeric similarity values are not reference grades.
+
+Exclude D01/D08 from relevance metrics in advance (ten robustness pairs). For other cases, require a numeric judgement on **every candidate in the group** for that judge. A skipped or UNJUDGEABLE item makes that group unavailable; do not assign 0, drop a candidate, or evaluate only returned top three. Exclude zero-IDCG groups as undefined, report their counts and reasons. For method comparisons use identical complete-case groups across all three methods. Show per-judge/per-scenario/per-group values, paired method differences and number of available cases, with no quality conclusions yet.
+
+Aggregate within each scenario across its assessable groups with equal group weights, then macro-average scenarios separately for DEVELOPMENT_REUSED (9) and FROZEN_FOLLOWUP (12). Report eligible scenario counts, per-domain counts, medians/ranges and individual paired differences; label mixed-domain cases separately. Do not weight by 127 pairs, treat correlated variants as independent samples, or pool exposed and follow-up cases as independent held-out validation. Report paired literal/paraphrase behaviours separately. With a tiny catalogue, no primary significance test or population-generalising superiority claim is planned.
+
+Report each judge separately as primary; do not average ordinal ratings into an undeclared grade. Record exact agreement and a 4×4 disagreement table on pairs with two numeric ratings; show UNJUDGEABLE and skip counts separately. A later blinded consensus/adjudicator grade may be supplementary only, with initial ratings and change reasons retained. If only one judge participates, disclose absent inter-reviewer evidence. No consensus may be chosen because it favours a method.
+
+Optional supplementary global top-three nDCG uses the **same policy-constrained ideal**: sort by judged grade only inside MET→NOT_ASSESSED→NOT_MET partitions, concatenate, then compute DCG@3. Label it constrained nDCG@3, distinct from unrestricted content quality; nonzero gain and complete numeric labels for the whole scenario are required. Do not penalise the system against an ideal that illegally moves ineligible programmes above MET. Do not combine this with the primary within-group metric. Singleton-only scenarios are descriptive only.
+
+No MAP, precision, accuracy or success probability is planned. If later requested, specify a defensible binary threshold and protocol amendment before analysis. No feedback training/tuning uses these labels; any subsequent tuning requires genuinely new independent evaluation.
+
+## Usability and explanation comprehension
+
+Report approved recruitment/consent/completion/withdrawal counts and actual track/languages only. Proposed convenience sample supports exploratory description. For each task show unassisted, assisted, not-completed, skipped, technical-failure and withdrawn counts with explicit denominators: attempted tasks = unassisted + assisted + not-completed; show other states separately. Missing is never failure. Report valid active task-time median/range (IQR if useful), separate successful and unsuccessful attempts, actual help/errors, pauses and overruns. Do not compare speeds across tasks as an ability measure.
+
+For C1–C5 report custom 0/1/2 comprehension distributions with answered denominator and separate missing/N/A. Record recurrent misunderstandings (especially admission certainty and unreported skill assumptions). Keep initial scorer values and adjudication separately; author-only scoring must be disclosed. No pre/post learning gain or validated overall comprehension score is asserted.
+
+Custom 1–5 clarity/usefulness/transparency/trust ratings: show item-level distributions, medians and answered/N/A counts, never sum as SUS or recommendation accuracy. A confidence rating may reflect overtrust; interpret alongside C1/C2, not as proof of correctness. Do not merge judge relevance and user satisfaction into a single “effectiveness” number.
+
+Qualitative analysis: deidentify, read all responses, assign descriptive codes with a versioned codebook, retain negative/disconfirming cases, allow multiple codes, preserve code→deidentified extract traceability. Suggested topics (not findings): uncertainty, source access, relevance explanation, navigation, alternatives, skills, language, trust. Revise codes transparently; no claim of saturation from the small convenience sample. Use quotations only with permission and identifiability review.
+
+No causal improvement, nationwide usability estimate, educational outcome benefit or AI superiority follows from this single-condition study. Native voice, fluent translations, full screen-reader/mobile access and independent educational-source accuracy remain separate checks. Automated accessibility and functional tests are existing technical evidence, not participant satisfaction.
+
+Ethics restrictions excluding vulnerable groups and the English-only standard session limit accessibility representativeness. Do not infer usability for excluded groups, Sinhala/Tamil speakers, or assistive-technology users who were not actually evaluated.

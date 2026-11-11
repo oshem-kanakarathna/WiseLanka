@@ -1,0 +1,23 @@
+{
+  "manifest_files": 52,
+  "datasets": 20,
+  "scenarios": 21,
+  "comparators": 63,
+  "warm_samples": 1890,
+  "cold_workers": 15,
+  "hashes_and_numeric_summary_verified": true,
+  "all_ratings_blank": true,
+  "programme_pair_counts": {
+    "PRG0008": 20,
+    "PRG0002": 20,
+    "PRG0003": 20,
+    "PRG0009": 20,
+    "PRG0001": 20,
+    "PRG0004": 7,
+    "PRG0010": 4,
+    "PRG0011": 4,
+    "PRG0006": 4,
+    "PRG0007": 4,
+    "PRG0005": 4
+  }
+}

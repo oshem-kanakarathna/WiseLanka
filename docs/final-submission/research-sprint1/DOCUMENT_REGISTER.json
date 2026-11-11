@@ -1,0 +1,65 @@
+{
+  "guide": {
+    "path": "/Users/dan/Documents/UWL/FP/MATERIALS/MSG CP60046E Project AY202526 - FEB-26 - JAN-27.pdf",
+    "sha256": "5bb2c6227103a36118ba9f00081ffb94d06ee51d2e0295a0133ae8202a621eda",
+    "bytes": 313686,
+    "pages": 10
+  },
+  "lecture": {
+    "path": "/Users/dan/Downloads/Lecture - Research Methods 2025_Nov.pptx",
+    "sha256": "7ddbffef2696fb64c3c6d30b93d9b71f417e75d3780738126abd289166994f27",
+    "bytes": 14249601,
+    "slides": 43
+  },
+  "template": {
+    "path": "/Users/dan/Downloads/Project Report Template.docx",
+    "sha256": "821086e429eb3d49596d5911bf12ba375099ca49063a9456c56197fff273e3ff",
+    "bytes": 271893,
+    "media": [
+      "word/media/image1.jpg",
+      "word/media/image2.png"
+    ]
+  },
+  "guide_duplicate_same_hash": true,
+  "proposal": {
+    "path": "/Users/dan/Documents/UWL/FP/WORK/Final Project Proposal_ 34164665.docx",
+    "sha256": "eac0df49220314630311f1bcc22cac544d487c8be58c01c8a7b206f59022201a",
+    "status": "Confirmed original reviewed in reconciliation; unchanged hash"
+  },
+  "interim": {
+    "path": "/Users/dan/Documents/UWL/FP/WORK/Project Interim Report _Draft_Oshem.docx",
+    "sha256": "baf953efeec088a1ac2a4e70da8c1afebf1fadaa5e53a6bc2f9c50f6b6bcdd60",
+    "status": "Confirmed original reviewed in reconciliation; unchanged hash"
+  },
+  "review_date": "2026-10-30",
+  "limits": "Local supplied institutional documents; no official extension or centre-specific applicability confirmation. No source teaching materials distributed.",
+  "verified_requirements": {
+    "report_words": 10000,
+    "deadline_published": "2026-12-17 17:00; timezone not specified in guide",
+    "report_weight_percent": 60,
+    "poster_size": "A3 one page using separate poster template",
+    "oral_duration_conflict": "10 minutes total stated on p7, 5-minute demo/code and rubric5-minute limit also stated pp7\u20138; clarify",
+    "style": "Harvard via UWL Cite Them Right; template References section",
+    "module_codes_conflict": "GuideCP60046E/CP6CS46E versus originalsCP6SL460; confirm centre mapping"
+  },
+  "ethics": {
+    "path": "/Users/dan/Documents/UWL/FP/WORK/Ethics form UG-Taught PG 14 11 23_ Oshem Kanakarathna_34164665.pdf",
+    "sha256": "a0c239dc4848add2c2c4c4c89423eea079b75472ed5ff706764a7d3dd6ae3e9b",
+    "review": "Text-inspected for readiness only; no signature authenticity or ethics clearance determination"
+  },
+  "participant_information": {
+    "path": "/Users/dan/Documents/UWL/FP/Participant Information Sheet.pdf",
+    "sha256": "1e56d8c36bef8960ed5e1146b9d4b3f7c4041e5dccb670bbee88ac03884b6a24",
+    "review": "Text-inspected for readiness only; no signature authenticity or ethics clearance determination"
+  },
+  "participant_consent": {
+    "path": "/Users/dan/Documents/UWL/FP/WiseLanka Participant Consent Form.pdf",
+    "sha256": "227f0eaa8d59c6be20f9884ee66f10efbdd70b6a3f26c88d5183ffcb6568b2d9",
+    "review": "Text-inspected for readiness only; no signature authenticity or ethics clearance determination"
+  },
+  "evaluation_tasks": {
+    "path": "/Users/dan/Documents/UWL/FP/WiseLanka Prototype Evaluation Task Sheet.pdf",
+    "sha256": "33e43b43ed15c050932fa019bf550d136afc45c56d212f0a8edfc4816ceed2c2",
+    "review": "Text-inspected for readiness only; no signature authenticity or ethics clearance determination"
+  }
+}

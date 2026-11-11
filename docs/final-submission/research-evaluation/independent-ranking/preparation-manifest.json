@@ -1,0 +1,19 @@
+{
+  "snapshot": "docs/evidence/wp5/comparison.json",
+  "comparison_sha256": "3a8328e9bb77f28bcce32ec13e9bdcd77e6dfd93f6bbdcb80e946e7fd1e6abd0",
+  "catalogue_hash_in_comparison": "44b35f8e45875ecfda074818d44e8b4d9f044ff76101c7446ccf1a814c262e62",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "case_count": 9,
+  "unique_case_candidate_pairs": 51,
+  "packet_seeds": {
+    "A": 20261103,
+    "B": 20261104
+  },
+  "judgements_created": 0,
+  "independent_labels_available": false,
+  "ndcg_computed": false,
+  "source_inputs_sha256": {
+    "data/reference/programmes.csv": "b32493ab8d07f72ba5bdbe835fd70c290e000bc9f3569e81b14ed97e494c0254",
+    "data/reference/qualifications.csv": "fecd0f0735390a5c1a658ef5e7cf082741dc2f7825c9949a90b8b21c8408a987"
+  }
+}

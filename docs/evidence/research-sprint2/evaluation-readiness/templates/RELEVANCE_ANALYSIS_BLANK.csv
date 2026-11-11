@@ -1,0 +1,1 @@
+scenario_id,scenario_provenance,academic_group,judge_code,candidate_count,numeric_label_count,missing_or_unjudgeable_count,assessment_state,exclusion_reason,method,cutoff_k,DCG,IDCG,nDCG,paired_difference_reference

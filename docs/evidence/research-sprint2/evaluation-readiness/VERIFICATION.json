@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/private/tmp/wiselanka-repro-venv/bin/python",
+    "docs/evidence/research-sprint2/evaluation-readiness/verify_readiness.py"
+  ],
+  "exit_code": 0,
+  "checks": {
+    "archive_hashes_unchanged": true,
+    "protected_files_unchanged": true,
+    "comparator_rows": 63,
+    "warm_samples_checked": 1890,
+    "revised_blank_pairs_per_pack": 127,
+    "programme_coverage": 11,
+    "blank_observation_templates": 6,
+    "no_human_response_data": true,
+    "staging_empty": true
+  },
+  "stderr": "",
+  "collection_authorised": false,
+  "full_application_tests_rerun": false
+}

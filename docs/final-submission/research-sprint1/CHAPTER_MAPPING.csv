@@ -1,0 +1,7 @@
+official_section,source_chapters,approximate_current_words,proposed_budget_words
+Introduction,01-introduction.md,814,800
+Literature Review,02-literature-review.md,1343,2000
+Research Methodology,03-methodology-ethics.md,920,1400
+Design and Implementation,04-requirements-design.md; 05-architecture-implementation.md; 06-knowledge-base.md; 07-hybrid-recommendation.md,3313,3100
+Result and Analysis,08-testing-evaluation.md,1052,1500
+Discussion and Conclusion,09-results-discussion.md; 10-conclusion-future-work.md,1451,1200

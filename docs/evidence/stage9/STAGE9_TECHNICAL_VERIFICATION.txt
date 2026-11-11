@@ -1,0 +1,127 @@
+=== Stage 9A execution record ===
+timestamp_utc=2026-11-06T21:50:31Z
+git_revision=547525429ab360a9643085b4f25aa0c58083f6a6
+worktree_status_at_run:
+ M backend/app/api/main.py
+ M data/relationships/programme_entry_requirements.csv
+ M docs/final-submission/BASELINE_AND_BLOCKERS.md
+ M docs/final-submission/FILE_INVENTORY.txt
+ M docs/final-submission/README.md
+ M docs/final-submission/REFERENCES.md
+ M docs/final-submission/SOURCE_REGISTER.csv
+ M docs/final-submission/research-evaluation/README.md
+ M docs/final-submission/review/REFERENCE_VERIFICATION_REGISTER.csv
+ M tests/integration/test_wp2_scenarios.py
+?? .DS_Store
+?? backend/app/research/
+?? docs/evidence/research-phase4/
+?? docs/evidence/research-reporting/
+?? docs/evidence/research-sprint2/completeness-correction/live/wp1/
+?? docs/evidence/research-sprint2/completeness-correction/live/wp2/
+?? docs/evidence/research-sprint2/completeness-correction/live/wp3/
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/assistant-en.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/assistant-si.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/assistant-ta.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/language-en.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/language-si.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/language-ta.png
+?? docs/evidence/research-sprint2/completeness-correction/live/wp4/voice-controls.png
+?? docs/evidence/research-sprint2/evaluation-readiness/
+?? docs/evidence/stage9/
+?? docs/final-submission/research-documentation/
+?? docs/final-submission/research-evaluation/COMPARISON_TASKS_v2.md
+?? docs/final-submission/research-evaluation/EVALUATION_PLAN_v2.md
+?? docs/final-submission/research-evaluation/MEASURES_ADDENDUM_v2.md
+?? docs/final-submission/research-evaluation/comparison-observations-v2-blank.csv
+?? docs/final-submission/research-evaluation/condition-questionnaire-v2-blank.csv
+?? docs/final-submission/research-evaluation/independent-ranking/
+?? docs/final-submission/research-evaluation/sequence-allocation-v2-blank.csv
+?? docs/final-submission/research-sprint1/
+?? docs/final-submission/supervisor-review/
+?? docs/final-submission/tools/prepare_ranking_review.py
+?? frontend/.DS_Store
+?? frontend/browser_tests/test_research_evaluation_live_e2e.py
+?? frontend/browser_tests/test_research_evaluation_preview.py
+?? frontend/browser_tests/test_research_evaluation_submission.py
+?? frontend/components/learner-profile.js.bak
+?? frontend/components/learner-profile.js.pre-progression.bak
+?? frontend/pages/research-evaluation.html
+?? tests/integration/test_research_admin.py
+?? tests/integration/test_research_collection_workflow.py
+?? tests/integration/test_research_reporting.py
+?? tests/integration/test_research_storage.py
+=== Python runtime ===
+Python 3.9.6
+=== Installed package versions ===
+WARNING: The directory '/Users/dan/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+annotated-doc==0.0.5
+annotated-types==0.7.0
+anyio==4.12.1
+certifi==2026.10.23
+charset-normalizer==3.5.2
+click==8.1.8
+coloredlogs==15.0.1
+exceptiongroup==1.3.1
+fastapi==0.128.8
+filelock==3.19.1
+flatbuffers==25.12.19
+fsspec==2025.10.0
+greenlet==3.2.5
+h11==0.16.0
+hf-xet==1.8.0
+httpcore==1.0.9
+httpx==0.28.1
+huggingface_hub==0.36.2
+humanfriendly==10.0
+idna==3.20
+iniconfig==2.1.0
+mpmath==1.3.0
+numpy==1.26.4
+onnxruntime==1.19.2
+packaging==26.3
+pluggy==1.6.0
+protobuf==6.33.6
+pydantic==2.13.5
+pydantic_core==2.46.5
+pyee==13.0.1
+Pygments==2.21.0
+pytest==8.4.2
+PyYAML==6.0.3
+requests==2.32.5
+starlette==0.49.3
+sympy==1.14.0
+tokenizers==0.20.3
+tomli==2.5.0
+tqdm==4.70.1
+typing-inspection==0.4.2
+typing_extensions==4.16.0
+urllib3==2.6.3
+=== Backend regression command ===
+/private/tmp/wiselanka-minilm-runtime-venv/bin/python -m pytest tests -q
+........................................................................ [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 80%]
+.....................................................                    [100%]
+269 passed in 1.63s
+backend_exit_code=0
+=== Knowledge-base integrity command ===
+/private/tmp/wiselanka-minilm-runtime-venv/bin/python -m backend.app.data_integrity
+{'institution_types': 12, 'programme_types': 16, 'qualification_frameworks': 3, 'qualification_types': 18, 'study_modes': 6, 'institutions': 11, 'qualifications': 12, 'programmes': 11, 'careers': 5, 'skills': 13, 'scholarships': 1, 'sources': 21, 'recognition': 18, 'requirements': 33, 'progression': 5, 'programme_careers': 15, 'programme_skills': 22, 'career_skills': 28, 'scholarship_requirements': 7, 'scholarship_applicability': 2}
+integrity_exit_code=0
+=== Research collection default check ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'backend.app.research.config'
+collection_check_exit_code=1
+overall_exit_codes: backend=0 integrity=0 collection=1
+=== Corrected collection-switch check ===
+timestamp_utc=2026-11-06T21:50:54Z
+git_revision=547525429ab360a9643085b4f25aa0c58083f6a6
+command: /private/tmp/wiselanka-minilm-runtime-venv/bin/python -c ... backend.app.research.responses.collection_enabled
+RESEARCH_COLLECTION_ENABLED_env= None
+collection_enabled= False
+collection_check_exit_code=0
+=== Worktree file hashes recorded after verification ===
+c9162151b6d762184ffbdaa7835ff99f5f978aca365fe51d38b59b3244769ac8  backend/app/api/main.py
+458486da2a29798d3366de23a8b181ccea31205c6278f73695e2dd6f13909a52  data/relationships/programme_entry_requirements.csv
+dc19921ad74cb0417cfea7a963cb1c4e605f362e1ef0bfcc028938e763b933f3  tests/integration/test_wp2_scenarios.py

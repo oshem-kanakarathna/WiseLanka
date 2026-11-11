@@ -1,0 +1,1 @@
+study_id,approved_package_version,sequence_id,task_id,condition,language,device_browser,unassisted_success,assisted_success,elapsed_seconds,time_limit_reached,subject_score_0_to_2,uncertainty_score_0_to_2,next_step_score_0_to_2,errors,help_requests,source_outage,missing_reason,deidentified_notes

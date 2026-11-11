@@ -1,0 +1,7 @@
+# Actionable manual validation
+
+MANUAL_VALIDATION_CHECKLIST.csv contains19 pending checks with steps, expected evidence and existing automated/source evidence kept in a separate column. Nothing is marked manually passed. Use synthetic profiles; do not put real participant records/audio or identifiable reviewer information into Git. Confirm ethics conditions for external reviewers/participants before collection. Own-device developer smoke checks are technical observations, not user research or fluent validation.
+
+For each executed check record actual reviewer role/competence, device/browser/AT or source/intake, date, result, screenshot/page reference and blocker. Use PASS/FAIL/NOT_TESTED with reasons; a missing device or unsupported recognition language is NOT_TESTED/unsupported, not a fabricated pass. Record negative findings and stop consequential guidance if a critical source contradiction is found. This checklist does not authorise new feature work; return critical defects for review.
+
+Speech may send audio to a browser provider. No recording/storage is proposed; native participant testing requires approved processing/consent. For translation use the existing key-level template; for sources use source-adjudication-blank.csv. W3C's [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) informs the basic manual checks but explicitly does not establish comprehensive accessibility. No WCAG certificate or universal speech/language compatibility follows.

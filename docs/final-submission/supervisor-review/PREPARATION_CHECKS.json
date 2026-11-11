@@ -1,0 +1,21 @@
+{
+  "checkpoint": "9ffb2f3",
+  "checkpoint_label": "draft academic materials for review",
+  "checkpoint_paths_limited_to_academic_directory": true,
+  "backup_hashes_unchanged": true,
+  "application_files_modified": false,
+  "ranking_packets": {
+    "A": 51,
+    "B": 51
+  },
+  "judgements_created": 0,
+  "ndcg_computed": false,
+  "blinded_packet_regeneration_identical": true,
+  "manual_checks_pending": 19,
+  "new_participant_forms_header_only": true,
+  "comparison_profiles_match_saved_scenarios": true,
+  "study_approved": false,
+  "participants_recruited": 0,
+  "participant_results_collected": 0,
+  "application_tests_rerun": false
+}

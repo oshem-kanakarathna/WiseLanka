@@ -1,0 +1,111 @@
+{
+  "source": "docs/evidence/wp5/scenarios.json",
+  "source_sha256": "7223ee2d07e674889655491cd4d2eb62c3699769c7ccbca5e70c7ad16a9ea06c",
+  "notice": "Fictional task inputs; expected fields are moderator metadata, withhold them from participant cards. Not new correctness findings.",
+  "scenarios": {
+    "OL6": {
+      "id": "OL6",
+      "synthetic": true,
+      "learner_category": "O/L academic",
+      "domain": "IT",
+      "programme_id": "PRG0004",
+      "education": {
+        "O_LEVEL": {
+          "Mathematics": "C",
+          "English": "C",
+          "Science": "C",
+          "ICT": "S",
+          "Sinhala": "S",
+          "History": "S"
+        }
+      },
+      "education_complete": {},
+      "existing_qualifications": [],
+      "expected_academic_status": "MET",
+      "reference_rule_ids": [
+        "REQ0014",
+        "REQ0015",
+        "REQ0016",
+        "REQ0017"
+      ],
+      "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+    },
+    "AL_IT": {
+      "id": "AL_IT",
+      "synthetic": true,
+      "learner_category": "A/L academic",
+      "domain": "IT",
+      "programme_id": "PRG0001",
+      "education": {
+        "A_LEVEL": {
+          "Combined Mathematics": "B",
+          "Physics": "C",
+          "Chemistry": "C"
+        }
+      },
+      "education_complete": {},
+      "existing_qualifications": [],
+      "expected_academic_status": "NOT_ASSESSED",
+      "reference_rule_ids": [
+        "REQ0001",
+        "REQ0002",
+        "REQ0003",
+        "REQ0004",
+        "REQ0005",
+        "REQ0032"
+      ],
+      "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+    },
+    "AL_Engineering_gap": {
+      "id": "AL_Engineering_gap",
+      "synthetic": true,
+      "learner_category": "A/L academic",
+      "domain": "Engineering",
+      "programme_id": "PRG0009",
+      "education": {
+        "A_LEVEL": {
+          "Combined Mathematics": "B",
+          "Physics": "F",
+          "Chemistry": "C"
+        }
+      },
+      "education_complete": {},
+      "existing_qualifications": [],
+      "expected_academic_status": "NOT_MET",
+      "reference_rule_ids": [
+        "REQ0022",
+        "REQ0023",
+        "REQ0024",
+        "REQ0025"
+      ],
+      "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+    },
+    "NVQ6": {
+      "id": "NVQ6",
+      "synthetic": true,
+      "learner_category": "Vocational",
+      "domain": "Engineering",
+      "programme_id": "PRG0011",
+      "education": {},
+      "education_complete": {},
+      "existing_qualifications": [
+        {
+          "qualification_id": "QLF0010",
+          "title": "Higher National Diploma in Mechatronics Technology"
+        }
+      ],
+      "expected_academic_status": "NOT_ASSESSED",
+      "reference_rule_ids": [
+        "REQ0029",
+        "REQ0030",
+        "REQ0031"
+      ],
+      "expected_basis": "Recorded rule predicates and unresolved provider conditions, manually specified from official-source review; not an independently adjudicated admissions decision."
+    }
+  },
+  "U2_intention": "Software engineering and computer science",
+  "U5_career_id": "CAR0001",
+  "U5_reported_skill_ids": [
+    "SKL0001"
+  ]
+}

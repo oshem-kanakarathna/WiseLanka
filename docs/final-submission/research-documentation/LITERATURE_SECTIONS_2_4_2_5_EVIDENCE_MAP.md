@@ -1,0 +1,28 @@
+# Evidence map for the working revision of Sections 2.4 and 2.5
+
+**Status:** Companion review document, not dissertation prose. The student must independently validate claims against the cited sources and review/authorise the AI-assisted draft before use.
+
+## Paragraph-level claim map
+
+| Draft paragraph | Claims and analytical contribution | Source and access status | Limitations / personal verification required |
+|---|---|---|---|
+| §2.4 P1 | Term-weighted vector retrieval offers a transparent lexical comparator; shared vocabulary may help matching while divergent phrasing may cause misses. | Salton and Buckley (1988): Stage 2A reconciliation records full article examined via university-hosted PDF; metadata confirmed by Elsevier. | Their paper compares multiple weighting combinations, including TF, IDF and normalisation. It does not evaluate WiseLanka’s exact smoothed-IDF calculation. The lexical mismatch statement is an application-specific inference, not a measured result from their study. |
+| §2.4 P2 | SBERT independently encodes sentences for vector comparison; MiniLM’s technical contribution concerns compression; neither validates programme recommendation. | Reimers and Gurevych (2019): full ACL proceedings paper examined, as recorded in Stage 2A reconciliation. Wang et al. (2020): full official NeurIPS paper examined in Stage 2A reconciliation. | SBERT’s similarity/transfer benchmarks do not establish programme relevance; domain/task transfer is limited. MiniLM distillation work does not establish performance of the deployed sentence model. Do not use scores as probabilities or cite benchmark metrics as local results. |
+| §2.4 P3 | Compare deterministic, TF–IDF and frozen semantic modes on the same eligible candidates; without independent labels, ordering and latency differences do not identify a better recommender. | Methodological interpretation consistent with the Stage 1 matrix’s comparator discussion and WP3/Sprint 2B evidence records. | This is an evaluation-design argument, not a source-reported finding. No independent relevance labels or superiority result are claimed. |
+| §2.5 P1 | Explanation goals include transparency, scrutability, trust, persuasiveness, effectiveness, satisfaction and efficiency; aims may conflict. | Tintarev and Masthoff (2012): publisher abstract and metadata only in the current source register and Stage 1 matrix. Publisher record says four empirical studies in movie/camera domains. | Keep statements at abstract-level. Do not borrow effect sizes, detailed instruments or claim effects in education. Student should seek full text if making method-specific claims. |
+| §2.5 P2 | Recommender evaluation should include user perceptions and experience in addition to objective system properties and behavior. | Knijnenburg et al. (2012): Stage 1 matrix records full open publisher article examined; the article describes a user-centred framework validated through four field trials and two controlled experiments using SEM. Publisher page confirms title, author list, year, volume, pages and DOI. | The settings are general/commercial recommender contexts, not educational guidance. The paper does not validate WiseLanka’s measures or establish education-specific trust effects. Central bibliography and SOURCE_REGISTER entries were added for traceability; student should confirm UWL style. |
+| §2.5 P3 | WiseLanka exposes status reasons/source links separately from relevance; transparency cannot establish source correctness or user comprehension; missing/conflicting information should be described as uncertainty. | Project-specific architectural statements are grounded in WiseLanka design/code and source-provenance approach. Interpretive distinction is consistent with Stage 1’s explanation comparison. | These are system facts and analytical/design inferences, not findings from the cited papers. Cite implementation and rule-evidence sources in later chapters. Source fidelity/currentness and user trust have not been independently established. |
+| §2.5 P4 | Separate rule/source correctness, user comprehension, and user-reported clarity/usefulness/trust in evaluation. | Knijnenburg et al. (2012) provides the user-centred construct framework; Tintarev and Masthoff (2012) supports explicit explanation aims, abstract-level only. | This is a methodological recommendation for WiseLanka. Do not report comprehension, trust or user outcomes until ethically approved human evaluation is completed and analysed. |
+
+## Citation-to-bibliography status
+
+In-text sources: **Knijnenburg et al. (2012); Reimers and Gurevych (2019); Salton and Buckley (1988); Tintarev and Masthoff (2012); Wang et al. (2020).** Each has a central bibliography entry. Knijnenburg et al. was absent previously; a publisher-verified entry has been added, together with a source-register row. Tintarev and Masthoff remains abstract-only. Wang’s official NeurIPS PDF is cited; no DOI is asserted because none was verified in the proceedings record.
+
+## Scope links
+
+| Section | Approved objectives/questions informed | Evidence needed beyond literature |
+|---|---|---|
+| §2.4 | Objective IV; Supporting Questions I and V | Independent relevance judgements to compare ranking quality; current evidence supports method distinctions only. |
+| §2.5 | Objectives IV, V and VII; Supporting Questions II and V | Rule/source correctness audit, comprehension tasks and ethically approved adult-user measures of clarity/usefulness/trust. No such human outcomes are asserted here. |
+
+The approved aim and objectives are unchanged. The literature does not establish that WiseLanka is effective, trustworthy, comprehensible, accessible or educationally beneficial.

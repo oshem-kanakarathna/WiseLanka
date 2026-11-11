@@ -1,5 +1,7 @@
 # Academic baseline now inspected; remaining release blockers
 
+**30 October 2026 update:** the module guide, Research Methods lecture and actual report template have now been located and inspected. They establish the 10,000-word requirement, Assessment 2 rubric and published 17 December 2026, 5pm contingency deadline. A local ethics form and participant materials were also text-inspected; the typed endorsement and conflicting checklist answers require confirmation of the applicable clearance/conditions. The earlier availability assumptions below are historical and superseded by [Research Sprint 1](research-sprint1/SPRINT1.md). Centre/module mapping, official extension, authentic progress forms, human evidence and separate poster template remain unresolved.
+
 The author confirmed these intended original sources, which have now been read:
 
 - `/Users/dan/Documents/UWL/FP/WORK/Final Project Proposal_ 34164665.docx`.

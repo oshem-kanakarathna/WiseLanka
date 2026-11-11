@@ -1,0 +1,607 @@
+{
+  "researcher_only": "Do not give to blinded judges until ratings locked",
+  "candidate_mapping": [
+    {
+      "case_id": "empty",
+      "candidate_code": "C01-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "empty",
+      "candidate_code": "C01-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "empty",
+      "candidate_code": "C01-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "empty",
+      "candidate_code": "C01-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "empty",
+      "candidate_code": "C01-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_literal",
+      "candidate_code": "C02-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_literal",
+      "candidate_code": "C02-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_literal",
+      "candidate_code": "C02-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_literal",
+      "candidate_code": "C02-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_literal",
+      "candidate_code": "C02-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_paraphrase",
+      "candidate_code": "C03-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_paraphrase",
+      "candidate_code": "C03-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_paraphrase",
+      "candidate_code": "C03-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_paraphrase",
+      "candidate_code": "C03-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "it_paraphrase",
+      "candidate_code": "C03-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "business",
+      "candidate_code": "C04-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "business",
+      "candidate_code": "C04-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "business",
+      "candidate_code": "C04-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "business",
+      "candidate_code": "C04-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "business",
+      "candidate_code": "C04-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "engineering",
+      "candidate_code": "C05-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "engineering",
+      "candidate_code": "C05-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "engineering",
+      "candidate_code": "C05-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "engineering",
+      "candidate_code": "C05-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "engineering",
+      "candidate_code": "C05-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unmet_engineering",
+      "candidate_code": "C06-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "unmet_engineering",
+      "candidate_code": "C06-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "unmet_engineering",
+      "candidate_code": "C06-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "unmet_engineering",
+      "candidate_code": "C06-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unmet_engineering",
+      "candidate_code": "C06-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "missing_evidence",
+      "candidate_code": "C07-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "missing_evidence",
+      "candidate_code": "C07-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "missing_evidence",
+      "candidate_code": "C07-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_MET"
+    },
+    {
+      "case_id": "missing_evidence",
+      "candidate_code": "C07-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "missing_evidence",
+      "candidate_code": "C07-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unfamiliar",
+      "candidate_code": "C08-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unfamiliar",
+      "candidate_code": "C08-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unfamiliar",
+      "candidate_code": "C08-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unfamiliar",
+      "candidate_code": "C08-04",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "unfamiliar",
+      "candidate_code": "C08-05",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-01",
+      "programme_id": "PRG0001",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-02",
+      "programme_id": "PRG0002",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-03",
+      "programme_id": "PRG0003",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-04",
+      "programme_id": "PRG0004",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-05",
+      "programme_id": "PRG0005",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-06",
+      "programme_id": "PRG0006",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-07",
+      "programme_id": "PRG0007",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-08",
+      "programme_id": "PRG0008",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-09",
+      "programme_id": "PRG0009",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-10",
+      "programme_id": "PRG0010",
+      "academic_group": "NOT_ASSESSED"
+    },
+    {
+      "case_id": "vocational",
+      "candidate_code": "C09-11",
+      "programme_id": "PRG0011",
+      "academic_group": "NOT_ASSESSED"
+    }
+  ],
+  "frozen_orders": {
+    "empty": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "semantic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ]
+    },
+    "it_literal": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0002",
+        "PRG0009",
+        "PRG0008",
+        "PRG0001",
+        "PRG0003"
+      ],
+      "semantic": [
+        "PRG0002",
+        "PRG0003",
+        "PRG0001",
+        "PRG0009",
+        "PRG0008"
+      ]
+    },
+    "it_paraphrase": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0002",
+        "PRG0008",
+        "PRG0001",
+        "PRG0003",
+        "PRG0009"
+      ],
+      "semantic": [
+        "PRG0002",
+        "PRG0003",
+        "PRG0001",
+        "PRG0009",
+        "PRG0008"
+      ]
+    },
+    "business": {
+      "legacy_original": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0009",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "tfidf": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0009",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "semantic": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0009",
+        "PRG0003",
+        "PRG0002"
+      ]
+    },
+    "engineering": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0009",
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "semantic": [
+        "PRG0009",
+        "PRG0003",
+        "PRG0008",
+        "PRG0001",
+        "PRG0002"
+      ]
+    },
+    "unmet_engineering": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009",
+        "PRG0008"
+      ],
+      "deterministic": [
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0008",
+        "PRG0009",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "semantic": [
+        "PRG0008",
+        "PRG0009",
+        "PRG0003",
+        "PRG0001",
+        "PRG0002"
+      ]
+    },
+    "missing_evidence": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0008",
+        "PRG0009",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "tfidf": [
+        "PRG0009",
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003"
+      ],
+      "semantic": [
+        "PRG0009",
+        "PRG0008",
+        "PRG0003",
+        "PRG0001",
+        "PRG0002"
+      ]
+    },
+    "unfamiliar": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "tfidf": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0008",
+        "PRG0009"
+      ],
+      "semantic": [
+        "PRG0003",
+        "PRG0001",
+        "PRG0009",
+        "PRG0008",
+        "PRG0002"
+      ]
+    },
+    "vocational": {
+      "legacy_original": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "deterministic": [
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0007",
+        "PRG0008",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "tfidf": [
+        "PRG0007",
+        "PRG0008",
+        "PRG0001",
+        "PRG0002",
+        "PRG0003",
+        "PRG0004",
+        "PRG0005",
+        "PRG0006",
+        "PRG0009",
+        "PRG0010",
+        "PRG0011"
+      ],
+      "semantic": [
+        "PRG0010",
+        "PRG0004",
+        "PRG0011",
+        "PRG0007",
+        "PRG0003",
+        "PRG0005",
+        "PRG0008",
+        "PRG0006",
+        "PRG0009",
+        "PRG0001",
+        "PRG0002"
+      ]
+    }
+  }
+}
