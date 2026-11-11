@@ -1,65 +1,9 @@
 from __future__ import annotations
 
-import csv
-from pathlib import Path
 from typing import Any, Dict, List, Optional
-
-from backend.app.eligibility.engine import (
-    evaluate_programme,
-)
-
-from backend.app.progression.engine import (
-    get_progression_pathways,
-)
-
-
-# ---------------------------------------------------------
-# Project paths
-# ---------------------------------------------------------
-
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-
-PROGRAMMES_PATH = (
-    PROJECT_ROOT
-    / "data"
-    / "reference"
-    / "programmes.csv"
-)
-
-PROGRESSION_PATH = (
-    PROJECT_ROOT
-    / "data"
-    / "relationships"
-    / "qualification_progression.csv"
-)
-
-
-# ---------------------------------------------------------
-# CSV helpers
-# ---------------------------------------------------------
-
-def load_csv(
-    path: Path,
-) -> List[Dict[str, str]]:
-    """
-    Load a CSV file as a list of dictionaries.
-    """
-
-    if not path.exists():
-        return []
-
-    with path.open(
-        "r",
-        encoding="utf-8-sig",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        return [
-            dict(row)
-            for row in reader
-        ]
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import evaluate_programme, assess_academic_gaps
+from backend.app.progression.engine import get_progression_pathways
 
 
 def load_programmes() -> List[Dict[str, str]]:
@@ -68,7 +12,7 @@ def load_programmes() -> List[Dict[str, str]]:
     """
 
     programmes = load_csv(
-        PROGRAMMES_PATH
+        "reference/programmes.csv"
     )
 
     return [
@@ -92,7 +36,7 @@ def load_progression_relationships(
     """
 
     return load_csv(
-        PROGRESSION_PATH
+        "relationships/qualification_progression.csv"
     )
 
 
@@ -259,6 +203,9 @@ def build_pathway_status(
         the entry requirements.
     """
 
+    if eligibility.get("assessment_status") == "NOT_ASSESSED":
+        return {"pathway_status": "NOT_ASSESSED",
+                "pathway_status_message": "Entry evidence is incomplete; provider assessment is required. Progression is not guaranteed."}
     if eligibility.get(
         "eligible",
         False,
@@ -415,6 +362,15 @@ def find_alternative_pathways(
                 )
             )
 
+            insight = assess_academic_gaps(alternative_programme_id, student_results)
+            eligibility["assessment_status"] = insight["status"]
+            eligibility["academic_gap_insights"] = insight
+            # Only unsatisfied groups represent gaps; absent OR options are not failures.
+            eligibility["failed_requirements"] = [
+                requirement["explanation"] for group in insight["groups"]
+                if group["status"] == "NOT_MET" for requirement in group["requirements"]
+                if requirement["status"] == "NOT_MET"
+            ]
             pathway_status = (
                 build_pathway_status(
                     eligibility

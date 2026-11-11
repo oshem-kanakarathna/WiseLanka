@@ -9,6 +9,12 @@ as evidence that a programme is unsuitable.
 from typing import Any, Dict, List
 
 from backend.app.recommendation.engine import recommend_programmes
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import assess_academic_gaps
+from backend.app.skills.engine import assess_learner_skills
+from backend.app.personalisation.models import LearnerProfile
+from backend.app.relevance.engine import rank_recommendations
+from backend.app.progression.engine import get_progression_pathways
 
 
 RELEVANCE_SCORES = {
@@ -187,9 +193,11 @@ def personalise_recommendations(
     if not isinstance(learner_profile, dict):
         raise ValueError("learner_profile must be an object.")
 
+    learner_profile = LearnerProfile.model_validate(learner_profile).model_dump()
+
     education = learner_profile.get("education")
 
-    if not isinstance(education, dict) or not education:
+    if not isinstance(education, dict) or (not education and not learner_profile["existing_qualifications"]):
         raise ValueError(
             "learner_profile.education must contain qualification results."
         )
@@ -205,7 +213,24 @@ def personalise_recommendations(
     if not isinstance(preferences, dict):
         raise ValueError("preferences must be an object.")
 
-    existing_recommendations = recommend_programmes(education)
+    existing_qualifications = [
+        item.model_dump() if hasattr(item, "model_dump") else item
+        for item in learner_profile["existing_qualifications"]
+    ]
+    existing_recommendations = recommend_programmes(
+        education,
+        existing_qualifications,
+    )
+    skills = assess_learner_skills(career_goal_id, learner_profile["self_reported_skills"])
+    assessed_programmes = existing_recommendations or [
+        row for row in load_csv("reference/programmes.csv") if row.get("programme_status") == "Active"
+    ]
+    academic_insights = [
+        {**assess_academic_gaps(item["programme_id"], education, learner_profile["education_complete"], learner_profile["existing_qualifications"]),
+         "programme_name": item["programme_name"]}
+        for item in assessed_programmes
+    ]
+    gaps_by_id = {item["programme_id"]: item for item in academic_insights}
     personalised = []
 
     for programme in existing_recommendations:
@@ -227,6 +252,7 @@ def personalise_recommendations(
             "preference_assessment": preference_assessment,
             "personal_suitability_score": career_assessment["score"],
             "personal_suitability_status": career_assessment["status"],
+            "academic_gap_insights": gaps_by_id[programme["programme_id"]],
         })
 
     # Keep academic eligibility as the primary ordering.
@@ -243,10 +269,24 @@ def personalise_recommendations(
         reverse=True,
     )
 
+    if personalised:
+        personalised, ranking = rank_recommendations(personalised, learner_profile)
+    else:
+        academic_insights, ranking = rank_recommendations(academic_insights, learner_profile)
     return {
+        "ranking": ranking,
         "count": len(personalised),
         "recommendations": personalised,
         "assessment_method": "RULE_BASED_PERSONALISATION_V1",
+        "learner_category": learner_profile["learner_category"],
+        "existing_qualifications": learner_profile["existing_qualifications"],
+        "held_qualification_progression": [
+            get_progression_pathways(item["qualification_id"])
+            for item in learner_profile["existing_qualifications"] if item["qualification_id"]
+        ],
+        "qualification_note": "Awards are self-reported context only. Their authenticity, equivalence and admission eligibility have not been verified.",
+        "academic_insights": academic_insights,
+        "learner_skill_insights": skills,
         "disclaimer": (
             "Academic eligibility is based on curated requirements. "
             "Career suitability uses documented programme-career "

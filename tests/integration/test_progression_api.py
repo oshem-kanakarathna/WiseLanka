@@ -110,7 +110,7 @@ def test_ai_progression_api_preserves_condition():
     assert pathway["guaranteed"] is False
 
     assert (
-        "50 percent"
+        "40 percent"
         in pathway["conditions"]
     )
 

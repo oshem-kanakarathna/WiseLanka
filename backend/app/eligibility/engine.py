@@ -3,6 +3,13 @@ from collections import defaultdict
 from backend.app.data_loader import load_csv
 
 
+SUPPORTED_REQUIREMENT_TYPES = {
+    "A_LEVEL_PASS", "SUBJECT_GRADE", "SUBJECT_SET_COUNT",
+    "O_LEVEL_PASS_COUNT", "O_LEVEL_CREDIT_COUNT", "O_LEVEL_SUBJECT_CREDIT",
+    "PROVIDER_REVIEW", "QUALIFICATION_HELD",
+}
+
+
 # --------------------------------------------------
 # Grade ranking
 #
@@ -134,6 +141,7 @@ def get_results_for_level(
 def evaluate_requirement(
     requirement,
     student_results,
+    existing_qualifications=None,
 ):
     """
     Evaluate one programme entry requirement.
@@ -165,6 +173,17 @@ def evaluate_requirement(
         .strip()
         .upper()
     )
+
+    if requirement_type == "PROVIDER_REVIEW":
+        return {"requirement_id": requirement["requirement_id"], "passed": False,
+                "status": "NOT_ASSESSED", "assessment_kind": "PROVIDER_REVIEW", "message": requirement["description"]}
+    if requirement_type == "QUALIFICATION_HELD":
+        reported = any(item.get("qualification_id") == requirement.get("qualification_id")
+                       for item in (existing_qualifications or []))
+        return {"requirement_id": requirement["requirement_id"], "passed": reported,
+                "status": "MET" if reported else "NOT_ASSESSED",
+                "message": ("Reported qualification matches the selected entry category; authenticity is not verified."
+                            if reported else "No matching qualification was reported; alternative credentials require provider review.")}
 
     level_results = get_results_for_level(
         student_results,
@@ -580,6 +599,7 @@ def evaluate_requirement(
 def evaluate_programme(
     programme_id,
     student_results,
+    existing_qualifications=None,
 ):
     """
     Evaluate whether a learner satisfies
@@ -672,6 +692,7 @@ def evaluate_programme(
             evaluate_requirement(
                 requirement,
                 student_results,
+                existing_qualifications,
             )
             for requirement
             in requirements_in_group
@@ -734,4 +755,105 @@ def evaluate_programme(
 
         "groups":
             group_results,
+    }
+
+
+def _combine_gap_states(states, operator):
+    """Three-valued aggregation; an absent group is not evidence of eligibility."""
+    if not states:
+        return "NOT_ASSESSED"
+    if operator == "AND":
+        if "NOT_MET" in states:
+            return "NOT_MET"
+        return "NOT_ASSESSED" if "NOT_ASSESSED" in states else "MET"
+    if operator == "OR":
+        if "MET" in states:
+            return "MET"
+        return "NOT_ASSESSED" if "NOT_ASSESSED" in states else "NOT_MET"
+    return "NOT_ASSESSED"
+
+
+def assess_academic_gaps(programme_id, student_results, education_complete=None, existing_qualifications=None):
+    """Annotate authoritative rule outcomes without changing legacy eligibility.
+
+    Unknown evidence/input is not a demonstrated failure. No grade thresholds
+    are repeated here: evaluate_programme supplies all pass/fail calculations.
+    """
+    result = evaluate_programme(programme_id, student_results, existing_qualifications)
+    rows = {
+        row["requirement_id"]: row
+        for row in load_csv("relationships/programme_entry_requirements.csv")
+        if row["programme_id"] == programme_id
+    }
+    sources = {
+        row["source_id"]: row
+        for row in load_csv("metadata/evidence_sources.csv")
+    }
+    complete = education_complete or {}
+    groups = []
+    for group in result["groups"]:
+        items = []
+        for outcome in group["requirements"]:
+            row = rows[outcome["requirement_id"]]
+            level = row.get("education_level") or "A_LEVEL"
+            results = get_results_for_level(student_results, level)
+            source = sources.get(row.get("source_id"), {})
+            kind = row["requirement_type"].strip().upper()
+            status = "MET" if outcome["passed"] else "NOT_MET"
+            reason = outcome["message"]
+            if kind not in SUPPORTED_REQUIREMENT_TYPES or not source.get("source_url"):
+                status = "NOT_ASSESSED"
+                reason = "Supporting rule or source evidence is not recorded."
+            elif kind in {"PROVIDER_REVIEW", "QUALIFICATION_HELD"}:
+                status = outcome["status"]
+            elif not results:
+                status = "NOT_ASSESSED"
+                reason = f"No {level} results were supplied."
+            elif not outcome["passed"]:
+                subject_rule = kind in {"SUBJECT_GRADE", "O_LEVEL_SUBJECT_CREDIT"}
+                if subject_rule and row["subject_name"].strip() not in results:
+                    status = "NOT_MET" if complete.get(level) is True else "NOT_ASSESSED"
+                elif not subject_rule and complete.get(level) is not True:
+                    status = "NOT_ASSESSED"
+                    reason = (
+                        "Examination completeness is not confirmed; the submitted "
+                        "results do not yet demonstrate this count requirement."
+                    )
+            items.append({
+                "requirement_id": outcome["requirement_id"],
+                "status": status,
+                "description": row.get("description", ""),
+                "explanation": reason,
+                "source_id": row.get("source_id", ""),
+                "source_url": source.get("source_url", ""),
+                "source_organisation": source.get("issuing_organisation", ""),
+                "source_accessed": source.get("retrieved_date", ""),
+            })
+        status = _combine_gap_states(
+            [item["status"] for item in items], group["operator"]
+        )
+        groups.append({
+            "group_id": group["group_id"], "operator": group["operator"],
+            "status": status, "requirements": items,
+        })
+    status = _combine_gap_states([group["status"] for group in groups], "AND")
+    next_step = {
+        "MET": (
+            "The recorded academic requirements are met. Confirm current admission "
+            "conditions with the provider; admission is not guaranteed."
+        ),
+        "NOT_MET": (
+            "Review the unmet requirement groups and official sources. Ask the provider "
+            "about resits or documented alternative entry routes; an OR group requires "
+            "only one accepted option."
+        ),
+        "NOT_ASSESSED": (
+            "Supply missing results or ask the provider to assess your qualifications. "
+            "Missing evidence is not a rejection, and a reported award is not assumed "
+            "equivalent to examination results."
+        ),
+    }[status]
+    return {
+        "programme_id": programme_id, "status": status,
+        "groups": groups, "next_step": next_step,
     }

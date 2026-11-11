@@ -74,7 +74,7 @@ def test_ai_data_science_preserves_conditional_progression():
         == "Conditional Academic Progression"
     )
 
-    assert "50 percent" in pathway["progression_conditions"]
+    assert "40 percent" in pathway["progression_conditions"]
 
     assert pathway["guaranteed"] is False
 

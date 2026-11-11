@@ -140,7 +140,7 @@ function displayResult(data) {
     );
 
 
-    data.failed.forEach(
+    [...data.failed, ...(data.not_assessed || [])].forEach(
         message => {
 
             addListItem(
@@ -152,7 +152,7 @@ function displayResult(data) {
 
 
     if (
-        data.failed.length === 0
+        data.failed.length === 0 && !(data.not_assessed || []).length
     ) {
 
         failedSection.classList.add(
@@ -167,7 +167,10 @@ function displayResult(data) {
     }
 
 
-    if (data.eligible) {
+    if (data.assessment_status === "NOT_ASSESSED") {
+        statusBadge.textContent = "Not assessed";
+        statusBadge.className = "status-badge";
+    } else if (data.eligible) {
 
         statusBadge.textContent =
             "✓ Eligible";

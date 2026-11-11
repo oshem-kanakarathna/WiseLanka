@@ -3,13 +3,7 @@ from typing import Any, Dict, List, Optional
 from backend.app.data_loader import load_csv
 
 
-GRADE_ORDER = {
-    "F": 0,
-    "S": 1,
-    "C": 2,
-    "B": 3,
-    "A": 4,
-}
+from backend.app.eligibility.engine import GRADE_RANK as GRADE_ORDER, grade_meets_minimum
 
 
 def _normalise(value: Any) -> str:
@@ -59,7 +53,7 @@ def _grade_at_least(
     if actual not in GRADE_ORDER or required not in GRADE_ORDER:
         return None
 
-    return GRADE_ORDER[actual] >= GRADE_ORDER[required]
+    return grade_meets_minimum(actual, required)
 
 
 def _evaluate_requirement(

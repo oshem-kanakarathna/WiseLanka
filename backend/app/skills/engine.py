@@ -1,6 +1,37 @@
 from backend.app.data_loader import load_csv
 
 
+def assess_learner_skills(career_id, reported_skills):
+    """Compare explicit self-reports with curated career skills, not competence."""
+    lookup = _skill_lookup()
+    reports = {item["skill_id"]: item["status"] for item in reported_skills}
+    unknown = set(reports) - set(lookup)
+    if unknown:
+        raise ValueError("Unknown or inactive self-reported skill ID: " + ", ".join(sorted(unknown)))
+    career = _find_by_id(_load_careers(), "career_id", career_id)
+    requirements = get_career_skills(career_id) if career and career.get("active_status") == "Active" else []
+    items = []
+    for skill in requirements:
+        report = reports.get(skill["skill_id"], "UNREPORTED")
+        items.append({
+            **skill, "report_status": report,
+            "status": "SELF_REPORTED" if report == "REPORTED" else "DEVELOPMENT_OPPORTUNITY" if report == "DEVELOPMENT_OPPORTUNITY" else "NOT_ASSESSED",
+            "explanation": {
+                "REPORTED": "You report this skill. This does not verify competence or the expected career proficiency level.",
+                "DEVELOPMENT_OPPORTUNITY": "You identified this skill as a development opportunity; this is not an objective assessment.",
+                "UNREPORTED": "You have not reported this skill. No conclusion about your competence can be drawn.",
+            }[report],
+        })
+    return {
+        "career_id": career_id, "status": "SELF_REPORT_COMPARISON" if requirements else "NOT_ASSESSED",
+        "career_requirements": items,
+        "reported_skills": [{**lookup[item["skill_id"]], "report_status": item["status"]} for item in reported_skills],
+        "explanation": "Comparison uses curated career-skill relationships and your optional self-reports. No skill test or objective competence assessment was performed. Career proficiency is not verified."
+        if requirements else "Select a supported career with recorded skill requirements. Missing career evidence is not a negative assessment; your self-reports are retained below.",
+        "evidence_note": "Career-skill mappings currently contain descriptive notes, not per-relationship source citations. This limits their evidential strength.",
+    }
+
+
 # ====================================
 # Load Skills Knowledge
 # ====================================

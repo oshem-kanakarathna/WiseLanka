@@ -1,144 +1,24 @@
-import csv
-from pathlib import Path
+from backend.app.data_loader import load_csv
+from backend.app.eligibility.engine import evaluate_programme, assess_academic_gaps
+from backend.app.progression.engine import get_progression_pathways
 
-from backend.app.eligibility.engine import (
-    evaluate_programme,
-)
-
-from backend.app.progression.engine import (
-    get_progression_pathways,
-)
-
-
-# ------------------------------------
-# Data locations
-# ------------------------------------
-
-PROGRAMMES_PATH = Path(
-    "data/reference/programmes.csv"
-)
-
-CAREERS_PATH = Path(
-    "data/reference/careers.csv"
-)
-
-PROGRAMME_CAREERS_PATH = Path(
-    "data/relationships/programme_careers.csv"
-)
-
-ENTRY_REQUIREMENTS_PATH = Path(
-    "data/relationships/programme_entry_requirements.csv"
-)
-
-
-# ------------------------------------
-# Load active programmes
-# ------------------------------------
 
 def load_active_programmes():
+    return [row for row in load_csv("reference/programmes.csv")
+            if row.get("programme_status", "").strip().lower() == "active"]
 
-    programmes = []
-
-    with PROGRAMMES_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-
-            status = (
-                row.get(
-                    "programme_status",
-                    "",
-                )
-                .strip()
-                .lower()
-            )
-
-            if status == "active":
-                programmes.append(row)
-
-    return programmes
-
-
-# ------------------------------------
-# Load active careers
-# ------------------------------------
 
 def load_active_careers():
+    return [row for row in load_csv("reference/careers.csv")
+            if row.get("active_status", "").strip().lower() == "active"]
 
-    careers = []
-
-    with CAREERS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-
-            status = (
-                row.get(
-                    "active_status",
-                    "",
-                )
-                .strip()
-                .lower()
-            )
-
-            if status == "active":
-                careers.append(row)
-
-    return careers
-
-
-# ------------------------------------
-# Load programme-career relationships
-# ------------------------------------
 
 def load_programme_career_relationships():
+    return load_csv("relationships/programme_careers.csv")
 
-    relationships = []
-
-    with PROGRAMME_CAREERS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-            relationships.append(row)
-
-    return relationships
-
-
-# ------------------------------------
-# Load programme entry requirements
-# ------------------------------------
 
 def load_programme_entry_requirements():
-
-    requirements = []
-
-    with ENTRY_REQUIREMENTS_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-
-        reader = csv.DictReader(file)
-
-        for row in reader:
-            requirements.append(row)
-
-    return requirements
+    return load_csv("relationships/programme_entry_requirements.csv")
 
 
 # ------------------------------------
@@ -295,12 +175,17 @@ def programme_matches_student_level(
     programme_id,
     student_levels,
     requirements=None,
+    existing_qualifications=None,
 ):
     """
-    A programme should only be evaluated when
-    the learner supplied at least one education
-    level used by that programme's entry
-    requirements.
+    A programme is an immediate recommendation
+    only when the learner has supplied the
+    highest academic stage used by its entry
+    requirements. Lower-level prerequisites can
+    remain missing and be explained as
+    NOT_ASSESSED, but an O/L-only profile must
+    not be shown an A/L-entry HND merely because
+    that HND also requires O/L English/Maths.
 
     This prevents:
 
@@ -319,17 +204,38 @@ def programme_matches_student_level(
         )
     )
 
+    programme_requirements = requirements or load_programme_entry_requirements()
+    held_requirement_ids = {
+        row.get("qualification_id", "").strip()
+        for row in programme_requirements
+        if row.get("programme_id") == programme_id
+        and row.get("requirement_type", "").strip().upper() == "QUALIFICATION_HELD"
+    }
+    reported_ids = {
+        item.get("qualification_id", "").strip()
+        for item in (existing_qualifications or [])
+        if isinstance(item, dict)
+    }
+    has_documented_qualification_route = bool(held_requirement_ids & reported_ids)
+    if has_documented_qualification_route:
+        return True
+
     # If a programme currently has no
     # structured entry requirements,
     # exclude it from eligibility-based
     # recommendation until evidence exists.
     if not programme_levels:
-        return False
+        return has_documented_qualification_route
 
-    return bool(
-        programme_levels
-        & student_levels
-    )
+    stage_rank = {"O_LEVEL": 1, "A_LEVEL": 2}
+    programme_stages = programme_levels & stage_rank.keys()
+    learner_stages = student_levels & stage_rank.keys()
+    if not programme_stages or not learner_stages:
+        return has_documented_qualification_route
+
+    programme_entry_stage = max(programme_stages, key=stage_rank.get)
+    learner_stage = max(learner_stages, key=stage_rank.get)
+    return programme_entry_stage == learner_stage
 
 
 # ------------------------------------
@@ -476,6 +382,7 @@ def get_programme_careers(
 
 def evaluate_all_programmes(
     student_profile,
+    existing_qualifications=None,
 ):
 
     programmes = load_active_programmes()
@@ -506,12 +413,14 @@ def evaluate_all_programmes(
             programme_id,
             student_levels,
             requirements,
+            existing_qualifications,
         ):
             continue
 
         evaluation = evaluate_programme(
             programme_id,
             student_profile,
+            existing_qualifications,
         )
 
         # ------------------------------------
@@ -519,6 +428,15 @@ def evaluate_all_programmes(
         # by the recommendation layer
         # ------------------------------------
 
+        evaluation["academic_gap_insights"] = {
+            **assess_academic_gaps(
+                programme_id,
+                student_profile,
+                existing_qualifications=existing_qualifications,
+            ),
+            "programme_name": programme["programme_name"],
+        }
+        evaluation["programme_notes"] = programme.get("notes", "")
         evaluation["programme_name"] = (
             programme["programme_name"]
         )
@@ -689,6 +607,11 @@ def calculate_match_score(
         [],
     )
 
+    # Subject-match scores describe academic evidence, not unresolved provider decisions.
+    groups = [group for group in groups if not all(
+        item.get("assessment_kind") == "PROVIDER_REVIEW"
+        for item in group.get("requirements", [])
+    )]
     if not groups:
         return 0.0
 
@@ -795,7 +718,9 @@ def classify_programme(
         evaluation
     )
 
-    if evaluation["eligible"]:
+    if evaluation.get("academic_gap_insights", {}).get("status") == "NOT_ASSESSED":
+        category = "NOT_ASSESSED"
+    elif evaluation["eligible"]:
 
         category = "ELIGIBLE"
 
@@ -918,7 +843,16 @@ def classify_programme(
                         message
                     )
 
+    insight = evaluation.get("academic_gap_insights", {})
+    if insight:
+        failed_requirements = [rule["explanation"]
+            for group in insight["groups"] if group["status"] == "NOT_MET"
+            for rule in group["requirements"] if rule["status"] == "NOT_MET"]
+    not_assessed = [rule["explanation"]
+        for group in insight.get("groups", []) if group["status"] != "MET"
+        for rule in group["requirements"] if rule["status"] == "NOT_ASSESSED"]
     return {
+        "programme_notes": evaluation.get("programme_notes", ""),
         "programme_id":
             evaluation["programme_id"],
 
@@ -990,6 +924,7 @@ def classify_programme(
         # Eligibility result
         # ------------------------------------
 
+        "academic_gap_insights": evaluation["academic_gap_insights"],
         "eligible":
             evaluation["eligible"],
 
@@ -1004,6 +939,7 @@ def classify_programme(
 
         "failed_requirements":
             failed_requirements,
+        "not_assessed_requirements": not_assessed,
 
         # ------------------------------------
         # Career intelligence
@@ -1052,10 +988,12 @@ def classify_programme(
 
 def recommend_programmes(
     student_profile,
+    existing_qualifications=None,
 ):
 
     evaluations = evaluate_all_programmes(
-        student_profile
+        student_profile,
+        existing_qualifications,
     )
 
     recommendations = []

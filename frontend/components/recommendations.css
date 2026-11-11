@@ -3891,3 +3891,5 @@ footer {
         padding: 15px;
     }
 }
+/* WP5: measured low-contrast secondary text. */
+.level-description, .form-context span, .privacy-note, .empty-steps > span { color: #536176; }

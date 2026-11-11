@@ -21,7 +21,7 @@ def get_programme(response, programme_id):
     )
 
 
-def test_personalisation_preserves_academic_eligibility():
+def test_personalisation_preserves_pending_formal_eligibility():
     response = personalise_recommendations({
         "education": STRONG_AL_RESULTS,
         "career_goal_id": "CAR0001",
@@ -29,8 +29,8 @@ def test_personalisation_preserves_academic_eligibility():
 
     programme = get_programme(response, "PRG0001")
 
-    assert programme["eligible"] is True
-    assert programme["category"] == "ELIGIBLE"
+    assert programme["eligible"] is False
+    assert programme["category"] == "NOT_ASSESSED"
     assert programme["match_score"] == 100.0
     assert programme["academic_match_score"] == 100.0
 

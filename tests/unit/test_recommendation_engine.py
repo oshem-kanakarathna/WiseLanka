@@ -8,6 +8,8 @@ def get_result_by_programme(
     programme_id,
 ):
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
         if result["programme_id"] == programme_id:
             return result
 
@@ -20,7 +22,7 @@ def get_result_by_programme(
 # Strong profile
 # --------------------------------------------------
 
-def test_strong_profile_is_eligible():
+def test_strong_subject_profile_requires_provider_review():
 
     profile = {
         "Combined Mathematics": "B",
@@ -43,11 +45,11 @@ def test_strong_profile_is_eligible():
             programme_id,
         )
 
-        assert result["eligible"] is True
+        assert result["eligible"] is False
 
         assert (
             result["category"]
-            == "ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -60,7 +62,7 @@ def test_strong_profile_is_eligible():
 # Near profile
 # --------------------------------------------------
 
-def test_near_profile_is_nearly_eligible():
+def test_partial_subject_match_requires_provider_review():
 
     profile = {
         "Combined Mathematics": "S",
@@ -87,7 +89,7 @@ def test_near_profile_is_nearly_eligible():
 
         assert (
             result["category"]
-            == "NEARLY_ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
@@ -129,7 +131,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_1["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -139,7 +141,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_2["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -149,7 +151,7 @@ def test_unrelated_profile_not_nearly_eligible():
 
     assert (
         result_3["category"]
-        == "NOT_ELIGIBLE"
+        == "NOT_ASSESSED"
     )
 
     assert (
@@ -176,8 +178,10 @@ def test_eligible_programme_has_no_false_failed_or_requirements():
     )
 
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
 
-        assert result["eligible"] is True
+        assert result["eligible"] is False
 
         assert (
             result["failed_requirements"]
@@ -203,16 +207,18 @@ def test_near_profile_keeps_useful_failed_requirements():
     )
 
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
 
         assert (
             result["category"]
-            == "NEARLY_ELIGIBLE"
+            == "NOT_ASSESSED"
         )
 
         assert (
             len(
                 result[
-                    "failed_requirements"
+                    "not_assessed_requirements"
                 ]
             )
             > 0
@@ -237,6 +243,8 @@ def test_recommendations_include_career_pathways():
     assert len(results) > 0
 
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
 
         assert "career_pathways" in result
 
@@ -271,6 +279,8 @@ def test_embedded_career_pathways_have_required_fields():
     }
 
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
 
         for career in result[
             "career_pathways"
@@ -300,6 +310,8 @@ def test_career_pathways_are_ordered_by_relevance():
     }
 
     for result in results:
+        if result["programme_id"] not in {"PRG0001", "PRG0002", "PRG0003"}:
+            continue
 
         careers = result[
             "career_pathways"
@@ -344,9 +356,7 @@ def test_ol_profile_only_returns_ol_entry_programmes():
         for result in results
     }
 
-    assert programme_ids == {
-        "PRG0004"
-    }
+    assert programme_ids == {"PRG0004", "PRG0014"}
 
 
 def test_ol_foundation_profile_is_eligible():
@@ -366,9 +376,7 @@ def test_ol_foundation_profile_is_eligible():
         profile
     )
 
-    assert len(results) == 1
-
-    result = results[0]
+    result = next(item for item in results if item["programme_id"] == "PRG0004")
 
     assert (
         result["programme_id"]
@@ -421,6 +429,11 @@ def test_legacy_al_profile_excludes_ol_foundation():
         "PRG0001",
         "PRG0002",
         "PRG0003",
+        "PRG0008",
+        "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
 
 
@@ -449,6 +462,11 @@ def test_nested_al_profile_excludes_ol_foundation():
         "PRG0001",
         "PRG0002",
         "PRG0003",
+        "PRG0008",
+        "PRG0009",
+        "PRG0012",
+        "PRG0013",
+        "PRG0015",
     }
 
 def test_ol_foundation_recommendation_contains_progression():

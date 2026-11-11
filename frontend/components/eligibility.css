@@ -644,3 +644,5 @@ footer strong {
     }
 
 }
+/* WP5: privacy copy must remain readable at small sizes. */
+.privacy-note { color: #536176; }

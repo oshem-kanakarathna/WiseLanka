@@ -117,7 +117,7 @@ def test_ai_data_science_progression_is_conditional():
 
     assert pathway["guaranteed"] is False
 
-    assert "50 percent" in pathway["conditions"]
+    assert "40 percent" in pathway["conditions"]
 
     programme = pathway["programmes"][0]
 

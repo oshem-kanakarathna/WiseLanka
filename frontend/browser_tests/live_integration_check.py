@@ -2,6 +2,8 @@
 """Live WiseLanka browser/API check. Requires servers on ports 5500 and 8000."""
 
 from playwright.sync_api import sync_playwright
+import json
+import os
 
 PAGE_URL = "http://127.0.0.1:5500/frontend/pages/learner-profile.html"
 API_PATH = "/personalised-recommendations"
@@ -13,6 +15,9 @@ def main():
 
         try:
             page = browser.new_page()
+            page.add_init_script("window.WISELANKA_API_BASE = " + json.dumps(
+                os.environ.get("WISELANKA_API_BASE", "http://127.0.0.1:8000")
+            ))
             page.goto(PAGE_URL, wait_until="load")
 
             page.locator("#educationLevel").select_option("O_LEVEL")

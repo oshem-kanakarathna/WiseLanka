@@ -617,6 +617,7 @@ function validateStudentResults(
 function getCategoryLabel(
     category
 ) {
+    if (category === "NOT_ASSESSED") return "Not Assessed";
 
     if (
         category
@@ -641,6 +642,7 @@ function getCategoryLabel(
 function getCategoryClass(
     category
 ) {
+    if (category === "NOT_ASSESSED") return "status-warning";
 
     if (
         category
@@ -2684,14 +2686,14 @@ function createRecommendationCard(
         (
             "status-badge "
             + getCategoryClass(
-                recommendation.category
+                (recommendation.academic_gap_insights?.status === "NOT_ASSESSED" ? "NOT_ASSESSED" : recommendation.category)
             )
         );
 
 
     status.textContent =
         getCategoryLabel(
-            recommendation.category
+            (recommendation.academic_gap_insights?.status === "NOT_ASSESSED" ? "NOT_ASSESSED" : recommendation.category)
         );
 
 
@@ -2726,6 +2728,24 @@ function createRecommendationCard(
     card.appendChild(
         title
     );
+    const insight = recommendation.academic_gap_insights;
+    if (insight) {
+        const evidence = document.createElement("p");
+        evidence.textContent = insight.next_step;
+        card.appendChild(evidence);
+        const sources = new Map((insight.groups || []).flatMap(group => group.requirements || []).filter(item => item.source_url).map(item => [item.source_id, item]));
+        sources.forEach(source => {
+            let url;
+            try { url = new URL(source.source_url); } catch { return; }
+            if (!["https:", "http:"].includes(url.protocol)) return;
+            const link = document.createElement("a");
+            link.href = url.href;
+            link.textContent = `Requirement source: ${source.source_organisation || source.source_id}`;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            card.appendChild(link);
+        });
+    }
 
 
     const meta =
@@ -2770,7 +2790,7 @@ function createRecommendationCard(
 
 
     score.textContent =
-    `Academic requirements match: ${matchScore}%`;
+    recommendation.academic_gap_insights?.status === "NOT_ASSESSED" ? "Academic requirements not fully assessed" : `Academic requirements match: ${matchScore}%`;
 
 
     meta.appendChild(
@@ -2862,7 +2882,7 @@ card.appendChild(admissionNote);
 
     const failedSection =
         createRequirementList(
-            recommendation.category
+            (recommendation.academic_gap_insights?.status === "NOT_ASSESSED" ? "NOT_ASSESSED" : recommendation.category)
                 === "NEARLY_ELIGIBLE"
                 ? "What is still needed"
                 : "Requirements not satisfied",
@@ -3143,6 +3163,7 @@ function createAlternativePathwayCard(
     pathway
 ) {
 
+    const notAssessed = pathway.pathway_status === "NOT_ASSESSED";
     const availableNow =
         (
             pathway.pathway_status
@@ -3153,7 +3174,7 @@ function createAlternativePathwayCard(
     const statusClass =
         availableNow
             ? "available-now"
-            : "requirements-not-met";
+            : notAssessed ? "not-assessed" : "requirements-not-met";
 
 
     const card =
@@ -3245,7 +3266,7 @@ function createAlternativePathwayCard(
     badge.textContent =
         availableNow
             ? "Available now"
-            : "Requirements not met";
+            : notAssessed ? "Not assessed" : "Requirements not met";
 
 
     header.appendChild(
@@ -3354,7 +3375,7 @@ function createAlternativePathwayCard(
     messageStrong.textContent =
         availableNow
             ? "✓ Pathway available: "
-            : "Pathway requirements: ";
+            : notAssessed ? "Pathway not assessed: " : "Pathway requirements: ";
 
 
     message.appendChild(
