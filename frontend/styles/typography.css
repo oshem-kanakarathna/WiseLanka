@@ -1,0 +1,38 @@
+﻿/* Readable typography for learner guidance and long forms. */
+:root {
+ --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+ --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
+ --un-font: 'Montserrat', 'Segoe UI', sans-serif;
+}
+body[data-view] { font-family:var(--font-body); font-size:16px; line-height:1.65; }
+body[data-view] :is(h1,h2,h3,h4) { font-family:var(--font-heading); font-weight:600; letter-spacing:-.025em; text-transform:none; }
+body[data-view] main > .hero :is(h1,h2),
+body[data-view] .about-intro h1,
+body[data-view] .about-main h2,
+body[data-view="pathways"] .pathways-title { font-family:var(--font-heading); font-weight:600!important; text-transform:none; letter-spacing:-.035em; line-height:1.2; }
+body[data-view] .un-hero h1 { font-family:var(--font-heading); font-weight:600; font-size:clamp(40px,4.5vw,60px); letter-spacing:-.045em; line-height:1.12; text-transform:none; }
+body[data-view] .un-main h2 { font-family:var(--font-heading); font-weight:600; font-size:clamp(30px,3.5vw,44px); line-height:1.2; letter-spacing:-.035em; text-transform:none; }
+body[data-view] .un-lead { font-family:var(--font-body); font-size:17px; line-height:1.8; text-transform:none; }
+body[data-view] :is(.un-photo-card h3,.un-process h3,.un-note h3) { font-family:var(--font-heading); font-weight:600; text-transform:none; letter-spacing:-.02em; line-height:1.5; }
+body[data-view] .un-photo-card h3 { font-size:18px; }
+body[data-view] :is(.un-note p,.un-process p,.un-section-heading>p:last-child,.un-faq details p,.un-start>div>p:last-child,.un-footer-grid p) { font-family:var(--font-body); font-size:16px; line-height:1.8; }
+body[data-view] .un-faq summary { font-family:var(--font-heading); font-size:16px; font-weight:600; line-height:1.6; text-transform:none; }
+body[data-view] :is(input,select,textarea,label) { font-family:var(--font-body); }
+body[data-view] :is(.un-button,.wl-button,.primary-button,.secondary-button,.submit-button,#recommendButton,#checkButton) { font-family:var(--font-heading); font-size:13px; font-weight:600; text-transform:none; letter-spacing:0; }
+body[data-view] .wl-navigation .wl-nav-link { font-family:var(--font-heading); font-size:13px; font-weight:600; text-transform:none; letter-spacing:0; }
+body[data-view] :is(.profile-progress button,.tool-progress button) { font-family:var(--font-heading); font-size:12px; font-weight:600; line-height:1.5; }
+body[data-view] :is(.un-card-meta,.un-eyebrow,.un-kicker,.about-label,.eyebrow,.hero-badge) { font-family:var(--font-heading); font-weight:600; }
+body[data-view] .un-card-meta { font-size:11px; }
+body[data-view] .un-eyebrow { font-size:11px; letter-spacing:1px; }
+body[data-view] .un-start-options strong { font-family:var(--font-heading); font-size:17px; font-weight:600; text-transform:none; }
+body[data-view] .un-start-options small { font-size:14px; }
+body[data-view] .un-stat-grid strong, body[data-view] .un-process span { font-family:var(--font-heading); font-weight:500; font-variant-numeric:tabular-nums; }
+body[data-view] .un-stat-grid p { font-size:14px; }
+body[data-view] .un-footer-grid a:not(.un-button) { font-size:14px; }
+body[data-view] .un-footer h3 { font-family:var(--font-heading); font-size:14px; font-weight:600; text-transform:none; }
+@media(max-width:700px) {
+ body[data-view] .un-lead { font-size:16px; }
+ body[data-view] .un-photo-card h3 { font-size:15px; }
+ body[data-view] .un-card-meta { font-size:10px; }
+ body[data-view] :is(.profile-progress button,.tool-progress button) { font-size:11px; }
+}

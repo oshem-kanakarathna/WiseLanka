@@ -15,52 +15,31 @@
     <link rel="stylesheet" href="../styles/design-system.css?v=20261107-1">
 
     <script src="../components/i18n.js?v=1" defer></script>
-    <script src="../components/learner-profile.js?v=6" defer></script>
+    <script src="../components/learner-profile.js?v=8" defer></script>
     <script src="../components/guided-assistant.js?v=1" defer></script>
+    <link rel="stylesheet" href="../styles/figma-theme.css?v=20261112-mono">
+    <script src="../components/site-header.js?v=20261112-chat-thinking-4" defer></script>
+    <link rel="stylesheet" href="../styles/layout.css?v=20261112-mono">
+    <link rel="stylesheet" href="../styles/profile-steps.css?v=20261112-mono">
+    <script src="../components/profile-steps.js?v=1" defer></script>
+    <link rel="stylesheet" href="../styles/motion.css?v=20261112-mono">
+    <script src="../components/motion.js?v=3" defer></script>
+    <link rel="stylesheet" href="../styles/universal-theme.css?v=20261112-nav">
+    <link rel="stylesheet" href="../styles/typography.css?v=1">
 </head>
 
-<body>
+<body data-view="profile">
 
-    <header class="navbar">
-        <div class="navbar-inner">
+    <header class="wl-header" data-site-header data-page="profile"></header>
 
-            <a class="brand" href="recommendations.html">
-                <span class="brand-icon">W</span>
-
-                <span class="brand-copy">
-                    <strong>WiseLanka</strong>
-                    <small>Know More. Choose Better.</small>
-                </span>
-            </a>
-
-            <nav class="page-nav" aria-label="Main navigation">
-                <a href="recommendations.html">Pathways</a>
-                <a href="eligibility.html">Eligibility</a>
-                <a href="scholarships.html">Scholarships</a>
-                <a href="learner-profile.html" aria-current="page">
-                    My Profile
-                </a>
-            </nav>
-
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="language-panel" aria-label="Interface language">
-            <label for="interfaceLanguage" data-i18n="language">Interface language</label>
-            <select id="interfaceLanguage"><option value="en">English</option><option value="si">සිංහල</option><option value="ta">தமிழ்</option></select>
-            <p id="translationNotice" data-i18n="review" role="status">Draft interface translations await fluent-speaker review. Official titles, source facts and detailed rule text remain in their original language. Semantic preference input remains English-only.</p>
-        </section>
-
+    <main id="main-content" class="container">
         <section class="hero">
             <span class="eyebrow">Personalised Pathway Intelligence</span>
 
-            <h1>Find a pathway that fits your future.</h1>
+            <h1>Let's build your learner profile.</h1>
 
             <p>
-                Tell WiseLanka about your qualifications, interests,
-                career goals and study preferences. Explore education
-                pathways supported by our curated knowledge base.
+                Four simple steps. Start with your education, then choose what matters to you.
             </p>
 
             <div class="trust-row">
@@ -68,6 +47,12 @@
                 <span>✓ Career alignment</span>
                 <span>✓ Explainable guidance</span>
             </div>
+        </section>
+
+        <section class="language-panel" aria-label="Interface language">
+            <label for="interfaceLanguage" data-i18n="language">Interface language</label>
+            <select id="interfaceLanguage"><option value="en">English</option><option value="si">සිංහල</option><option value="ta">தமிழ்</option></select>
+            <p id="translationNotice" data-i18n="review" role="status">Draft interface translations await fluent-speaker review. Official titles, source facts and detailed rule text remain in their original language. Semantic preference input remains English-only.</p>
         </section>
 
         <div class="workspace">

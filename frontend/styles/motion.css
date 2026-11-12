@@ -1,0 +1,49 @@
+﻿/* Motion layer uses the existing WiseLanka palette; content works without JS. */
+:root { --wl-ease: cubic-bezier(.22,1,.36,1); }
+html { scroll-padding-top: 140px; }
+body[data-view] .wl-header { position: sticky; top: 0; z-index: 40; isolation: isolate; }
+.wl-header .wl-navigation { border-radius: 0; transition: background-color .6s ease, box-shadow .6s ease, border-radius .7s var(--wl-ease), border-color .6s ease; }
+.wl-header.is-scrolled .wl-navigation { background: var(--background); background: color-mix(in srgb, var(--background) 92%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-radius: 18px; border-color: var(--border); box-shadow: 0 12px 36px #0003; }
+.wl-header .wl-navigation .wl-nav-link { position: relative; transition: color .25s ease; }
+.wl-navigation .wl-nav-link::after { content: ''; position: absolute; bottom: 3px; left: 10%; width: 80%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--wl-ease); }
+.wl-navigation .wl-nav-link:hover::after, .wl-navigation .wl-nav-link:focus-visible::after { transform: scaleX(1); }
+.wl-emblem { transition: transform .45s var(--wl-ease); }
+.wl-emblem-link:hover .wl-emblem { transform: translateY(-2px) rotate(-3deg); }
+.wl-scroll-progress { position: absolute; left: 0; top: 0; width: 100%; height: 2px; transform: scaleX(0); transform-origin: left; background: var(--brand-orange); pointer-events: none; }
+body[data-view] :is(.wl-button,.primary-button,.secondary-button,.profile-edit,.tool-edit,.profile-progress button,.tool-progress button) { transition: transform .25s var(--wl-ease), background-color .25s ease, border-color .25s ease, box-shadow .3s ease; }
+body[data-view] :is(.wl-button,.primary-button,.secondary-button):active:not(:disabled) { transform: scale(.98); }
+body[data-view] :is(.pathway-card,.about-learners > a,.about-features article,.wl-pathway-choice) { transition: transform .45s var(--wl-ease), border-color .3s ease, box-shadow .45s ease; }
+.pathway-card .student-image, .journey-portrait .journey-student { transition: transform .7s var(--wl-ease); }
+.pathway-card h2::after, .landing-action .pathway-chevrons { transition: transform .35s var(--wl-ease); }
+.landing-action .wl-button:hover .pathway-chevrons { transform: translateX(4px); }
+.about-faq details[open] > p, .about-faq details[open] > a, .profile-detail[open] > p { animation: wl-detail-in .3s var(--wl-ease) both; }
+.about-sections a { position: relative; padding-block: 8px; transition: color .25s ease; }
+.about-sections a[aria-current="location"] { color: #ffffff; text-decoration: underline; text-underline-offset: 7px; }
+body[data-view] :is(#profileHeading,#resultsHeading,#learnerProfileForm,#guidedAssistant,.about-section) { scroll-margin-top: 140px; }
+@media (hover: hover) and (pointer: fine) {
+ body[data-view] :is(.wl-button,.primary-button,.secondary-button):hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 24px #0003; }
+ body[data-view] :is(.pathway-card,.about-learners > a,.wl-pathway-choice):hover { transform: translateY(-5px); box-shadow: 0 18px 34px #0003; }
+ .about-features article:hover { transform: translateY(-3px); border-color: var(--brand-orange); }
+ .pathway-card:hover .student-image, .journey-portrait:hover .journey-student { transform: scale(1.035); }
+ .pathway-card:hover h2::after { transform: translate(2px,-2px); }
+}
+@media (max-width:1000px) {
+ .wl-header .wl-navigation[data-open="true"] { background: var(--background); border-radius: 16px; box-shadow: 0 16px 32px #0003; padding-bottom: 16px; }
+ .wl-navigation[data-open="true"] .wl-nav-group { animation: wl-menu-in .38s var(--wl-ease) both; }
+ .wl-navigation[data-open="true"] .wl-nav-group:last-child { animation-delay: .06s; }
+ .wl-menu-toggle { z-index: 2; }
+ .wl-header:has(.wl-navigation[data-open="true"]) { max-height: 90svh; overflow-y: auto; }
+}
+@keyframes wl-menu-in { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+@keyframes wl-detail-in { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:none; } }
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: wl-page-out .14s ease both; }
+::view-transition-new(root) { animation: wl-page-in .24s ease both; }
+@keyframes wl-page-out { to { opacity:0; } }
+@keyframes wl-page-in { from { opacity:0; } to { opacity:1; } }
+@media (prefers-reduced-motion: reduce) {
+ html { scroll-behavior: auto; }
+ body[data-view] *, body[data-view] *::before, body[data-view] *::after { animation: none !important; transition: none !important; }
+ body[data-view] :is(.pathway-card,.about-learners > a,.about-features article,.wl-pathway-choice,.wl-button,.primary-button,.secondary-button):hover, .pathway-card:hover .student-image, .journey-portrait:hover .journey-student, .wl-emblem-link:hover .wl-emblem { transform: none; }
+ ::view-transition-old(root), ::view-transition-new(root) { animation:none; }
+}

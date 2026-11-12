@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Choose how to explore your future with WiseLanka: build a learner profile, get personalised recommendations, or ask the guided assistant.">
+    <meta name="theme-color" content="#000000">
+    <title>WiseLanka | Explore Your Pathway</title>
+    <link rel="stylesheet" href="../styles/design-system.css?v=20261112">
+    <link rel="stylesheet" href="../styles/figma-theme.css?v=20261112-mono">
+    <link rel="stylesheet" href="../styles/pathways.css?v=20261112-3">
+    <script src="../components/site-header.js?v=20261112-chat-thinking-4" defer></script>
+    <script src="../components/pathways.js?v=20261112-2" defer></script>
+    <link rel="stylesheet" href="../styles/layout.css?v=20261112-mono">
+    <link rel="stylesheet" href="../styles/motion.css?v=20261112-mono">
+    <script src="../components/motion.js?v=3" defer></script>
+    <link rel="stylesheet" href="../styles/universal-theme.css?v=20261112-nav">
+    <link rel="stylesheet" href="../styles/typography.css?v=1">
+</head>
+<body class="pathways-page" data-view="pathways">
+    <header class="wl-header" data-site-header data-page="pathways"></header>
+    <div class="pathways-language-bar">
+        <details class="pathways-language">
+            <summary><img src="../../assets/pathway-start/language.svg" alt="" width="16" height="16">Language</summary>
+            <div class="pathways-language-options">
+                <p>Choose a language for your learner profile.</p>
+                <a href="learner-profile.html?lang=en" lang="en">English</a>
+                <a href="learner-profile.html?lang=si" lang="si">සිංහල</a>
+                <a href="learner-profile.html?lang=ta" lang="ta">தமிழ்</a>
+                <small>Draft translations are available on the profile page.</small>
+            </div>
+        </details>
+    </div>
+    <main id="main-content" class="pathways-main">
+        <h1 class="pathways-title">Find a pathway that fits<br>your future.</h1>
+        <section class="pathways-gallery" aria-label="Sri Lankan learners at every stage of education">
+            <div class="journey-portrait">
+                <img class="journey-student" src="../../assets/pathway-start/school-student.png" alt="School student walking with a backpack" fetchpriority="high">
+                <span class="journey-shade" aria-hidden="true"></span>
+            </div>
+            <div class="journey-portrait">
+                <img class="journey-student" src="../../assets/pathway-start/student-choices.png" alt="Student considering her next steps while studying">
+                <span class="journey-shade" aria-hidden="true"></span>
+            </div>
+            <div class="journey-portrait">
+                <img class="journey-student" src="../../assets/pathway-start/vocational-student.png" alt="Vocational trainee wearing safety glasses in a workshop">
+                <span class="journey-badge" aria-hidden="true">TVET / NVQ</span>
+                <span class="journey-shade" aria-hidden="true"></span>
+            </div>
+            <div class="journey-portrait">
+                <img class="journey-student" src="../../assets/pathway-start/university-student.png" alt="University student smiling and holding her books">
+                <img class="journey-graduation" src="../../assets/pathway-start/graduation.svg" alt="" width="80" height="80">
+                <span class="journey-shade" aria-hidden="true"></span>
+            </div>
+        </section>
+        <nav class="pathways-actions" aria-label="Choose how to find your pathway">
+            <div class="wl-pathway-choice"><a class="wl-button wl-button--primary" href="learner-profile.html#profileHeading">Build your learner profile</a><p>Start here. Add your qualifications, interests and study preferences.</p></div>
+            <div class="wl-pathway-choice"><a class="wl-button wl-button--primary" href="learner-profile.html#learnerProfileForm">Personalised recommendations</a><p>Complete your profile to explore options and understand why they appear.</p></div>
+            <div class="wl-pathway-choice"><a class="wl-button wl-button--primary" href="learner-profile.html#guidedAssistant">Wise Lanka guided assistant</a><p>Choose a topic and programme to get clear explanations and guidance.</p></div>
+        </nav>
+        <p class="pathways-description">Tell WiseLanka about your qualifications, interests, career goals and study preferences. Explore education pathways supported by our curated knowledge base.</p>
+    </main>
+</body>
+</html>

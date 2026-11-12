@@ -1,0 +1,34 @@
+﻿body.profile-guided main > .workspace { grid-template-columns: minmax(0,1fr); max-width: 900px; margin-inline: auto; }
+body.profile-guided .profile-panel { padding: 32px; }
+body.profile-guided .profile-panel > .panel-heading { display: none; }
+body.profile-guided main > .hero { max-width: 900px; margin-inline: auto; margin-bottom: 20px; }
+body.profile-guided .hero h1 { font-size: clamp(28px,3vw,40px); }
+body.profile-guided .hero .trust-row { display:none; }
+body.profile-guided .hero p { max-width: 600px; }
+body.profile-guided .language-panel { max-width: 900px; margin-inline: auto; }
+body.profile-guided .profile-progress { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid var(--border); }
+.profile-progress button { min-height:48px; padding:10px; border:1px solid var(--border); border-radius:10px; color:var(--muted); background:transparent; font:600 12px/1.5 var(--font-body); cursor:pointer; }
+.profile-progress button[aria-current="step"] { color:#172027; background:#ffffff; border-color:#ffffff; }
+.profile-stage-title { margin:0 0 8px; font-size:26px; }
+.profile-stage-hint { margin:0 0 28px; color:var(--muted); font-size:14px; line-height:1.7; }
+body.profile-guided [hidden] { display:none !important; }
+.profile-stage .form-section { margin-bottom:24px; padding:20px; border:1px solid var(--border); border-radius:12px; min-width:0; }
+.profile-stage legend { padding:0 8px; font-size:15px; }
+.profile-stage .choice-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.profile-stage .choice { border:1px solid var(--border); border-radius:10px; min-height:52px; padding:14px; cursor:pointer; }
+.profile-stage .choice:has(input:checked) { border-color:#ffffff; background:#ffffff15; }
+.profile-stage .subject-row { grid-template-columns:minmax(0,1fr) minmax(100px,.35fr); }
+.profile-detail { margin:12px 0; font-size:12px; color:var(--muted); }
+.profile-detail summary { cursor:pointer; min-height:32px; padding-block:6px; }
+.profile-step-actions { display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid var(--border); padding-top:24px; }
+.profile-step-actions .primary-button { width:auto; min-width:180px; margin-left:auto; }
+.profile-step-actions .secondary-button { margin:0; }
+.profile-step-error { padding:16px; background:#40252c; border:1px solid #ffaaaa; border-radius:10px; color:#ffcece; }
+.profile-review > div { display:flex; justify-content:space-between; gap:24px; padding:18px 0; border-bottom:1px solid var(--border); }
+.profile-review p { margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.8; overflow-wrap:anywhere; }
+.profile-edit { align-self:start; min-height:44px; border:0; background:transparent; color:#ffffff; text-decoration:underline; cursor:pointer; }
+body.profile-guided #submitProfile { margin-top:20px; }
+body.profile-guided .privacy-note { font-size:12px; line-height:1.7; margin-top:20px; }
+body.profile-guided .results-panel { margin-top:24px; }
+body.profile-guided .assistant-panel { max-width:900px; margin-inline:auto; }
+@media(max-width:600px){body.profile-guided .profile-panel{padding:20px 16px}.profile-progress button{font-size:11px;padding:8px 4px}body.profile-guided .profile-progress{gap:4px}.profile-stage .form-section{padding:16px 12px}.profile-stage .choice-grid{grid-template-columns:1fr}.profile-stage-title{font-size:23px}.profile-step-actions .primary-button{min-width:0;flex:1}.profile-stage .subject-row{grid-template-columns:minmax(0,1fr) 90px}}

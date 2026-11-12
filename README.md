@@ -120,11 +120,18 @@ Open a second Terminal in the repository root:
 python -m http.server 5500 --bind 127.0.0.1
 ```
 
-### Open the learner-profile page
+### Open the website
 
 Visit:
 
-http://127.0.0.1:5500/frontend/pages/learner-profile.html
+http://127.0.0.1:5500/
+
+The landing page is the default entry point. **Find my pathway** and the
+**Pathways** navigation link open the pathway overview, where users can choose
+the learner profile, personalised recommendations, or guided assistant.
+The educational journey cards open the corresponding learner profile directly.
+All learner-facing pages share the landing page's navigation, Montserrat
+typography, and dark/orange theme.
 
 The backend health endpoint is available at:
 

@@ -1,0 +1,71 @@
+/* Shared layout contract. Page styles retain their colours, imagery and content. */
+:root { --wl-content-width: 1200px; --wl-gutter: 32px; --wl-section-gap: 32px; }
+.wl-header { padding-inline: var(--wl-gutter); }
+.wl-navigation { max-width: calc(var(--wl-content-width) - 2 * var(--wl-gutter)); }
+.wl-navigation .wl-nav-link { display: inline-flex; align-items: center; min-height: 44px; }
+.wl-emblem-link { min-height: 76px; }
+.wl-menu-toggle { min-height: 44px; }
+.wl-skip { z-index: 100; }
+body[data-view] main { width: 100%; max-width: var(--wl-content-width); margin-inline: auto; padding-inline: var(--wl-gutter); }
+body[data-view]:not([data-view="home"]):not([data-view="about"]):not([data-view="pathways"]) main { padding-top: 20px; padding-bottom: 48px; }
+body[data-view] main > .hero { width: 100%; max-width: 850px; padding: 0; margin: 0 0 var(--wl-section-gap); }
+body[data-view] .hero :is(h1, h2) { margin: 12px 0 16px; font-size: clamp(30px, 3.8vw, 46px); line-height: 1.16; }
+body[data-view] .hero > p { max-width: 720px; font-size: 16px; line-height: 1.75; }
+body[data-view] main > .workspace { width: 100%; max-width: none; margin: 0; padding: 0; gap: 24px; align-items: start; }
+body[data-view] .workspace > * { min-width: 0; }
+body[data-view] :is(.profile-panel, .results-panel, .form-card, .card.input-card) { border-radius: 18px; }
+body[data-view="recommendations"] .input-card { position: static; }
+body[data-view] :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { min-width: 0; max-width: 100%; font-size: 16px; }
+body[data-view] :is(input:not([type="checkbox"]):not([type="radio"]), select) { min-height: 44px; }
+body[data-view] :is(.primary-button, .secondary-button, .submit-button, #recommendButton, #checkButton) { min-height: 48px; white-space: normal; line-height: 1.5; }
+body[data-view] :is(button, a) { -webkit-tap-highlight-color: transparent; }
+body[data-view] :is(button:disabled, [aria-busy="true"]) { cursor: progress; }
+body[data-view] :is(#profileHeading, #resultsHeading, #learnerProfileForm, #guidedAssistant) { scroll-margin-top: 24px; }
+.wl-page-context { margin-bottom: 24px; }
+.wl-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 16px; color: var(--muted); font: 500 12px/1.6 var(--font-body); }
+.wl-breadcrumb a { color: inherit; text-underline-offset: 3px; }
+.wl-task-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.wl-task-nav a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 8px 14px; color: var(--text); font: 700 12px/1.5 var(--font-body); text-decoration: none; border-radius: 8px; }
+.wl-task-nav a:hover { background: var(--surface-soft); color: #ffffff; }
+.wl-task-nav a span { color: #ffffff; }
+.wl-context-help { margin: 0; color: var(--muted); font: 500 13px/1.7 var(--font-body); }
+.wl-context-help a { color: #ffffff; font-weight: 700; text-underline-offset: 4px; }
+body[data-view="profile"] .language-panel { display: grid; grid-template-columns: auto minmax(180px, 240px); align-items: center; gap: 8px 20px; margin: 0 0 24px; padding: 16px 20px; }
+body[data-view="profile"] .language-panel label { margin: 0; }
+body[data-view="profile"] .language-panel p { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.6; }
+body[data-view="profile"] .language-panel select { width: 100%; }
+body[data-view="profile"] .assistant-panel { margin-top: 32px; }
+body[data-view="profile"] #assistantForm { max-width: 760px; }
+body[data-view="profile"] .assistant-panel > p { max-width: 760px; line-height: 1.7; }
+.wl-pathway-choice { min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.wl-pathway-choice p { margin: 0; color: var(--muted); font: 400 13px/1.7 var(--font-body); text-align: center; }
+body[data-view="pathways"] .pathways-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; min-height: 0; padding: 24px 0; max-width: 1080px; }
+body[data-view="pathways"] .pathways-actions .wl-button { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; white-space: normal; font-size: 12px; line-height: 1.5; }
+body[data-view="pathways"] .pathways-description { padding-top: 8px; }
+body[data-view="pathways"] .pathways-language-bar { max-width: var(--wl-content-width); padding-inline: var(--wl-gutter); }
+body[data-view] :is(.footer-inner, .site-footer) { max-width: var(--wl-content-width); margin-inline: auto; }
+@media (min-width: 1001px) {
+    .wl-navigation { display: grid; grid-template-columns: minmax(0, 1fr) 128px minmax(0, 1fr); gap: 28px; }
+    .wl-nav-group { gap: clamp(18px, 2.4vw, 36px); justify-content: flex-end; }
+    .wl-nav-group:last-child { justify-content: flex-start; }
+    .wl-emblem-link { padding-inline: 24px; }
+}
+@media (max-width: 1000px) {
+    .wl-header .wl-menu-toggle { top: 30px; right: var(--wl-gutter); }
+    .wl-navigation { display: flex; }
+    .wl-navigation .wl-nav-group { gap: 8px 20px; }
+    .wl-navigation .wl-nav-link { padding-inline: 10px; }
+    body[data-view] main > .workspace { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+    :root { --wl-gutter: 20px; --wl-section-gap: 24px; }
+    body[data-view="pathways"] .pathways-actions { grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 480px; }
+    .wl-pathway-choice { gap: 8px; }
+    .wl-page-context { margin-bottom: 20px; }
+    .wl-task-nav { gap: 4px; padding: 8px; }
+    .wl-task-nav a { flex: 1 1 100%; }
+    body[data-view="profile"] .language-panel { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+    body[data-view="profile"] .language-panel p { grid-column: auto; }
+    body[data-view] :is(.profile-panel, .results-panel, .form-card, .card:not(.input-card)) { padding: 20px; }
+    body[data-view] :is(.hero-trust-row, .trust-row) { flex-wrap: wrap; gap: 8px; }
+}

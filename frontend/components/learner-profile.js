@@ -810,6 +810,7 @@ async function submitLearnerProfile(event) {
     }
 
     submitButton.disabled = true;
+    document.querySelector('.results-panel').setAttribute('aria-busy', 'true');
     showStatus("Evaluating your learner profile...");
 
     try {
@@ -834,6 +835,9 @@ async function submitLearnerProfile(event) {
         }
 
         renderRecommendations(data);
+        const resultHeading = document.getElementById('resultsHeading');
+        resultHeading.setAttribute('tabindex', '-1');
+        resultHeading.focus();
     } catch (error) {
         const message = error instanceof TypeError
             ? "Could not connect to the WiseLanka API. " +
@@ -843,6 +847,7 @@ async function submitLearnerProfile(event) {
         showStatus(message, true);
     } finally {
         submitButton.disabled = false;
+        document.querySelector('.results-panel').setAttribute('aria-busy', 'false');
     }
 }
 
@@ -857,6 +862,24 @@ document.querySelectorAll(".al-subject").forEach(select => {
     });
 });
 createOlSubjects();
+// Landing cards set context only; grades and qualification evidence remain user supplied.
+const landingParameters = new URLSearchParams(window.location.search);
+const landingJourneys = {
+    ordinary: {education: "O_LEVEL", category: "AL_LEARNER"},
+    advanced: {education: "A_LEVEL", category: "AL_LEARNER"},
+    vocational: {education: "NONE", category: "VOCATIONAL_LEARNER"},
+    diploma: {education: "NONE", category: "EARLY_CAREER"}
+};
+const landingJourney = landingJourneys[landingParameters.get("journey")];
+if (landingJourney) {
+    educationLevel.value = landingJourney.education;
+    document.getElementById("learnerCategory").value = landingJourney.category;
+}
+const requestedLanguage = landingParameters.get("lang");
+if (["en", "si", "ta"].includes(requestedLanguage)) {
+    document.getElementById("interfaceLanguage").value = requestedLanguage;
+    window.WiseI18n.setLanguage(requestedLanguage);
+}
 updateEducationLevel();
 document.getElementById("addOlSubject").addEventListener("click", () => {
     addOlSubject();

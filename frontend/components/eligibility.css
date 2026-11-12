@@ -45,7 +45,7 @@ body {
     background:
         linear-gradient(
             180deg,
-            #ffffff 0%,
+            var(--surface) 0%,
             var(--background) 45%
         );
 }
@@ -58,12 +58,7 @@ body {
         16px
         clamp(25px, 7vw, 100px);
 
-    background: rgba(
-        255,
-        255,
-        255,
-        0.95
-    );
+    background: var(--surface-soft);
 
     border-bottom:
         1px solid var(--border);
@@ -94,7 +89,7 @@ body {
 
     background: var(--primary);
 
-    color: white;
+    color: var(--text);
 
     display: grid;
 
@@ -257,7 +252,7 @@ body {
 
     border-radius: 10px;
 
-    background: #eef2ff;
+    background: var(--surface);
 
     color: var(--accent);
 
@@ -302,11 +297,11 @@ select {
     padding: 0 12px;
 
     border:
-        1px solid #d7dce5;
+        1px solid var(--border);
 
     border-radius: 10px;
 
-    background: #ffffff;
+    background: var(--surface);
 
     color: var(--text);
 
@@ -351,7 +346,7 @@ button {
 
     background: var(--primary);
 
-    color: white;
+    color: var(--text);
 
     cursor: pointer;
 
@@ -386,7 +381,7 @@ button:disabled {
         4px
         0;
 
-    color: #98a2b3;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -469,7 +464,7 @@ ul {
 
     padding-left: 21px;
 
-    color: #475467;
+    color: var(--muted);
 
     font-size: 14px;
 
@@ -530,7 +525,7 @@ li {
 
     margin-bottom: 18px;
 
-    background: #eef2ff;
+    background: var(--surface);
 
     color: var(--accent);
 
@@ -574,7 +569,7 @@ footer {
     border-top:
         1px solid var(--border);
 
-    background: white;
+    background: var(--surface);
 
     display: flex;
 
@@ -645,4 +640,4 @@ footer strong {
 
 }
 /* WP5: privacy copy must remain readable at small sizes. */
-.privacy-note { color: #536176; }
+.privacy-note { color: var(--muted); }

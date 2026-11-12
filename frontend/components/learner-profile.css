@@ -69,7 +69,7 @@ select {
     height: 44px;
     border-radius: 13px;
     background: var(--primary);
-    color: white;
+    color: var(--text);
     font-size: 24px;
     font-weight: 800;
 }
@@ -216,7 +216,7 @@ select {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
-    background: #e8f3f7;
+    background: var(--surface);
     color: var(--primary);
     border-radius: 9px;
     font-size: 12px;
@@ -233,7 +233,7 @@ select {
     width: 100%;
     min-width: 0;
     padding: 11px 12px;
-    background: white;
+    background: var(--surface);
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 9px;
@@ -287,7 +287,7 @@ a:focus-visible {
 
 .choice:hover {
     border-color: var(--accent);
-    background: #f3fbfa;
+    background: var(--green-soft);
 }
 
 .choice input {
@@ -302,7 +302,7 @@ a:focus-visible {
     gap: 12px;
     padding: 15px 18px;
     background: var(--primary);
-    color: white;
+    color: var(--text);
     border: 0;
     border-radius: 11px;
     font-weight: 750;
@@ -328,25 +328,25 @@ a:focus-visible {
 
 .status-message {
     padding: 24px;
-    background: #f5f9fc;
-    border: 1px dashed #c7d8e5;
+    background: var(--surface);
+    border: 1px dashed var(--border);
     border-radius: 12px;
     color: var(--muted);
     font-size: 14px;
 }
 
 .status-message.error {
-    background: #fff4f3;
-    border-color: #e8b7b3;
-    color: #9c3028;
+    background: var(--red-soft);
+    border-color: var(--border);
+    color: var(--red);
 }
 
 .results-summary {
     margin-bottom: 20px;
     padding: 16px 18px;
     border-radius: 12px;
-    background: #eaf5f4;
-    color: #145d58;
+    background: var(--green-soft);
+    color: var(--text);
     font-weight: 700;
 }
 
@@ -385,25 +385,25 @@ a:focus-visible {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 7px;
-    background: #eef3f8;
+    background: var(--surface);
     color: var(--primary);
     font-size: 12px;
     font-weight: 700;
 }
 
 .result-tag.eligible {
-    background: #e5f5ec;
-    color: #216a42;
+    background: var(--green-soft);
+    color: var(--green);
 }
 
 .result-tag.nearly-eligible {
-    background: #fff3df;
-    color: #885b10;
+    background: var(--amber-soft);
+    color: var(--amber);
 }
 
 .result-tag.not-eligible {
-    background: #fcebe9;
-    color: #9c3028;
+    background: var(--red-soft);
+    color: var(--red);
 }
 
 .recommendation-detail {
@@ -438,7 +438,7 @@ a:focus-visible {
 
 .footer {
     border-top: 1px solid var(--border);
-    background: white;
+    background: var(--surface);
 }
 
 .footer-inner {
@@ -508,8 +508,8 @@ a:focus-visible {
 .progression-item {
     padding: 16px 18px;
     margin-top: 10px;
-    background: #f7f9fc;
-    border: 1px solid #e3e9f1;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-left: 3px solid var(--primary);
     border-radius: 10px;
 }
@@ -531,8 +531,8 @@ a:focus-visible {
     margin-top: 10px;
     padding: 5px 9px;
     border-radius: 6px;
-    background: #fff3df;
-    color: #885b10;
+    background: var(--amber-soft);
+    color: var(--amber);
     font-size: 12px;
     font-weight: 700;
 }
@@ -552,7 +552,7 @@ input:not([type="checkbox"]) {
     padding: 9px 12px;
     border: 1px solid var(--border);
     border-radius: 9px;
-    background: white;
+    background: var(--surface);
     color: var(--primary);
     cursor: pointer;
 }

@@ -1,0 +1,39 @@
+/* Figma 1884:140, composed with the same type, navigation and tokens as Home. */
+.pathways-page { min-height: 100svh; background: var(--background); font-family: var(--font-body); }
+.pathways-language-bar { max-width: 1280px; height: 20px; margin-inline: auto; padding-inline: 48px; display: flex; justify-content: flex-end; }
+.pathways-language { position: relative; z-index: 5; color: #cbd5e1; font-size: 14px; }
+.pathways-language summary { display: flex; align-items: center; gap: 8px; line-height: 20px; cursor: pointer; list-style: none; }
+.pathways-language summary::-webkit-details-marker { display: none; }
+.pathways-language-options { position: absolute; top: 30px; right: 0; width: 260px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-raised); }
+.pathways-language-options p { margin-top: 0; line-height: 1.5; }
+.pathways-language-options a { display: block; padding: 10px 0; text-decoration: none; }
+.pathways-language-options a:hover { color: var(--blue); }
+.pathways-language-options small { display: block; line-height: 1.5; }
+.pathways-main { max-width: 1280px; margin: auto; padding: 0 24px 57px; }
+.pathways-title { margin: 0; padding: 32px 0; color: white; text-align: center; font-family: var(--font-heading); font-size: 44px; font-weight: 800; line-height: 40px; letter-spacing: 1.1px; text-transform: uppercase; }
+.pathways-gallery { width: min(100%, 1152px); margin: 0 auto; padding: 24px 8px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.journey-portrait { position: relative; height: 350px; overflow: hidden; background: #1e293b; mask: url('../../assets/pathway-start/card-mask.svg') 0 0 / 100% 350px no-repeat; }
+.journey-student { position: absolute; top: 0; left: -68.07%; width: 236.14%; height: 100%; max-width: none; }
+.journey-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 50%), transparent 50%); pointer-events: none; }
+.journey-badge { position: absolute; bottom: 24px; left: 35.11%; right: 35.11%; padding: 3px 9px; background: rgb(15 23 42 / 80%); border: 1px solid #475569; border-radius: 4px; color: #cbd5e1; font: 9px/13.5px monospace; letter-spacing: .9px; white-space: nowrap; }
+.journey-graduation { position: absolute; top: 24px; right: 24px; filter: drop-shadow(0 0 12px rgb(240 78 23 / 80%)); }
+.pathways-actions { max-width: 1050px; min-height: 136px; margin-inline: auto; padding-top: 32px; display: flex; align-items: flex-start; justify-content: center; gap: 18px; }
+.pathways-actions .wl-button { border: 0; border-radius: 999px; padding: 12px 24px; color: white; background: var(--brand-orange); font: 700 14px/20px var(--font-body); letter-spacing: .7px; text-transform: uppercase; text-align: center; text-decoration: none; box-shadow: 0 10px 15px -3px rgb(67 20 7 / 40%); white-space: nowrap; }
+.pathways-actions .wl-button:hover { background: var(--primary-dark); }
+.pathways-description { max-width: 768px; margin: 0 auto; padding: 24px 16px 0; color: #cbd5e1; font-size: 14px; line-height: 20px; text-align: center; }
+@media (max-width: 1100px) {
+    .pathways-actions { flex-wrap: wrap; gap: 14px; padding-bottom: 24px; }
+    .pathways-actions .wl-button { font-size: 12px; padding-inline: 20px; }
+}
+@media (max-width: 760px) {
+    .pathways-language-bar { padding-inline: 20px; height: 28px; }
+    .pathways-main { padding: 0 20px 40px; }
+    .pathways-title { padding-block: 28px; font-size: clamp(25px, 5.5vw, 40px); line-height: 1.15; letter-spacing: -.5px; }
+    .pathways-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; padding: 16px 0; }
+    .journey-portrait { height: 56vw; max-height: 350px; mask-size: 100% 100%; }
+    .journey-badge { left: 25%; right: auto; padding: 3px 5px; font-size: 7px; }
+    .journey-graduation { right: 10px; top: 12px; }
+    .pathways-actions { display: grid; grid-template-columns: minmax(0, 1fr); padding-top: 24px; min-height: auto; }
+    .pathways-actions .wl-button { width: 100%; white-space: normal; font-size: 12px; min-height: 48px; }
+    .pathways-description { padding: 16px 0 0; line-height: 1.7; font-size: 13px; }
+}

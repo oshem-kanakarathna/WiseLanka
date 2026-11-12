@@ -1,5 +1,4 @@
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
     --background: #f6f8fc;
@@ -52,7 +51,7 @@ button, input, select {
 /* Header */
 
 .site-header {
-    background: rgba(255, 255, 255, 0.96);
+    background: var(--surface-soft);
     border-bottom: 1px solid var(--border);
 }
 
@@ -81,7 +80,7 @@ button, input, select {
     width: 38px;
     height: 38px;
     background: var(--primary);
-    color: white;
+    color: var(--text);
     border-radius: 12px;
     font-weight: 800;
 }
@@ -170,7 +169,7 @@ nav a.active {
     flex-shrink: 0;
     width: 42px;
     height: 42px;
-    background: #eaf0ff;
+    background: var(--surface);
     color: var(--primary);
     border-radius: 12px;
     font-weight: 800;
@@ -214,9 +213,9 @@ nav a.active {
     min-width: 0;
     height: 47px;
     padding: 0 13px;
-    border: 1px solid #d7dfeb;
+    border: 1px solid var(--border);
     border-radius: 10px;
-    background: white;
+    background: var(--surface);
     color: var(--text);
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -241,7 +240,7 @@ nav a.active {
     border: none;
     border-radius: 11px;
     background: var(--primary);
-    color: white;
+    color: var(--text);
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -298,7 +297,7 @@ nav a.active {
     width: 72px;
     height: 72px;
     border-radius: 20px;
-    background: #edf2ff;
+    background: var(--surface);
     color: var(--primary);
     font-size: 36px;
     margin-bottom: 26px;
@@ -367,7 +366,7 @@ nav a.active {
     margin-top: 20px;
     padding: 13px 16px;
     border-radius: 10px;
-    background: #f3f6fb;
+    background: var(--surface);
     color: var(--text);
     font-size: 13px;
 }
@@ -435,7 +434,7 @@ nav a.active {
 }
 
 .disclaimer-card {
-    background: #f9fbff;
+    background: var(--surface);
 }
 
 .disclaimer-card p {
@@ -456,7 +455,7 @@ nav a.active {
 }
 
 .error-card {
-    border-color: #f0c4c8;
+    border-color: var(--border);
     background: var(--danger-bg);
     color: var(--danger);
 }
@@ -540,4 +539,4 @@ nav a.active {
 }
 
 /* WP5: contrast on the pale page background. */
-.hero > p, footer > span { color: #526278; }
+.hero > p, footer > span { color: var(--muted); }

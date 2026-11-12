@@ -1,7 +1,6 @@
 /* WiseLanka shared visual foundation.
    Page-specific stylesheets load first; these shared tokens intentionally
    provide the common brand palette and type while leaving page layouts local. */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
 :root {
     /* Approved brand colours */
@@ -23,8 +22,8 @@
     --brand-warning: #875600;
 
     /* Typography, spacing, shape and elevation */
-    --font-body: "Plus Jakarta Sans", "Aptos", "Segoe UI", sans-serif;
-    --font-heading: "Playfair Display", Georgia, serif;
+    --font-body: "Montserrat", "Segoe UI", sans-serif;
+    --font-heading: var(--font-body);
     --space-1: 0.25rem;
     --space-2: 0.5rem;
     --space-3: 0.75rem;
