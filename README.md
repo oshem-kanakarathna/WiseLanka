@@ -102,6 +102,9 @@ python -m playwright install chromium
 
 ## Running WiseLanka
 
+For Vercel frontend and Render backend hosting, see [Deployment guide](docs/deployment.md).
+The root `vercel.json` and `render.yaml` configure the two services.
+
 The frontend and backend run as separate local services.
 
 ### Start the FastAPI backend
@@ -126,9 +129,9 @@ Visit:
 
 http://127.0.0.1:5500/
 
-The landing page is the default entry point. **Find my pathway** and the
-**Pathways** navigation link open the pathway overview, where users can choose
-the learner profile, personalised recommendations, or guided assistant.
+The landing page is the default entry point. **Explore pathways** opens the
+education cards and **Build my profile** opens the learner profile. The
+**Pathways** navigation link opens the visual education-stage chooser.
 The educational journey cards open the corresponding learner profile directly.
 All learner-facing pages share the landing page's navigation, Montserrat
 typography, and monochrome theme.

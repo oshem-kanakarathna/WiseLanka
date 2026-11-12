@@ -1,5 +1,5 @@
 /* Shared layout contract. Page styles retain their colours, imagery and content. */
-:root { --wl-content-width: 1200px; --wl-gutter: 32px; --wl-section-gap: 32px; }
+
 .wl-header { padding-inline: var(--wl-gutter); }
 .wl-navigation { max-width: calc(var(--wl-content-width) - 2 * var(--wl-gutter)); }
 .wl-navigation .wl-nav-link { display: inline-flex; align-items: center; min-height: 44px; }
@@ -49,7 +49,7 @@ body[data-view] :is(.footer-inner, .site-footer) { max-width: var(--wl-content-w
     body[data-view] main > .workspace { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 760px) {
-    :root { --wl-gutter: 20px; --wl-section-gap: 24px; }
+    html:root { --wl-gutter: 20px; --wl-section-gap: 24px; }
     body[data-view="pathways"] .pathways-actions { grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 480px; }
     .wl-pathway-choice { gap: 8px; }
     body[data-view="profile"] .language-panel { grid-template-columns: minmax(0, 1fr); padding: 16px; }

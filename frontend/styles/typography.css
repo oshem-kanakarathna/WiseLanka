@@ -1,9 +1,5 @@
 ﻿/* Readable typography for learner guidance and long forms. */
-:root {
- --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
- --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
- --un-font: 'Montserrat', 'Segoe UI', sans-serif;
-}
+
 body[data-view] { font-family:var(--font-body); font-size:16px; line-height:1.65; }
 body[data-view] :is(h1,h2,h3,h4) { font-family:var(--font-heading); font-weight:600; letter-spacing:-.025em; text-transform:none; }
 body[data-view] main > .hero :is(h1,h2),

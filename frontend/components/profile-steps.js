@@ -1,11 +1,14 @@
 ﻿/* Progressive enhancement: preserve the original form and assessment payload. */
 (() => {
  const form = document.getElementById('learnerProfileForm');
- const fields = [...form.querySelectorAll(':scope > fieldset')];
- if (fields.length !== 7) return;
- const titles = ['Your education', 'Your interests', 'Your goals', 'Review your profile'];
- const hints = ['Add your results or an existing qualification.', 'Choose what interests you. You can skip this step.', 'Tell us what you prefer. Not sure? Leave the defaults.', 'Check your details, then find your pathways.'];
- const groups = [[fields[0],fields[1],fields[2]], [fields[4],fields[3]], [fields[5],fields[6]]];
+ const sectionNames=['context','education','qualifications','skills','interests','goals','preferences'];
+ const sectionsByName=Object.fromEntries(sectionNames.map(name=>[name,form.querySelector(`[data-profile-section="${name}"]`)]));
+ if(Object.values(sectionsByName).some(section=>!section))return;
+ const fields=sectionNames.map(name=>sectionsByName[name]);
+ const titles = ['What have you studied?', 'What do you enjoy?', 'What would you like next?', 'Ready to see your options?'];
+ const stepNames=['Education','Interests','Goals','Review'];
+ const hints = ['Choose your stage, then add your results or qualification.', 'Choose what sounds like you. This step is optional.', 'Choose your preferences, or skip this step.', 'Check your choices. You can edit anything before continuing.'];
+ const groups = [[sectionsByName.context,sectionsByName.education,sectionsByName.qualifications],[sectionsByName.interests,sectionsByName.skills],[sectionsByName.goals,sectionsByName.preferences]];
  const submit = document.getElementById('submitProfile');
  const results = document.querySelector('.results-panel');
  const panel = document.querySelector('.profile-panel');
@@ -13,8 +16,13 @@
  form.noValidate = true;
  document.body.classList.add('profile-guided');
  const progress = document.createElement('nav'); progress.className='profile-progress'; progress.setAttribute('aria-label','Profile steps');
- const buttons = titles.map((title,i)=>{ const b=document.createElement('button'); b.type='button'; b.textContent=(i+1)+'. '+title; b.addEventListener('click',()=>go(i)); progress.append(b); return b; });
- form.before(progress);
+ const buttons = stepNames.map((title,i)=>{const b=document.createElement('button');b.type='button';const marker=document.createElement('span');marker.className='ux-step-marker';marker.textContent=i+1;marker.setAttribute('aria-hidden','true');const label=document.createElement('span');label.textContent=title;b.append(marker,label);b.setAttribute('aria-label',`Step ${i+1}: ${title}`);b.addEventListener('click',()=>go(i));progress.append(b);return b;});
+ const meta=document.createElement('div');meta.className='ux-step-meta';
+ const count=document.createElement('p');count.className='ux-step-count';count.setAttribute('role','status');
+ const optional=document.createElement('span');meta.append(count,optional);
+ const track=document.createElement('div');track.className='ux-progress-track';track.setAttribute('role','progressbar');track.setAttribute('aria-label','Profile progress');track.setAttribute('aria-valuemin','1');track.setAttribute('aria-valuemax','4');
+ const fill=document.createElement('div');fill.className='ux-progress-fill';track.append(fill);
+ form.before(meta,track,progress);
  const heading=document.createElement('h3'); heading.className='profile-stage-title'; heading.tabIndex=-1;
  const hint=document.createElement('p'); hint.className='profile-stage-hint';
  const error=document.createElement('p'); error.className='profile-step-error'; error.setAttribute('role','alert'); error.tabIndex=-1; error.hidden=true;
@@ -24,7 +32,8 @@
  const actions=document.createElement('div');actions.className='profile-step-actions';
  const back=document.createElement('button');back.type='button';back.className='secondary-button';back.textContent='Back';back.addEventListener('click',()=>go(current-1));
  const next=document.createElement('button');next.type='button';next.className='primary-button';next.addEventListener('click',()=>go(current+1));
- actions.append(back,next);form.insertBefore(actions,submit);
+ const skip=document.createElement('button');skip.type='button';skip.className='ux-skip';skip.textContent='Skip for now';skip.addEventListener('click',()=>go(current+1));
+ actions.append(back,skip,next);form.insertBefore(actions,submit);actions.append(submit);submit.textContent='Show my pathways →';
  function validate(){
   error.hidden=true;
   try { if(current===0 || current===3) collectProfile();
@@ -40,8 +49,8 @@
   for(const [level,subjects] of Object.entries(education)) rows.splice(1,0,[level==='A_LEVEL'?'A/L results':'O/L results',Object.entries(subjects).map(([name,grade])=>name+': '+grade).join(' · ')||'No reported results',0]);
   rows.forEach(([label,value,step])=>{const row=document.createElement('div');const copy=document.createElement('div');const title=document.createElement('strong');title.textContent=label;const text=document.createElement('p');text.textContent=value;copy.append(title,text);const edit=document.createElement('button');edit.type='button';edit.className='profile-edit';edit.textContent='Edit';edit.setAttribute('aria-label','Edit '+label);edit.addEventListener('click',()=>go(step));row.append(copy,edit);review.append(row);});
  }
- function show(focus=true){sections.forEach((s,i)=>s.hidden=i!==current);buttons.forEach((b,i)=>{if(i===current)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});heading.textContent=titles[current];hint.textContent=hints[current];back.hidden=current===0;next.hidden=current===3;submit.hidden=current!==3;next.textContent=current===2?'Review my profile':'Continue';error.hidden=true;if(current===3)renderReview();if(focus)heading.focus();}
- function go(index){if(index<0||index>3)return;if(index>current&&!validate())return;if(index===3){try{collectProfile();}catch(e){current=0;show();error.textContent=e.message;error.hidden=false;error.focus();return;}}current=index;show();}
+ function show(focus=true){sections.forEach((s,i)=>s.hidden=i!==current);buttons.forEach((b,i)=>{if(i===current)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');b.dataset.complete=String(i<current);b.querySelector('.ux-step-marker').textContent=i<current?'✓':i+1;});count.textContent=`Step ${current+1} of 4`;optional.textContent=current===1||current===2?'Optional':' ';track.setAttribute('aria-valuenow',String(current+1));fill.style.width=((current+1)/4*100)+'%';heading.textContent=titles[current];hint.textContent=hints[current];back.hidden=current===0;skip.hidden=current===0||current===3;next.hidden=current===3;submit.hidden=current!==3;next.textContent=['Next: Interests →','Next: Goals →','Review my choices →'][current]||'';error.hidden=true;if(current===3)renderReview();if(focus)heading.focus();}
+ function go(index){if(index<0||index>3||submit.disabled)return;if(index>current&&!validate())return;if(index===3){try{collectProfile();}catch(e){current=0;show();error.textContent=e.message;error.hidden=false;error.focus();return;}}current=index;show();}
  form.addEventListener('submit',e=>{if(current!==3){e.preventDefault();e.stopImmediatePropagation();go(current+1);return;}if(!validate()){e.preventDefault();e.stopImmediatePropagation();return;}results.hidden=false;},true);
  form.addEventListener('invalid',e=>{const index=sections.findIndex(s=>s.contains(e.target));if(index>=0){current=index;show(false);}},true);
  function handleHash(){if(location.hash==='#resultsHeading')results.hidden=false;if(['#learnerProfileForm','#profileHeading'].includes(location.hash)){current=0;show(false);}}

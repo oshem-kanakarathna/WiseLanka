@@ -1,5 +1,5 @@
 ﻿@font-face{font-family:'Chivo Mono';src:url('../../assets/landing/chivo-mono-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-:root{--un-font:'Chivo Mono',Consolas,monospace;--un-line:#ffffff20;--un-soft:#ffffff08;--background:#000000;--surface:#0b0b0b;--border:#333333;--text:#ffffff;--muted:#c9c9c9;--primary:#ffffff;--brand-orange:#ffffff}
+
 body[data-view]{background:radial-gradient(ellipse 700px 450px at 70% 100px,#ffffff0a,transparent),var(--background);color:var(--text)}
 body[data-view] .wl-header{position:sticky;top:0;z-index:60;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;width:100%;max-width:1300px;margin:0 auto;padding:20px 32px;background:transparent;min-height:86px;transition:background .3s}
 body[data-view] .wl-header.is-scrolled{background:#000000ed;backdrop-filter:blur(20px)}
@@ -59,7 +59,7 @@ body[data-view=home] main.un-main{max-width:1184px;padding:0 32px;margin:auto}
 @media(prefers-reduced-motion:reduce){.un-hero-art .un-slide{animation-name:un-hero-slide-reduced}@keyframes un-hero-slide-reduced{0%,24.99%{opacity:.68}25%,100%{opacity:0}}}
 
 /* Palette sampled from the current template: black, silver and white. */
-:root { --background:#000; --page:#000; --surface:#0b0b0b; --surface-soft:#161616; --text:#fff; --muted:#c9c9c9; --muted-light:#9e9e9e; --border:#333; --border-soft:#252525; --brand-orange:#fff; --brand-green:#fff; --brand-gold:#c9c9c9; --brand-ivory:#000; --brand-ink:#fff; --brand-surface:#0b0b0b; --brand-muted:#c9c9c9; --brand-border:#333; --brand-soft-green:#161616; --primary:#fff; --primary-dark:#c9c9c9; --accent:#fff; --blue:#82cfff; --blue-soft:#141b20; }
+
 body[data-view] { background:radial-gradient(ellipse 700px 450px at 70% 100px,#ffffff06,transparent),#000; }
 body[data-view] .wl-header.is-scrolled { background:#000000f5; backdrop-filter:none; -webkit-backdrop-filter:none; }
 body[data-view] .wl-header.is-scrolled .wl-navigation { backdrop-filter:none; -webkit-backdrop-filter:none; }

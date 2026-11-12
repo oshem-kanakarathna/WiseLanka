@@ -1,7 +1,7 @@
 
 "use strict";
 
-const API_URL = `${window.WISELANKA_API_BASE || "http://127.0.0.1:8000"}/personalised-recommendations`;
+const API_URL = window.WiseAPI.endpoint('personalised-recommendations');
 
 const form = document.getElementById("learnerProfileForm");
 const educationLevel = document.getElementById("educationLevel");
@@ -176,7 +176,7 @@ async function loadProfileOptions() {
     const retry = document.getElementById("retryProfileOptions");
     retry.classList.add("hidden");
     try {
-        const response = await fetch(API_URL.replace("personalised-recommendations", "profile-options"));
+        const response = await window.WiseAPI.fetch(API_URL.replace("personalised-recommendations", "profile-options"));
         if (!response.ok) throw new Error("Choices unavailable");
         const data = await response.json();
         if (!Array.isArray(data.skills) || !Array.isArray(data.qualifications)) throw new Error("Invalid choices");
@@ -200,6 +200,7 @@ async function loadProfileOptions() {
             choices.append(label, select);
         });
         status.textContent = "Choices loaded from the current knowledge base. You may leave all skills unreported.";
+        document.dispatchEvent(new Event("wiselanka:profile-options"));
     } catch {
         status.textContent = "Skill and recorded qualification choices could not be loaded. You can still enter examination results or an award manually; retry to report skills.";
         retry.classList.remove("hidden");
@@ -814,7 +815,7 @@ async function submitLearnerProfile(event) {
     showStatus("Evaluating your learner profile...");
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await window.WiseAPI.fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

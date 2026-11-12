@@ -1,5 +1,5 @@
 const API_URL =
-    "http://127.0.0.1:8000/eligibility";
+    window.WiseAPI.endpoint('eligibility');
 
 
 const checkButton =
@@ -240,7 +240,7 @@ async function checkEligibility() {
     try {
 
         const response =
-            await fetch(
+            await window.WiseAPI.fetch(
                 API_URL,
                 {
                     method: "POST",

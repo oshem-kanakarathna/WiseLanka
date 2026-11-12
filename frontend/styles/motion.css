@@ -1,5 +1,5 @@
 ﻿/* Motion layer uses the existing WiseLanka palette; content works without JS. */
-:root { --wl-ease: cubic-bezier(.22,1,.36,1); }
+
 html { scroll-padding-top: 140px; }
 body[data-view] .wl-header { position: sticky; top: 0; z-index: 40; isolation: isolate; }
 .wl-header .wl-navigation { border-radius: 0; transition: background-color .6s ease, box-shadow .6s ease, border-radius .7s var(--wl-ease), border-color .6s ease; }

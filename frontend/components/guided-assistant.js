@@ -1,6 +1,6 @@
 "use strict";
 window.WiseAssistant = (() => {
-    const base = window.WISELANKA_API_BASE || 'http://127.0.0.1:8000';
+    const base = window.WiseAPI.base;
     const form = document.getElementById('assistantForm');
     const status = document.getElementById('assistantStatus');
     const responseBox = document.getElementById('assistantResponse');
@@ -40,7 +40,7 @@ window.WiseAssistant = (() => {
     }
     async function loadOptions() {
         try {
-            const r = await fetch(base+'/assistant/options');
+            const r = await window.WiseAPI.fetch(base+'/assistant/options');
             if (!r.ok) throw new Error('Options unavailable');
             const data = await r.json();
             if (!Array.isArray(data.programmes)) throw new Error('Invalid options');
@@ -70,7 +70,7 @@ window.WiseAssistant = (() => {
         status.dataset.i18n = 'chat_wait';
         status.textContent = t('chat_wait','Getting grounded guidance…');
         try {
-            const r = await fetch(base+'/assistant/guidance', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+            const r = await window.WiseAPI.fetch(base+'/assistant/guidance', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
                 intent:document.getElementById('assistantTopic').value,
                 programme_id:document.getElementById('assistantProgramme').value,
                 question:document.getElementById('assistantQuestion').value.trim(),

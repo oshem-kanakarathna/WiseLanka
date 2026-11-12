@@ -9,8 +9,8 @@
  widget.innerHTML=`<section class="wl-chat-panel" id="wl-chat-panel" aria-labelledby="wl-chat-title" hidden>
   <header class="wl-chat-heading"><video src="${url('chatbot-neutral-blink.mp4')}" poster="${url('chatbot-neutral.png')}" width="40" height="40" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><div><h2 id="wl-chat-title">WiseLanka guide</h2><p>Let's find your next step</p></div><button type="button" class="wl-chat-close" aria-label="Close chat">×</button></header>
   <div class="wl-chat-messages" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Chat messages"></div>
-  <div class="wl-chat-topics" aria-label="Suggested questions"><button type="button">Explore pathways</button><button type="button">Build my profile</button><button type="button">Scholarships</button><button type="button">Check eligibility</button></div>
-  <form class="wl-chat-form"><label class="wl-chat-label" for="wl-chat-question">Your question</label><input id="wl-chat-question" placeholder="What would you like to explore?" maxlength="300" autocomplete="off" required><button type="submit" aria-label="Send question">↑</button></form>
+  <div class="wl-chat-context"><label for="wl-chat-topic">Guidance topic</label><select id="wl-chat-topic"><option value="programme">Programme information</option><option value="eligibility">Eligibility</option><option value="progression">Progression routes</option><option value="careers">Career relationships</option><option value="scholarships">Scholarships</option><option value="help">Supported topics</option></select><label for="wl-chat-programme">Programme</label><select id="wl-chat-programme"><option value="">Choose a programme</option></select><label><input id="wl-chat-profile" type="checkbox"> Use my saved learner profile</label><p class="wl-chat-options-status" role="status"></p></div><div class="wl-chat-topics" aria-label="Suggested questions"><button type="button" data-intent="programme">Programme info</button><button type="button" data-intent="eligibility">Eligibility</button><button type="button" data-intent="scholarships">Scholarships</button><button type="button" data-intent="help">Supported topics</button></div>
+  <form class="wl-chat-form"><label class="wl-chat-label" for="wl-chat-question">Your question</label><input id="wl-chat-question" placeholder="Optional question about a supported topic" maxlength="300" autocomplete="off"><button type="submit" aria-label="Send question">↑</button></form>
   <p class="wl-chat-footnote">Quick guidance · Confirm requirements with providers.</p>
  </section><button type="button" class="wl-chat-launcher" aria-controls="wl-chat-panel" aria-expanded="false" aria-label="Open WiseLanka chat"><video src="${url('chatbot-neutral-blink.mp4')}" poster="${url('chatbot-neutral.png')}" width="68" height="68" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><span class="wl-chat-hint">Need a little guidance?</span></button>`;
  document.body.appendChild(widget);
@@ -45,7 +45,7 @@
  launcher.addEventListener('blur',syncPlayback);
  document.addEventListener('visibilitychange',syncPlayback);
  syncPlayback();
- const input=widget.querySelector('input');
+ const input=widget.querySelector('#wl-chat-question');
  const messages=widget.querySelector('.wl-chat-messages');
  function message(text,user=false,link){
   const bubble=document.createElement('div');
@@ -54,49 +54,60 @@
   if(link){const a=document.createElement('a');a.textContent=link[0]+' ↗';a.href=url(link[1]);bubble.appendChild(a);}
   messages.appendChild(bubble);messages.scrollTop=messages.scrollHeight;
  }
- function setOpen(open){panel.hidden=!open;launcher.setAttribute('aria-expanded',String(open));launcher.setAttribute('aria-label',open?'Close WiseLanka chat':'Open WiseLanka chat');if(open)input.focus();else launcher.focus();syncPlayback();}
+ function setOpen(open){if(open)loadOptions();panel.hidden=!open;launcher.setAttribute('aria-expanded',String(open));launcher.setAttribute('aria-label',open?'Close WiseLanka chat':'Open WiseLanka chat');if(open)input.focus();else launcher.focus();syncPlayback();}
  launcher.addEventListener('click',()=>setOpen(panel.hidden));
  widget.querySelector('.wl-chat-close').addEventListener('click',()=>setOpen(false));
  widget.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden)setOpen(false);});
+
+ let optionsLoaded=false;
+ let optionsPending=false;
+ async function loadOptions(){
+  if(optionsLoaded||optionsPending)return;
+  optionsPending=true;
+  const status=widget.querySelector('.wl-chat-options-status');status.textContent='Loading programmes?';
+  try{
+   const data=await window.WiseAPI.json('assistant/options');
+   if(!Array.isArray(data.programmes))throw new Error('Programme choices are unavailable.');
+   const select=widget.querySelector('#wl-chat-programme');
+   data.programmes.forEach(p=>{const option=document.createElement('option');option.value=p.programme_id;option.textContent=p.programme_name;select.appendChild(option);});
+   optionsLoaded=true;status.textContent='Programme choices loaded.';
+  }catch(error){status.replaceChildren(document.createTextNode(error.message+' '));const retry=document.createElement('button');retry.type='button';retry.textContent='Retry';retry.addEventListener('click',loadOptions);status.appendChild(retry);}
+  finally{optionsPending=false;}
+ }
+ function renderAnswer(data){
+  if(!Array.isArray(data.blocks))throw new Error('The service returned an unexpected response. Please try again.');
+  message(data.summary||'Guidance received.');
+  if(data.supported_topics)message('Supported topics: '+Object.values(data.supported_topics).join(', '));
+  data.blocks.forEach(block=>message((block.lines||[]).join('\n')));
+  (data.sources||[]).forEach(source=>{try{const parsed=new URL(source.url);if(['https:','http:'].includes(parsed.protocol))message('Official source',false,[source.title,parsed.href]);}catch{}});
+  if(data.status==='NEEDS_PROFILE')message('Build or complete your learner profile, then select ?Use my saved learner profile?.',false,['Build my profile','frontend/pages/learner-profile.html']);
+ }
  async function reply(question){
   if(thinking)return;
-  message(question,true);
-  thinking=true;
-  widget.classList.add('is-thinking');
-  headerVideo.src=url('chatbot-thinking.mp4');
-  syncPlayback();
-  const controls=widget.querySelectorAll('.wl-chat-topics button,.wl-chat-form button');
-  controls.forEach(button=>button.disabled=true);
-  messages.setAttribute('aria-busy','true');
-  const indicator=document.createElement('div');
-  indicator.className='wl-chat-message';
-  indicator.textContent='Preparing your guidance…';
-  messages.appendChild(indicator);
-  messages.scrollTop=messages.scrollHeight;
+  const intent=widget.querySelector('#wl-chat-topic').value;
+  const programme=widget.querySelector('#wl-chat-programme').value;
+  if(!['scholarships','help'].includes(intent)&&!programme){message('Choose a programme above before asking for this guidance.');widget.querySelector('#wl-chat-programme').focus();return;}
+  const useProfile=widget.querySelector('#wl-chat-profile').checked;
+  const profile=useProfile?window.WiseProfile?.getProfile():null;
+  if(useProfile&&!profile){message('No complete profile is available on this browser yet.',false,['Build my profile','frontend/pages/learner-profile.html']);return;}
+  message(question||widget.querySelector('#wl-chat-topic').selectedOptions[0].textContent,true);
+  input.value='';thinking=true;widget.classList.add('is-thinking');
+  headerVideo.src=url('chatbot-thinking.mp4');syncPlayback();
+  const controls=widget.querySelectorAll('.wl-chat-topics button,.wl-chat-form button,.wl-chat-form input,.wl-chat-context select,.wl-chat-context input');
+  controls.forEach(control=>control.disabled=true);
+  const indicator=document.createElement('div');indicator.className='wl-chat-message';indicator.textContent='Getting guidance?';messages.appendChild(indicator);messages.scrollTop=messages.scrollHeight;
   try{
-  // Local replies are immediate; allow a brief, visible thinking state.
-  await new Promise(resolve=>window.setTimeout(resolve,1200));
-  indicator.remove();
-  messages.setAttribute('aria-busy','false');
-  const q=question.toLowerCase();
-  if(/scholar|fund|financial/.test(q))message('Explore scholarship guidance and funding conditions. Each opportunity may have its own academic and other requirements.',false,['Explore scholarships','frontend/pages/scholarships.html']);
-  else if(/eligib|qualif|results|requirement/.test(q))message('Use the eligibility tool to understand how your qualifications match recorded programme requirements. A match does not guarantee admission.',false,['Check eligibility','frontend/pages/eligibility.html']);
-  else if(/profile|start|begin/.test(q))message('Build your learner profile step by step: education, interests, goals, then review. This gives WiseLanka a starting point for your guidance.',false,['Build my profile','frontend/pages/learner-profile.html']);
-  else if(/path|ordinary|advanced|diploma|hnd|nvq|tvet|course|study/.test(q))message('Explore the route that matches your starting point: O/L, A/L, TVET/NVQ, or Diploma/HND. You can then review the next steps for that route.',false,['Explore pathways','frontend/pages/pathways.html']);
-  else if(/about|wise.?lanka/.test(q))message('WiseLanka helps Sri Lankan learners explore education and career pathways using their qualifications, interests and goals.',false,['About WiseLanka','frontend/pages/about.html']);
-  else if(/hello|hi\b|hey/.test(q))message('Hello! Choose a topic below, or ask about pathways, your profile, scholarships or eligibility.');
-  else message('I can help you find the right WiseLanka tools. For a question about a specific programme or your results, open the guided assistant and select your topic and programme.',false,['Open guided assistant','frontend/pages/learner-profile.html#guidedAssistant']);
+   const data=await window.WiseAPI.json('assistant/guidance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({intent,programme_id:programme,question,language:window.WiseI18n?.language||'en',...(profile?{learner_profile:profile}:{})})});
+   indicator.remove();renderAnswer(data);
+  }catch(error){
+   indicator.textContent=error.message+' ';
+   const retry=document.createElement('button');retry.type='button';retry.textContent='Retry question';retry.addEventListener('click',()=>{indicator.remove();reply(question);});indicator.appendChild(retry);
   }finally{
-   indicator.remove();
-   thinking=false;
-   widget.classList.remove('is-thinking');
-   messages.setAttribute('aria-busy','false');
-   controls.forEach(button=>button.disabled=false);
-   headerVideo.src=url('chatbot-happy-blink.mp4');
-   syncPlayback();
+   thinking=false;widget.classList.remove('is-thinking');controls.forEach(control=>control.disabled=false);
+   headerVideo.src=url('chatbot-happy-blink.mp4');syncPlayback();
   }
  }
- widget.querySelector('form').addEventListener('submit',event=>{event.preventDefault();const question=input.value.trim();if(!question)return;input.value='';reply(question);});
- widget.querySelectorAll('.wl-chat-topics button').forEach(button=>button.addEventListener('click',()=>reply(button.textContent)));
- message('Hi! I’m your WiseLanka guide. What would you like help with today?');
+ widget.querySelector('form').addEventListener('submit',event=>{event.preventDefault();reply(input.value.trim());});
+ widget.querySelectorAll('.wl-chat-topics button').forEach(button=>button.addEventListener('click',()=>{widget.querySelector('#wl-chat-topic').value=button.dataset.intent;reply('');}));
+ message('Hi! Choose a topic and programme to get guidance from WiseLanka. You can also use your learner profile saved on this browser.');
 })();

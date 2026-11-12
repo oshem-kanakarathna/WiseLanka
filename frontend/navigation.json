@@ -1,0 +1,8 @@
+[
+  {"key":"home","title":"Home","path":"index.html"},
+  {"key":"pathways","title":"Pathways","path":"frontend/pages/pathways.html"},
+  {"key":"eligibility","title":"Eligibility","path":"frontend/pages/eligibility.html"},
+  {"key":"scholarships","title":"Scholarships","path":"frontend/pages/scholarships.html"},
+  {"key":"about","title":"About","path":"frontend/pages/about.html"},
+  {"key":"profile","title":"My Profile","path":"frontend/pages/learner-profile.html"}
+]

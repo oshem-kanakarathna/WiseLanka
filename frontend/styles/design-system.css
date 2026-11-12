@@ -2,65 +2,7 @@
    Page-specific stylesheets load first; these shared tokens intentionally
    provide the common brand palette and type while leaving page layouts local. */
 
-:root {
-    /* Approved brand colours */
-    --brand-green: #064B2E;
-    --brand-gold: #F6C843;
-    --brand-maroon: #74162C;
-    --brand-orange: #E58224;
-    --brand-ivory: #FFF9EE;
 
-    /* Shared semantic colours */
-    --brand-ink: #202A24;
-    --brand-muted: #59645C;
-    --brand-border: #E8DECD;
-    --brand-surface: #FFFFFF;
-    --brand-soft-green: #EEF5EF;
-    --brand-soft-gold: #FFF5D7;
-    --brand-danger: #74162C;
-    --brand-success: #064B2E;
-    --brand-warning: #875600;
-
-    /* Typography, spacing, shape and elevation */
-    --font-body: "Montserrat", "Segoe UI", sans-serif;
-    --font-heading: var(--font-body);
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --radius-control: 0.65rem;
-    --radius-card: 1rem;
-    --radius-panel: 1.35rem;
-    --shadow-card: 0 12px 32px rgb(33 48 37 / 8%);
-    --shadow-raised: 0 18px 44px rgb(33 48 37 / 12%);
-    --content-width: 76rem;
-    --layout-gutter: clamp(1rem, 4vw, 2rem);
-
-    /* Bridge existing page styles onto the shared semantic palette. */
-    --primary: var(--brand-green);
-    --primary-dark: #043A24;
-    --accent: var(--brand-gold);
-    --background: var(--brand-ivory);
-    --page: var(--brand-ivory);
-    --surface: var(--brand-surface);
-    --surface-soft: var(--brand-soft-green);
-    --text: var(--brand-ink);
-    --muted: var(--brand-muted);
-    --border: var(--brand-border);
-    --navy: var(--brand-green);
-    --navy-2: #0B5A39;
-    --blue: var(--brand-green);
-    --blue-soft: var(--brand-soft-green);
-    --green: var(--brand-success);
-    --green-soft: var(--brand-soft-green);
-    --amber: var(--brand-warning);
-    --amber-soft: var(--brand-soft-gold);
-    --red: var(--brand-danger);
-    --danger: var(--brand-danger);
-    --radius: var(--radius-card);
-}
 
 html {
     color-scheme: light;
@@ -142,7 +84,7 @@ video {
 }
 
 @media (max-width: 48rem) {
-    :root {
+    html:root {
         --layout-gutter: 1rem;
     }
 }

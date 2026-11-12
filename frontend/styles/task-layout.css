@@ -1,0 +1,61 @@
+/* Dedicated assessment workspace: progress rail, active task, then results. */
+body.ux-task-layout main>.hero,body.ux-task-layout .ux-settings{max-width:1120px;margin-inline:auto}
+body.ux-task-layout main>.hero{padding:0!important;margin:10px auto 24px!important;min-height:0}
+body.ux-task-layout main>.hero :is(.eyebrow,.hero-badge){display:none}
+body.ux-task-layout main>.hero h1{font-size:clamp(27px,3.2vw,38px);line-height:1.2;margin:0 0 10px!important}
+body.ux-task-layout main>.hero p{font-size:14px;line-height:1.6;margin:0;max-width:680px}
+body.ux-task-layout main>.wl-draft{display:flex;flex-wrap:nowrap;align-items:center;max-width:1120px;margin:0 auto 18px;padding:10px 16px;gap:10px}
+body.ux-task-layout main>.wl-draft p{flex:1;font-size:12px;min-width:0;margin:0;line-height:1.5}
+body.ux-task-layout main>.wl-draft button{flex-shrink:0;width:auto!important;min-height:38px!important;padding:8px 14px;font-size:12px!important}
+body.ux-task-layout main>.workspace{max-width:1120px!important;display:block!important;margin-inline:auto}
+body.ux-task-layout :is(.profile-panel,.workspace>.card,.workspace>.form-card){display:grid!important;grid-template-columns:200px minmax(0,1fr);gap:0;padding:0!important;border:1px solid #3a3a3a;border-radius:18px;overflow:visible;background:#101010}
+body.ux-task-layout .ux-task-rail{padding:26px 18px;border-right:1px solid #333;background:#151515;border-radius:18px 0 0 18px;min-width:0}
+.ux-rail-title{font-size:16px!important;line-height:1.4;margin:0 0 6px;letter-spacing:0!important}
+.ux-rail-caption{margin:0 0 26px;font-size:12px;color:#999}
+body.ux-task-layout .ux-task-rail :is(.profile-progress,.tool-progress){display:flex!important;flex-direction:column;gap:8px!important;margin:0;padding:0;border:0;background:none}
+body.ux-task-layout .ux-task-rail :is(.profile-progress,.tool-progress) button{display:flex;flex-direction:row;justify-content:flex-start;gap:10px!important;text-align:left;padding:10px!important;border-radius:9px;font-size:12px!important;background:none!important}
+body.ux-task-layout .ux-task-rail :is(.profile-progress,.tool-progress) button[aria-current=step]{background:#ffffff0e!important}
+body.ux-task-layout .ux-task-rail .wl-draft{display:flex;flex-direction:column;align-items:flex-start;margin:30px 0 0;padding:14px 0 0;border:0;border-top:1px solid #333;border-radius:0;background:none;gap:8px}
+body.ux-task-layout .ux-task-rail .wl-draft p{min-width:0;margin:0;font-size:12px;color:#aaa}
+body.ux-task-layout .ux-task-rail .wl-draft button{font-size:11px!important;min-height:36px!important;padding:4px 0!important;border:0;background:none;color:#ccc;text-decoration:underline;text-underline-offset:4px}
+.ux-task-body{padding:30px 32px 0;min-width:0}
+.ux-task-body>.panel-heading,.ux-task-body>.card-heading,.ux-task-body>.section-heading{display:none}
+.ux-task-body>.profile-stage-title,.ux-task-body>.tool-step-heading{margin-top:0}
+.ux-task-body .ux-step-meta{margin:0 0 10px}
+.ux-task-body .ux-progress-track{margin-bottom:26px}
+.ux-task-body .profile-stage .form-section{padding:20px;background:#111;border:1px solid #333;border-radius:12px}
+.ux-task-body .ux-education-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ux-task-body .ux-education-option{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:12px;padding:10px}
+.ux-task-body .ux-education-option img{width:64px;height:70px;object-fit:cover}
+.ux-task-body .ux-education-option strong{font-size:13px}
+.ux-task-body .ux-education-option[aria-pressed=true]::after{width:18px;height:18px;top:8px;right:8px;font-size:11px}
+.ux-selection-summary{display:flex;flex-direction:column;gap:8px;padding:18px 20px;margin-bottom:24px;border:1px solid #555;border-left:3px solid #ddd;border-radius:10px;background:#ffffff07}
+.ux-selection-summary>span{font-size:10px;letter-spacing:1px;color:#aaa}
+.ux-selection-summary>strong{font-size:16px;font-weight:600;line-height:1.6;color:#fff}
+.ux-task-body .tool-stage>.subject-row{padding:18px;margin:0 0 14px;border:1px solid #333;border-radius:12px;background:#111}
+.ux-task-body .tool-stage>.field{margin-bottom:22px}
+.ux-task-body .tool-stage>.field label{font-size:14px}
+.ux-task-body .tool-stage>.field-grid{padding:18px;border:1px solid #333;border-radius:12px;margin-bottom:22px;background:#111}
+.ux-task-body .tool-stage :is(input,select){min-height:48px}
+body.ux-task-layout .ux-task-body :is(.profile-step-actions,.tool-actions){margin-top:26px;padding-block:18px;margin-bottom:0}
+body.ux-task-layout .tool-results,body.ux-task-layout .results-panel{clear:both;width:100%;margin-top:28px}
+body.ux-task-layout .ux-assistant-details{max-width:1120px}
+body.ux-task-layout .ux-next-steps{max-width:1120px;margin-inline:auto}
+@media(max-width:800px){
+ body.ux-task-layout :is(.profile-panel,.workspace>.card,.workspace>.form-card){grid-template-columns:minmax(0,1fr);border-radius:14px}
+ body.ux-task-layout .ux-task-rail{padding:16px 16px 12px;border:0;border-bottom:1px solid #333;border-radius:14px 14px 0 0}
+ body.ux-task-layout .ux-rail-title,body.ux-task-layout .ux-rail-caption{display:none}
+ body.ux-task-layout .ux-task-rail :is(.profile-progress,.tool-progress){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:3px!important}
+ body.ux-task-layout .ux-task-rail .tool-progress{grid-template-columns:repeat(auto-fit,minmax(75px,1fr))!important}
+ body.ux-task-layout .ux-task-rail :is(.profile-progress,.tool-progress) button{flex-direction:column;justify-content:center;gap:6px!important;padding:7px 2px!important;font-size:10px!important;text-align:center}
+ body.ux-task-layout .ux-task-rail .wl-draft{margin:12px 0 0;padding:8px 0 0;flex-direction:row;align-items:center;justify-content:space-between;gap:8px}
+ body.ux-task-layout .ux-task-rail .wl-draft button{font-size:10px!important;min-height:30px!important}
+ .ux-task-body{padding:20px 16px 0}
+ .ux-task-body .ux-progress-track{margin-bottom:22px}
+ .ux-task-body .ux-education-option{grid-template-columns:46px minmax(0,1fr);gap:8px;padding:8px}
+ .ux-task-body .ux-education-option img{width:46px;height:58px}
+ .ux-task-body .ux-education-option strong{font-size:11px}
+ .ux-task-body .profile-stage .form-section,.ux-task-body .tool-stage>.subject-row,.ux-task-body .tool-stage>.field-grid{padding:14px}
+ .ux-selection-summary{padding:14px;margin-bottom:20px}.ux-selection-summary>strong{font-size:14px}
+ body.ux-task-layout .ux-task-body :is(.profile-step-actions,.tool-actions){padding-block:14px}
+}

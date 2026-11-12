@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+<script src="../components/config.js?v=deploy-1" defer></script><script src="../components/api.js?v=deploy-1" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,33 +15,39 @@
     <link rel="stylesheet" href="../components/learner-profile.css?v=20261020-2">
     <link rel="stylesheet" href="../styles/design-system.css?v=20261107-1">
 
-    <script src="../components/i18n.js?v=1" defer></script>
-    <script src="../components/learner-profile.js?v=8" defer></script>
-    <script src="../components/guided-assistant.js?v=1" defer></script>
+    <script src="../components/i18n.js?v=deploy-1" defer></script>
+    <script src="../components/learner-profile.js?v=deploy-1" defer></script>
+    <script src="../components/guided-assistant.js?v=deploy-1" defer></script>
     <link rel="stylesheet" href="../styles/figma-theme.css?v=20261112-mono">
-    <script src="../components/site-header.js?v=20261112-navigation-6" defer></script>
+    <script src="../components/site-header.js?v=deploy-1" defer></script>
     <link rel="stylesheet" href="../styles/layout.css?v=20261112-mono">
     <link rel="stylesheet" href="../styles/profile-steps.css?v=20261112-mono">
-    <script src="../components/profile-steps.js?v=1" defer></script>
+    <script src="../components/profile-store.js?v=ux-1" defer></script>
+<script src="../components/profile-steps.js?v=ux-1" defer></script>
     <link rel="stylesheet" href="../styles/motion.css?v=20261112-navigation-6">
     <script src="../components/motion.js?v=20261112-navigation-6" defer></script>
     <link rel="stylesheet" href="../styles/universal-theme.css?v=20261112-smooth-5">
     <link rel="stylesheet" href="../styles/typography.css?v=1">
 <link rel="preload" href="../../assets/landing/montserrat-600.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../styles/profile-draft.css?v=deploy-1">
+<link rel="stylesheet" href="../styles/tokens.css?v=deploy-1">
+<link rel="stylesheet" href="../styles/workflow.css?v=ux-1"><script src="../components/workflow.js?v=ux-1" defer></script>
+<link rel="stylesheet" href="../styles/task-layout.css?v=arrange-1">
 </head>
 
 <body data-view="profile">
 
-    <header class="wl-header" data-site-header data-page="profile"><a class="wl-skip" href="#main-content">Skip to content</a><button class="wl-menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button><nav class="wl-navigation" id="main-navigation" aria-label="Main navigation"><div class="wl-nav-group"><a class="wl-nav-link" href="../../index.html">Home</a><a class="wl-nav-link" href="../../frontend/pages/pathways.html">Pathways</a><a class="wl-nav-link" href="../../frontend/pages/eligibility.html">Eligibility</a></div><a class="wl-emblem-link" href="../../index.html" aria-label="WiseLanka home"><img class="wl-emblem" src="../../assets/wiselanka-logo.png" alt="WiseLanka logo" width="80" height="76"></a><div class="wl-nav-group"><a class="wl-nav-link" href="../../frontend/pages/scholarships.html">Scholarships</a><a class="wl-nav-link" href="../../frontend/pages/about.html">About</a><a class="wl-nav-link" href="../../frontend/pages/learner-profile.html" aria-current="page">My Profile</a></div></nav></header>
+    <header class="wl-header" data-site-header data-page="profile"><!-- Generated from frontend/navigation.json by npm run sync -->
+<a class="wl-skip" href="#main-content">Skip to content</a><button class="wl-menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button><nav class="wl-navigation" id="main-navigation" aria-label="Main navigation"><div class="wl-nav-group"><a class="wl-nav-link" href="../../index.html">Home</a><a class="wl-nav-link" href="../../frontend/pages/pathways.html">Pathways</a><a class="wl-nav-link" href="../../frontend/pages/eligibility.html">Eligibility</a></div><a class="wl-emblem-link" href="../../index.html" aria-label="WiseLanka home"><img class="wl-emblem" src="../../assets/wiselanka-logo.png" alt="WiseLanka logo" width="80" height="76"></a><div class="wl-nav-group"><a class="wl-nav-link" href="../../frontend/pages/scholarships.html">Scholarships</a><a class="wl-nav-link" href="../../frontend/pages/about.html">About</a><a class="wl-nav-link" href="../../frontend/pages/learner-profile.html" aria-current="page">My Profile</a></div></nav></header>
 
     <main id="main-content" class="container">
         <section class="hero">
-            <span class="eyebrow">Personalised Pathway Intelligence</span>
+            <span class="eyebrow">YOUR NEXT STEP</span>
 
-            <h1>Let's build your learner profile.</h1>
+            <h1>My learner profile</h1>
 
             <p>
-                Four simple steps. Start with your education, then choose what matters to you.
+                Choose your stage. Add your results. We'll show your options.
             </p>
 
             <div class="trust-row">
@@ -69,7 +76,7 @@
                 </div>
 
                 <form id="learnerProfileForm">
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="context">
                         <legend>Your learner context</legend>
                         <label for="learnerCategory">Learner category</label>
                         <select id="learnerCategory">
@@ -80,7 +87,7 @@
                         <p class="field-help">Category describes your context; it does not change admission rules.</p>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="education">
                         <legend>
                             <span class="step-number">01</span>
                             Academic qualifications
@@ -232,14 +239,14 @@
                         <p class="field-help">If unchecked, insufficient subject counts remain not assessed. A supplied grade below a required minimum can still show an unmet requirement.</p>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="qualifications">
                         <legend>Existing qualifications (optional)</legend>
                         <p class="field-help">Record awards you already hold. Titles and framework levels are self-reported; they do not establish equivalence or admission eligibility. Do not enter certificate numbers or personal identifiers.</p>
                         <div id="qualificationRows"></div>
                         <button type="button" id="addQualification" class="secondary-button">Add an existing qualification</button>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="skills">
                         <legend>Self-reported skills (optional)</legend>
                         <p class="field-help">Choose “I report this skill” or “I want to develop this skill”. Leaving a skill unreported does not mean you lack it. No competence test is performed.</p>
                         <p id="profileOptionsStatus" class="field-help" role="status">Loading skill and qualification choices…</p>
@@ -247,7 +254,7 @@
                         <div id="skillChoices"></div>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="interests">
                         <legend>
                             <span class="step-number">02</span>
                             Your interests
@@ -296,7 +303,7 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="goals">
                         <legend>
                             <span class="step-number">03</span>
                             Career goal
@@ -324,7 +331,7 @@
                         </p>
                     </fieldset>
 
-                    <fieldset class="form-section">
+                    <fieldset class="form-section" data-profile-section="preferences">
                         <legend>
                             <span class="step-number">04</span>
                             Study preferences

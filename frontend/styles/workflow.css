@@ -1,0 +1,132 @@
+/* Action hierarchy and guided workflows, using the existing monochrome theme. */
+.ux-primary,body[data-view] .un-actions .ux-primary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:52px;padding:14px 24px;border:1px solid #fff;border-radius:12px;background:#fff;color:#101010;font-size:14px;font-weight:700;text-decoration:none;text-transform:none;letter-spacing:0;box-shadow:0 8px 28px #ffffff0c}
+.ux-primary:hover{background:#ddd;color:#000}
+.ux-secondary{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 0;color:#c9c9c9;font-size:13px;text-decoration:underline;text-underline-offset:5px}
+.un-actions{justify-content:flex-start;gap:20px;flex-wrap:wrap}
+.un-hero-copy{text-align:left}.un-hero-copy .un-eyebrow{justify-content:flex-start}.un-hero-copy :is(h1,.un-lead){margin-inline:0}
+.ux-start-heading .un-eyebrow{justify-content:flex-start}
+.ux-route{display:flex;align-items:center;gap:14px;padding:20px 0 30px;margin:0;list-style:none;border-bottom:1px solid #ffffff20}
+.ux-route li{display:flex;align-items:center;gap:10px;flex:1;font-size:13px;color:#ddd}
+.ux-route li:not(:last-child)::after{content:'→';margin-left:auto;color:#777}
+.ux-route b{display:grid;place-items:center;flex-shrink:0;width:32px;height:32px;border:1px solid #555;border-radius:50%;font-size:12px;color:#fff}
+.ux-route svg{width:20px;height:20px;flex-shrink:0}
+.ux-start-heading{text-align:left;max-width:none;margin-bottom:24px}
+.ux-start-heading h2{max-width:none!important;font-size:clamp(27px,3vw,38px)!important;margin-bottom:10px!important}
+.ux-start-heading p{font-size:15px!important;max-width:none!important;margin:0!important}
+.ux-start-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ux-start-grid .un-photo-card{display:flex;flex-direction:column;border:1px solid #3d3d3d;border-radius:16px;padding:10px;background:#101010;transition:border-color .2s,transform .2s}
+.ux-start-grid .un-photo-card:hover{border-color:#aaa;transform:translateY(-3px)}
+.ux-start-grid .un-photo{height:230px;border-radius:9px}
+.ux-start-grid .un-card-meta{font-size:12px;padding:14px 4px 6px;display:block}
+.ux-start-grid .un-card-meta span:last-child{display:none}
+.ux-start-grid .un-photo-card h3{font-size:13px!important;color:#b7b7b7;margin:2px 4px 14px!important;line-height:1.6!important;font-weight:400!important}
+.ux-card-action{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding:10px 4px 3px;color:#fff;font-size:13px;font-weight:700}
+.ux-tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.ux-tool-grid>.un-photo-card{display:grid;grid-template-columns:72px 1fr;column-gap:18px;align-items:center;padding:20px;border:1px solid #333;border-radius:14px}
+.ux-tool-grid .un-photo{grid-row:1/4;height:72px;width:72px;border:0;border-radius:10px}
+.ux-tool-grid .un-diagram,.ux-tool-grid .un-support-word{font-size:10px}
+.ux-tool-grid .un-diagram{gap:0}.ux-tool-grid .un-diagram i{border:0;padding:0}.ux-tool-grid .un-diagram b{display:none}.ux-tool-grid .un-card-arrow{display:none}
+.ux-tool-grid .un-card-meta{margin:0;font-size:12px}.ux-tool-grid .un-card-meta span:last-child{display:none}
+.ux-tool-grid h3{font-size:14px!important;margin:4px 0!important}.ux-tool-heading{margin:36px 0 12px;font-size:15px;font-weight:500;color:#bbb}
+.ux-education-picker{border:0!important;padding:0!important;margin:0 0 26px!important;min-width:0}
+.ux-education-picker>legend{font-size:17px!important;font-weight:600;margin-bottom:14px;padding:0!important}
+.ux-education-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ux-education-options[hidden],.ux-current-stage[hidden]{display:none!important}
+.ux-current-stage{display:flex;align-items:center;gap:14px;width:100%;padding:10px 14px;border:1px solid #777;background:#151515;border-radius:12px;color:#fff;cursor:pointer;font:inherit;text-align:left}
+.ux-current-stage img{width:44px;height:48px;object-fit:cover;object-position:50% 20%;border-radius:6px}
+.ux-current-stage strong{font-size:15px}.ux-current-stage>span{margin-left:auto;font-size:12px;text-decoration:underline;text-underline-offset:4px;color:#bbb}
+.ux-start-caption{text-align:center;color:#bbb;font-size:15px;margin:12px 0 0}
+body.profile-guided .hero .eyebrow{display:none}
+body.profile-guided main>.hero{margin-bottom:12px}
+body.profile-guided .hero h1{margin-top:0;margin-bottom:8px;font-size:clamp(26px,3vw,36px)}
+body.profile-guided .hero p{margin:0;font-size:14px;line-height:1.6}
+body.profile-guided .wl-draft{padding:10px 14px;margin-bottom:18px}
+body.profile-guided .wl-draft p{min-width:0;font-size:12px}
+body.profile-guided .wl-draft button{min-height:36px!important;padding:4px!important;border:0;border-radius:0;background:none!important;color:#bbb!important;font-size:11px!important;white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
+.ux-education-option{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0;padding:10px;border:1px solid #444;border-radius:12px;background:#111;color:#eee;cursor:pointer;text-align:left;font:inherit}
+.ux-education-option img{width:100%;height:86px;object-fit:cover;object-position:50% 25%;border-radius:6px;filter:saturate(.65)}
+.ux-education-option strong{font-size:13px;line-height:1.4}
+.ux-education-option[aria-pressed=true]{border-color:#fff;background:#ffffff12;box-shadow:0 0 0 1px #fff}
+.ux-education-option[aria-pressed=true]::after{content:'✓';position:absolute;right:14px;top:14px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:white;color:black;font-size:13px;font-weight:bold}
+.ux-education-option:hover{border-color:#aaa}
+.ux-native-stage{display:none!important}
+.ux-background-details{margin:14px 0;color:#ccc;font-size:13px}
+.ux-background-details>summary{cursor:pointer;padding:10px 0;min-height:44px}
+.ux-background-details>fieldset{margin-top:12px!important}
+.ux-step-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;font-size:12px;color:#bbb}
+.ux-step-count{margin:0;font-variant-numeric:tabular-nums;color:#fff;font-weight:600}
+.ux-progress-track{height:4px;overflow:hidden;border-radius:4px;background:#333;margin-bottom:22px}
+.ux-progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .25s ease-out}
+body.profile-guided .profile-progress,.tool-progress{gap:4px;border:0;padding:0;margin-bottom:20px}
+body.profile-guided .profile-progress button,.tool-progress button{display:flex;align-items:center;justify-content:center;gap:8px;border:0;background:none!important;box-shadow:none!important;min-height:44px;padding:8px 5px;color:#999!important}
+.ux-step-marker{display:grid;place-items:center;width:26px;height:26px;flex-shrink:0;border:1px solid #555;border-radius:50%;font-size:11px;line-height:1;color:#aaa}
+:is(.profile-progress,.tool-progress) button[aria-current=step]{color:#fff!important}
+:is(.profile-progress,.tool-progress) button[aria-current=step] .ux-step-marker{background:#fff;border-color:#fff;color:#111}
+:is(.profile-progress,.tool-progress) button[data-complete=true] .ux-step-marker{border-color:#ddd;color:#fff}
+body.profile-guided .profile-stage-title,.tool-step-heading{font-size:clamp(24px,3vw,32px);line-height:1.3;margin:0 0 8px}
+.profile-stage-hint,.tool-step-hint{font-size:14px;margin-bottom:24px}
+.profile-stage .choice{position:relative;display:flex;align-items:center;gap:10px;background:#101010;border-color:#444;font-size:14px}
+.profile-stage .choice:has(input:checked){border-color:white;background:#ffffff12}
+.profile-stage .choice:has(input:checked)::after{content:'✓';margin-left:auto;color:#fff;font-size:16px}
+.profile-stage .choice input{accent-color:#fff}
+body.profile-guided .profile-step-actions,.tool-actions{position:sticky;bottom:0;z-index:5;padding:16px 0;margin-top:24px;background:#101010;border-top:1px solid #444;display:flex;align-items:center;gap:12px}
+body.profile-guided .profile-step-actions :is(.primary-button,#submitProfile),body.tool-guided .tool-actions :is(.primary-button,#checkButton,#recommendButton){margin:0 0 0 auto!important;min-width:180px;width:auto!important;min-height:50px;padding:12px 22px;background:#fff!important;color:#111!important;border:1px solid white;border-radius:10px;font-size:14px!important;font-weight:700}
+.ux-skip{border:0;background:none;color:#bbb;font-size:12px;padding:10px;cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.ux-next-steps{padding:22px;margin-top:28px;border:1px solid #555;border-radius:14px;background:#151515}
+.ux-next-steps h3{font-size:18px;margin:0 0 14px}
+.ux-next-steps>div{display:flex;flex-wrap:wrap;gap:12px}
+.ux-next-steps a{font-size:13px}
+.tool-results{scroll-margin-top:130px}
+.ux-result-details{margin:14px 0;padding:0;border-top:1px solid #333;color:#bbb;font-size:13px}
+.ux-result-details>summary{padding:14px 0;min-height:44px;cursor:pointer;color:#ddd}
+.ux-assessment-summary{padding:14px 16px;background:#ffffff08;border-left:2px solid #aaa;border-radius:6px;margin-block:18px}
+.ux-assessment-summary p{font-size:14px;line-height:1.7}
+.ux-course-link{display:inline-flex;align-items:center;gap:12px;padding:10px 16px;background:#fff;color:#111!important;border-radius:9px;text-decoration:none!important;font-size:13px;font-weight:600;min-height:44px}
+.recommendation-card .recommendation-meta{gap:8px}.recommendation-card .result-tag{font-size:11px;line-height:1.5}
+.recommendation-card .result-tag:first-child{font-size:12px;font-weight:600;border-color:#aaa}
+.ux-settings{max-width:900px;margin:0 auto 20px;color:#bbb;font-size:12px}
+.ux-settings>summary{cursor:pointer;min-height:40px;padding:8px 0}
+.ux-settings .language-panel{margin-top:8px}
+.ux-assistant-details{max-width:900px;margin:30px auto;border:1px solid #333;border-radius:12px;padding:4px 18px}
+.ux-assistant-details>summary{padding:14px 0;cursor:pointer;font-size:14px;color:#ddd}
+.ux-assistant-details .assistant-panel{border:0!important;padding:12px 0!important}
+.wl-chat-hint{opacity:0;transition:opacity .2s}
+.wl-chat-launcher:hover .wl-chat-hint,.wl-chat-launcher:focus-visible .wl-chat-hint{opacity:1}
+.ux-stage-link{display:block;position:relative;min-width:0;border:1px solid #444;border-radius:14px;overflow:hidden;text-decoration:none;background:#111;color:#fff}
+.ux-stage-link:hover{border-color:#ddd}
+.ux-stage-link .journey-portrait{height:260px;mask:none!important;margin:0;background:#151515}
+.ux-stage-link .journey-student{object-fit:cover;object-position:50% 25%}
+.ux-stage-link .journey-shade{display:none}
+.ux-stage-label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;font-size:15px;font-weight:600}
+.ux-stage-link small{display:block;padding:0 16px 16px;font-size:12px;color:#bbb}
+body[data-view=pathways] .pathways-gallery{gap:16px;margin-top:26px}
+body[data-view=pathways] .pathways-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-height:0;padding-top:0;margin-top:14px;gap:14px}
+.pathways-actions .wl-pathway-choice{border:1px solid #333;border-radius:12px;padding:16px;display:block}
+.pathways-actions .wl-button{background:transparent!important;color:#fff!important;box-shadow:none;border-radius:0;font-size:14px;white-space:normal;padding:0;min-height:44px;text-align:left}
+.pathways-actions .wl-pathway-choice p{font-size:12px;line-height:1.6;color:#aaa;margin:6px 0 0}
+@media(max-width:760px){
+ body.profile-guided main>.hero p{display:none}
+ body.profile-guided main>.hero h1{font-size:26px;margin-bottom:0}
+ body.profile-guided .wl-draft{flex-wrap:nowrap;padding:8px 10px;gap:8px}
+ body:is(.profile-guided,.tool-guided) .wl-chat{top:24px;left:20px;right:auto;bottom:auto;display:flex;flex-direction:column;align-items:flex-start}
+ body:is(.profile-guided,.tool-guided) .wl-chat-launcher{order:-1;margin-left:0;width:48px;height:48px;animation:none}
+ body:is(.profile-guided,.tool-guided) .wl-chat-panel{max-width:calc(100vw - 40px);max-height:calc(100dvh - 110px);margin:12px 0 0}
+ .ux-start-grid,.ux-education-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ux-start-grid .un-photo{height:190px}.ux-tool-grid{grid-template-columns:1fr}
+ .ux-route{gap:8px;padding-bottom:22px}.ux-route li{font-size:11px;gap:6px}.ux-route b{width:26px;height:26px}.ux-route svg{display:none}
+ .ux-route li:not(:last-child)::after{display:none}
+ body.profile-guided .profile-panel,body.tool-guided .workspace>:first-child{padding:18px}
+ .ux-education-option img{height:90px}.ux-education-option{padding:8px;gap:8px}
+ .profile-progress,.tool-progress{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important}
+ .tool-progress{grid-template-columns:repeat(auto-fit,minmax(70px,1fr))!important}
+ :is(.profile-progress,.tool-progress) button{flex-direction:column;font-size:10px!important;line-height:1.3;gap:6px!important;padding:8px 2px!important}
+ body.profile-guided .profile-step-actions,body.tool-guided .tool-actions{gap:6px;bottom:0}
+ body.profile-guided .profile-step-actions :is(.primary-button,#submitProfile),body.tool-guided .tool-actions :is(.primary-button,#checkButton,#recommendButton){min-width:0;padding:12px 16px;font-size:12px!important}
+ .ux-skip{padding:8px 5px;font-size:11px}.profile-step-actions .secondary-button,.tool-actions .secondary-button{font-size:12px;padding:10px!important;min-width:0}
+ .ux-next-steps>div{flex-direction:column}.ux-next-steps a{text-align:center;justify-content:center}
+ body[data-view=pathways] .pathways-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ux-stage-link .journey-portrait{height:200px}.ux-stage-label{font-size:13px;padding:12px}.ux-stage-link small{padding:0 12px 12px;font-size:11px}
+ body[data-view=pathways] .pathways-actions{grid-template-columns:1fr}
+ .un-actions{align-items:flex-start!important;justify-content:flex-start!important}.ux-primary{min-height:50px}
+}
+@media(prefers-reduced-motion:reduce){.ux-progress-fill,.ux-start-grid .un-photo-card,.wl-chat-hint{transition:none}.ux-start-grid .un-photo-card:hover{transform:none}}

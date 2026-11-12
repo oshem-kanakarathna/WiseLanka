@@ -34,7 +34,16 @@
 @media(prefers-reduced-motion:reduce){.wl-chat-launcher,.wl-chat-panel{animation:none}}
 
 .wl-chat video{pointer-events:none}
+.wl-chat-context{padding:10px 16px;display:grid;gap:5px;font-size:12px;max-height:150px;overflow:auto}
+.wl-chat-context select{width:100%;min-width:0;background:#222;color:#fff;border:1px solid #555;border-radius:6px;padding:6px;font:inherit}
+.wl-chat-context label{font-size:12px!important}
+.wl-chat-context input[type=checkbox]{width:auto;min-height:0}
+.wl-chat-options-status{margin:0;font-size:11px;color:#bbb}
+.wl-chat-messages{height:200px;max-height:calc(100dvh - 510px);white-space:pre-line}
+.wl-chat-panel{max-height:calc(100dvh - 120px);overflow-y:auto}
+.wl-chat button:not(.wl-chat-launcher):not(.wl-chat-close){min-height:32px}
 .wl-chat-launcher{will-change:transform}
+.wl-chat-launcher:hover,.wl-chat-launcher:focus-visible{animation-play-state:paused}
 .wl-chat-launcher .wl-chat-thinking{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);opacity:0}
 .wl-chat.is-thinking .wl-chat-thinking{opacity:1;z-index:1}
 .wl-chat button:disabled{cursor:wait;opacity:.5}

@@ -1,5 +1,6 @@
 
 from typing import Any, Dict, Union
+import os
 
 from contextlib import asynccontextmanager
 
@@ -100,14 +101,17 @@ async def knowledge_data_error(request, error):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
+    allow_origins=[origin.strip().rstrip('/') for origin in os.environ.get(
+        "WISELANKA_CORS_ORIGINS",
+        ",".join([
         "http://127.0.0.1:5500",
         "http://localhost:5500",
         "http://127.0.0.1:5501",
         "http://localhost:5501",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
+        ]),
+    ).split(',') if origin.strip()],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -154,6 +158,11 @@ class PersonalisedRecommendationRequest(BaseModel):
 # ----------------------------------------
 # API health check
 # ----------------------------------------
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 
 @app.get("/")
 def root():

@@ -1,11 +1,11 @@
 const API_URL =
-    "http://127.0.0.1:8000/recommendations";
+    window.WiseAPI.endpoint('recommendations');
 
 const ALTERNATIVE_PATHWAYS_API_URL =
-    "http://127.0.0.1:8000/alternative-pathways";
+    window.WiseAPI.endpoint('alternative-pathways');
 
 const SKILLS_API_URL =
-    "http://127.0.0.1:8000/skills/alignment";
+    window.WiseAPI.endpoint('skills/alignment');
 
 const recommendButton =
     document.getElementById(
@@ -853,7 +853,7 @@ async function fetchSkillAlignment(
 ) {
 
     const response =
-        await fetch(
+        await window.WiseAPI.fetch(
             (
                 SKILLS_API_URL
                 + "/"
@@ -3850,7 +3850,7 @@ async function fetchAlternativePathways(
 ) {
 
     const response =
-        await fetch(
+        await window.WiseAPI.fetch(
             (
                 ALTERNATIVE_PATHWAYS_API_URL
                 + "/"
@@ -3953,7 +3953,7 @@ async function fetchRecommendations() {
         // --------------------------------
 
         const response =
-            await fetch(
+            await window.WiseAPI.fetch(
                 API_URL,
                 {
                     method: "POST",

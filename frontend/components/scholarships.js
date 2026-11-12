@@ -14,7 +14,7 @@
  * nomination, selection, admission, or an award.
  */
 
-const SCHOLARSHIP_API = "http://127.0.0.1:8000";
+const SCHOLARSHIP_API = window.WiseAPI.base;
 
 // ----------------------------------------
 // DOM references
@@ -574,7 +574,7 @@ async function checkScholarship(event) {
     showSection(loadingResult);
 
     try {
-        const response = await fetch(
+        const response = await window.WiseAPI.fetch(
             `${SCHOLARSHIP_API}/scholarships/${scholarshipId}/eligibility`,
             {
                 method: "POST",
