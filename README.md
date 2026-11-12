@@ -131,7 +131,12 @@ The landing page is the default entry point. **Find my pathway** and the
 the learner profile, personalised recommendations, or guided assistant.
 The educational journey cards open the corresponding learner profile directly.
 All learner-facing pages share the landing page's navigation, Montserrat
-typography, and dark/orange theme.
+typography, and monochrome theme.
+
+The current frontend uses the shared styles in `frontend/styles/` and the
+page scripts in `frontend/components/`. Earlier landing and experience themes
+have been removed. The active profile, eligibility, recommendation, scholarship
+and guided-assistant scripts provide the current pages' backend connections.
 
 The backend health endpoint is available at:
 

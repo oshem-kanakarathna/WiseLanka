@@ -14,8 +14,7 @@ body[data-view] :is(.wl-button,.primary-button,.secondary-button,.profile-edit,.
 body[data-view] :is(.wl-button,.primary-button,.secondary-button):active:not(:disabled) { transform: scale(.98); }
 body[data-view] :is(.pathway-card,.about-learners > a,.about-features article,.wl-pathway-choice) { transition: transform .45s var(--wl-ease), border-color .3s ease, box-shadow .45s ease; }
 .pathway-card .student-image, .journey-portrait .journey-student { transition: transform .7s var(--wl-ease); }
-.pathway-card h2::after, .landing-action .pathway-chevrons { transition: transform .35s var(--wl-ease); }
-.landing-action .wl-button:hover .pathway-chevrons { transform: translateX(4px); }
+.pathway-card h2::after { transition: transform .35s var(--wl-ease); }
 .about-faq details[open] > p, .about-faq details[open] > a, .profile-detail[open] > p { animation: wl-detail-in .3s var(--wl-ease) both; }
 .about-sections a { position: relative; padding-block: 8px; transition: color .25s ease; }
 .about-sections a[aria-current="location"] { color: #ffffff; text-decoration: underline; text-underline-offset: 7px; }
@@ -37,8 +36,13 @@ body[data-view] :is(#profileHeading,#resultsHeading,#learnerProfileForm,#guidedA
 @keyframes wl-menu-in { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
 @keyframes wl-detail-in { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:none; } }
 @view-transition { navigation: auto; }
-::view-transition-old(root) { animation: wl-page-out .14s ease both; }
-::view-transition-new(root) { animation: wl-page-in .24s ease both; }
+/* Keep the previous page visible while the new content fades over it. */
+::view-transition-old(root) { animation:none; }
+::view-transition-new(root) { animation: wl-page-in .16s ease-out both; }
+body[data-view] .wl-header { view-transition-name:wl-navigation; }
+::view-transition-group(wl-navigation) { animation:none; }
+::view-transition-old(wl-navigation) { animation:none; }
+::view-transition-new(wl-navigation) { animation:none; }
 @keyframes wl-page-out { to { opacity:0; } }
 @keyframes wl-page-in { from { opacity:0; } to { opacity:1; } }
 @media (prefers-reduced-motion: reduce) {

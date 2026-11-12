@@ -25,6 +25,26 @@
  thinkingIcon.className='wl-chat-thinking';
  launcher.appendChild(thinkingIcon);
  widget.querySelector('.wl-chat-heading video').src=url('chatbot-happy-blink.mp4');
+ let thinking=false;
+ let hovered=false;
+ const headerVideo=widget.querySelector('.wl-chat-heading video');
+ const neutralIcon=launcher.querySelector('video');
+ const videos=[neutralIcon,happyIcon,thinkingIcon,headerVideo];
+ videos.forEach(video=>{video.autoplay=false;video.pause();});
+ function syncPlayback(){
+  const activeIcon=thinking?thinkingIcon:(!panel.hidden||hovered||launcher.matches(':focus-visible')?happyIcon:neutralIcon);
+  videos.forEach(video=>{
+   const visible=!document.hidden&&(video===activeIcon||(video===headerVideo&&!panel.hidden));
+   if(visible&&video.paused)video.play().catch(()=>{});
+   else if(!visible&&!video.paused)video.pause();
+  });
+ }
+ launcher.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){hovered=true;syncPlayback();}});
+ launcher.addEventListener('pointerleave',()=>{hovered=false;syncPlayback();});
+ launcher.addEventListener('focus',syncPlayback);
+ launcher.addEventListener('blur',syncPlayback);
+ document.addEventListener('visibilitychange',syncPlayback);
+ syncPlayback();
  const input=widget.querySelector('input');
  const messages=widget.querySelector('.wl-chat-messages');
  function message(text,user=false,link){
@@ -34,19 +54,17 @@
   if(link){const a=document.createElement('a');a.textContent=link[0]+' ↗';a.href=url(link[1]);bubble.appendChild(a);}
   messages.appendChild(bubble);messages.scrollTop=messages.scrollHeight;
  }
- function setOpen(open){panel.hidden=!open;launcher.setAttribute('aria-expanded',String(open));launcher.setAttribute('aria-label',open?'Close WiseLanka chat':'Open WiseLanka chat');if(open)input.focus();else launcher.focus();}
+ function setOpen(open){panel.hidden=!open;launcher.setAttribute('aria-expanded',String(open));launcher.setAttribute('aria-label',open?'Close WiseLanka chat':'Open WiseLanka chat');if(open)input.focus();else launcher.focus();syncPlayback();}
  launcher.addEventListener('click',()=>setOpen(panel.hidden));
  widget.querySelector('.wl-chat-close').addEventListener('click',()=>setOpen(false));
  widget.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden)setOpen(false);});
- let thinking=false;
  async function reply(question){
   if(thinking)return;
   message(question,true);
   thinking=true;
   widget.classList.add('is-thinking');
-  const headerVideo=widget.querySelector('.wl-chat-heading video');
   headerVideo.src=url('chatbot-thinking.mp4');
-  headerVideo.play().catch(()=>{});
+  syncPlayback();
   const controls=widget.querySelectorAll('.wl-chat-topics button,.wl-chat-form button');
   controls.forEach(button=>button.disabled=true);
   messages.setAttribute('aria-busy','true');
@@ -75,7 +93,7 @@
    messages.setAttribute('aria-busy','false');
    controls.forEach(button=>button.disabled=false);
    headerVideo.src=url('chatbot-happy-blink.mp4');
-   headerVideo.play().catch(()=>{});
+   syncPlayback();
   }
  }
  widget.querySelector('form').addEventListener('submit',event=>{event.preventDefault();const question=input.value.trim();if(!question)return;input.value='';reply(question);});

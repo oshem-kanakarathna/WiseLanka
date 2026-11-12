@@ -21,15 +21,6 @@ body[data-view] :is(.primary-button, .secondary-button, .submit-button, #recomme
 body[data-view] :is(button, a) { -webkit-tap-highlight-color: transparent; }
 body[data-view] :is(button:disabled, [aria-busy="true"]) { cursor: progress; }
 body[data-view] :is(#profileHeading, #resultsHeading, #learnerProfileForm, #guidedAssistant) { scroll-margin-top: 24px; }
-.wl-page-context { margin-bottom: 24px; }
-.wl-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 16px; color: var(--muted); font: 500 12px/1.6 var(--font-body); }
-.wl-breadcrumb a { color: inherit; text-underline-offset: 3px; }
-.wl-task-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
-.wl-task-nav a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 8px 14px; color: var(--text); font: 700 12px/1.5 var(--font-body); text-decoration: none; border-radius: 8px; }
-.wl-task-nav a:hover { background: var(--surface-soft); color: #ffffff; }
-.wl-task-nav a span { color: #ffffff; }
-.wl-context-help { margin: 0; color: var(--muted); font: 500 13px/1.7 var(--font-body); }
-.wl-context-help a { color: #ffffff; font-weight: 700; text-underline-offset: 4px; }
 body[data-view="profile"] .language-panel { display: grid; grid-template-columns: auto minmax(180px, 240px); align-items: center; gap: 8px 20px; margin: 0 0 24px; padding: 16px 20px; }
 body[data-view="profile"] .language-panel label { margin: 0; }
 body[data-view="profile"] .language-panel p { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.6; }
@@ -61,9 +52,6 @@ body[data-view] :is(.footer-inner, .site-footer) { max-width: var(--wl-content-w
     :root { --wl-gutter: 20px; --wl-section-gap: 24px; }
     body[data-view="pathways"] .pathways-actions { grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 480px; }
     .wl-pathway-choice { gap: 8px; }
-    .wl-page-context { margin-bottom: 20px; }
-    .wl-task-nav { gap: 4px; padding: 8px; }
-    .wl-task-nav a { flex: 1 1 100%; }
     body[data-view="profile"] .language-panel { grid-template-columns: minmax(0, 1fr); padding: 16px; }
     body[data-view="profile"] .language-panel p { grid-column: auto; }
     body[data-view] :is(.profile-panel, .results-panel, .form-card, .card:not(.input-card)) { padding: 20px; }
